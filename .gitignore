@@ -1,0 +1,52 @@
+@"
+# API KEYS - CRITICO, NUNCA SUBIR
+API_KEY.txt
+**/API_KEY.txt
+*.env
+.env
+**/.env
+**/api_keys.*
+**/*api_key*
+**/*API_KEY*
+**/*secret*
+**/*SECRET*
+**/credentials.*
+
+# Bytecode Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Bases de datos con datos reales
+**/*.db
+**/*.db-journal
+**/evaluaciones.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Datos pesados / cache
+**/huggingface_cache/
+**/ptb-xl/
+**/*.wfdb
+**/*.hea
+**/*.dat
+
+# Notebooks con outputs
+*.ipynb_checkpoints/
+
+# Backups locales
+*_bkp*.py
+*_bkp*.html
+"@ | Out-File -Encoding UTF8 -FilePath .gitignore
