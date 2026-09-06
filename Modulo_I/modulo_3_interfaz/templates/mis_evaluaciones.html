@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block title %}Mis evaluaciones{% endblock %}
+
+{% block content %}
+<section class="paper">
+    <div class="eyebrow">Historial personal</div>
+    <h2>Mis evaluaciones</h2>
+    <p style="color: var(--ink-soft); margin-top: 4px;">
+        Estas son las evaluaciones que <b>usted</b> ha completado. Sus datos son
+        privados: ningún otro cardiólogo puede ver sus respuestas ni usted las de otros,
+        para preservar la independencia del estudio.
+    </p>
+</section>
+
+{% if evaluaciones|length == 0 %}
+<section class="paper">
+    <div class="empty-state">
+        <p>Aún no ha completado ninguna evaluación.</p>
+        <p style="margin-top: 10px;">
+            <a href="{{ url_for('seleccion') }}" class="btn btn-primary">Ir a las señales</a>
+        </p>
+    </div>
+</section>
+{% else %}
+<section class="paper">
+    <h3 style="margin-top: 0;">Resumen ({{ evaluaciones|length }} evaluaciones)</h3>
+
+    <div class="mis-eval-grid">
+    {% for e in evaluaciones %}
+        <div class="mis-eval-card">
+            <div class="mis-eval-header">
+                <span class="mis-eval-sig">{{ e.signal_id }}</span>
+                <span class="chip chip-{{ e.nota_semaforo_global }}">{{ e.nota_semaforo_global }}</span>
+            </div>
+            <div class="mis-eval-meta">
+                <small>{{ e.fecha_evaluacion[:19] if e.fecha_evaluacion else '' }}</small>
+            </div>
+            <div class="mis-eval-likert">
+                <span title="Exactitud">Exact: <b>{{ e.likert_exactitud }}</b>/5</span>
+                <span title="Coherencia">Coher: <b>{{ e.likert_coherencia }}</b>/5</span>
+                <span title="Utilidad">Util: <b>{{ e.likert_utilidad }}</b>/5</span>
+            </div>
+            {% if e.duracion_segundos %}
+            <div class="mis-eval-duracion">
+                Duración: {{ (e.duracion_segundos / 60)|round(1) }} min
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+</section>
+
+<section class="paper">
+    <h3 style="margin-top: 0;">Señales no evaluadas aún</h3>
+    {% if signals_pendientes|length == 0 %}
+        <p style="color: var(--verde); font-weight: 500;">
+            Ha completado la evaluación de las 5 señales. Muchas gracias por su participación.
+        </p>
+    {% else %}
+        <p>Le quedan {{ signals_pendientes|length }} señales por evaluar:</p>
+        <ul style="line-height: 1.9;">
+        {% for sid in signals_pendientes %}
+            <li>
+                <a href="{{ url_for('evaluar', signal_id=sid) }}" class="btn-sm-inline">
+                    Evaluar {{ sid }} →
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+{% endif %}
+
+<style>
+.mis-eval-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+.mis-eval-card {
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-left: 4px solid var(--ecg-red);
+    border-radius: 4px;
+    padding: 14px 16px;
+}
+.mis-eval-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.mis-eval-sig {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--ink);
+}
+.mis-eval-meta {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+}
+.mis-eval-likert {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+.mis-eval-duracion {
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-style: italic;
+}
+.btn-sm-inline {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--cream-deep);
+    color: var(--ecg-red);
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--cream-deep);
+}
+.btn-sm-inline:hover {
+    background: var(--ecg-red);
+    color: white;
+}
+.chip {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.chip-verde     { background: rgba(58,143,58,0.15); color: var(--verde); border: 1px solid var(--verde); }
+.chip-amarillo  { background: rgba(214,163,23,0.15); color: var(--ink); border: 1px solid var(--amarillo); }
+.chip-rojo      { background: rgba(178,34,34,0.15); color: var(--ecg-red-dark); border: 1px solid var(--rojo); }
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--ink-soft);
+}
+</style>
+{% endblock %}

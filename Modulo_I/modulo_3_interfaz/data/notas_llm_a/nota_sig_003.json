@@ -1,0 +1,211 @@
+{
+  "signal_id": "sig_003",
+  "generated_at": "2026-08-28T06:22:33.431537Z",
+  "model": "gemini-2.5-flash",
+  "prompt_version": "v3",
+  "latency_seconds": 15.61,
+  "signal_metadata": {
+    "signal_id": "sig_003",
+    "patient_id_hash": "anon_sig_003",
+    "patient_age_estimate": 50,
+    "patient_sex": "X",
+    "scenario_note": "",
+    "label": "Senal ECG",
+    "lead": "II",
+    "sampling_rate_hz": 250,
+    "duration_seconds": 60.0,
+    "n_samples": 15000,
+    "preprocessing": "z-score normalisation",
+    "processed_at": "2026-06-29T09:16:46",
+    "source_csv": "D:/Modelo_Tesis/Modulo_I/modulo_3_interfaz/signals/p00019_s00_PAC_NORMAL_1628s_1min.csv"
+  },
+  "aggregate_summary": {
+    "predominant_beat_class": "NORMAL",
+    "beat_class_distribution_pct": {
+      "NORMAL": 78.33,
+      "PAC": 21.67
+    },
+    "predominant_rhythm_class": "AFIB",
+    "rhythm_class_distribution_pct": {
+      "AFIB": 73.33,
+      "NSR": 26.67
+    },
+    "anomalies_detected": [
+      {
+        "type": "PAC",
+        "at_second": 4.0,
+        "window_index": 4,
+        "confidence_gap": 0.1583
+      },
+      {
+        "type": "PAC",
+        "at_second": 5.0,
+        "window_index": 5,
+        "confidence_gap": 0.3958
+      },
+      {
+        "type": "PAC",
+        "at_second": 6.0,
+        "window_index": 6,
+        "confidence_gap": 0.3273
+      },
+      {
+        "type": "PAC",
+        "at_second": 7.0,
+        "window_index": 7,
+        "confidence_gap": 0.0708
+      },
+      {
+        "type": "PAC",
+        "at_second": 11.0,
+        "window_index": 11,
+        "confidence_gap": 0.1671
+      },
+      {
+        "type": "PAC",
+        "at_second": 14.0,
+        "window_index": 14,
+        "confidence_gap": 0.0135
+      },
+      {
+        "type": "PAC",
+        "at_second": 15.0,
+        "window_index": 15,
+        "confidence_gap": 0.1367
+      },
+      {
+        "type": "PAC",
+        "at_second": 16.0,
+        "window_index": 16,
+        "confidence_gap": 0.0191
+      },
+      {
+        "type": "PAC",
+        "at_second": 17.0,
+        "window_index": 17,
+        "confidence_gap": 0.2268
+      },
+      {
+        "type": "PAC",
+        "at_second": 18.0,
+        "window_index": 18,
+        "confidence_gap": 0.7415
+      },
+      {
+        "type": "PAC",
+        "at_second": 29.0,
+        "window_index": 29,
+        "confidence_gap": 0.2107
+      },
+      {
+        "type": "PAC",
+        "at_second": 37.0,
+        "window_index": 37,
+        "confidence_gap": 0.0535
+      },
+      {
+        "type": "PAC",
+        "at_second": 58.0,
+        "window_index": 58,
+        "confidence_gap": 0.3741
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 4.0,
+        "to_second": 8.0,
+        "window_index": 1,
+        "confidence_gap": 0.9452
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 8.0,
+        "to_second": 12.0,
+        "window_index": 2,
+        "confidence_gap": 0.6557
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 12.0,
+        "to_second": 16.0,
+        "window_index": 3,
+        "confidence_gap": 0.7754
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 16.0,
+        "to_second": 20.0,
+        "window_index": 4,
+        "confidence_gap": 0.0103
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 20.0,
+        "to_second": 24.0,
+        "window_index": 5,
+        "confidence_gap": 0.3532
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 24.0,
+        "to_second": 28.0,
+        "window_index": 6,
+        "confidence_gap": 0.606
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 28.0,
+        "to_second": 32.0,
+        "window_index": 7,
+        "confidence_gap": 0.877
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 36.0,
+        "to_second": 40.0,
+        "window_index": 9,
+        "confidence_gap": 0.6658
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 48.0,
+        "to_second": 52.0,
+        "window_index": 12,
+        "confidence_gap": 0.6275
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 52.0,
+        "to_second": 56.0,
+        "window_index": 13,
+        "confidence_gap": 0.4705
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 56.0,
+        "to_second": 60.0,
+        "window_index": 14,
+        "confidence_gap": 0.9121
+      }
+    ],
+    "mean_confidence_gap_beat": 0.4707,
+    "mean_confidence_gap_rhythm": 0.5776,
+    "global_escalation_required": true,
+    "n_beat_windows": 60,
+    "n_rhythm_windows": 15,
+    "processing_time_seconds": 16007.3
+  },
+  "clinical_note": "Se analiza un registro de derivación II modificada de 60 segundos de duración, correspondiente a un paciente de 50 años. El clasificador dual identifica un patrón de ritmo predominantemente compatible con fibrilación auricular (73.33%), donde se observa la ausencia de ondas P discernibles y la presencia de oscilaciones basales irregulares, con una respuesta ventricular irregularmente irregular, y complejos QRS de morfología estrecha y aspecto normal. La clase de latido predominante es NORMAL (78.33%), con ondas P monofásicas de polaridad positiva precediendo al QRS y un intervalo PR dentro de rangos fisiológicos, mientras que se identifican contracciones auriculares prematuras (PAC) en un 21.67% del registro. Estas PAC se localizan en los segundos 4.0, 5.0, 6.0, 7.0, 11.0, 14.0, 15.0, 16.0, 17.0 y 18.0, caracterizándose por una onda P prematura de morfología distinta a las sinusales, seguida de un complejo QRS estrecho y una pausa compensatoria incompleta. Asimismo, se aprecia la existencia de periodos de ritmo sinusal normal (26.67%), con ondas P monofásicas precediendo cada complejo QRS, relación auriculoventricular 1:1, y un patrón de intervalos R-R regulares. Aunque la confianza media del clasificador para las clases de latido (0.47) y ritmo (0.58) se considera adecuada para uso interpretativo, la detección de ventanas marcadas para escalación (16) y la activación global de escalación requieren una revisión cardiologíca detallada del registro completo.",
+  "quality_checks": {
+    "idioma_espanol": true,
+    "menciona_lead_II": true,
+    "describe_morfologia": true,
+    "menciona_clase_beat": true,
+    "menciona_clase_rhythm": false,
+    "menciona_confianza": true,
+    "longitud_apropiada": true,
+    "sin_certeza_absoluta": true,
+    "sin_prescripcion": true
+  },
+  "checks_passed": 8,
+  "checks_total": 9
+}

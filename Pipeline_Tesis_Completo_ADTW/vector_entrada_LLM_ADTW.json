@@ -1,0 +1,3085 @@
+{
+  "version": "1.0",
+  "descripcion": "Vector de entrada al Módulo II (LLM). Generado por el Módulo I (Clasificador Geométrico ADTW). Tesis CIMAT — Fabio Misel Velasco Dorado.",
+  "metadata_modelo": {
+    "nombre_modelo": "ADTW Multi-Resolution Shapelets + XGBoost",
+    "referencia_adtw": "Herrmann & Webb (2023)",
+    "bases_de_datos": [
+      "Icentia11k",
+      "MIT-BIH Arrhythmia Database"
+    ],
+    "clases_AAMI": [
+      "AFIB",
+      "NORMAL",
+      "NSR",
+      "PAC"
+    ],
+    "n_shapelets": 60,
+    "gamma_adtw": 0.1,
+    "banda_sakoe_chiba": 0.1,
+    "accuracy_global": 63.33,
+    "auc_por_clase": {
+      "AFIB": 0.8856,
+      "NORMAL": 0.8822,
+      "NSR": 0.8859,
+      "PAC": 0.8817
+    },
+    "auc_micro_average": 0.8876,
+    "xgboost_params": {
+      "n_estimators": 700,
+      "max_depth": 5,
+      "learning_rate": 0.05,
+      "reg_alpha": 0.1,
+      "reg_lambda": 1.0
+    }
+  },
+  "diccionario_shapelets": [
+    {
+      "rank_importancia": 1,
+      "id_shapelet": 30,
+      "importancia_pct": 16.71,
+      "longitud_muestras": 439,
+      "tipo_resolucion": "macro",
+      "clase_origen": "NSR",
+      "contrast_score": NaN
+    },
+    {
+      "rank_importancia": 2,
+      "id_shapelet": 12,
+      "importancia_pct": 15.32,
+      "longitud_muestras": 530,
+      "tipo_resolucion": "macro",
+      "clase_origen": "AFIB",
+      "contrast_score": NaN
+    },
+    {
+      "rank_importancia": 3,
+      "id_shapelet": 2,
+      "importancia_pct": 14.83,
+      "longitud_muestras": 327,
+      "tipo_resolucion": "macro",
+      "clase_origen": "AFIB",
+      "contrast_score": NaN
+    },
+    {
+      "rank_importancia": 4,
+      "id_shapelet": 5,
+      "importancia_pct": 5.2,
+      "longitud_muestras": 246,
+      "tipo_resolucion": "macro",
+      "clase_origen": "NSR",
+      "contrast_score": NaN
+    },
+    {
+      "rank_importancia": 5,
+      "id_shapelet": 55,
+      "importancia_pct": 3.49,
+      "longitud_muestras": 119,
+      "tipo_resolucion": "micro",
+      "clase_origen": "AFIB",
+      "contrast_score": NaN
+    }
+  ],
+  "predicciones_test": [
+    {
+      "id_muestra": 0,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0021,
+        "NORMAL": 0.3476,
+        "NSR": 0.0022,
+        "PAC": 0.6481
+      },
+      "confidence_gap": 0.3005,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 100.0375
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 64.8%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 1,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0021,
+        "NORMAL": 0.8574,
+        "NSR": 0.0024,
+        "PAC": 0.138
+      },
+      "confidence_gap": 0.7194,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 143.74
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 85.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 2,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0289,
+        "NORMAL": 0.0004,
+        "NSR": 0.9703,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.9414,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 291.4712,
+        "shapelet_12": 396.3045,
+        "shapelet_2": 233.5344,
+        "shapelet_5": 77.0695,
+        "shapelet_55": 10.5487
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 97.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 3,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.8831,
+        "NSR": 0.0004,
+        "PAC": 0.1157
+      },
+      "confidence_gap": 0.7674,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 128.3259
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 88.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 4,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0428,
+        "NORMAL": 0.0003,
+        "NSR": 0.9566,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.9138,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 131.3311,
+        "shapelet_12": 174.8346,
+        "shapelet_2": 100.8513,
+        "shapelet_5": 115.6421,
+        "shapelet_55": 9.9936
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 95.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 5,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.8525,
+        "NORMAL": 0.0004,
+        "NSR": 0.1466,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.7059,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 175.5044,
+        "shapelet_12": 220.2327,
+        "shapelet_2": 138.8254,
+        "shapelet_5": 72.8119,
+        "shapelet_55": 5.5164
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 85.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 6,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0158,
+        "NSR": 0.0004,
+        "PAC": 0.9833
+      },
+      "confidence_gap": 0.9675,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 107.8116
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 98.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 7,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0151,
+        "NSR": 0.0001,
+        "PAC": 0.9845
+      },
+      "confidence_gap": 0.9694,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 127.8989
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 98.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 8,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9718,
+        "NSR": 0.0003,
+        "PAC": 0.0277
+      },
+      "confidence_gap": 0.9441,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 109.1633
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 97.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 9,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.3212,
+        "NORMAL": 0.0004,
+        "NSR": 0.6779,
+        "PAC": 0.0005
+      },
+      "confidence_gap": 0.3567,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 275.5453,
+        "shapelet_12": 194.6142,
+        "shapelet_2": 131.7101,
+        "shapelet_5": 34.1325,
+        "shapelet_55": 5.6387
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 67.8%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 10,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.8305,
+        "NSR": 0.0003,
+        "PAC": 0.1687
+      },
+      "confidence_gap": 0.6618,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 114.5042
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 83.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 11,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0165,
+        "NORMAL": 0.0005,
+        "NSR": 0.9826,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.9661,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 222.9652,
+        "shapelet_12": 523.1629,
+        "shapelet_2": 287.7204,
+        "shapelet_5": 14.2537,
+        "shapelet_55": 10.3329
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 98.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 12,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0013,
+        "NORMAL": 0.8761,
+        "NSR": 0.0025,
+        "PAC": 0.1201
+      },
+      "confidence_gap": 0.756,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 152.0619
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 87.6%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 13,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.8079,
+        "NSR": 0.0012,
+        "PAC": 0.1899
+      },
+      "confidence_gap": 0.618,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 147.3368
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 80.8%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 14,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0012,
+        "NORMAL": 0.5172,
+        "NSR": 0.0011,
+        "PAC": 0.4805
+      },
+      "confidence_gap": 0.0367,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 107.6228
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 51.7%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 15,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0468,
+        "NSR": 0.0003,
+        "PAC": 0.9525
+      },
+      "confidence_gap": 0.9057,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 136.2232
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 95.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 16,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9292,
+        "NORMAL": 0.0014,
+        "NSR": 0.0674,
+        "PAC": 0.002
+      },
+      "confidence_gap": 0.8618,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 230.7133,
+        "shapelet_12": 441.1905,
+        "shapelet_2": 215.8053,
+        "shapelet_5": 32.5242,
+        "shapelet_55": 15.4154
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 92.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 17,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.2748,
+        "NORMAL": 0.001,
+        "NSR": 0.7235,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.4487,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 233.5591,
+        "shapelet_12": 416.0656,
+        "shapelet_2": 244.0829,
+        "shapelet_5": 17.0192,
+        "shapelet_55": 11.7908
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 72.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 18,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0012,
+        "NORMAL": 0.9662,
+        "NSR": 0.0007,
+        "PAC": 0.0319
+      },
+      "confidence_gap": 0.9343,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 166.6073
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 96.6%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 19,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.5198,
+        "NORMAL": 0.0035,
+        "NSR": 0.4733,
+        "PAC": 0.0034
+      },
+      "confidence_gap": 0.0465,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 258.3884,
+        "shapelet_12": 472.1068,
+        "shapelet_2": 242.0672,
+        "shapelet_5": 23.3213,
+        "shapelet_55": 16.995
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 52.0%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 20,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.5819,
+        "NORMAL": 0.0004,
+        "NSR": 0.4173,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.1646,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 179.9055,
+        "shapelet_12": 110.1135,
+        "shapelet_2": 89.9353,
+        "shapelet_5": 113.8164,
+        "shapelet_55": 5.6751
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 58.2%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 21,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0071,
+        "NORMAL": 0.4951,
+        "NSR": 0.0074,
+        "PAC": 0.4904
+      },
+      "confidence_gap": 0.0047,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 69.6108
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 49.5%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 22,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0233,
+        "NSR": 0.0015,
+        "PAC": 0.9744
+      },
+      "confidence_gap": 0.9511,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 78.6355
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 97.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 23,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.3259,
+        "NORMAL": 0.0008,
+        "NSR": 0.6726,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.3467,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 171.6874,
+        "shapelet_12": 349.2115,
+        "shapelet_2": 178.1291,
+        "shapelet_5": 24.1816,
+        "shapelet_55": 9.314
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 67.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 24,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9685,
+        "NORMAL": 0.0012,
+        "NSR": 0.0279,
+        "PAC": 0.0024
+      },
+      "confidence_gap": 0.9406,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 73.0922,
+        "shapelet_12": 139.6257,
+        "shapelet_2": 33.4163,
+        "shapelet_5": 190.0406,
+        "shapelet_55": 5.3379
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 96.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 25,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0151,
+        "NSR": 0.0003,
+        "PAC": 0.9844
+      },
+      "confidence_gap": 0.9693,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 122.9344
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 98.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 26,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.9404,
+        "NORMAL": 0.0102,
+        "NSR": 0.0444,
+        "PAC": 0.0051
+      },
+      "confidence_gap": 0.896,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 191.8798,
+        "shapelet_12": 443.477,
+        "shapelet_2": 269.3983,
+        "shapelet_5": 96.3263,
+        "shapelet_55": 29.4231
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 94.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 27,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0147,
+        "NSR": 0.0004,
+        "PAC": 0.9844
+      },
+      "confidence_gap": 0.9697,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 132.8226
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 98.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 28,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9205,
+        "NORMAL": 0.0021,
+        "NSR": 0.0765,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.844,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 208.733,
+        "shapelet_12": 379.5942,
+        "shapelet_2": 210.0736,
+        "shapelet_5": 40.3873,
+        "shapelet_55": 15.5218
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 92.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 29,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0013,
+        "NORMAL": 0.4882,
+        "NSR": 0.001,
+        "PAC": 0.5095
+      },
+      "confidence_gap": 0.0213,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 77.5146
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 50.9%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 30,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.7249,
+        "NORMAL": 0.0004,
+        "NSR": 0.274,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.4509,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 263.7434,
+        "shapelet_12": 435.8207,
+        "shapelet_2": 258.9129,
+        "shapelet_5": 52.9786,
+        "shapelet_55": 13.237
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 72.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 31,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.9655,
+        "NORMAL": 0.0011,
+        "NSR": 0.0325,
+        "PAC": 0.0009
+      },
+      "confidence_gap": 0.933,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 354.752,
+        "shapelet_12": 423.9283,
+        "shapelet_2": 307.2424,
+        "shapelet_5": 65.9188,
+        "shapelet_55": 14.676
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 96.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 32,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.9758,
+        "NSR": 0.0007,
+        "PAC": 0.0231
+      },
+      "confidence_gap": 0.9527,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 105.7591
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 97.6%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 33,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0143,
+        "NSR": 0.0004,
+        "PAC": 0.9849
+      },
+      "confidence_gap": 0.9706,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 113.6447
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 98.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 34,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.994,
+        "NSR": 0.0001,
+        "PAC": 0.0058
+      },
+      "confidence_gap": 0.9882,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 119.6608
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 99.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 35,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.009,
+        "NORMAL": 0.6489,
+        "NSR": 0.0064,
+        "PAC": 0.3357
+      },
+      "confidence_gap": 0.3132,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 115.8839
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 64.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 36,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0271,
+        "NORMAL": 0.0005,
+        "NSR": 0.9718,
+        "PAC": 0.0006
+      },
+      "confidence_gap": 0.9447,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 163.7516,
+        "shapelet_12": 177.2584,
+        "shapelet_2": 103.6466,
+        "shapelet_5": 22.9663,
+        "shapelet_55": 8.3539
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 97.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 37,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0018,
+        "NORMAL": 0.8578,
+        "NSR": 0.002,
+        "PAC": 0.1384
+      },
+      "confidence_gap": 0.7194,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 81.7844
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 85.8%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 38,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.2605,
+        "NORMAL": 0.0011,
+        "NSR": 0.7348,
+        "PAC": 0.0036
+      },
+      "confidence_gap": 0.4743,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 263.6662,
+        "shapelet_12": 362.3865,
+        "shapelet_2": 257.5097,
+        "shapelet_5": 78.9011,
+        "shapelet_55": 17.5258
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 73.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 39,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.7452,
+        "NORMAL": 0.0013,
+        "NSR": 0.2521,
+        "PAC": 0.0014
+      },
+      "confidence_gap": 0.4931,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 305.7386,
+        "shapelet_12": 250.7958,
+        "shapelet_2": 239.0643,
+        "shapelet_5": 110.9306,
+        "shapelet_55": 10.8954
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 74.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 40,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.4272,
+        "NORMAL": 0.0025,
+        "NSR": 0.5664,
+        "PAC": 0.004
+      },
+      "confidence_gap": 0.1392,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 146.7094,
+        "shapelet_12": 235.0561,
+        "shapelet_2": 108.3374,
+        "shapelet_5": 158.1479,
+        "shapelet_55": 17.6018
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 56.6%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 41,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.9732,
+        "NORMAL": 0.0007,
+        "NSR": 0.0258,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.9474,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 237.4218,
+        "shapelet_12": 300.2614,
+        "shapelet_2": 186.3633,
+        "shapelet_5": 88.3996,
+        "shapelet_55": 7.7936
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 97.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 42,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.1725,
+        "NORMAL": 0.0097,
+        "NSR": 0.8104,
+        "PAC": 0.0073
+      },
+      "confidence_gap": 0.6379,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 176.092,
+        "shapelet_12": 113.6148,
+        "shapelet_2": 48.3385,
+        "shapelet_5": 210.0164,
+        "shapelet_55": 4.8437
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 81.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 43,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.9338,
+        "NORMAL": 0.0005,
+        "NSR": 0.0651,
+        "PAC": 0.0006
+      },
+      "confidence_gap": 0.8687,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 310.0128,
+        "shapelet_12": 364.5148,
+        "shapelet_2": 270.7177,
+        "shapelet_5": 64.3241,
+        "shapelet_55": 9.5912
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 93.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 44,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.4795,
+        "NORMAL": 0.0006,
+        "NSR": 0.5193,
+        "PAC": 0.0006
+      },
+      "confidence_gap": 0.0398,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 191.6654,
+        "shapelet_12": 138.2408,
+        "shapelet_2": 97.8224,
+        "shapelet_5": 75.4202,
+        "shapelet_55": 3.0768
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 51.9%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 45,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.0698,
+        "NSR": 0.0008,
+        "PAC": 0.9285
+      },
+      "confidence_gap": 0.8587,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 120.7019
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 92.8%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 46,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0051,
+        "NORMAL": 0.7471,
+        "NSR": 0.0064,
+        "PAC": 0.2414
+      },
+      "confidence_gap": 0.5057,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 81.1347
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 74.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 47,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0018,
+        "NORMAL": 0.6648,
+        "NSR": 0.0019,
+        "PAC": 0.3316
+      },
+      "confidence_gap": 0.3332,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 104.1197
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 66.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 48,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0024,
+        "NORMAL": 0.7235,
+        "NSR": 0.002,
+        "PAC": 0.2721
+      },
+      "confidence_gap": 0.4514,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 76.0085
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 72.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 49,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.8657,
+        "NORMAL": 0.0014,
+        "NSR": 0.1305,
+        "PAC": 0.0024
+      },
+      "confidence_gap": 0.7352,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 250.5366,
+        "shapelet_12": 105.4356,
+        "shapelet_2": 170.3677,
+        "shapelet_5": 143.473,
+        "shapelet_55": 3.5565
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 86.6%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 50,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.7961,
+        "NORMAL": 0.001,
+        "NSR": 0.2018,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.5943,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 242.6439,
+        "shapelet_12": 303.0331,
+        "shapelet_2": 175.9304,
+        "shapelet_5": 20.7826,
+        "shapelet_55": 6.2648
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 79.6%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 51,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.9921,
+        "NSR": 0.0005,
+        "PAC": 0.0068
+      },
+      "confidence_gap": 0.9853,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 98.1118
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 99.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 52,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0028,
+        "NORMAL": 0.0002,
+        "NSR": 0.9968,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 233.2167,
+        "shapelet_12": 130.4229,
+        "shapelet_2": 103.4514,
+        "shapelet_5": 104.2857,
+        "shapelet_55": 2.7053
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 99.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 53,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.3651,
+        "NSR": 0.0014,
+        "PAC": 0.6328
+      },
+      "confidence_gap": 0.2677,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 98.3474
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 63.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 54,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.1175,
+        "NORMAL": 0.0556,
+        "NSR": 0.8074,
+        "PAC": 0.0195
+      },
+      "confidence_gap": 0.6899,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 351.3655,
+        "shapelet_12": 605.7394,
+        "shapelet_2": 391.2022,
+        "shapelet_5": 64.9289,
+        "shapelet_55": 11.9955
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 80.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 55,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.8243,
+        "NORMAL": 0.0088,
+        "NSR": 0.1603,
+        "PAC": 0.0066
+      },
+      "confidence_gap": 0.664,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 356.0106,
+        "shapelet_12": 518.1001,
+        "shapelet_2": 328.1478,
+        "shapelet_5": 61.1615,
+        "shapelet_55": 14.8319
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 82.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 56,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0015,
+        "NORMAL": 0.9627,
+        "NSR": 0.0024,
+        "PAC": 0.0335
+      },
+      "confidence_gap": 0.9292,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 89.0433
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 96.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 57,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9139,
+        "NORMAL": 0.0005,
+        "NSR": 0.0852,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.8287,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 195.9259,
+        "shapelet_12": 457.3031,
+        "shapelet_2": 226.9007,
+        "shapelet_5": 47.7977,
+        "shapelet_55": 22.0002
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 91.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 58,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0011,
+        "NORMAL": 0.5898,
+        "NSR": 0.0014,
+        "PAC": 0.4076
+      },
+      "confidence_gap": 0.1822,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 100.379
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 59.0%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 59,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9453,
+        "NORMAL": 0.0008,
+        "NSR": 0.0523,
+        "PAC": 0.0017
+      },
+      "confidence_gap": 0.893,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 181.692,
+        "shapelet_12": 393.8898,
+        "shapelet_2": 216.9371,
+        "shapelet_5": 46.3615,
+        "shapelet_55": 28.4093
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 94.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 60,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0012,
+        "NORMAL": 0.2061,
+        "NSR": 0.0009,
+        "PAC": 0.7918
+      },
+      "confidence_gap": 0.5857,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 113.5737
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 79.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 61,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0054,
+        "NORMAL": 0.7879,
+        "NSR": 0.0074,
+        "PAC": 0.1992
+      },
+      "confidence_gap": 0.5887,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 70.2883
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 78.8%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 62,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.005,
+        "NORMAL": 0.8264,
+        "NSR": 0.0053,
+        "PAC": 0.1632
+      },
+      "confidence_gap": 0.6632,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 145.1135
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 82.6%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 63,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0024,
+        "NORMAL": 0.2399,
+        "NSR": 0.0019,
+        "PAC": 0.7557
+      },
+      "confidence_gap": 0.5158,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 78.8234
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 75.6%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 64,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0019,
+        "NORMAL": 0.4523,
+        "NSR": 0.0018,
+        "PAC": 0.544
+      },
+      "confidence_gap": 0.0917,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 137.1226
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 54.4%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 65,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.0001,
+        "NSR": 0.9992,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 163.8608,
+        "shapelet_12": 195.4385,
+        "shapelet_2": 71.4252,
+        "shapelet_5": 49.1402,
+        "shapelet_55": 10.399
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 99.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 66,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.2246,
+        "NORMAL": 0.0008,
+        "NSR": 0.774,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.5494,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 239.3516,
+        "shapelet_12": 232.5034,
+        "shapelet_2": 141.4234,
+        "shapelet_5": 46.7155,
+        "shapelet_55": 6.9231
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 77.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 67,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0011,
+        "NORMAL": 0.6721,
+        "NSR": 0.0012,
+        "PAC": 0.3255
+      },
+      "confidence_gap": 0.3466,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 79.5685
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 67.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 68,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.9993,
+        "NSR": 0.0001,
+        "PAC": 0.0006
+      },
+      "confidence_gap": 0.9987,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 133.7556
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 99.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 69,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0022,
+        "NORMAL": 0.589,
+        "NSR": 0.0033,
+        "PAC": 0.4055
+      },
+      "confidence_gap": 0.1835,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 81.3437
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 58.9%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 70,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0052,
+        "NORMAL": 0.6239,
+        "NSR": 0.0041,
+        "PAC": 0.3668
+      },
+      "confidence_gap": 0.2571,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 97.7532
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 62.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 71,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.5225,
+        "NSR": 0.0005,
+        "PAC": 0.4765
+      },
+      "confidence_gap": 0.046,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 91.4741
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 52.2%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 72,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.4074,
+        "NORMAL": 0.0004,
+        "NSR": 0.5911,
+        "PAC": 0.0011
+      },
+      "confidence_gap": 0.1837,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 178.0629,
+        "shapelet_12": 95.8132,
+        "shapelet_2": 78.5841,
+        "shapelet_5": 156.5329,
+        "shapelet_55": 9.7582
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 59.1%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 73,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.857,
+        "NORMAL": 0.0007,
+        "NSR": 0.1414,
+        "PAC": 0.0009
+      },
+      "confidence_gap": 0.7156,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 318.5411,
+        "shapelet_12": 266.7712,
+        "shapelet_2": 186.8843,
+        "shapelet_5": 79.8202,
+        "shapelet_55": 13.2611
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 85.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 74,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.4044,
+        "NSR": 0.0011,
+        "PAC": 0.5936
+      },
+      "confidence_gap": 0.1892,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 94.8764
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 59.4%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 75,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.8701,
+        "NORMAL": 0.02,
+        "NSR": 0.0957,
+        "PAC": 0.0142
+      },
+      "confidence_gap": 0.7744,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 60.0855,
+        "shapelet_12": 159.3296,
+        "shapelet_2": 112.6139,
+        "shapelet_5": 195.8939,
+        "shapelet_55": 66.6456
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 87.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 76,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0072,
+        "NSR": 0.0008,
+        "PAC": 0.9911
+      },
+      "confidence_gap": 0.9839,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 76.9
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 99.1%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 77,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0009,
+        "NORMAL": 0.037,
+        "NSR": 0.0017,
+        "PAC": 0.9604
+      },
+      "confidence_gap": 0.9234,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 71.3133
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 96.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 78,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0044,
+        "NORMAL": 0.8502,
+        "NSR": 0.0052,
+        "PAC": 0.1402
+      },
+      "confidence_gap": 0.71,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 71.4942
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 85.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 79,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0018,
+        "NORMAL": 0.3851,
+        "NSR": 0.0027,
+        "PAC": 0.6103
+      },
+      "confidence_gap": 0.2252,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 100.5351
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 61.0%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 80,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.5787,
+        "NORMAL": 0.0026,
+        "NSR": 0.4128,
+        "PAC": 0.0058
+      },
+      "confidence_gap": 0.1659,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 157.3177,
+        "shapelet_12": 146.389,
+        "shapelet_2": 132.8157,
+        "shapelet_5": 160.2529,
+        "shapelet_55": 28.4439
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 57.9%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 81,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.3969,
+        "NORMAL": 0.0014,
+        "NSR": 0.5992,
+        "PAC": 0.0025
+      },
+      "confidence_gap": 0.2023,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 147.1852,
+        "shapelet_12": 109.2677,
+        "shapelet_2": 47.1676,
+        "shapelet_5": 39.1837,
+        "shapelet_55": 6.5916
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 59.9%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 82,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0017,
+        "NORMAL": 0.8855,
+        "NSR": 0.0014,
+        "PAC": 0.1115
+      },
+      "confidence_gap": 0.774,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 95.4651
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 88.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 83,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.0689,
+        "NSR": 0.0014,
+        "PAC": 0.9287
+      },
+      "confidence_gap": 0.8598,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 128.4355
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 92.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 84,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.6933,
+        "NSR": 0.0005,
+        "PAC": 0.3055
+      },
+      "confidence_gap": 0.3878,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 115.2779
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 69.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 85,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0022,
+        "NORMAL": 0.1552,
+        "NSR": 0.003,
+        "PAC": 0.8396
+      },
+      "confidence_gap": 0.6844,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 110.5507
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 84.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 86,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0012,
+        "NORMAL": 0.0673,
+        "NSR": 0.0008,
+        "PAC": 0.9307
+      },
+      "confidence_gap": 0.8634,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 119.7452
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 93.1%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 87,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.7827,
+        "NORMAL": 0.0007,
+        "NSR": 0.2163,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.5664,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 197.3492,
+        "shapelet_12": 393.3363,
+        "shapelet_2": 238.7455,
+        "shapelet_5": 29.7645,
+        "shapelet_55": 10.3674
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 78.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 88,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0024,
+        "NORMAL": 0.1603,
+        "NSR": 0.0018,
+        "PAC": 0.8355
+      },
+      "confidence_gap": 0.6752,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 98.0931
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 83.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 89,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9103,
+        "NORMAL": 0.0006,
+        "NSR": 0.0887,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.8216,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 226.6996,
+        "shapelet_12": 296.8025,
+        "shapelet_2": 198.089,
+        "shapelet_5": 21.4673,
+        "shapelet_55": 5.4133
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 91.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 90,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0809,
+        "NORMAL": 0.006,
+        "NSR": 0.9036,
+        "PAC": 0.0095
+      },
+      "confidence_gap": 0.8227,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 218.1591,
+        "shapelet_12": 94.2151,
+        "shapelet_2": 55.8825,
+        "shapelet_5": 214.7497,
+        "shapelet_55": 6.2545
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 90.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 91,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.8096,
+        "NORMAL": 0.0009,
+        "NSR": 0.187,
+        "PAC": 0.0026
+      },
+      "confidence_gap": 0.6226,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 208.8837,
+        "shapelet_12": 201.0989,
+        "shapelet_2": 177.0383,
+        "shapelet_5": 109.3374,
+        "shapelet_55": 7.1156
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 81.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 92,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.006,
+        "NORMAL": 0.5706,
+        "NSR": 0.0035,
+        "PAC": 0.4199
+      },
+      "confidence_gap": 0.1507,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 89.8959
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 57.1%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 93,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.973,
+        "NORMAL": 0.0005,
+        "NSR": 0.025,
+        "PAC": 0.0015
+      },
+      "confidence_gap": 0.948,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 56.6693,
+        "shapelet_12": 172.3318,
+        "shapelet_2": 81.2295,
+        "shapelet_5": 121.1195,
+        "shapelet_55": 41.0756
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 97.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 94,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.3555,
+        "NORMAL": 0.0014,
+        "NSR": 0.6414,
+        "PAC": 0.0018
+      },
+      "confidence_gap": 0.2859,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 283.0864,
+        "shapelet_12": 253.4495,
+        "shapelet_2": 221.3756,
+        "shapelet_5": 103.1156,
+        "shapelet_55": 15.8966
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 64.1%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 95,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0017,
+        "NORMAL": 0.1747,
+        "NSR": 0.002,
+        "PAC": 0.8216
+      },
+      "confidence_gap": 0.6469,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 126.248
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 82.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 96,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0315,
+        "NORMAL": 0.0007,
+        "NSR": 0.9672,
+        "PAC": 0.0006
+      },
+      "confidence_gap": 0.9357,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 162.4438,
+        "shapelet_12": 200.3684,
+        "shapelet_2": 140.1174,
+        "shapelet_5": 94.8045,
+        "shapelet_55": 9.3245
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 96.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 97,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.5655,
+        "NORMAL": 0.0013,
+        "NSR": 0.4319,
+        "PAC": 0.0012
+      },
+      "confidence_gap": 0.1336,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 214.8089,
+        "shapelet_12": 524.5448,
+        "shapelet_2": 303.272,
+        "shapelet_5": 52.7582,
+        "shapelet_55": 9.9476
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 56.5%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 98,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9602,
+        "NSR": 0.0002,
+        "PAC": 0.0394
+      },
+      "confidence_gap": 0.9208,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 138.7298
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 96.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 99,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.5656,
+        "NORMAL": 0.0024,
+        "NSR": 0.428,
+        "PAC": 0.004
+      },
+      "confidence_gap": 0.1376,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 183.1758,
+        "shapelet_12": 209.1424,
+        "shapelet_2": 161.5013,
+        "shapelet_5": 88.9973,
+        "shapelet_55": 32.6228
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 56.6%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 100,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.8787,
+        "NORMAL": 0.0015,
+        "NSR": 0.119,
+        "PAC": 0.0008
+      },
+      "confidence_gap": 0.7597,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 273.8179,
+        "shapelet_12": 534.09,
+        "shapelet_2": 303.9009,
+        "shapelet_5": 35.4266,
+        "shapelet_55": 11.9973
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 87.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 101,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.7191,
+        "NORMAL": 0.001,
+        "NSR": 0.2786,
+        "PAC": 0.0013
+      },
+      "confidence_gap": 0.4405,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 180.849,
+        "shapelet_12": 104.3761,
+        "shapelet_2": 66.21,
+        "shapelet_5": 86.9765,
+        "shapelet_55": 1.6144
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 71.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 102,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.2753,
+        "NSR": 0.0006,
+        "PAC": 0.7236
+      },
+      "confidence_gap": 0.4483,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 73.7091
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 72.4%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 103,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.9488,
+        "NORMAL": 0.001,
+        "NSR": 0.0483,
+        "PAC": 0.0019
+      },
+      "confidence_gap": 0.9005,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 266.5482,
+        "shapelet_12": 225.1224,
+        "shapelet_2": 202.8894,
+        "shapelet_5": 110.5383,
+        "shapelet_55": 4.0108
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 94.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 104,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.2953,
+        "NORMAL": 0.002,
+        "NSR": 0.6996,
+        "PAC": 0.0031
+      },
+      "confidence_gap": 0.4043,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 185.6399,
+        "shapelet_12": 85.6357,
+        "shapelet_2": 57.948,
+        "shapelet_5": 183.3576,
+        "shapelet_55": 6.1532
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 70.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 105,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9817,
+        "NORMAL": 0.0023,
+        "NSR": 0.0137,
+        "PAC": 0.0023
+      },
+      "confidence_gap": 0.968,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 217.4332,
+        "shapelet_12": 421.2503,
+        "shapelet_2": 219.1965,
+        "shapelet_5": 32.4369,
+        "shapelet_55": 14.7599
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 98.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 106,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.006,
+        "NORMAL": 0.6705,
+        "NSR": 0.0039,
+        "PAC": 0.3196
+      },
+      "confidence_gap": 0.3509,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 135.4586
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 67.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 107,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0022,
+        "NORMAL": 0.5975,
+        "NSR": 0.0029,
+        "PAC": 0.3974
+      },
+      "confidence_gap": 0.2001,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 96.7223
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 59.8%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 108,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9547,
+        "NORMAL": 0.0009,
+        "NSR": 0.0435,
+        "PAC": 0.0009
+      },
+      "confidence_gap": 0.9112,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 330.6103,
+        "shapelet_12": 263.9116,
+        "shapelet_2": 235.0255,
+        "shapelet_5": 121.3457,
+        "shapelet_55": 7.0503
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 95.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 109,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9686,
+        "NORMAL": 0.0019,
+        "NSR": 0.0277,
+        "PAC": 0.0018
+      },
+      "confidence_gap": 0.9409,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 230.5568,
+        "shapelet_12": 539.9762,
+        "shapelet_2": 257.4056,
+        "shapelet_5": 49.4407,
+        "shapelet_55": 16.6365
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 96.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 110,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0016,
+        "NORMAL": 0.1402,
+        "NSR": 0.0017,
+        "PAC": 0.8565
+      },
+      "confidence_gap": 0.7163,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 129.8376
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 85.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 111,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.7148,
+        "NORMAL": 0.0011,
+        "NSR": 0.2829,
+        "PAC": 0.0012
+      },
+      "confidence_gap": 0.4319,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 224.6839,
+        "shapelet_12": 346.9282,
+        "shapelet_2": 251.5526,
+        "shapelet_5": 24.5134,
+        "shapelet_55": 2.6169
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 71.5%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 112,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.9505,
+        "NORMAL": 0.0009,
+        "NSR": 0.0479,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.9026,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 199.3657,
+        "shapelet_12": 485.577,
+        "shapelet_2": 237.9416,
+        "shapelet_5": 18.0886,
+        "shapelet_55": 12.7021
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 95.0%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 113,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0011,
+        "NORMAL": 0.6145,
+        "NSR": 0.001,
+        "PAC": 0.3834
+      },
+      "confidence_gap": 0.2311,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 116.7059
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Latido Sinusal Normal: morfología P-QRS-T estándar sin deformaciones, eje cardíaco normal, ausencia de cambios isquémicos o de conducción.",
+        "instruccion_llm": "La señal fue clasificada como NORMAL con una probabilidad de 61.5%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 114,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.3211,
+        "NORMAL": 0.0013,
+        "NSR": 0.6771,
+        "PAC": 0.0005
+      },
+      "confidence_gap": 0.356,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 228.8778,
+        "shapelet_12": 381.5352,
+        "shapelet_2": 225.8552,
+        "shapelet_5": 31.8853,
+        "shapelet_55": 6.424
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 67.7%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 115,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.7821,
+        "NORMAL": 0.0028,
+        "NSR": 0.2124,
+        "PAC": 0.0027
+      },
+      "confidence_gap": 0.5697,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 111.5669,
+        "shapelet_12": 193.3338,
+        "shapelet_2": 116.5098,
+        "shapelet_5": 134.6169,
+        "shapelet_55": 47.352
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 78.2%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 116,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0917,
+        "NORMAL": 0.0012,
+        "NSR": 0.9061,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.8144,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 228.5904,
+        "shapelet_12": 265.7458,
+        "shapelet_2": 203.0933,
+        "shapelet_5": 17.6668,
+        "shapelet_55": 12.182
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 90.6%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 117,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.5777,
+        "NORMAL": 0.0006,
+        "NSR": 0.4209,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.1568,
+      "alerta_baja_confianza": true,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 200.5401,
+        "shapelet_12": 260.261,
+        "shapelet_2": 178.1075,
+        "shapelet_5": 46.4485,
+        "shapelet_55": 10.9336
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Fibrilación Auricular: ausencia de ondas P bien definidas, ritmo ventricular irregularmente irregular, oscilaciones de la línea de base (ondas f entre 350-600 lpm), intervalos R-R variables.",
+        "instruccion_llm": "La señal fue clasificada como AFIB con una probabilidad de 57.8%. ADVERTENCIA: confianza baja, revisar señal. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 118,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0253,
+        "NORMAL": 0.0011,
+        "NSR": 0.9729,
+        "PAC": 0.0006
+      },
+      "confidence_gap": 0.9476,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 323.3199,
+        "shapelet_12": 543.1072,
+        "shapelet_2": 315.8462,
+        "shapelet_5": 88.4387,
+        "shapelet_55": 6.7355
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Ritmo Sinusal Normal: ondas P regulares y uniformes preceden cada complejo QRS, intervalo PR constante (120-200 ms), complejos QRS de morfología normal, frecuencia 60-100 lpm.",
+        "instruccion_llm": "La señal fue clasificada como NSR con una probabilidad de 97.3%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    },
+    {
+      "id_muestra": 119,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.1296,
+        "NSR": 0.0006,
+        "PAC": 0.8693
+      },
+      "confidence_gap": 0.7397,
+      "alerta_baja_confianza": false,
+      "distancias_top5_shapelets": {
+        "shapelet_30": 712.0212,
+        "shapelet_12": 1211.4787,
+        "shapelet_2": 782.4045,
+        "shapelet_5": 429.4994,
+        "shapelet_55": 102.9868
+      },
+      "contexto_clinico": {
+        "descripcion_clase_predicha": "Contracción Auricular Prematura: latido anticipado con onda P de morfología distinta al ritmo de base, complejo QRS generalmente estrecho, seguido frecuentemente de pausa compensatoria incompleta.",
+        "instruccion_llm": "La señal fue clasificada como PAC con una probabilidad de 86.9%. Basándote EXCLUSIVAMENTE en los datos métricos anteriores, genera un reporte clínico estructurado describiendo los hallazgos morfológicos que sustentan este diagnóstico. No inventes hallazgos que no estén respaldados por las distancias."
+      }
+    }
+  ]
+}

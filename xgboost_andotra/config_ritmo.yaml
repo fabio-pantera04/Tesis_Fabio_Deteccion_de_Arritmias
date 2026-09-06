@@ -1,0 +1,20 @@
+# Configuración XGBoost-Andotra para RITMO (NSR vs AFIB)
+#
+# Uso:
+#   python main.py --config config_ritmo.yaml
+
+task: ritmo
+
+seed: 42
+test_size: 0.30
+max_per_class: 1000
+
+classes:
+  NSR:
+    - dir: E:/Modelo_Tesis/Icentia11k/NSR
+      prefix: ICI_NSR
+  AFIB:
+    - dir: E:/Modelo_Tesis/Icentia11k/AFIB
+      prefix: ICI_AFIB
+    - dir: E:/Modelo_Tesis/CinC2017/AFIB
+      prefix: CIC_AFIB

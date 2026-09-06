@@ -1,0 +1,283 @@
+{
+  "metadatos": {
+    "titulo": "Estándar AHA/ACCF/HRS para la interpretación del ECG — extracto operativo para el agente LLM",
+    "alcance": "Restringido a las 4 clases AAMI del sistema MSM-SC + XGBoost: Normal Sinus Rhythm (NSR), Atrial Fibrillation (AFIB), Normal beat, Premature Atrial Contraction (PAC).",
+    "version_estandar": "AHA/ACCF/HRS 2007–2009",
+    "fuentes_oficiales": {
+      "parte_I": {
+        "titulo": "Recommendations for the Standardization and Interpretation of the Electrocardiogram, Part I: The Electrocardiogram and Its Technology",
+        "autores": "Kligfield P, Gettes LS, Bailey JJ, Childers R, Deal BJ, Hancock EW, van Herpen G, Kors JA, Macfarlane P, Mirvis DM, Pahlm O, Rautaharju P, Wagner GS",
+        "publicacion": "Circulation 2007;115:1306-1324",
+        "doi": "10.1161/CIRCULATIONAHA.106.180200"
+      },
+      "parte_II": {
+        "titulo": "Recommendations for the Standardization and Interpretation of the Electrocardiogram, Part II: Electrocardiography Diagnostic Statement List",
+        "autores": "Mason JW, Hancock EW, Gettes LS",
+        "publicacion": "Circulation 2007;115:1325-1332",
+        "doi": "10.1161/CIRCULATIONAHA.106.180201",
+        "rol": "FUENTE NUCLEAR para terminología diagnóstica del agente"
+      },
+      "parte_III": {
+        "titulo": "Recommendations for the Standardization and Interpretation of the Electrocardiogram, Part III: Intraventricular Conduction Disturbances",
+        "autores": "Surawicz B, Childers R, Deal BJ, Gettes LS",
+        "publicacion": "J Am Coll Cardiol 2009;53:976-981",
+        "doi": "10.1016/j.jacc.2008.12.013",
+        "rol": "Aporta umbrales de QRS y eje, y lista de términos NO recomendados"
+      }
+    },
+    "convencion_fuente": "Cada entrada incluye campo 'fuente' con uno de: 'Parte_I', 'Parte_II', 'Parte_III', 'conocimiento_clinico_estandar'. Las dos últimas se marcan como tales cuando el dato proviene de práctica clínica generalmente aceptada y no de cita directa del estándar."
+  },
+
+  "pilares_AHA_ACCF_HRS": {
+    "1_frecuencia_cardiaca": {
+      "descripcion": "Frecuencia ventricular media calculada a partir de los intervalos R-R detectados.",
+      "rangos_normales_adulto": {
+        "normocardia": {"min_lpm": 60, "max_lpm": 100, "fuente": "conocimiento_clinico_estandar"},
+        "bradicardia": {"max_lpm": 59, "fuente": "conocimiento_clinico_estandar"},
+        "taquicardia": {"min_lpm": 101, "fuente": "conocimiento_clinico_estandar"}
+      },
+      "afirmaciones_AHA_permitidas": [
+        {"codigo_AHA": 21, "afirmacion": "Sinus tachycardia", "fuente": "Parte_II_Tabla1_seccion_C"},
+        {"codigo_AHA": 22, "afirmacion": "Sinus bradycardia", "fuente": "Parte_II_Tabla1_seccion_C"}
+      ],
+      "nota_sobre_AFIB": "En presencia de AFIB se reporta frecuencia ventricular media (no se habla de frecuencia auricular porque las ondas P están ausentes/desorganizadas).",
+      "nota_minima_recomendada": "Indicar siempre el valor numérico en lpm y describir la regularidad (regular / ligeramente irregular / marcadamente irregular)."
+    },
+
+    "2_ritmo": {
+      "descripcion": "Origen y regularidad del ritmo predominante en el trazado.",
+      "afirmaciones_AHA_permitidas_para_las_4_clases": [
+        {
+          "codigo_AHA": 20,
+          "afirmacion": "Sinus rhythm",
+          "afirmacion_es": "Ritmo sinusal",
+          "clase_sistema_correspondiente": "NSR",
+          "criterios_observables": "Ondas P presentes precediendo cada QRS con relación 1:1, intervalos R-R regulares o con leve arritmia respiratoria.",
+          "fuente": "Parte_II_Tabla1_seccion_C_codigo20"
+        },
+        {
+          "codigo_AHA": 23,
+          "afirmacion": "Sinus arrhythmia",
+          "afirmacion_es": "Arritmia sinusal",
+          "clase_sistema_correspondiente": "NSR (variante)",
+          "criterios_observables": "Ritmo sinusal con variaciones cíclicas del intervalo R-R asociadas frecuentemente con la respiración. Considerada normal en jóvenes.",
+          "fuente": "Parte_II_Tabla1_seccion_C_codigo23"
+        },
+        {
+          "codigo_AHA": 32,
+          "afirmacion": "Atrial premature complex(es)",
+          "afirmacion_es": "Complejo(s) auricular(es) prematuro(s)",
+          "clase_sistema_correspondiente": "PAC",
+          "criterios_observables": "Latidos adelantados respecto al ciclo basal, con onda P prematura (puede tener morfología distinta a la P sinusal), seguidos de QRS estrecho.",
+          "modificadores_AHA_aplicables": [307, 308, 309, 310, 341, 342, 344, 345],
+          "fuente": "Parte_II_Tabla1_seccion_D_codigo32"
+        },
+        {
+          "codigo_AHA": 53,
+          "afirmacion": "Atrial fibrillation",
+          "afirmacion_es": "Fibrilación auricular",
+          "clase_sistema_correspondiente": "AFIB",
+          "criterios_observables": "Ausencia de ondas P organizadas, línea basal con ondas f de fibrilación de amplitud y frecuencia variables, intervalos R-R marcadamente irregulares.",
+          "modificadores_AHA_aplicables": [346, 347],
+          "fuente": "Parte_II_Tabla1_seccion_E_codigo53"
+        }
+      ],
+      "afirmaciones_compuestas_validas": [
+        "Sinus rhythm with frequent atrial premature complexes  (códigos 20 + 32 + modificador 310)",
+        "Sinus rhythm with occasional atrial premature complexes  (códigos 20 + 32 + modificador 308)",
+        "Atrial fibrillation with rapid ventricular response  (códigos 53 + 346)",
+        "Atrial fibrillation with slow ventricular response  (códigos 53 + 347)"
+      ]
+    },
+
+    "3_eje_electrico": {
+      "descripcion": "Eje eléctrico medio del QRS en el plano frontal.",
+      "valor_normal_adulto": {
+        "min_grados": -30,
+        "max_grados": 90,
+        "fuente": "Parte_III_seccion_Mean_Frontal_Plane_Axis",
+        "cita_textual_resumida": "In adults, the normal QRS axis is considered to be within -30° and 90°."
+      },
+      "categorias_anormales_adulto": {
+        "desviacion_eje_izquierdo": {"rango": "-30° a -90°", "fuente": "Parte_III"},
+        "desviacion_eje_derecho_moderada": {"rango": "90° a 120°", "fuente": "Parte_III"},
+        "desviacion_eje_derecho_marcada": {"rango": "120° a 180°", "fuente": "Parte_III"}
+      },
+      "afirmaciones_AHA_permitidas": [
+        {"codigo_AHA": 120, "afirmacion": "Right-axis deviation", "fuente": "Parte_II_Tabla1_seccion_J"},
+        {"codigo_AHA": 121, "afirmacion": "Left-axis deviation", "fuente": "Parte_II_Tabla1_seccion_J"},
+        {"codigo_AHA": 123, "afirmacion": "Indeterminate axis", "fuente": "Parte_II_Tabla1_seccion_J"}
+      ],
+      "restriccion_para_el_agente": "El cálculo del eje eléctrico requiere al menos dos derivaciones del plano frontal. El sistema MSM-SC analiza ÚNICAMENTE derivación II, por lo que el eje SIEMPRE debe declararse como 'no evaluable con la información disponible (registro de derivación única)'."
+    },
+
+    "4_intervalos_y_ondas": {
+      "descripcion": "Mediciones de duración y morfología de los componentes del complejo PQRST.",
+      "umbrales_normales_adulto": {
+        "intervalo_PR_ms": {"min": 120, "max": 200, "fuente": "conocimiento_clinico_estandar"},
+        "duracion_QRS_ms": {
+          "max_normal": 110,
+          "fuente": "Parte_III_seccion_Normal_QRS_Duration",
+          "cita_textual_resumida": "The committee recommends that for the present, a QRS duration of greater than 110 ms in subjects older than 16 years of age be regarded as abnormal."
+        },
+        "intervalo_QT_ms": {"depende_de_frecuencia": true, "QTc_normal_max": 450, "fuente": "conocimiento_clinico_estandar"}
+      },
+      "componentes": {
+        "onda_P": {
+          "descripcion_normal": "Deflexión positiva en derivación II, precede al QRS, duración menor a 120 ms.",
+          "descriptores_AHA_validos": ["presente", "ausente", "desorganizada", "adelantada", "de morfología distinta a la P sinusal"],
+          "fuente": "Parte_II"
+        },
+        "complejo_QRS": {
+          "descripcion_normal": "Estrecho (≤110 ms), morfología consistente latido a latido.",
+          "descriptores_AHA_validos": ["estrecho", "duración normal", "duración prolongada (>110 ms)"],
+          "fuente": "Parte_III_Tabla_QRS_Duration"
+        },
+        "intervalo_PR": {
+          "descripcion_normal": "120–200 ms en adultos.",
+          "evaluable_si": "Las ondas P están presentes y organizadas; en AFIB no se mide.",
+          "fuente": "conocimiento_clinico_estandar"
+        },
+        "segmento_ST_y_onda_T": {
+          "restriccion_para_el_agente": "El sistema MSM-SC NO cuantifica desviaciones del ST ni morfología de onda T. SIEMPRE declarar 'no evaluable con la información disponible'. NO mencionar isquemia, infarto ni cambios de repolarización (códigos AHA 145–155, 160–174, fuera de mundo cerrado)."
+        }
+      }
+    },
+
+    "5_interpretacion_global_y_recomendacion": {
+      "descripcion": "Síntesis interpretativa final con afirmaciones diagnósticas canónicas y recomendación clínica.",
+      "afirmaciones_AHA_de_cierre_permitidas": [
+        {"codigo_AHA": 1, "afirmacion": "Normal ECG", "uso": "Cuando todos los pilares evaluables están dentro de límites normales.", "fuente": "Parte_II_Tabla1_seccion_A_codigo1"},
+        {"codigo_AHA": 2, "afirmacion": "Otherwise normal ECG", "uso": "Cuando hay un hallazgo aislado (p. ej., PAC ocasionales) sobre un trazado por lo demás normal.", "fuente": "Parte_II_Tabla1_seccion_A_codigo2"},
+        {"codigo_AHA": 3, "afirmacion": "Abnormal ECG", "uso": "Cuando hay alteraciones significativas (p. ej., AFIB).", "fuente": "Parte_II_Tabla1_seccion_A_codigo3"}
+      ],
+      "estructura_recomendada_recomendacion": "Recordar al cardiólogo que: (a) el análisis se basa en una sola derivación (II); (b) la nota es de apoyo informativo; (c) la interpretación diagnóstica definitiva corresponde al cardiólogo tratante; (d) si procede, sugerir ECG de 12 derivaciones para caracterización completa.",
+      "fundamento_metodologico": {
+        "cita_textual_resumida": "Computer-based interpretation of the ECG is an adjunct to the electrocardiographer, and all computer-based reports require physician overreading.",
+        "fuente": "Parte_I_seccion_Computerized_Interpretation_recommendation"
+      }
+    }
+  },
+
+  "modificadores_AHA_permitidos": {
+    "descripcion": "Adjetivos AHA Parte II (Tabla 3) válidos para refinar las afirmaciones primarias dentro del alcance de las 4 clases.",
+    "frecuencia_de_aparicion": [
+      {"codigo": 307, "modificador": "Multiple", "uso": "Para PAC u otros eventos repetidos"},
+      {"codigo": 308, "modificador": "Occasional", "uso": "Para PAC esporádicos"},
+      {"codigo": 309, "modificador": "One", "uso": "Cuando hay un solo PAC en el trazado"},
+      {"codigo": 310, "modificador": "Frequent", "uso": "Para PAC numerosos (≈10% o más de los latidos)"}
+    ],
+    "patron_temporal": [
+      {"codigo": 341, "modificador": "In a bigeminal pattern", "uso": "Cuando los PAC alternan 1:1 con latidos normales"},
+      {"codigo": 342, "modificador": "In a trigeminal pattern", "uso": "Cuando los PAC aparecen cada tercer latido"},
+      {"codigo": 344, "modificador": "Multifocal", "uso": "Cuando hay PAC con morfologías distintas (sugiere múltiples focos)"},
+      {"codigo": 345, "modificador": "Unifocal", "uso": "Cuando todos los PAC tienen morfología similar (un solo foco)"}
+    ],
+    "respuesta_ventricular_AFIB": [
+      {"codigo": 346, "modificador": "With a rapid ventricular response", "uso": "AFIB con frecuencia ventricular >100 lpm"},
+      {"codigo": 347, "modificador": "With a slow ventricular response", "uso": "AFIB con frecuencia ventricular <60 lpm"}
+    ],
+    "certeza": [
+      {"codigo": 312, "modificador": "Possible", "uso": "Para hallazgos con baja confianza"},
+      {"codigo": 315, "modificador": "Probable", "uso": "Para hallazgos con confianza media"}
+    ],
+    "fuente": "Parte_II_Tabla3"
+  },
+
+  "reglas_de_mundo_cerrado": {
+    "descripcion": "Lista explícita de afirmaciones AHA Parte II que el agente NO debe emitir bajo ninguna circunstancia, porque están fuera del alcance del sistema MSM-SC + XGBoost.",
+    "categorias_AHA_prohibidas": [
+      {
+        "categoria": "G — Ventricular tachyarrhythmias (códigos 70–76)",
+        "razon": "El sistema no detecta taquicardias ventriculares ni fibrilación ventricular.",
+        "fuente": "Parte_II_Tabla1_seccion_G"
+      },
+      {
+        "categoria": "H — Atrioventricular conduction (códigos 80–89)",
+        "razon": "El sistema no clasifica bloqueos AV.",
+        "fuente": "Parte_II_Tabla1_seccion_H"
+      },
+      {
+        "categoria": "I — Intraventricular and intra-atrial conduction (códigos 100–111)",
+        "razon": "El sistema no clasifica bloqueos de rama, fasciculares ni pre-excitación. Requieren derivaciones precordiales.",
+        "fuente": "Parte_II_Tabla1_seccion_I + Parte_III"
+      },
+      {
+        "categoria": "J — Axis and voltage (códigos 120–131)",
+        "razon": "El eje no es evaluable en derivación única; los voltajes precordiales no están disponibles.",
+        "fuente": "Parte_II_Tabla1_seccion_J"
+      },
+      {
+        "categoria": "K — Chamber hypertrophy or enlargement (códigos 140–144)",
+        "razon": "Requiere voltajes precordiales y/o ondas P en múltiples derivaciones.",
+        "fuente": "Parte_II_Tabla1_seccion_K"
+      },
+      {
+        "categoria": "L — ST segment, T wave, U wave (códigos 145–155)",
+        "razon": "El sistema no cuantifica desviaciones del ST ni morfología de T o U.",
+        "fuente": "Parte_II_Tabla1_seccion_L"
+      },
+      {
+        "categoria": "M — Myocardial infarction (códigos 160–174)",
+        "razon": "Diagnóstico de infarto requiere ondas Q en derivaciones específicas y/o cambios ST en múltiples derivaciones.",
+        "fuente": "Parte_II_Tabla1_seccion_M"
+      },
+      {
+        "categoria": "N — Pacemaker (códigos 180–190)",
+        "razon": "El sistema no detecta espigas de marcapasos.",
+        "fuente": "Parte_II_Tabla1_seccion_N"
+      },
+      {
+        "categoria": "Secondary statements 'Suggests/Consider' (códigos 200–231)",
+        "razon": "Implican diagnósticos clínicos (isquemia, pericarditis, embolia pulmonar, alteraciones electrolíticas, etc.) fuera del alcance del sistema. Excepción: códigos 215 (sinoatrial disorder) y 228 (normal variant) podrían tener sentido contextual pero se mantienen prohibidos por simplicidad.",
+        "fuente": "Parte_II_Tabla2"
+      }
+    ],
+    "terminos_explicitamente_no_recomendados_por_AHA": {
+      "fuente": "Parte_III_seccion_Terms_Not_Recommended",
+      "lista": [
+        "Mahaim-type preexcitation",
+        "atypical LBBB",
+        "bilateral bundle-branch block",
+        "bifascicular block",
+        "trifascicular block",
+        "Brugada pattern (en algoritmos automatizados)",
+        "left septal fascicular block"
+      ],
+      "nota": "Términos vetados por el propio estándar AHA/ACCF/HRS. El agente debe evitarlos absolutamente."
+    }
+  },
+
+  "guia_de_redaccion_para_el_agente": {
+    "principio_general": "El agente describe los hallazgos morfológicos observables que la evidencia respalda, organizados en los 5 pilares, y los cierra con la afirmación diagnóstica AHA canónica correspondiente a la clase detectada por el sistema (cuando esté dentro de las 4 clases permitidas).",
+    "secuencia_recomendada_por_pilar": {
+      "1_frecuencia": "Reportar valor numérico (lpm) y categorizar (normocardia/bradicardia/taquicardia) según rangos del estándar.",
+      "2_ritmo": "Describir regularidad R-R, presencia/ausencia/morfología de ondas P, y emitir la afirmación AHA correspondiente (códigos 20, 23, 32, 53).",
+      "3_eje": "Siempre declarar 'no evaluable' con justificación de derivación única.",
+      "4_intervalos_y_ondas": "Reportar valores numéricos disponibles (QRS_ms, PR si es medible), comparar contra umbrales del estándar, declarar 'no evaluable' los demás (ST, T, QT cuando falten).",
+      "5_interpretacion_y_recomendacion": "Sintetizar hallazgos, emitir afirmación de cierre AHA (códigos 1, 2 o 3), incluir recordatorio metodológico y recomendación clínica."
+    },
+    "regla_anti_inferencia": "Si el agente describe propiedades morfológicas no explícitamente cuantificadas en la evidencia (p. ej., homogeneidad morfológica deducida de un conteo), debe marcar esa afirmación entre paréntesis como '(inferido del conteo de categorías, no medido directamente)'.",
+    "tono": "Profesional, dirigido a otro médico, conciso. La nota es de apoyo informativo, no diagnóstico definitivo.",
+    "escalamiento": "Si la evidencia incluye 'alerta_baja_confianza: true', el agente NO redacta nota y emite literalmente: 'CASO AMBIGUO — Confianza del sistema por debajo del umbral. Se recomienda revisión directa por cardiólogo antes de emitir nota clínica.'"
+  },
+
+  "limitaciones_documentadas": {
+    "derivacion_unica": {
+      "descripcion": "El sistema analiza solo derivación II. AHA/ACCF/HRS Parte I describe el ECG estándar como 12 derivaciones con 8 piezas de información independiente.",
+      "implicacion": "El eje no es evaluable; no se pueden diagnosticar bloqueos de rama, hipertrofia ni infarto; la caracterización de ondas P puede ser limitada en algunos casos.",
+      "fuente": "Parte_I_seccion_Standard_Leads"
+    },
+    "frecuencia_de_muestreo_250Hz": {
+      "descripcion": "Icentia11k muestrea a 250 Hz. AHA/ACCF/HRS Parte I recomienda al menos 500 muestras/segundo con corte de alta frecuencia ≥150 Hz para mediciones precisas en adultos.",
+      "implicacion": "Las mediciones de amplitud y duración pueden tener error sistemático mayor al recomendado. Esto debe documentarse como limitación metodológica en la tesis.",
+      "fuente": "Parte_I_seccion_High_Frequency_Filtering",
+      "cita_textual_resumida": "Data at 500 samples per second are needed to allow the 150-Hz high-frequency digital filter cutoff that is required to reduce amplitude error measurements to <1% in adults."
+    },
+    "no_diagnostico_definitivo": {
+      "descripcion": "Toda interpretación computarizada del ECG es un apoyo al cardiólogo, no un diagnóstico.",
+      "fuente": "Parte_I_seccion_Computerized_Interpretation",
+      "cita_textual_resumida": "Computer-based interpretation of the ECG is an adjunct to the electrocardiographer, and all computer-based reports require physician overreading."
+    }
+  }
+}

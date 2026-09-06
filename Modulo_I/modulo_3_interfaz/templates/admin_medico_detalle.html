@@ -1,0 +1,311 @@
+{% extends "admin_base.html" %}
+{% block title %}Cardiólogo #{{ medico.medico_id }} — Admin{% endblock %}
+{% block head %}
+<script src="{{ url_for('static', filename='js/plotly.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <a href="{{ url_for('admin_medicos') }}" class="back-link">← Volver al listado</a>
+    <h2>{{ medico.nombre_completo }}</h2>
+    <p class="admin-page-desc">Ficha completa · {{ evaluaciones|length }} evaluaciones realizadas</p>
+</div>
+
+<!-- Ficha personal -->
+<div class="detail-grid">
+    <div class="detail-card">
+        <h3>Datos personales</h3>
+        <dl class="detail-dl">
+            <dt>ID</dt><dd>{{ medico.medico_id }}</dd>
+            <dt>Nombre</dt><dd>{{ medico.nombre_completo }}</dd>
+            <dt>Edad</dt><dd>{{ medico.edad or '—' }}</dd>
+            <dt>Sexo</dt><dd>{{ medico.sexo or '—' }}</dd>
+            <dt>Correo</dt><dd>{{ medico.email or '—' }}</dd>
+        </dl>
+    </div>
+
+    <div class="detail-card">
+        <h3>Perfil profesional</h3>
+        <dl class="detail-dl">
+            <dt>Institución</dt><dd>{{ medico.institucion or '—' }}</dd>
+            <dt>Especialidad</dt><dd>{{ medico.especialidad or '—' }}</dd>
+            <dt>Sub-especialidad</dt><dd>{{ medico.sub_especialidad or '—' }}</dd>
+            <dt>Años exp. clínica</dt><dd>{{ medico.anos_experiencia if medico.anos_experiencia is not none else '—' }}</dd>
+            <dt>Años exp. ECG</dt><dd>{{ medico.anos_experiencia_ecg if medico.anos_experiencia_ecg is not none else '—' }}</dd>
+            <dt>Autoval. habilidad</dt><dd>{{ medico.auto_eval_habilidad or '—' }}/5</dd>
+            <dt>Fecha registro</dt><dd>{{ medico.fecha_registro }}</dd>
+        </dl>
+    </div>
+</div>
+
+{% if evaluaciones|length > 0 %}
+
+<!-- ================================================
+     PRECISIÓN CLASIFICADOR vs CARDIOLOGO
+     ================================================ -->
+<section class="detail-section" style="margin-top: 32px;">
+    <h3>Precisión del clasificador según este cardiólogo</h3>
+    <p class="chart-desc">
+        Estas métricas muestran qué tan bien las predicciones del clasificador
+        MSM-SC + XGBoost coinciden con el juicio de <b>{{ medico.nombre_completo }}</b>.
+        <b>Verde</b> = acuerdo total (clasificación correcta),
+        <b>Amarillo</b> = acuerdo parcial (dudosa),
+        <b>Rojo</b> = desacuerdo (incorrecta).
+    </p>
+
+    <!-- Métricas globales por escala -->
+    <div class="detail-grid" style="margin-top: 12px;">
+        <div class="detail-card">
+            <h3>LATIDO — Global</h3>
+            <dl class="detail-dl">
+                <dt>N ventanas evaluadas</dt><dd><b>{{ precision.beat.global.n }}</b></dd>
+                <dt>Accuracy estricta (verde)</dt>
+                    <dd class="lik-val" style="color: var(--verde);">{{ precision.beat.global.accuracy_estricta }}%</dd>
+                <dt>Accuracy permisiva (verde+amarillo)</dt>
+                    <dd class="lik-val" style="color: var(--verde);">{{ precision.beat.global.accuracy_permisiva }}%</dd>
+                <dt>Tasa de error (rojo)</dt>
+                    <dd class="lik-val" style="color: var(--rojo);">{{ precision.beat.global.error_rate }}%</dd>
+            </dl>
+        </div>
+
+        <div class="detail-card">
+            <h3>RITMO — Global</h3>
+            <dl class="detail-dl">
+                <dt>N ventanas evaluadas</dt><dd><b>{{ precision.rhythm.global.n }}</b></dd>
+                <dt>Accuracy estricta (verde)</dt>
+                    <dd class="lik-val" style="color: var(--verde);">{{ precision.rhythm.global.accuracy_estricta }}%</dd>
+                <dt>Accuracy permisiva (verde+amarillo)</dt>
+                    <dd class="lik-val" style="color: var(--verde);">{{ precision.rhythm.global.accuracy_permisiva }}%</dd>
+                <dt>Tasa de error (rojo)</dt>
+                    <dd class="lik-val" style="color: var(--rojo);">{{ precision.rhythm.global.error_rate }}%</dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Tabla por clase - BEAT -->
+    {% if precision.beat.por_clase %}
+    <h4 style="margin-top: 24px;">Desglose por clase predicha — LATIDO</h4>
+    <div class="admin-table-wrap">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Clase</th>
+                    <th>N</th>
+                    <th>Verde</th>
+                    <th>Amarillo</th>
+                    <th>Rojo</th>
+                    <th>Accuracy estricta</th>
+                    <th>Accuracy permisiva</th>
+                    <th>Error rate</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cls, m in precision.beat.por_clase.items() %}
+                <tr>
+                    <td><b>{{ cls }}</b></td>
+                    <td>{{ m.n }}</td>
+                    <td>{{ m.verde }}</td>
+                    <td>{{ m.amarillo }}</td>
+                    <td>{{ m.rojo }}</td>
+                    <td><span class="chip chip-verde">{{ m.accuracy_estricta }}%</span></td>
+                    <td>{{ m.accuracy_permisiva }}%</td>
+                    <td><span class="chip chip-rojo">{{ m.error_rate }}%</span></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- Tabla por clase - RHYTHM -->
+    {% if precision.rhythm.por_clase %}
+    <h4 style="margin-top: 20px;">Desglose por clase predicha — RITMO</h4>
+    <div class="admin-table-wrap">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Clase</th>
+                    <th>N</th>
+                    <th>Verde</th>
+                    <th>Amarillo</th>
+                    <th>Rojo</th>
+                    <th>Accuracy estricta</th>
+                    <th>Accuracy permisiva</th>
+                    <th>Error rate</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cls, m in precision.rhythm.por_clase.items() %}
+                <tr>
+                    <td><b>{{ cls }}</b></td>
+                    <td>{{ m.n }}</td>
+                    <td>{{ m.verde }}</td>
+                    <td>{{ m.amarillo }}</td>
+                    <td>{{ m.rojo }}</td>
+                    <td><span class="chip chip-verde">{{ m.accuracy_estricta }}%</span></td>
+                    <td>{{ m.accuracy_permisiva }}%</td>
+                    <td><span class="chip chip-rojo">{{ m.error_rate }}%</span></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- Gráfico -->
+    <div class="chart-card" style="margin-top: 20px;">
+        <h3>Distribución visual de acuerdo</h3>
+        <p class="chart-desc">Cada barra apilada al 100% muestra el desglose de veredictos.</p>
+        <div id="chart-precision" class="chart-plot"></div>
+    </div>
+</section>
+
+<!-- ================================================
+     METRICAS DE LAS NOTAS EVALUADAS
+     ================================================ -->
+<section class="detail-section">
+    <h3>Cómo este cardiólogo valoró las notas del LLM</h3>
+    <p class="chart-desc">{{ metricas_notas.interpretacion }}</p>
+
+    <div class="detail-grid" style="margin-top: 12px;">
+        <div class="detail-card">
+            <h3>Veredicto global de la nota</h3>
+            <dl class="detail-dl">
+                <dt>N notas evaluadas</dt><dd><b>{{ metricas_notas.n }}</b></dd>
+                <dt><span class="chip chip-verde">Correcta</span></dt>
+                    <dd>{{ metricas_notas.veredicto.conteos.verde }} ({{ metricas_notas.veredicto.porcentajes.verde }}%)</dd>
+                <dt><span class="chip chip-amarillo">Parcial</span></dt>
+                    <dd>{{ metricas_notas.veredicto.conteos.amarillo }} ({{ metricas_notas.veredicto.porcentajes.amarillo }}%)</dd>
+                <dt><span class="chip chip-rojo">Errónea</span></dt>
+                    <dd>{{ metricas_notas.veredicto.conteos.rojo }} ({{ metricas_notas.veredicto.porcentajes.rojo }}%)</dd>
+            </dl>
+        </div>
+
+        <div class="detail-card">
+            <h3>Likert promedio (1–5)</h3>
+            <dl class="detail-dl detail-likert">
+                <dt>Exactitud diagnóstica</dt>
+                    <dd class="lik-val">{{ metricas_notas.likert.exactitud or '—' }}/5</dd>
+                <dt>Coherencia terminológica</dt>
+                    <dd class="lik-val">{{ metricas_notas.likert.coherencia or '—' }}/5</dd>
+                <dt>Utilidad clínica</dt>
+                    <dd class="lik-val">{{ metricas_notas.likert.utilidad or '—' }}/5</dd>
+            </dl>
+        </div>
+
+        <div class="detail-card">
+            <h3>Subrayado promedio</h3>
+            {% if metricas_notas.subrayado.n_evaluaciones_con_marcas > 0 %}
+            <dl class="detail-dl">
+                <dt>Notas con marcaciones</dt>
+                    <dd>{{ metricas_notas.subrayado.n_evaluaciones_con_marcas }}/{{ metricas_notas.n }}</dd>
+                <dt><span class="chip chip-verde">Correcto</span></dt>
+                    <dd>{{ metricas_notas.subrayado.pct_verde_prom }}%</dd>
+                <dt><span class="chip chip-amarillo">Parcial</span></dt>
+                    <dd>{{ metricas_notas.subrayado.pct_amarillo_prom }}%</dd>
+                <dt><span class="chip chip-rojo">Incorrecto</span></dt>
+                    <dd>{{ metricas_notas.subrayado.pct_rojo_prom }}%</dd>
+                <dt>Sin marcar</dt>
+                    <dd>{{ metricas_notas.subrayado.pct_sin_marcar_prom }}%</dd>
+            </dl>
+            {% else %}
+            <p style="color: var(--ink-soft); font-style: italic;">
+                Este cardiólogo aún no ha subrayado ninguna nota.
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Lista de evaluaciones (tabla) -->
+<section class="detail-section">
+    <h3>Sus evaluaciones ({{ evaluaciones|length }})</h3>
+    {% if evaluaciones|length == 0 %}
+        <div class="empty-state">
+            <p>Este cardiólogo aún no ha completado ninguna evaluación.</p>
+        </div>
+    {% else %}
+    <div class="admin-table-wrap">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Señal</th>
+                    <th>Backend</th>
+                    <th>Veredicto nota</th>
+                    <th>Likert (E/C/U)</th>
+                    <th>Duración</th>
+                    <th>Fecha</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for e in evaluaciones %}
+                <tr>
+                    <td><b>{{ e.evaluacion_id }}</b></td>
+                    <td>
+                        <a href="{{ url_for('admin_evaluacion_detalle', eval_id=e.evaluacion_id) }}" class="table-link">
+                            {{ e.signal_id }}
+                        </a>
+                    </td>
+                    <td><code>{{ e.llm_backend }}</code></td>
+                    <td><span class="chip chip-{{ e.nota_semaforo_global }}">{{ e.nota_semaforo_global }}</span></td>
+                    <td>{{ e.likert_exactitud }}/{{ e.likert_coherencia }}/{{ e.likert_utilidad }}</td>
+                    <td>{% if e.duracion_segundos %}{{ (e.duracion_segundos / 60)|round(1) }} min{% else %}—{% endif %}</td>
+                    <td><small>{{ e.fecha_evaluacion[:19] if e.fecha_evaluacion else '—' }}</small></td>
+                    <td>
+                        <a href="{{ url_for('admin_evaluacion_detalle', eval_id=e.evaluacion_id) }}"
+                           class="btn-sm">Ver</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+{% if evaluaciones|length > 0 %}
+<script>
+    // Precisión chart: 2 barras apiladas (BEAT y RHYTHM), 100%
+    (function() {
+        const beat   = {{ precision.beat.global | tojson }};
+        const rhythm = {{ precision.rhythm.global | tojson }};
+        const escalas = ["LATIDO", "RITMO"];
+        const traces = [
+            { name: "Correcto",   type: "bar", x: escalas,
+              y: [beat.accuracy_estricta, rhythm.accuracy_estricta],
+              marker: { color: "#3A8F3A" },
+              text: [beat.accuracy_estricta + "%", rhythm.accuracy_estricta + "%"],
+              textposition: "auto" },
+            { name: "Parcial",    type: "bar", x: escalas,
+              y: [beat.global !== undefined ? 100 - beat.accuracy_estricta - beat.error_rate : 0,
+                  rhythm.global !== undefined ? 100 - rhythm.accuracy_estricta - rhythm.error_rate : 0],
+              marker: { color: "#D6A317" },
+              text: [(100 - beat.accuracy_estricta - beat.error_rate).toFixed(1) + "%",
+                     (100 - rhythm.accuracy_estricta - rhythm.error_rate).toFixed(1) + "%"],
+              textposition: "auto" },
+            { name: "Incorrecto", type: "bar", x: escalas,
+              y: [beat.error_rate, rhythm.error_rate],
+              marker: { color: "#B22222" },
+              text: [beat.error_rate + "%", rhythm.error_rate + "%"],
+              textposition: "auto" },
+        ];
+        Plotly.newPlot("chart-precision", traces, {
+            barmode: "stack",
+            margin: { l: 60, r: 20, t: 10, b: 40 },
+            paper_bgcolor: "rgba(0,0,0,0)",
+            plot_bgcolor: "rgba(0,0,0,0)",
+            yaxis: { range: [0, 100], title: "%", gridcolor: "rgba(178,34,34,0.10)" },
+            xaxis: { gridcolor: "rgba(178,34,34,0.10)" },
+            font: { family: "Inter, sans-serif", color: "#2A1810" },
+            legend: { orientation: "h", y: -0.15, x: 0.5, xanchor: "center" },
+            height: 320,
+        }, { displayModeBar: false, responsive: true });
+    })();
+</script>
+{% endif %}
+{% endblock %}

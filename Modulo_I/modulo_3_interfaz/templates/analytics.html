@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Métricas de validación{% endblock %}
+{% block content %}
+
+<section class="paper">
+    <div class="eyebrow">Tablero de validación clínica</div>
+    <h2>Métricas agregadas</h2>
+    <p>Resumen estadístico de todas las evaluaciones registradas hasta el momento.
+       Estas tablas alimentan directamente la Sección 4.3 (Validación humana) de la tesis.</p>
+</section>
+
+<section class="paper">
+    <h3 style="border: none; padding: 0; margin-top: 0;">Indicadores globales</h3>
+    <div class="kpi-row" id="kpi-row"></div>
+</section>
+
+<section class="paper">
+    <h3>Concordancia clasificador ↔ cardiólogo (por escala)</h3>
+    <p style="color: var(--ink-soft); margin-bottom: 6px;">
+        Distribución de respuestas <b>verde</b> (acuerdo), <b>amarillo</b> (acuerdo parcial),
+        <b>rojo</b> (desacuerdo) para cada escala temporal.
+    </p>
+    <table id="tabla-escala">
+        <thead>
+            <tr><th>Escala</th><th>Verde</th><th>Amarillo</th><th>Rojo</th><th>Total ventanas</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<section class="paper">
+    <h3>Concordancia por clase predicha</h3>
+    <table id="tabla-clase-beat">
+        <thead>
+            <tr><th>Clase (latido)</th><th>Verde</th><th>Amarillo</th><th>Rojo</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <table id="tabla-clase-rhythm" style="margin-top: 18px;">
+        <thead>
+            <tr><th>Clase (ritmo)</th><th>Verde</th><th>Amarillo</th><th>Rojo</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<section class="paper">
+    <h3>Comparativa entre backends LLM</h3>
+    <p style="color: var(--ink-soft);">
+        Promedios Likert por eje y distribución del semáforo global de la nota,
+        agregados por backend (Claude, Gemini, Groq, Mock).
+    </p>
+    <table id="tabla-backend">
+        <thead>
+            <tr>
+                <th>Backend</th>
+                <th>N notas</th>
+                <th>Exactitud (1–5)</th>
+                <th>Coherencia (1–5)</th>
+                <th>Utilidad (1–5)</th>
+                <th>Verde</th>
+                <th>Amarillo</th>
+                <th>Rojo</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<section class="paper">
+    <h3>Cardiólogos registrados</h3>
+    <table id="tabla-medicos">
+        <thead>
+            <tr><th>Nombre</th><th>Institución</th><th>Especialidad</th><th>Años exp. ECG</th><th>Auto-eval</th><th>Registro</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+{% endblock %}

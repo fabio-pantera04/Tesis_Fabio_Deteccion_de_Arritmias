@@ -1,0 +1,15 @@
+[
+  {
+    "timestamp": "2026-08-28T06:23:07.265725Z",
+    "model": "gemini-2.5-flash",
+    "prompt_ver": "v3",
+    "n_generadas": 5,
+    "signal_ids": [
+      "sig_001",
+      "sig_002",
+      "sig_003",
+      "sig_004",
+      "sig_005"
+    ]
+  }
+]

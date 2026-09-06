@@ -1,0 +1,164 @@
+{% extends "admin_base.html" %}
+{% block title %}Evaluación #{{ ev.evaluacion_id }} — Admin{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <a href="{{ url_for('admin_evaluaciones') }}" class="back-link">← Volver a evaluaciones</a>
+    <h2>Evaluación #{{ ev.evaluacion_id }}</h2>
+    <p class="admin-page-desc">
+        <b>{{ ev.nombre_completo }}</b> · señal <code>{{ ev.signal_id }}</code> ·
+        <small>{{ ev.fecha_evaluacion }}</small>
+    </p>
+</div>
+
+<!-- Metadatos -->
+<div class="detail-grid">
+    <div class="detail-card">
+        <h3>Cardiólogo</h3>
+        <dl class="detail-dl">
+            <dt>Nombre</dt><dd>{{ ev.nombre_completo }}</dd>
+            <dt>Especialidad</dt><dd>{{ ev.especialidad or '—' }}</dd>
+            <dt>Años experiencia ECG</dt><dd>{{ ev.anos_experiencia_ecg if ev.anos_experiencia_ecg is not none else '—' }}</dd>
+            <dt>Institución</dt><dd>{{ ev.institucion or '—' }}</dd>
+        </dl>
+    </div>
+
+    <div class="detail-card">
+        <h3>Contexto técnico</h3>
+        <dl class="detail-dl">
+            <dt>Señal ID</dt><dd><code>{{ ev.signal_id }}</code></dd>
+            <dt>Backend LLM</dt><dd><code>{{ ev.llm_backend }}</code></dd>
+            <dt>Modelo</dt><dd><code>{{ ev.llm_model_id or '—' }}</code></dd>
+            <dt>Duración</dt><dd>{% if ev.duracion_segundos %}{{ (ev.duracion_segundos / 60)|round(2) }} min ({{ ev.duracion_segundos|round(1) }} s){% else %}—{% endif %}</dd>
+        </dl>
+    </div>
+
+    <div class="detail-card">
+        <h3>Valoración Likert (1–5)</h3>
+        <dl class="detail-dl detail-likert">
+            <dt>Exactitud diagnóstica</dt><dd class="lik-val">{{ ev.likert_exactitud }}/5</dd>
+            <dt>Coherencia terminológica</dt><dd class="lik-val">{{ ev.likert_coherencia }}/5</dd>
+            <dt>Utilidad clínica</dt><dd class="lik-val">{{ ev.likert_utilidad }}/5</dd>
+        </dl>
+        <div style="margin-top: 12px;">
+            <span class="lbl-inline">Veredicto global:</span>
+            <span class="chip chip-{{ ev.nota_semaforo_global }}">{{ ev.nota_semaforo_global }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Nota LLM con marcaciones aplicadas -->
+<section class="detail-section">
+    <h3>Nota clínica generada por el LLM</h3>
+    <p class="chart-desc">El texto se muestra con las marcaciones de subrayado que hizo el cardiólogo.</p>
+
+    <div class="nota-preview" id="nota-preview">{{ ev.nota_clinica_texto }}</div>
+
+    {% if ev.marcaciones_nota_parsed %}
+    <div class="mark-distribution" style="margin-top: 12px;">
+        <div class="mark-dist-item">
+            <span class="mark-dist-swatch mark-swatch-verde"></span>
+            <span class="mark-dist-label">Correcto:</span>
+            <span class="mark-dist-value">{{ ev.marcaciones_nota_parsed.pct_verde }}%</span>
+        </div>
+        <div class="mark-dist-item">
+            <span class="mark-dist-swatch mark-swatch-amarillo"></span>
+            <span class="mark-dist-label">Parcial:</span>
+            <span class="mark-dist-value">{{ ev.marcaciones_nota_parsed.pct_amarillo }}%</span>
+        </div>
+        <div class="mark-dist-item">
+            <span class="mark-dist-swatch mark-swatch-rojo"></span>
+            <span class="mark-dist-label">Incorrecto:</span>
+            <span class="mark-dist-value">{{ ev.marcaciones_nota_parsed.pct_rojo }}%</span>
+        </div>
+        <div class="mark-dist-item">
+            <span class="mark-dist-swatch mark-swatch-neutral"></span>
+            <span class="mark-dist-label">Sin marcar:</span>
+            <span class="mark-dist-value">{{ ev.marcaciones_nota_parsed.pct_sin_marcar }}%</span>
+        </div>
+    </div>
+    {% else %}
+    <p style="font-style: italic; color: var(--ink-soft); margin-top: 8px;">Sin marcaciones de subrayado.</p>
+    {% endif %}
+</section>
+
+<!-- Comentarios libres -->
+<section class="detail-section">
+    <h3>Comentarios libres del cardiólogo</h3>
+    <div class="comments-box">
+        {% if ev.comentarios_libres and ev.comentarios_libres.strip() %}
+            {{ ev.comentarios_libres }}
+        {% else %}
+            <em>Sin comentarios.</em>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Respuestas por ventana en grid -->
+<section class="detail-section">
+    <h3>Semáforos por ventana</h3>
+    <p class="chart-desc">Cada celda muestra la predicción del clasificador y el veredicto del cardiólogo (fondo).</p>
+
+    <h4 style="margin-top: 20px;">LATIDO (60 ventanas de 1 s)</h4>
+    <div class="window-grid window-grid-beat">
+    {% for r in ev.respuestas if r.escala == 'beat' %}
+        <div class="window-cell window-cell-{{ r.semaforo }}"
+             title="Ventana {{ r.window_index }} — Pred: {{ r.prediccion_modelo }} — Gap: {{ '%.2f'|format(r.confidence_gap) if r.confidence_gap else 'N/A' }}">
+            <div class="win-idx">{{ r.window_index }}</div>
+            <div class="win-pred">{{ r.prediccion_modelo }}</div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <h4 style="margin-top: 20px;">RITMO (15 ventanas de 4 s)</h4>
+    <div class="window-grid window-grid-rhythm">
+    {% for r in ev.respuestas if r.escala == 'rhythm' %}
+        <div class="window-cell window-cell-{{ r.semaforo }}"
+             title="Ventana {{ r.window_index }} — Pred: {{ r.prediccion_modelo }} — Gap: {{ '%.2f'|format(r.confidence_gap) if r.confidence_gap else 'N/A' }}">
+            <div class="win-idx">{{ r.window_index }}</div>
+            <div class="win-pred">{{ r.prediccion_modelo }}</div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="window-legend" style="margin-top: 16px;">
+        <span class="legend-item"><span class="window-cell-verde legend-swatch"></span> Verde (correcto)</span>
+        <span class="legend-item"><span class="window-cell-amarillo legend-swatch"></span> Amarillo (parcial)</span>
+        <span class="legend-item"><span class="window-cell-rojo legend-swatch"></span> Rojo (incorrecto)</span>
+    </div>
+</section>
+
+<!-- Acción -->
+<section class="detail-section">
+    <form method="POST" action="{{ url_for('admin_eliminar_evaluacion', eval_id=ev.evaluacion_id) }}"
+          onsubmit="return confirm('¿Eliminar permanentemente la evaluación #{{ ev.evaluacion_id }}? Esta acción es irreversible.');">
+        <button type="submit" class="btn btn-danger">Eliminar esta evaluación</button>
+    </form>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+{% if ev.marcaciones_nota_parsed %}
+<script>
+    // Aplicar las marcaciones visualmente sobre el texto
+    (function() {
+        const NOTA_ORIGINAL = {{ ev.nota_clinica_texto|tojson }};
+        const MARCACIONES = {{ ev.marcaciones_nota_parsed.marcaciones|tojson }};
+        const container = document.getElementById("nota-preview");
+        if (!container || !MARCACIONES || MARCACIONES.length === 0) return;
+
+        const sorted = [...MARCACIONES].sort((a, b) => a.start - b.start);
+        const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        let html = "", cursor = 0;
+        for (const m of sorted) {
+            if (cursor < m.start) html += esc(NOTA_ORIGINAL.slice(cursor, m.start));
+            html += `<span class="mark-${m.color}">${esc(NOTA_ORIGINAL.slice(m.start, m.end))}</span>`;
+            cursor = m.end;
+        }
+        if (cursor < NOTA_ORIGINAL.length) html += esc(NOTA_ORIGINAL.slice(cursor));
+        container.innerHTML = html;
+    })();
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Seleccionar señal — Validación clínica{% endblock %}
+{% block content %}
+<section class="paper">
+    <div class="eyebrow">Paso 1 de 2</div>
+    <h2>Seleccione una señal para evaluar</h2>
+    <p>Cinco señales ECG están disponibles para evaluación. Cada una corresponde
+       a 60 segundos de registro en derivación II a 250 Hz. Se recomienda evaluar
+       las cinco para que el reporte estadístico tenga cobertura completa.</p>
+    <p style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft);">
+       Backend LLM activo: <strong>{{ backend_activo }}</strong>
+    </p>
+
+    <div class="signal-grid">
+        {% for sig in senales %}
+        <a class="signal-card" href="{{ url_for('evaluar', signal_id=sig.signal_id) }}">
+            <div class="sig-id">Señal {{ loop.index }}</div>
+            <h4>Trazado ECG para evaluación</h4>
+            <div class="meta">
+                Duración {{ sig.duration_seconds|int }} s · Derivación II · 250 Hz
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

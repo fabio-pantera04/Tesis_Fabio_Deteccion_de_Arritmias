@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Admin — Validación Clínica{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/medico.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% block head %}{% endblock %}
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+    <div class="admin-header-left">
+        <h1>Panel de Administración</h1>
+        <span class="admin-subtitle">Sistema de Validación Clínica ECG · CIMAT</span>
+    </div>
+    <div class="admin-header-right">
+        <a href="{{ url_for('admin_logout') }}" class="admin-logout-link">Cerrar sesión</a>
+    </div>
+</header>
+
+<div class="admin-layout">
+    <nav class="admin-sidebar">
+        <a href="{{ url_for('admin_dashboard') }}"
+           class="admin-nav-item {% if request.endpoint == 'admin_dashboard' %}active{% endif %}">
+            <span class="nav-icon">■</span> Dashboard
+        </a>
+        <a href="{{ url_for('admin_medicos') }}"
+           class="admin-nav-item {% if request.endpoint in ['admin_medicos', 'admin_medico_detalle'] %}active{% endif %}">
+            <span class="nav-icon">◆</span> Cardiólogos
+        </a>
+        <a href="{{ url_for('admin_evaluaciones') }}"
+           class="admin-nav-item {% if request.endpoint in ['admin_evaluaciones', 'admin_evaluacion_detalle'] %}active{% endif %}">
+            <span class="nav-icon">▲</span> Evaluaciones
+        </a>
+        <a href="{{ url_for('admin_inter_evaluador') }}"
+           class="admin-nav-item {% if request.endpoint == 'admin_inter_evaluador' %}active{% endif %}">
+            <span class="nav-icon">●</span> Inter-evaluador
+        </a>
+        <a href="{{ url_for('admin_exportar') }}"
+           class="admin-nav-item {% if request.endpoint == 'admin_exportar' %}active{% endif %}">
+            <span class="nav-icon">↓</span> Exportar
+        </a>
+    </nav>
+
+    <main class="admin-content">
+        {% block content %}{% endblock %}
+    </main>
+</div>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,114 @@
+{
+  "modelo": "LATIDO",
+  "clases": [
+    "NORMAL",
+    "PAC"
+  ],
+  "umbral_optimo": 0.5,
+  "criterio": "maximizar F1-macro en test set balanceado",
+  "n_test": 600,
+  "metricas": {
+    "accuracy": 0.8117,
+    "kappa_cohen": 0.6233,
+    "mcc": 0.6252,
+    "f1_macro": 0.8114,
+    "auc_roc": 0.8781
+  },
+  "por_clase": {
+    "NORMAL": {
+      "precision": 0.7895,
+      "recall": 0.85,
+      "f1": 0.8186,
+      "support": 300
+    },
+    "PAC": {
+      "precision": 0.8375,
+      "recall": 0.7733,
+      "f1": 0.8042,
+      "support": 300
+    }
+  },
+  "barrido_umbrales": [
+    {
+      "umbral": 0.3,
+      "accuracy": 0.765,
+      "f1_macro": 0.7613,
+      "prec_pac": 0.712,
+      "rec_pac": 0.89,
+      "prec_normal": 0.853,
+      "rec_normal": 0.64
+    },
+    {
+      "umbral": 0.35,
+      "accuracy": 0.765,
+      "f1_macro": 0.7629,
+      "prec_pac": 0.723,
+      "rec_pac": 0.86,
+      "prec_normal": 0.827,
+      "rec_normal": 0.67
+    },
+    {
+      "umbral": 0.4,
+      "accuracy": 0.78,
+      "f1_macro": 0.7794,
+      "prec_pac": 0.753,
+      "rec_pac": 0.833,
+      "prec_normal": 0.813,
+      "rec_normal": 0.727
+    },
+    {
+      "umbral": 0.45,
+      "accuracy": 0.7917,
+      "f1_macro": 0.7917,
+      "prec_pac": 0.787,
+      "rec_pac": 0.8,
+      "prec_normal": 0.797,
+      "rec_normal": 0.783
+    },
+    {
+      "umbral": 0.5,
+      "accuracy": 0.8117,
+      "f1_macro": 0.8114,
+      "prec_pac": 0.838,
+      "rec_pac": 0.773,
+      "prec_normal": 0.789,
+      "rec_normal": 0.85
+    },
+    {
+      "umbral": 0.55,
+      "accuracy": 0.8067,
+      "f1_macro": 0.8059,
+      "prec_pac": 0.851,
+      "rec_pac": 0.743,
+      "prec_normal": 0.772,
+      "rec_normal": 0.87
+    },
+    {
+      "umbral": 0.6,
+      "accuracy": 0.8033,
+      "f1_macro": 0.8017,
+      "prec_pac": 0.87,
+      "rec_pac": 0.713,
+      "prec_normal": 0.757,
+      "rec_normal": 0.893
+    },
+    {
+      "umbral": 0.65,
+      "accuracy": 0.805,
+      "f1_macro": 0.8021,
+      "prec_pac": 0.903,
+      "rec_pac": 0.683,
+      "prec_normal": 0.745,
+      "rec_normal": 0.927
+    },
+    {
+      "umbral": 0.7,
+      "accuracy": 0.7883,
+      "f1_macro": 0.7829,
+      "prec_pac": 0.922,
+      "rec_pac": 0.63,
+      "prec_normal": 0.719,
+      "rec_normal": 0.947
+    }
+  ]
+}

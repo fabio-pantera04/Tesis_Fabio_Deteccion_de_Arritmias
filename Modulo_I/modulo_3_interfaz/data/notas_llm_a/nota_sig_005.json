@@ -1,0 +1,238 @@
+{
+  "signal_id": "sig_005",
+  "generated_at": "2026-08-28T06:23:04.241305Z",
+  "model": "gemini-2.5-flash",
+  "prompt_version": "v3",
+  "latency_seconds": 12.04,
+  "signal_metadata": {
+    "signal_id": "sig_005",
+    "patient_id_hash": "anon_sig_005",
+    "patient_age_estimate": 50,
+    "patient_sex": "X",
+    "scenario_note": "",
+    "label": "Senal ECG",
+    "lead": "II",
+    "sampling_rate_hz": 250,
+    "duration_seconds": 60.0,
+    "n_samples": 15000,
+    "preprocessing": "z-score normalisation",
+    "processed_at": "2026-06-29T18:41:27",
+    "source_csv": "D:/Modelo_Tesis/Modulo_I/modulo_3_interfaz/signals/p00065_s00_AFIB_733s_1min.csv"
+  },
+  "aggregate_summary": {
+    "predominant_beat_class": "NORMAL",
+    "beat_class_distribution_pct": {
+      "NORMAL": 76.67,
+      "PAC": 23.33
+    },
+    "predominant_rhythm_class": "AFIB",
+    "rhythm_class_distribution_pct": {
+      "AFIB": 93.33,
+      "NSR": 6.67
+    },
+    "anomalies_detected": [
+      {
+        "type": "PAC",
+        "at_second": 2.0,
+        "window_index": 2,
+        "confidence_gap": 0.0743
+      },
+      {
+        "type": "PAC",
+        "at_second": 9.0,
+        "window_index": 9,
+        "confidence_gap": 0.0825
+      },
+      {
+        "type": "PAC",
+        "at_second": 15.0,
+        "window_index": 15,
+        "confidence_gap": 0.6106
+      },
+      {
+        "type": "PAC",
+        "at_second": 20.0,
+        "window_index": 20,
+        "confidence_gap": 0.4868
+      },
+      {
+        "type": "PAC",
+        "at_second": 31.0,
+        "window_index": 31,
+        "confidence_gap": 0.3473
+      },
+      {
+        "type": "PAC",
+        "at_second": 35.0,
+        "window_index": 35,
+        "confidence_gap": 0.0341
+      },
+      {
+        "type": "PAC",
+        "at_second": 37.0,
+        "window_index": 37,
+        "confidence_gap": 0.0962
+      },
+      {
+        "type": "PAC",
+        "at_second": 38.0,
+        "window_index": 38,
+        "confidence_gap": 0.0562
+      },
+      {
+        "type": "PAC",
+        "at_second": 42.0,
+        "window_index": 42,
+        "confidence_gap": 0.588
+      },
+      {
+        "type": "PAC",
+        "at_second": 44.0,
+        "window_index": 44,
+        "confidence_gap": 0.0914
+      },
+      {
+        "type": "PAC",
+        "at_second": 49.0,
+        "window_index": 49,
+        "confidence_gap": 0.4354
+      },
+      {
+        "type": "PAC",
+        "at_second": 50.0,
+        "window_index": 50,
+        "confidence_gap": 0.3949
+      },
+      {
+        "type": "PAC",
+        "at_second": 53.0,
+        "window_index": 53,
+        "confidence_gap": 0.2919
+      },
+      {
+        "type": "PAC",
+        "at_second": 58.0,
+        "window_index": 58,
+        "confidence_gap": 0.6127
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 4.0,
+        "to_second": 8.0,
+        "window_index": 1,
+        "confidence_gap": 0.4056
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 8.0,
+        "to_second": 12.0,
+        "window_index": 2,
+        "confidence_gap": 0.4448
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 12.0,
+        "to_second": 16.0,
+        "window_index": 3,
+        "confidence_gap": 0.454
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 16.0,
+        "to_second": 20.0,
+        "window_index": 4,
+        "confidence_gap": 0.6172
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 20.0,
+        "to_second": 24.0,
+        "window_index": 5,
+        "confidence_gap": 0.7715
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 24.0,
+        "to_second": 28.0,
+        "window_index": 6,
+        "confidence_gap": 0.7981
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 28.0,
+        "to_second": 32.0,
+        "window_index": 7,
+        "confidence_gap": 0.1098
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 32.0,
+        "to_second": 36.0,
+        "window_index": 8,
+        "confidence_gap": 0.5846
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 36.0,
+        "to_second": 40.0,
+        "window_index": 9,
+        "confidence_gap": 0.6926
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 40.0,
+        "to_second": 44.0,
+        "window_index": 10,
+        "confidence_gap": 0.814
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 44.0,
+        "to_second": 48.0,
+        "window_index": 11,
+        "confidence_gap": 0.8428
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 48.0,
+        "to_second": 52.0,
+        "window_index": 12,
+        "confidence_gap": 0.3571
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 52.0,
+        "to_second": 56.0,
+        "window_index": 13,
+        "confidence_gap": 0.8438
+      },
+      {
+        "type": "AFIB_run",
+        "from_second": 56.0,
+        "to_second": 60.0,
+        "window_index": 14,
+        "confidence_gap": 0.1635
+      }
+    ],
+    "mean_confidence_gap_beat": 0.4089,
+    "mean_confidence_gap_rhythm": 0.5568,
+    "global_escalation_required": true,
+    "n_beat_windows": 60,
+    "n_rhythm_windows": 15,
+    "processing_time_seconds": 17684.0
+  },
+  "clinical_note": "En un registro de derivación II de 60.0 segundos, correspondiente a un paciente de 50 años, sexo X, se observa un patrón rítmico predominantemente compatible con fibrilación auricular (93.33%). Este se caracteriza por la ausencia de ondas P discernibles, presencia de oscilaciones basales irregulares que reemplazan la actividad auricular, y una respuesta ventricular irregularmente irregular con complejos QRS de morfología estrecha. La clase de latido predominante es NORMAL (76.67%), con complejos QRS estrechos y onda T concordante con la deflexión principal, aunque se identifica una contribución significativa de contracciones auriculares prematuras (23.33%). Se detectan múltiples contracciones auriculares prematuras en los segundos 2.0, 9.0, 15.0, 20.0, 31.0, 35.0, 37.0, 38.0, 42.0 y 44.0, las cuales se presentan como latidos de aparición prematura con complejos QRS asociados estrechos. Si bien la confianza media del clasificador se sitúa en 0.41 para la clasificación de latidos y 0.56 para el ritmo, se ha marcado la necesidad de escalación global para este registro. Por lo tanto, se recomienda encarecidamente una revisión detallada del mismo por parte de un cardiólogo especialista para la interpretación definitiva.",
+  "quality_checks": {
+    "idioma_espanol": true,
+    "menciona_lead_II": true,
+    "describe_morfologia": true,
+    "menciona_clase_beat": true,
+    "menciona_clase_rhythm": false,
+    "menciona_confianza": true,
+    "longitud_apropiada": true,
+    "sin_certeza_absoluta": true,
+    "sin_prescripcion": true
+  },
+  "checks_passed": 8,
+  "checks_total": 9
+}

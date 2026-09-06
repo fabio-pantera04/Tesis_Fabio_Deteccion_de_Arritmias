@@ -1,0 +1,74 @@
+{% extends "admin_base.html" %}
+{% block title %}Evaluaciones — Admin{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2>Todas las evaluaciones</h2>
+    <p class="admin-page-desc">
+        Total: <b>{{ evaluaciones|length }}</b>. Click en una fila para ver drill-down completo.
+    </p>
+</div>
+
+{% if evaluaciones|length == 0 %}
+    <div class="empty-state">
+        <p>No hay evaluaciones registradas todavía.</p>
+    </div>
+{% else %}
+<div class="admin-table-wrap">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Cardiólogo</th>
+                <th>Especialidad</th>
+                <th>Señal</th>
+                <th>Backend</th>
+                <th>Nota</th>
+                <th>Exact.</th>
+                <th>Coher.</th>
+                <th>Util.</th>
+                <th>Duración</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for e in evaluaciones %}
+            <tr>
+                <td><b>{{ e.evaluacion_id }}</b></td>
+                <td><small>{{ e.fecha_evaluacion[:19] if e.fecha_evaluacion else '—' }}</small></td>
+                <td>
+                    <a href="{{ url_for('admin_medico_detalle', medico_id=e.medico_id) }}" class="table-link">
+                        {{ e.nombre_completo }}
+                    </a>
+                </td>
+                <td><small>{{ e.especialidad or '—' }}</small></td>
+                <td>
+                    <a href="{{ url_for('admin_evaluacion_detalle', eval_id=e.evaluacion_id) }}" class="table-link">
+                        {{ e.signal_id }}
+                    </a>
+                </td>
+                <td><code>{{ e.llm_backend }}</code></td>
+                <td>
+                    <span class="chip chip-{{ e.nota_semaforo_global }}">{{ e.nota_semaforo_global }}</span>
+                </td>
+                <td><b>{{ e.likert_exactitud }}</b></td>
+                <td><b>{{ e.likert_coherencia }}</b></td>
+                <td><b>{{ e.likert_utilidad }}</b></td>
+                <td>{% if e.duracion_segundos %}{{ (e.duracion_segundos / 60)|round(1) }} min{% else %}—{% endif %}</td>
+                <td>
+                    <a href="{{ url_for('admin_evaluacion_detalle', eval_id=e.evaluacion_id) }}"
+                       class="btn-sm">Ver</a>
+                    <form method="POST" action="{{ url_for('admin_eliminar_evaluacion', eval_id=e.evaluacion_id) }}"
+                          onsubmit="return confirm('¿Eliminar la evaluación #{{ e.evaluacion_id }}? Esta acción es irreversible.');"
+                          style="display: inline;">
+                        <button type="submit" class="btn-danger-sm">×</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

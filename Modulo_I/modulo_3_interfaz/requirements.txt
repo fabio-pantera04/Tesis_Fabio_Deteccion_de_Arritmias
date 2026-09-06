@@ -1,0 +1,13 @@
+# Núcleo Flask
+Flask==3.0.3
+
+# Modelado y datos
+xgboost>=2.0.0
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.3
+
+# Backends LLM (instalar SOLO los que se vayan a usar)
+# anthropic>=0.40.0          # Claude
+# google-generativeai>=0.8   # Gemini
+# groq>=0.13                 # Groq/Llama

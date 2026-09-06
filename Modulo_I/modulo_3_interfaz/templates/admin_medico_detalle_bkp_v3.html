@@ -1,0 +1,83 @@
+{% extends "admin_base.html" %}
+{% block title %}Cardiólogo #{{ medico.medico_id }} — Admin{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <a href="{{ url_for('admin_medicos') }}" class="back-link">← Volver al listado</a>
+    <h2>{{ medico.nombre_completo }}</h2>
+    <p class="admin-page-desc">Ficha completa · {{ evaluaciones|length }} evaluaciones realizadas</p>
+</div>
+
+<div class="detail-grid">
+    <div class="detail-card">
+        <h3>Datos personales</h3>
+        <dl class="detail-dl">
+            <dt>ID</dt><dd>{{ medico.medico_id }}</dd>
+            <dt>Nombre</dt><dd>{{ medico.nombre_completo }}</dd>
+            <dt>Edad</dt><dd>{{ medico.edad or '—' }}</dd>
+            <dt>Sexo</dt><dd>{{ medico.sexo or '—' }}</dd>
+            <dt>Correo</dt><dd>{{ medico.email or '—' }}</dd>
+        </dl>
+    </div>
+
+    <div class="detail-card">
+        <h3>Perfil profesional</h3>
+        <dl class="detail-dl">
+            <dt>Institución</dt><dd>{{ medico.institucion or '—' }}</dd>
+            <dt>Especialidad</dt><dd>{{ medico.especialidad or '—' }}</dd>
+            <dt>Sub-especialidad</dt><dd>{{ medico.sub_especialidad or '—' }}</dd>
+            <dt>Años experiencia clínica</dt><dd>{{ medico.anos_experiencia if medico.anos_experiencia is not none else '—' }}</dd>
+            <dt>Años experiencia ECG</dt><dd>{{ medico.anos_experiencia_ecg if medico.anos_experiencia_ecg is not none else '—' }}</dd>
+            <dt>Auto-evaluación habilidad</dt><dd>{{ medico.auto_eval_habilidad or '—' }}/5</dd>
+            <dt>Fecha registro</dt><dd>{{ medico.fecha_registro }}</dd>
+        </dl>
+    </div>
+</div>
+
+<h3 style="margin-top: 32px;">Sus evaluaciones</h3>
+{% if evaluaciones|length == 0 %}
+    <div class="empty-state">
+        <p>Este cardiólogo aún no ha completado ninguna evaluación.</p>
+    </div>
+{% else %}
+<div class="admin-table-wrap">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Señal</th>
+                <th>Backend</th>
+                <th>Veredicto nota</th>
+                <th>Likert (E/C/U)</th>
+                <th>Duración</th>
+                <th>Fecha</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for e in evaluaciones %}
+            <tr>
+                <td><b>{{ e.evaluacion_id }}</b></td>
+                <td>
+                    <a href="{{ url_for('admin_evaluacion_detalle', eval_id=e.evaluacion_id) }}" class="table-link">
+                        {{ e.signal_id }}
+                    </a>
+                </td>
+                <td><code>{{ e.llm_backend }}</code></td>
+                <td>
+                    <span class="chip chip-{{ e.nota_semaforo_global }}">{{ e.nota_semaforo_global }}</span>
+                </td>
+                <td>{{ e.likert_exactitud }}/{{ e.likert_coherencia }}/{{ e.likert_utilidad }}</td>
+                <td>{% if e.duracion_segundos %}{{ (e.duracion_segundos / 60)|round(1) }} min{% else %}—{% endif %}</td>
+                <td><small>{{ e.fecha_evaluacion[:19] if e.fecha_evaluacion else '—' }}</small></td>
+                <td>
+                    <a href="{{ url_for('admin_evaluacion_detalle', eval_id=e.evaluacion_id) }}"
+                       class="btn-sm">Ver detalle</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

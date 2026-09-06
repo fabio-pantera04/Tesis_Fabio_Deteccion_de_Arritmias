@@ -1,0 +1,176 @@
+{
+  "descripcion": "Ejemplos few-shot elaborados para LLM-B v2. Cada uno pareja: JSON del clasificador reconstruido + nota clínica elaborada con morfología + citación de shapelet + reporte de confidence gap. Redactados en inglés para experimento LLM-B v2 (comparación con PTB-XL). Distribución: 3 por clase (alto/moderado/bajo confidence gap) para enseñar los 3 escenarios.",
+  "version": "v3-elaborado",
+  "idioma": "en",
+  "n_ejemplos": 12,
+  "ejemplos": [
+    {
+      "id": "NORMAL_alto",
+      "clase": "NORMAL",
+      "escenario": "alta confianza",
+      "json_clasificador": {
+        "prediccion": "NORMAL",
+        "modelo": "LATIDO",
+        "probabilidades": {"NORMAL": 0.95, "PAC": 0.05},
+        "confidence_gap": 0.90,
+        "alerta_baja_confianza": false,
+        "distancias_top3_msm": {"Micro_S3": 1.65, "Micro_S52": 2.85, "Micro_S59": 3.10}
+      },
+      "nota_clinica": "Lead II shows a single beat with narrow QRS complex of normal morphology and a monophasic positive P wave preceding the QRS. PR interval is within physiological range. The shapelet Micro_S3 (MSM distance = 1.65) provides the principal geometric evidence supporting the NORMAL classification. Confidence gap = 0.90 indicates high classifier certainty."
+    },
+    {
+      "id": "NORMAL_moderado",
+      "clase": "NORMAL",
+      "escenario": "confianza moderada",
+      "json_clasificador": {
+        "prediccion": "NORMAL",
+        "modelo": "LATIDO",
+        "probabilidades": {"NORMAL": 0.78, "PAC": 0.22},
+        "confidence_gap": 0.56,
+        "alerta_baja_confianza": false,
+        "distancias_top3_msm": {"Micro_S52": 2.42, "Micro_S3": 2.95, "Micro_S59": 3.20}
+      },
+      "nota_clinica": "Lead II presents a beat with normal-appearing QRS morphology and a P wave preceding the ventricular complex. The shapelet Micro_S52 (MSM distance = 2.42) is the closest geometric match, supporting classification as NORMAL. Confidence gap = 0.56 indicates moderate certainty; visual confirmation of P wave morphology is suggested."
+    },
+    {
+      "id": "NORMAL_bajo",
+      "clase": "NORMAL",
+      "escenario": "baja confianza",
+      "json_clasificador": {
+        "prediccion": "NORMAL",
+        "modelo": "LATIDO",
+        "probabilidades": {"NORMAL": 0.60, "PAC": 0.40},
+        "confidence_gap": 0.20,
+        "alerta_baja_confianza": true,
+        "distancias_top3_msm": {"Micro_S59": 2.10, "Micro_S52": 2.75, "Micro_S3": 3.30}
+      },
+      "nota_clinica": "Lead II shows a beat with QRS morphology consistent with normal conduction, though the P wave morphology approaches the PAC discrimination boundary. The shapelet Micro_S59 (MSM distance = 2.10) is the principal evidence, but competing morphological patterns are noted. Confidence gap = 0.20 (< 0.25) indicates low classifier certainty. Immediate cardiologist review is recommended."
+    },
+    {
+      "id": "PAC_alto",
+      "clase": "PAC",
+      "escenario": "alta confianza",
+      "json_clasificador": {
+        "prediccion": "PAC",
+        "modelo": "LATIDO",
+        "probabilidades": {"PAC": 0.88, "NORMAL": 0.12},
+        "confidence_gap": 0.76,
+        "alerta_baja_confianza": false,
+        "distancias_top3_msm": {"Micro_S59": 1.28, "Micro_S52": 2.05, "Micro_S3": 2.85}
+      },
+      "nota_clinica": "Lead II shows a premature beat interrupting the sinus rhythm, characterized by an ectopic P wave of altered morphology preceding a narrow QRS complex. The shapelet Micro_S59 (MSM distance = 1.28) is the discriminative pattern for premature atrial contractions. Confidence gap = 0.76 indicates high classifier certainty."
+    },
+    {
+      "id": "PAC_moderado",
+      "clase": "PAC",
+      "escenario": "confianza moderada",
+      "json_clasificador": {
+        "prediccion": "PAC",
+        "modelo": "LATIDO",
+        "probabilidades": {"PAC": 0.72, "NORMAL": 0.28},
+        "confidence_gap": 0.44,
+        "alerta_baja_confianza": false,
+        "distancias_top3_msm": {"Micro_S52": 1.55, "Micro_S59": 1.90, "Micro_S3": 3.10}
+      },
+      "nota_clinica": "Lead II presents a premature atrial contraction with characteristics compatible with a bigeminy pattern. The premature P wave morphology differs from the sinus P waves. The shapelet Micro_S52 (MSM distance = 1.55) supports PAC classification. Confidence gap = 0.44 indicates moderate certainty; visual confirmation of the ectopic P wave morphology is suggested."
+    },
+    {
+      "id": "PAC_bajo",
+      "clase": "PAC",
+      "escenario": "baja confianza",
+      "json_clasificador": {
+        "prediccion": "PAC",
+        "modelo": "LATIDO",
+        "probabilidades": {"PAC": 0.58, "NORMAL": 0.42},
+        "confidence_gap": 0.16,
+        "alerta_baja_confianza": true,
+        "distancias_top3_msm": {"Micro_S3": 1.85, "Micro_S52": 2.10, "Micro_S59": 2.35}
+      },
+      "nota_clinica": "Lead II shows a beat with premature timing, though morphological features between premature atrial contraction and aberrant normal beat overlap. The shapelet Micro_S3 (MSM distance = 1.85) provides the closest geometric match. Confidence gap = 0.16 (< 0.25) indicates low classifier certainty. Immediate cardiologist review is recommended."
+    },
+    {
+      "id": "NSR_alto",
+      "clase": "NSR",
+      "escenario": "alta confianza",
+      "json_clasificador": {
+        "prediccion": "NSR",
+        "modelo": "RITMO",
+        "probabilidades": {"NSR": 0.94, "AFIB": 0.06},
+        "confidence_gap": 0.88,
+        "alerta_baja_confianza": false,
+        "distancias_top3_msm": {"Macro_S54": 1.15, "Macro_S56": 2.20, "Macro_S22": 6.90}
+      },
+      "nota_clinica": "Lead II shows a regular rhythm with monophasic P waves preceding each QRS complex in a 1:1 atrioventricular relationship. R-R intervals are regular with physiological variability under 10%. The shapelet Macro_S54 (MSM distance = 1.15) provides the principal evidence for normal sinus rhythm. Confidence gap = 0.88 indicates high classifier certainty."
+    },
+    {
+      "id": "NSR_moderado",
+      "clase": "NSR",
+      "escenario": "confianza moderada",
+      "json_clasificador": {
+        "prediccion": "NSR",
+        "modelo": "RITMO",
+        "probabilidades": {"NSR": 0.75, "AFIB": 0.25},
+        "confidence_gap": 0.50,
+        "alerta_baja_confianza": false,
+        "distancias_top3_msm": {"Macro_S56": 1.85, "Macro_S54": 2.30, "Macro_S22": 7.05}
+      },
+      "nota_clinica": "Lead II presents a rhythm with discernible P waves preceding QRS complexes and moderately regular R-R intervals. The shapelet Macro_S56 (MSM distance = 1.85) supports normal sinus rhythm classification. Confidence gap = 0.50 indicates moderate certainty; visual confirmation of P wave regularity is suggested."
+    },
+    {
+      "id": "NSR_bajo",
+      "clase": "NSR",
+      "escenario": "baja confianza",
+      "json_clasificador": {
+        "prediccion": "NSR",
+        "modelo": "RITMO",
+        "probabilidades": {"NSR": 0.58, "AFIB": 0.42},
+        "confidence_gap": 0.16,
+        "alerta_baja_confianza": true,
+        "distancias_top3_msm": {"Macro_S22": 2.05, "Macro_S54": 2.80, "Macro_S56": 3.15}
+      },
+      "nota_clinica": "Lead II shows a rhythm compatible with sinus origin, though R-R interval variability approaches the AFIB discrimination boundary. The shapelet Macro_S22 (MSM distance = 2.05) is the closest geometric match. Confidence gap = 0.16 (< 0.25) indicates low classifier certainty. Immediate cardiologist review is recommended to rule out atrial fibrillation with regular ventricular response."
+    },
+    {
+      "id": "AFIB_alto",
+      "clase": "AFIB",
+      "escenario": "alta confianza",
+      "json_clasificador": {
+        "prediccion": "AFIB",
+        "modelo": "RITMO",
+        "probabilidades": {"AFIB": 0.91, "NSR": 0.09},
+        "confidence_gap": 0.82,
+        "alerta_baja_confianza": false,
+        "distancias_top3_msm": {"Macro_S54": 1.31, "Macro_S56": 2.03, "Macro_S22": 6.80}
+      },
+      "nota_clinica": "Lead II shows absent P waves replaced by irregular baseline fibrillatory undulations, with irregularly irregular R-R intervals characteristic of atrial fibrillation with rapid ventricular response. QRS complexes retain narrow morphology consistent with normal ventricular conduction. The shapelet Macro_S54 (MSM distance = 1.31) provides the principal evidence for AFIB. Confidence gap = 0.82 indicates high classifier certainty."
+    },
+    {
+      "id": "AFIB_moderado",
+      "clase": "AFIB",
+      "escenario": "confianza moderada",
+      "json_clasificador": {
+        "prediccion": "AFIB",
+        "modelo": "RITMO",
+        "probabilidades": {"AFIB": 0.79, "NSR": 0.21},
+        "confidence_gap": 0.58,
+        "alerta_baja_confianza": false,
+        "distancias_top3_msm": {"Macro_S56": 1.72, "Macro_S54": 2.15, "Macro_S22": 6.95}
+      },
+      "nota_clinica": "Lead II presents irregularly irregular R-R intervals with absent discernible P waves, consistent with atrial fibrillation with controlled ventricular response. Fibrillatory undulations are visible in the baseline. The shapelet Macro_S56 (MSM distance = 1.72) supports AFIB classification. Confidence gap = 0.58 indicates high classifier certainty."
+    },
+    {
+      "id": "AFIB_bajo",
+      "clase": "AFIB",
+      "escenario": "baja confianza",
+      "json_clasificador": {
+        "prediccion": "AFIB",
+        "modelo": "RITMO",
+        "probabilidades": {"AFIB": 0.55, "NSR": 0.45},
+        "confidence_gap": 0.10,
+        "alerta_baja_confianza": true,
+        "distancias_top3_msm": {"Macro_S22": 1.90, "Macro_S54": 2.45, "Macro_S56": 3.05}
+      },
+      "nota_clinica": "Lead II shows R-R interval irregularity and reduced P wave amplitude, though baseline fibrillatory activity is subtle. Morphological features overlap between atrial fibrillation and sinus rhythm with variable P waves. The shapelet Macro_S22 (MSM distance = 1.90) is the closest geometric match. Confidence gap = 0.10 (< 0.25) indicates low classifier certainty. Immediate cardiologist review is recommended to distinguish AFIB from sinus rhythm with atrial ectopy."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+======================================================================
+REPORTE COMPLETO MODULO I — TESIS CIMAT
+Clasificador: XGBoost + MSM con Banda de Sakoe-Chiba
+Ref. MSM  : Stefan et al. (2013) IEEE TKDE
+Ref. banda: Holznigenkemper et al. (2023) arXiv:2301.01977
+======================================================================
+
+── METRICAS GLOBALES ──────────────────────────────────────────
+  Accuracy global    : 91.03%
+  Kappa de Cohen     : 0.8804
+  MCC                : 0.8809
+  F1-macro           : 0.9102
+  F1-weighted        : 0.9102
+  Log-loss (test)    : 0.3300
+
+── METRICAS POR CLASE ─────────────────────────────────────────
+              precision    recall  f1-score   support
+
+        AFIB       0.97      0.97      0.97        92
+      NORMAL       0.88      0.82      0.85        92
+         NSR       0.97      0.97      0.97        92
+         PAC       0.83      0.89      0.86        92
+
+    accuracy                           0.91       368
+   macro avg       0.91      0.91      0.91       368
+weighted avg       0.91      0.91      0.91       368
+
+── AUC ROC (One-vs-Rest) ──────────────────────────────────────
+  AFIB    : 0.9991
+  NORMAL  : 0.9665
+  NSR     : 0.9991
+  PAC     : 0.9666
+  Micro-avg: 0.9870
+
+── MATRIZ DE CONFUSION ────────────────────────────────────────
+  (filas = clase real, columnas = clase predicha)
+        AFIB     NORMAL   NSR      PAC    
+  AFIB         89        0        3        0
+  NORMAL        0       75        0       17
+  NSR           3        0       89        0
+  PAC           0       10        0       82
+
+── TIEMPOS DE EJECUCION ───────────────────────────────────────
+  Entrenamiento XGBoost  : 2.69 s
+  Inferencia por muestra : 4.768 ms (± 0.276 ms, n=50)
+  Inferencia total test  : 8.8 ms (368 muestras)
+
+── FLOPs DE INFERENCIA (estimacion analitica) ─────────────────
+  Embedding MSM-SC total : 1,442,748,000 FLOPs
+    Bloque micro         : 101,388,000 FLOPs
+    Bloque macro         : 1,341,360,000 FLOPs
+  XGBoost predict        : 7,000 FLOPs
+  TOTAL por señal        : 1,442,755,000 FLOPs (1442.76 MFLOPs)
+  Nota: Estimacion analitica. Embedding domina el costo computacional.
+
+── PARAMETROS DEL MODELO ──────────────────────────────────────
+  MSM c (costo split/merge)  : 0.1
+  Banda Sakoe-Chiba          : 0.1 (10%)
+  Shapelets micro=50, macro=40
+  Candidatos evaluados       : 900
+  Comparaciones por candidato: 25
+  XGBoost n_estimators       : 700
+  XGBoost max_depth          : 5
+  XGBoost learning_rate      : 0.05
+  L1=0.05, L2=1.0
+======================================================================

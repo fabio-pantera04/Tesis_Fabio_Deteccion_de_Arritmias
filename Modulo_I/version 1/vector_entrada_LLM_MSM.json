@@ -1,0 +1,7733 @@
+{
+  "version": "4.0",
+  "predicciones_test": [
+    {
+      "id": 0,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.9636,
+        "NSR": 0.0003,
+        "PAC": 0.0357
+      },
+      "confidence_gap": 0.9279,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.5452,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 1,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9996,
+        "NSR": 0.0001,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.9993,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.4284,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 2,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9962,
+        "NORMAL": 0.0002,
+        "NSR": 0.0005,
+        "PAC": 0.0031
+      },
+      "confidence_gap": 0.993,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.0548,
+        "Macro_S35": 85.4266,
+        "Macro_S30": 96.8041,
+        "Micro_S47": 26.6225,
+        "Macro_S18": 102.5435
+      }
+    },
+    {
+      "id": 3,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.999,
+        "NORMAL": 0.0001,
+        "NSR": 0.0009,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9981,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 82.6344,
+        "Macro_S35": 67.7944,
+        "Macro_S30": 116.127,
+        "Micro_S47": 14.1095,
+        "Macro_S18": 56.4476
+      }
+    },
+    {
+      "id": 4,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0128,
+        "NORMAL": 0.0005,
+        "NSR": 0.9865,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9737,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 99.4116,
+        "Macro_S35": 70.3758,
+        "Macro_S30": 121.4091,
+        "Micro_S47": 17.8409,
+        "Macro_S18": 52.8336
+      }
+    },
+    {
+      "id": 5,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.003,
+        "NSR": 0.0002,
+        "PAC": 0.9965
+      },
+      "confidence_gap": 0.9935,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.9843,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 6,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0042,
+        "NORMAL": 0.1117,
+        "NSR": 0.0023,
+        "PAC": 0.8819
+      },
+      "confidence_gap": 0.7702,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.2618,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 7,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0587,
+        "NORMAL": 0.0018,
+        "NSR": 0.9394,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.8807,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.0291,
+        "Macro_S35": 55.6063,
+        "Macro_S30": 115.5506,
+        "Micro_S47": 13.0836,
+        "Macro_S18": 63.4348
+      }
+    },
+    {
+      "id": 8,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.997,
+        "NSR": 0.0004,
+        "PAC": 0.0022
+      },
+      "confidence_gap": 0.9948,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 11.9474,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 9,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.8303,
+        "NORMAL": 0.0009,
+        "NSR": 0.1686,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.6616,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.1789,
+        "Macro_S35": 65.6379,
+        "Macro_S30": 112.7397,
+        "Micro_S47": 8.7818,
+        "Macro_S18": 52.364
+      }
+    },
+    {
+      "id": 10,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0013,
+        "NORMAL": 0.0003,
+        "NSR": 0.9983,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.997,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 100.4658,
+        "Macro_S35": 52.0488,
+        "Macro_S30": 131.464,
+        "Micro_S47": 14.9472,
+        "Macro_S18": 29.0266
+      }
+    },
+    {
+      "id": 11,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9961,
+        "NORMAL": 0.0003,
+        "NSR": 0.0008,
+        "PAC": 0.0028
+      },
+      "confidence_gap": 0.9933,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.3775,
+        "Macro_S35": 83.4411,
+        "Macro_S30": 96.6892,
+        "Micro_S47": 25.6709,
+        "Macro_S18": 96.0222
+      }
+    },
+    {
+      "id": 12,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0013,
+        "NORMAL": 0.2895,
+        "NSR": 0.0017,
+        "PAC": 0.7074
+      },
+      "confidence_gap": 0.4179,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.6618,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 13,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9989,
+        "NSR": 0.0001,
+        "PAC": 0.0008
+      },
+      "confidence_gap": 0.9981,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 13.7873,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 14,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0331,
+        "NSR": 0.0002,
+        "PAC": 0.9664
+      },
+      "confidence_gap": 0.9333,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.847,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 15,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9977,
+        "NORMAL": 0.0003,
+        "NSR": 0.002,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9956,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.5898,
+        "Macro_S35": 59.073,
+        "Macro_S30": 123.3805,
+        "Micro_S47": 9.1624,
+        "Macro_S18": 53.506
+      }
+    },
+    {
+      "id": 16,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0003,
+        "NSR": 0.999,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 97.8267,
+        "Macro_S35": 67.638,
+        "Macro_S30": 139.2958,
+        "Micro_S47": 15.501,
+        "Macro_S18": 52.7122
+      }
+    },
+    {
+      "id": 17,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0635,
+        "NORMAL": 0.0004,
+        "NSR": 0.9359,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.8724,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.2199,
+        "Macro_S35": 67.7677,
+        "Macro_S30": 122.2724,
+        "Micro_S47": 14.5058,
+        "Macro_S18": 43.5518
+      }
+    },
+    {
+      "id": 18,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9993,
+        "NORMAL": 0.0001,
+        "NSR": 0.0006,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9988,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.6943,
+        "Macro_S35": 62.158,
+        "Macro_S30": 123.9632,
+        "Micro_S47": 12.204,
+        "Macro_S18": 57.4187
+      }
+    },
+    {
+      "id": 19,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.9978,
+        "NSR": 0.0002,
+        "PAC": 0.0016
+      },
+      "confidence_gap": 0.9961,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 8.9132,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 20,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0062,
+        "NSR": 0.0004,
+        "PAC": 0.9926
+      },
+      "confidence_gap": 0.9864,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 27.4623,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 21,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.007,
+        "NORMAL": 0.0024,
+        "NSR": 0.9897,
+        "PAC": 0.0009
+      },
+      "confidence_gap": 0.9827,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.5885,
+        "Macro_S35": 54.3289,
+        "Macro_S30": 129.0738,
+        "Micro_S47": 16.0625,
+        "Macro_S18": 72.8751
+      }
+    },
+    {
+      "id": 22,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0001,
+        "NSR": 0.9993,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9987,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.5117,
+        "Macro_S35": 55.0051,
+        "Macro_S30": 112.4218,
+        "Micro_S47": 10.9696,
+        "Macro_S18": 57.6821
+      }
+    },
+    {
+      "id": 23,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.998,
+        "NSR": 0.0001,
+        "PAC": 0.0018
+      },
+      "confidence_gap": 0.9962,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.5711,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 24,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.999,
+        "NORMAL": 0.0,
+        "NSR": 0.0002,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.9984,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.2469,
+        "Macro_S35": 70.9888,
+        "Macro_S30": 93.073,
+        "Micro_S47": 20.1815,
+        "Macro_S18": 78.8204
+      }
+    },
+    {
+      "id": 25,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.0001,
+        "NSR": 0.9989,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.1691,
+        "Macro_S35": 53.8302,
+        "Macro_S30": 126.7863,
+        "Micro_S47": 15.1366,
+        "Macro_S18": 31.7995
+      }
+    },
+    {
+      "id": 26,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.9841,
+        "NSR": 0.0008,
+        "PAC": 0.0144
+      },
+      "confidence_gap": 0.9697,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 15.745,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 27,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0115,
+        "NSR": 0.0001,
+        "PAC": 0.9883
+      },
+      "confidence_gap": 0.9768,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.1299,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 28,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0254,
+        "NSR": 0.0002,
+        "PAC": 0.9741
+      },
+      "confidence_gap": 0.9487,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.932,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 29,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0112,
+        "NSR": 0.0004,
+        "PAC": 0.9881
+      },
+      "confidence_gap": 0.9769,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.9024,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 30,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9989,
+        "NSR": 0.0,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.8522,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 31,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9986,
+        "NORMAL": 0.0005,
+        "NSR": 0.0008,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9978,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 81.3084,
+        "Macro_S35": 76.1732,
+        "Macro_S30": 102.1079,
+        "Micro_S47": 16.5548,
+        "Macro_S18": 80.6475
+      }
+    },
+    {
+      "id": 32,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9989,
+        "NORMAL": 0.0001,
+        "NSR": 0.0009,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.52,
+        "Macro_S35": 59.7678,
+        "Macro_S30": 89.74,
+        "Micro_S47": 16.399,
+        "Macro_S18": 63.0414
+      }
+    },
+    {
+      "id": 33,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9184,
+        "NORMAL": 0.0004,
+        "NSR": 0.0809,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.8375,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 84.8658,
+        "Macro_S35": 56.7626,
+        "Macro_S30": 109.9827,
+        "Micro_S47": 15.9332,
+        "Macro_S18": 58.6291
+      }
+    },
+    {
+      "id": 34,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0002,
+        "NSR": 0.9993,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9988,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.6322,
+        "Macro_S35": 48.4508,
+        "Macro_S30": 132.5542,
+        "Micro_S47": 15.9557,
+        "Macro_S18": 24.3047
+      }
+    },
+    {
+      "id": 35,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0012,
+        "NSR": 0.0001,
+        "PAC": 0.9987
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.9733,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 36,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9993,
+        "NORMAL": 0.0001,
+        "NSR": 0.0006,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9988,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.4288,
+        "Macro_S35": 58.527,
+        "Macro_S30": 121.7799,
+        "Micro_S47": 12.1978,
+        "Macro_S18": 60.9159
+      }
+    },
+    {
+      "id": 37,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9995,
+        "NSR": 0.0,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.381,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 38,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9979,
+        "NORMAL": 0.0,
+        "NSR": 0.0002,
+        "PAC": 0.0019
+      },
+      "confidence_gap": 0.996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 82.4438,
+        "Macro_S35": 73.0607,
+        "Macro_S30": 94.8031,
+        "Micro_S47": 21.8222,
+        "Macro_S18": 83.9703
+      }
+    },
+    {
+      "id": 39,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0012,
+        "NORMAL": 0.7548,
+        "NSR": 0.0008,
+        "PAC": 0.2432
+      },
+      "confidence_gap": 0.5116,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.6394,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 40,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9848,
+        "NSR": 0.0002,
+        "PAC": 0.0148
+      },
+      "confidence_gap": 0.97,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.9979,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 41,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0221,
+        "NSR": 0.0002,
+        "PAC": 0.9774
+      },
+      "confidence_gap": 0.9553,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.4741,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 42,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9979,
+        "NORMAL": 0.0002,
+        "NSR": 0.0018,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9961,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.6778,
+        "Macro_S35": 63.6156,
+        "Macro_S30": 124.946,
+        "Micro_S47": 10.9875,
+        "Macro_S18": 47.342
+      }
+    },
+    {
+      "id": 43,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9985,
+        "NSR": 0.0002,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 12.574,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 44,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9971,
+        "NSR": 0.0001,
+        "PAC": 0.0027
+      },
+      "confidence_gap": 0.9944,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.5024,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 45,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.2224,
+        "NSR": 0.0004,
+        "PAC": 0.7767
+      },
+      "confidence_gap": 0.5543,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.8368,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 46,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9997,
+        "NORMAL": 0.0001,
+        "NSR": 0.0002,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.68,
+        "Macro_S35": 65.4093,
+        "Macro_S30": 121.2729,
+        "Micro_S47": 12.8689,
+        "Macro_S18": 53.0588
+      }
+    },
+    {
+      "id": 47,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0001,
+        "NSR": 0.9994,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.2651,
+        "Macro_S35": 55.9378,
+        "Macro_S30": 121.6809,
+        "Micro_S47": 13.9297,
+        "Macro_S18": 31.464
+      }
+    },
+    {
+      "id": 48,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9954,
+        "NORMAL": 0.0001,
+        "NSR": 0.0014,
+        "PAC": 0.0031
+      },
+      "confidence_gap": 0.9923,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.3411,
+        "Macro_S35": 79.5064,
+        "Macro_S30": 109.2099,
+        "Micro_S47": 24.8947,
+        "Macro_S18": 101.7553
+      }
+    },
+    {
+      "id": 49,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9878,
+        "NORMAL": 0.0002,
+        "NSR": 0.0119,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9759,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.8613,
+        "Macro_S35": 57.6451,
+        "Macro_S30": 114.6333,
+        "Micro_S47": 15.4306,
+        "Macro_S18": 73.2872
+      }
+    },
+    {
+      "id": 50,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0001,
+        "NSR": 0.9992,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 102.351,
+        "Macro_S35": 64.5927,
+        "Macro_S30": 138.6345,
+        "Micro_S47": 15.6581,
+        "Macro_S18": 37.6548
+      }
+    },
+    {
+      "id": 51,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0001,
+        "NSR": 0.0005,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9989,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 83.4322,
+        "Macro_S35": 66.735,
+        "Macro_S30": 112.4839,
+        "Micro_S47": 13.9441,
+        "Macro_S18": 59.7578
+      }
+    },
+    {
+      "id": 52,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.999,
+        "NORMAL": 0.0004,
+        "NSR": 0.0005,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.9502,
+        "Macro_S35": 63.5333,
+        "Macro_S30": 106.3341,
+        "Micro_S47": 15.9662,
+        "Macro_S18": 76.8879
+      }
+    },
+    {
+      "id": 53,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.9994,
+        "NSR": 0.0001,
+        "PAC": 0.0005
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.3777,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 54,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0004,
+        "NSR": 0.0001,
+        "PAC": 0.9995
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.0872,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 55,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.003,
+        "NORMAL": 0.0188,
+        "NSR": 0.0026,
+        "PAC": 0.9757
+      },
+      "confidence_gap": 0.9568,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.199,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 56,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.073,
+        "NSR": 0.0004,
+        "PAC": 0.9259
+      },
+      "confidence_gap": 0.8529,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.0774,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 57,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9983,
+        "NORMAL": 0.0,
+        "NSR": 0.0007,
+        "PAC": 0.0009
+      },
+      "confidence_gap": 0.9973,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 82.5184,
+        "Macro_S35": 77.9828,
+        "Macro_S30": 88.4117,
+        "Micro_S47": 21.3792,
+        "Macro_S18": 92.1481
+      }
+    },
+    {
+      "id": 58,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0032,
+        "NORMAL": 0.0001,
+        "NSR": 0.9966,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9934,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.3834,
+        "Macro_S35": 62.4019,
+        "Macro_S30": 115.196,
+        "Micro_S47": 16.9098,
+        "Macro_S18": 43.8723
+      }
+    },
+    {
+      "id": 59,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.0002,
+        "NSR": 0.0001,
+        "PAC": 0.9997
+      },
+      "confidence_gap": 0.9995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.6097,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 60,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9967,
+        "NSR": 0.0001,
+        "PAC": 0.0031
+      },
+      "confidence_gap": 0.9936,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.264,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 61,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0001,
+        "NSR": 0.9998,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9997,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 98.6027,
+        "Macro_S35": 54.4887,
+        "Macro_S30": 126.5339,
+        "Micro_S47": 15.5228,
+        "Macro_S18": 29.9581
+      }
+    },
+    {
+      "id": 62,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.9973,
+        "NSR": 0.0003,
+        "PAC": 0.002
+      },
+      "confidence_gap": 0.9953,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 8.7879,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 63,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.999,
+        "NSR": 0.0002,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.9983,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 7.2776,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 64,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0067,
+        "NSR": 0.0004,
+        "PAC": 0.9926
+      },
+      "confidence_gap": 0.9859,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.9658,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 65,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0001,
+        "NSR": 0.9995,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.7925,
+        "Macro_S35": 61.762,
+        "Macro_S30": 100.4974,
+        "Micro_S47": 16.654,
+        "Macro_S18": 63.6204
+      }
+    },
+    {
+      "id": 66,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9968,
+        "NSR": 0.0002,
+        "PAC": 0.0027
+      },
+      "confidence_gap": 0.9941,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.1989,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 67,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0265,
+        "NSR": 0.0002,
+        "PAC": 0.9728
+      },
+      "confidence_gap": 0.9462,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.6057,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 68,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9978,
+        "NSR": 0.0002,
+        "PAC": 0.0019
+      },
+      "confidence_gap": 0.9959,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.5788,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 69,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0005,
+        "NSR": 0.9991,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 99.7138,
+        "Macro_S35": 53.4152,
+        "Macro_S30": 132.1604,
+        "Micro_S47": 14.297,
+        "Macro_S18": 28.4853
+      }
+    },
+    {
+      "id": 70,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0013,
+        "NORMAL": 0.9256,
+        "NSR": 0.0009,
+        "PAC": 0.0722
+      },
+      "confidence_gap": 0.8535,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.7061,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 71,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0057,
+        "NSR": 0.0006,
+        "PAC": 0.9929
+      },
+      "confidence_gap": 0.9872,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 27.6231,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 72,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9846,
+        "NSR": 0.0017,
+        "PAC": 0.0135
+      },
+      "confidence_gap": 0.971,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 16.9114,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 73,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0006,
+        "NSR": 0.9987,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9981,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 101.1294,
+        "Macro_S35": 27.4693,
+        "Macro_S30": 137.3408,
+        "Micro_S47": 15.8632,
+        "Macro_S18": 68.5086
+      }
+    },
+    {
+      "id": 74,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0007,
+        "NSR": 0.0001,
+        "PAC": 0.999
+      },
+      "confidence_gap": 0.9983,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 27.0287,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 75,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0041,
+        "NSR": 0.0003,
+        "PAC": 0.9953
+      },
+      "confidence_gap": 0.9912,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.2469,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 76,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9976,
+        "NSR": 0.0003,
+        "PAC": 0.0019
+      },
+      "confidence_gap": 0.9957,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 14.2801,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 77,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9976,
+        "NSR": 0.0001,
+        "PAC": 0.0021
+      },
+      "confidence_gap": 0.9955,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 14.2609,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 78,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0001,
+        "NSR": 0.9997,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 97.2815,
+        "Macro_S35": 53.7825,
+        "Macro_S30": 115.3713,
+        "Micro_S47": 15.1174,
+        "Macro_S18": 41.1773
+      }
+    },
+    {
+      "id": 79,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.5469,
+        "NORMAL": 0.0013,
+        "NSR": 0.4515,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.0954,
+      "alerta_baja_confianza": true,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.3745,
+        "Macro_S35": 60.8161,
+        "Macro_S30": 113.23,
+        "Micro_S47": 13.4774,
+        "Macro_S18": 56.7377
+      }
+    },
+    {
+      "id": 80,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0001,
+        "NSR": 0.9996,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 98.4342,
+        "Macro_S35": 62.0351,
+        "Macro_S30": 121.7732,
+        "Micro_S47": 15.9886,
+        "Macro_S18": 41.9204
+      }
+    },
+    {
+      "id": 81,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0206,
+        "NSR": 0.0014,
+        "PAC": 0.9777
+      },
+      "confidence_gap": 0.9571,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.5154,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 82,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0001,
+        "NSR": 0.0004,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.7977,
+        "Macro_S35": 70.2186,
+        "Macro_S30": 115.4443,
+        "Micro_S47": 20.9614,
+        "Macro_S18": 73.3211
+      }
+    },
+    {
+      "id": 83,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9993,
+        "NORMAL": 0.0001,
+        "NSR": 0.0006,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9987,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.363,
+        "Macro_S35": 64.5537,
+        "Macro_S30": 121.5619,
+        "Micro_S47": 9.1624,
+        "Macro_S18": 51.829
+      }
+    },
+    {
+      "id": 84,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0072,
+        "NSR": 0.0001,
+        "PAC": 0.9925
+      },
+      "confidence_gap": 0.9853,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.9438,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 85,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9991,
+        "NORMAL": 0.0001,
+        "NSR": 0.0008,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9984,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.8622,
+        "Macro_S35": 63.0362,
+        "Macro_S30": 125.159,
+        "Micro_S47": 13.059,
+        "Macro_S18": 46.7057
+      }
+    },
+    {
+      "id": 86,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0035,
+        "NORMAL": 0.0002,
+        "NSR": 0.9962,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9927,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.9848,
+        "Macro_S35": 53.1251,
+        "Macro_S30": 110.9759,
+        "Micro_S47": 15.9924,
+        "Macro_S18": 42.3979
+      }
+    },
+    {
+      "id": 87,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.997,
+        "NSR": 0.0002,
+        "PAC": 0.0024
+      },
+      "confidence_gap": 0.9946,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 15.0728,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 88,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0163,
+        "NSR": 0.0005,
+        "PAC": 0.9825
+      },
+      "confidence_gap": 0.9662,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.8389,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 89,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.593,
+        "NORMAL": 0.0013,
+        "NSR": 0.4041,
+        "PAC": 0.0015
+      },
+      "confidence_gap": 0.1889,
+      "alerta_baja_confianza": true,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.6252,
+        "Macro_S35": 55.6668,
+        "Macro_S30": 120.6869,
+        "Micro_S47": 16.9236,
+        "Macro_S18": 61.2898
+      }
+    },
+    {
+      "id": 90,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9948,
+        "NORMAL": 0.0008,
+        "NSR": 0.0044,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9904,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.2122,
+        "Macro_S35": 61.0884,
+        "Macro_S30": 125.7609,
+        "Micro_S47": 12.8551,
+        "Macro_S18": 49.1197
+      }
+    },
+    {
+      "id": 91,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9907,
+        "NSR": 0.0003,
+        "PAC": 0.0087
+      },
+      "confidence_gap": 0.9821,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.4063,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 92,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9996,
+        "NORMAL": 0.0002,
+        "NSR": 0.0001,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 81.4995,
+        "Macro_S35": 68.184,
+        "Macro_S30": 103.903,
+        "Micro_S47": 18.5165,
+        "Macro_S18": 73.1065
+      }
+    },
+    {
+      "id": 93,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0069,
+        "NSR": 0.0001,
+        "PAC": 0.9927
+      },
+      "confidence_gap": 0.9858,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.6936,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 94,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.9696,
+        "NSR": 0.0012,
+        "PAC": 0.0282
+      },
+      "confidence_gap": 0.9414,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.6119,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 95,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9992,
+        "NORMAL": 0.0001,
+        "NSR": 0.0006,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.2298,
+        "Macro_S35": 59.9902,
+        "Macro_S30": 125.5149,
+        "Micro_S47": 11.3544,
+        "Macro_S18": 51.6126
+      }
+    },
+    {
+      "id": 96,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9979,
+        "NSR": 0.0002,
+        "PAC": 0.0017
+      },
+      "confidence_gap": 0.9961,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 7.6825,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 97,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0903,
+        "NORMAL": 0.0012,
+        "NSR": 0.9081,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.8177,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.8638,
+        "Macro_S35": 63.9449,
+        "Macro_S30": 122.4769,
+        "Micro_S47": 14.8795,
+        "Macro_S18": 46.5753
+      }
+    },
+    {
+      "id": 98,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9985,
+        "NORMAL": 0.0,
+        "NSR": 0.001,
+        "PAC": 0.0005
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 82.6395,
+        "Macro_S35": 75.279,
+        "Macro_S30": 87.097,
+        "Micro_S47": 17.5525,
+        "Macro_S18": 79.4544
+      }
+    },
+    {
+      "id": 99,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0031,
+        "NORMAL": 0.0002,
+        "NSR": 0.9967,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9936,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.6611,
+        "Macro_S35": 40.5368,
+        "Macro_S30": 125.2653,
+        "Micro_S47": 14.655,
+        "Macro_S18": 52.2877
+      }
+    },
+    {
+      "id": 100,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0089,
+        "NORMAL": 0.0003,
+        "NSR": 0.9907,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9818,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.343,
+        "Macro_S35": 55.3658,
+        "Macro_S30": 105.103,
+        "Micro_S47": 12.0673,
+        "Macro_S18": 58.0219
+      }
+    },
+    {
+      "id": 101,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0009,
+        "NORMAL": 0.9082,
+        "NSR": 0.001,
+        "PAC": 0.0899
+      },
+      "confidence_gap": 0.8183,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 14.6993,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 102,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.9991,
+        "NSR": 0.0,
+        "PAC": 0.0008
+      },
+      "confidence_gap": 0.9983,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.5631,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 103,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9606,
+        "NORMAL": 0.0019,
+        "NSR": 0.0373,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.9233,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.4145,
+        "Macro_S35": 64.7973,
+        "Macro_S30": 125.9817,
+        "Micro_S47": 7.2218,
+        "Macro_S18": 50.2033
+      }
+    },
+    {
+      "id": 104,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.9881,
+        "NSR": 0.0003,
+        "PAC": 0.011
+      },
+      "confidence_gap": 0.977,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 14.7915,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 105,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.999,
+        "NORMAL": 0.0001,
+        "NSR": 0.0008,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9982,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.6314,
+        "Macro_S35": 62.942,
+        "Macro_S30": 123.5262,
+        "Micro_S47": 7.8367,
+        "Macro_S18": 49.8542
+      }
+    },
+    {
+      "id": 106,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0001,
+        "NSR": 0.9997,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.5048,
+        "Macro_S35": 54.9196,
+        "Macro_S30": 131.0152,
+        "Micro_S47": 16.8347,
+        "Macro_S18": 43.5943
+      }
+    },
+    {
+      "id": 107,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0011,
+        "NORMAL": 0.0002,
+        "NSR": 0.9986,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 97.917,
+        "Macro_S35": 67.0248,
+        "Macro_S30": 117.3973,
+        "Micro_S47": 14.7986,
+        "Macro_S18": 40.6492
+      }
+    },
+    {
+      "id": 108,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9973,
+        "NSR": 0.0001,
+        "PAC": 0.0026
+      },
+      "confidence_gap": 0.9947,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.198,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 109,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9998,
+        "NORMAL": 0.0,
+        "NSR": 0.0002,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 84.3687,
+        "Macro_S35": 64.3201,
+        "Macro_S30": 120.0926,
+        "Micro_S47": 17.5759,
+        "Macro_S18": 72.0962
+      }
+    },
+    {
+      "id": 110,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0003,
+        "NSR": 0.9995,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9992,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 98.048,
+        "Macro_S35": 54.4856,
+        "Macro_S30": 129.2445,
+        "Micro_S47": 15.6073,
+        "Macro_S18": 26.0747
+      }
+    },
+    {
+      "id": 111,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0043,
+        "NSR": 0.0001,
+        "PAC": 0.9956
+      },
+      "confidence_gap": 0.9913,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.9328,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 112,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9983,
+        "NSR": 0.0001,
+        "PAC": 0.0015
+      },
+      "confidence_gap": 0.9968,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 15.5011,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 113,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9997,
+        "NORMAL": 0.0,
+        "NSR": 0.0002,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 83.2974,
+        "Macro_S35": 62.6711,
+        "Macro_S30": 119.2343,
+        "Micro_S47": 12.6499,
+        "Macro_S18": 61.5572
+      }
+    },
+    {
+      "id": 114,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9985,
+        "NSR": 0.0001,
+        "PAC": 0.0013
+      },
+      "confidence_gap": 0.9972,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.171,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 115,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0061,
+        "NSR": 0.0005,
+        "PAC": 0.9928
+      },
+      "confidence_gap": 0.9867,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 33.1294,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 116,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0026,
+        "NSR": 0.0001,
+        "PAC": 0.9971
+      },
+      "confidence_gap": 0.9945,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.7579,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 117,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9991,
+        "NORMAL": 0.0,
+        "NSR": 0.0008,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9983,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 82.0659,
+        "Macro_S35": 72.0326,
+        "Macro_S30": 100.2798,
+        "Micro_S47": 18.9342,
+        "Macro_S18": 78.657
+      }
+    },
+    {
+      "id": 118,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0039,
+        "NORMAL": 0.6779,
+        "NSR": 0.0021,
+        "PAC": 0.316
+      },
+      "confidence_gap": 0.3619,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 27.1574,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 119,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9991,
+        "NSR": 0.0001,
+        "PAC": 0.0008
+      },
+      "confidence_gap": 0.9983,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.1519,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 120,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0001,
+        "NSR": 0.0005,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9989,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 84.283,
+        "Macro_S35": 63.0892,
+        "Macro_S30": 123.458,
+        "Micro_S47": 14.0424,
+        "Macro_S18": 57.7041
+      }
+    },
+    {
+      "id": 121,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0012,
+        "NSR": 0.0001,
+        "PAC": 0.9986
+      },
+      "confidence_gap": 0.9973,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.7021,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 122,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.99,
+        "NSR": 0.0002,
+        "PAC": 0.0094
+      },
+      "confidence_gap": 0.9806,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.2061,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 123,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0029,
+        "NORMAL": 0.0003,
+        "NSR": 0.9966,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9937,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.3125,
+        "Macro_S35": 50.7209,
+        "Macro_S30": 117.8544,
+        "Micro_S47": 15.6645,
+        "Macro_S18": 57.5831
+      }
+    },
+    {
+      "id": 124,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9926,
+        "NORMAL": 0.0009,
+        "NSR": 0.0042,
+        "PAC": 0.0023
+      },
+      "confidence_gap": 0.9884,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.9254,
+        "Macro_S35": 58.2247,
+        "Macro_S30": 90.6001,
+        "Micro_S47": 15.6893,
+        "Macro_S18": 74.2267
+      }
+    },
+    {
+      "id": 125,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0,
+        "NSR": 0.9997,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.3411,
+        "Macro_S35": 51.6351,
+        "Macro_S30": 122.4345,
+        "Micro_S47": 16.2092,
+        "Macro_S18": 43.9272
+      }
+    },
+    {
+      "id": 126,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.439,
+        "NSR": 0.0012,
+        "PAC": 0.5589
+      },
+      "confidence_gap": 0.1199,
+      "alerta_baja_confianza": true,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 24.1658,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 127,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.0002,
+        "NSR": 0.9991,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9984,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.2199,
+        "Macro_S35": 53.1867,
+        "Macro_S30": 131.4213,
+        "Micro_S47": 15.2883,
+        "Macro_S18": 29.7045
+      }
+    },
+    {
+      "id": 128,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.0004,
+        "NSR": 0.0,
+        "PAC": 0.9995
+      },
+      "confidence_gap": 0.9991,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 24.1662,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 129,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0274,
+        "NSR": 0.0003,
+        "PAC": 0.972
+      },
+      "confidence_gap": 0.9446,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 32.6229,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 130,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9953,
+        "NORMAL": 0.0002,
+        "NSR": 0.0043,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9909,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.2036,
+        "Macro_S35": 59.7414,
+        "Macro_S30": 105.0737,
+        "Micro_S47": 16.3833,
+        "Macro_S18": 71.5139
+      }
+    },
+    {
+      "id": 131,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9885,
+        "NSR": 0.0002,
+        "PAC": 0.0109
+      },
+      "confidence_gap": 0.9776,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.801,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 132,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.9906,
+        "NSR": 0.0003,
+        "PAC": 0.0087
+      },
+      "confidence_gap": 0.9819,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 15.2936,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 133,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.8102,
+        "NSR": 0.0003,
+        "PAC": 0.1892
+      },
+      "confidence_gap": 0.6209,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.5621,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 134,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0001,
+        "NSR": 0.9993,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.9408,
+        "Macro_S35": 61.1976,
+        "Macro_S30": 122.623,
+        "Micro_S47": 16.4223,
+        "Macro_S18": 45.0628
+      }
+    },
+    {
+      "id": 135,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0015,
+        "NSR": 0.0,
+        "PAC": 0.9984
+      },
+      "confidence_gap": 0.9969,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 24.6965,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 136,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0022,
+        "NORMAL": 0.0003,
+        "NSR": 0.9974,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9952,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.8429,
+        "Macro_S35": 58.7481,
+        "Macro_S30": 129.1291,
+        "Micro_S47": 16.5971,
+        "Macro_S18": 44.8444
+      }
+    },
+    {
+      "id": 137,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0087,
+        "NORMAL": 0.0001,
+        "NSR": 0.9911,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9824,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 88.5441,
+        "Macro_S35": 62.5054,
+        "Macro_S30": 112.95,
+        "Micro_S47": 18.341,
+        "Macro_S18": 60.0461
+      }
+    },
+    {
+      "id": 138,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0049,
+        "NORMAL": 0.0009,
+        "NSR": 0.9941,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9892,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.955,
+        "Macro_S35": 54.223,
+        "Macro_S30": 127.4896,
+        "Micro_S47": 13.7178,
+        "Macro_S18": 29.5477
+      }
+    },
+    {
+      "id": 139,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.9944,
+        "NSR": 0.0007,
+        "PAC": 0.0038
+      },
+      "confidence_gap": 0.9906,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 12.164,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 140,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0,
+        "NSR": 0.9996,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9992,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.657,
+        "Macro_S35": 60.3502,
+        "Macro_S30": 132.4757,
+        "Micro_S47": 17.1623,
+        "Macro_S18": 40.7107
+      }
+    },
+    {
+      "id": 141,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0042,
+        "NSR": 0.0004,
+        "PAC": 0.9951
+      },
+      "confidence_gap": 0.9908,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.1493,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 142,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.9802,
+        "NSR": 0.0005,
+        "PAC": 0.019
+      },
+      "confidence_gap": 0.9612,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.6081,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 143,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9997,
+        "NORMAL": 0.0001,
+        "NSR": 0.0002,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.0294,
+        "Macro_S35": 63.0046,
+        "Macro_S30": 116.1031,
+        "Micro_S47": 11.5223,
+        "Macro_S18": 56.0349
+      }
+    },
+    {
+      "id": 144,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9957,
+        "NORMAL": 0.0003,
+        "NSR": 0.0039,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9918,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.1349,
+        "Macro_S35": 68.7037,
+        "Macro_S30": 124.4806,
+        "Micro_S47": 9.4699,
+        "Macro_S18": 62.5227
+      }
+    },
+    {
+      "id": 145,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0058,
+        "NSR": 0.0001,
+        "PAC": 0.994
+      },
+      "confidence_gap": 0.9881,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.2773,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 146,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9995,
+        "NORMAL": 0.0001,
+        "NSR": 0.0004,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.4313,
+        "Macro_S35": 66.2275,
+        "Macro_S30": 111.6777,
+        "Micro_S47": 11.1929,
+        "Macro_S18": 60.4412
+      }
+    },
+    {
+      "id": 147,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0018,
+        "NSR": 0.0002,
+        "PAC": 0.9978
+      },
+      "confidence_gap": 0.996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.3993,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 148,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9984,
+        "NORMAL": 0.0001,
+        "NSR": 0.0015,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9969,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.0236,
+        "Macro_S35": 63.5928,
+        "Macro_S30": 108.5606,
+        "Micro_S47": 13.5105,
+        "Macro_S18": 60.2981
+      }
+    },
+    {
+      "id": 149,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0,
+        "NSR": 0.9998,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9997,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 100.3878,
+        "Macro_S35": 61.7946,
+        "Macro_S30": 129.3313,
+        "Micro_S47": 16.1117,
+        "Macro_S18": 38.5313
+      }
+    },
+    {
+      "id": 150,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9926,
+        "NORMAL": 0.0009,
+        "NSR": 0.0063,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9862,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.5361,
+        "Macro_S35": 58.403,
+        "Macro_S30": 116.5523,
+        "Micro_S47": 9.2993,
+        "Macro_S18": 60.1863
+      }
+    },
+    {
+      "id": 151,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.007,
+        "NSR": 0.0002,
+        "PAC": 0.9926
+      },
+      "confidence_gap": 0.9856,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.0106,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 152,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0033,
+        "NSR": 0.9959,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9927,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 101.8982,
+        "Macro_S35": 64.7003,
+        "Macro_S30": 137.3328,
+        "Micro_S47": 16.8104,
+        "Macro_S18": 47.2911
+      }
+    },
+    {
+      "id": 153,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0166,
+        "NSR": 0.0002,
+        "PAC": 0.983
+      },
+      "confidence_gap": 0.9664,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.0135,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 154,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0047,
+        "NORMAL": 0.002,
+        "NSR": 0.9929,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.9881,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.8087,
+        "Macro_S35": 47.585,
+        "Macro_S30": 132.1783,
+        "Micro_S47": 14.8004,
+        "Macro_S18": 33.2242
+      }
+    },
+    {
+      "id": 155,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9993,
+        "NORMAL": 0.0002,
+        "NSR": 0.0002,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.9989,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 79.9642,
+        "Macro_S35": 72.3511,
+        "Macro_S30": 89.8246,
+        "Micro_S47": 19.2754,
+        "Macro_S18": 70.7887
+      }
+    },
+    {
+      "id": 156,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9995,
+        "NORMAL": 0.0,
+        "NSR": 0.0004,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9991,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.6596,
+        "Macro_S35": 67.9546,
+        "Macro_S30": 114.8946,
+        "Micro_S47": 14.5642,
+        "Macro_S18": 58.8006
+      }
+    },
+    {
+      "id": 157,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9715,
+        "NORMAL": 0.0063,
+        "NSR": 0.0216,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.9499,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.0047,
+        "Macro_S35": 63.0095,
+        "Macro_S30": 123.7491,
+        "Micro_S47": 10.5676,
+        "Macro_S18": 46.8217
+      }
+    },
+    {
+      "id": 158,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9965,
+        "NSR": 0.0002,
+        "PAC": 0.0031
+      },
+      "confidence_gap": 0.9934,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.797,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 159,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9988,
+        "NSR": 0.0001,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.9978,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 11.833,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 160,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9977,
+        "NSR": 0.0002,
+        "PAC": 0.002
+      },
+      "confidence_gap": 0.9957,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.9574,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 161,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0375,
+        "NORMAL": 0.0042,
+        "NSR": 0.9573,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.9198,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 84.9135,
+        "Macro_S35": 64.4522,
+        "Macro_S30": 106.3756,
+        "Micro_S47": 16.6503,
+        "Macro_S18": 55.9763
+      }
+    },
+    {
+      "id": 162,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0,
+        "NSR": 0.9999,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9997,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.0203,
+        "Macro_S35": 48.9414,
+        "Macro_S30": 120.3914,
+        "Micro_S47": 16.0945,
+        "Macro_S18": 42.7486
+      }
+    },
+    {
+      "id": 163,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9998,
+        "NORMAL": 0.0,
+        "NSR": 0.0002,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 88.9908,
+        "Macro_S35": 66.571,
+        "Macro_S30": 117.6194,
+        "Micro_S47": 9.4448,
+        "Macro_S18": 49.5236
+      }
+    },
+    {
+      "id": 164,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.3768,
+        "NORMAL": 0.0045,
+        "NSR": 0.6176,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.2408,
+      "alerta_baja_confianza": true,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.0687,
+        "Macro_S35": 59.0414,
+        "Macro_S30": 113.6733,
+        "Micro_S47": 14.7182,
+        "Macro_S18": 49.4393
+      }
+    },
+    {
+      "id": 165,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0001,
+        "NSR": 0.9995,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9993,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 98.7312,
+        "Macro_S35": 54.5804,
+        "Macro_S30": 123.5247,
+        "Micro_S47": 14.9212,
+        "Macro_S18": 29.4873
+      }
+    },
+    {
+      "id": 166,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0066,
+        "NSR": 0.0003,
+        "PAC": 0.9928
+      },
+      "confidence_gap": 0.9861,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.5643,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 167,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0018,
+        "NORMAL": 0.0636,
+        "NSR": 0.0014,
+        "PAC": 0.9332
+      },
+      "confidence_gap": 0.8696,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.7342,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 168,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.0068,
+        "NSR": 0.0004,
+        "PAC": 0.992
+      },
+      "confidence_gap": 0.9852,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 24.0661,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 169,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0,
+        "NSR": 0.9994,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.4938,
+        "Macro_S35": 48.6297,
+        "Macro_S30": 124.9312,
+        "Micro_S47": 16.0061,
+        "Macro_S18": 44.8056
+      }
+    },
+    {
+      "id": 170,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0007,
+        "NSR": 0.0005,
+        "PAC": 0.9987
+      },
+      "confidence_gap": 0.998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.0721,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 171,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9994,
+        "NSR": 0.0001,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 9.1743,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 172,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0,
+        "NSR": 0.9999,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 100.2981,
+        "Macro_S35": 60.6776,
+        "Macro_S30": 138.9075,
+        "Micro_S47": 17.3459,
+        "Macro_S18": 47.4481
+      }
+    },
+    {
+      "id": 173,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9989,
+        "NSR": 0.0001,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.9979,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.1204,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 174,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.8893,
+        "NORMAL": 0.0001,
+        "NSR": 0.1105,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.7787,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.5041,
+        "Macro_S35": 60.4771,
+        "Macro_S30": 118.0687,
+        "Micro_S47": 16.8585,
+        "Macro_S18": 65.7156
+      }
+    },
+    {
+      "id": 175,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0089,
+        "NORMAL": 0.0002,
+        "NSR": 0.9909,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.982,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.6859,
+        "Macro_S35": 62.5359,
+        "Macro_S30": 112.2603,
+        "Micro_S47": 17.0408,
+        "Macro_S18": 69.0597
+      }
+    },
+    {
+      "id": 176,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.1608,
+        "NSR": 0.0003,
+        "PAC": 0.8385
+      },
+      "confidence_gap": 0.6777,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.1103,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 177,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0027,
+        "NORMAL": 0.0001,
+        "NSR": 0.9971,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9945,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.8182,
+        "Macro_S35": 63.2229,
+        "Macro_S30": 111.8192,
+        "Micro_S47": 13.6713,
+        "Macro_S18": 55.403
+      }
+    },
+    {
+      "id": 178,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0012,
+        "NORMAL": 0.0002,
+        "NSR": 0.9985,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9973,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 102.5756,
+        "Macro_S35": 50.0065,
+        "Macro_S30": 121.8993,
+        "Micro_S47": 17.043,
+        "Macro_S18": 74.6005
+      }
+    },
+    {
+      "id": 179,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9989,
+        "NORMAL": 0.0001,
+        "NSR": 0.0009,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.4343,
+        "Macro_S35": 64.3898,
+        "Macro_S30": 78.9182,
+        "Micro_S47": 16.7925,
+        "Macro_S18": 71.8095
+      }
+    },
+    {
+      "id": 180,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0001,
+        "NSR": 0.9993,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9987,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.2472,
+        "Macro_S35": 59.0664,
+        "Macro_S30": 117.9264,
+        "Micro_S47": 15.3832,
+        "Macro_S18": 46.2383
+      }
+    },
+    {
+      "id": 181,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0035,
+        "NSR": 0.0002,
+        "PAC": 0.996
+      },
+      "confidence_gap": 0.9925,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 25.1614,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 182,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9974,
+        "NSR": 0.0001,
+        "PAC": 0.0023
+      },
+      "confidence_gap": 0.9951,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.5875,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 183,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9957,
+        "NORMAL": 0.0002,
+        "NSR": 0.004,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9918,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.9514,
+        "Macro_S35": 62.4534,
+        "Macro_S30": 123.1744,
+        "Micro_S47": 10.4894,
+        "Macro_S18": 57.5313
+      }
+    },
+    {
+      "id": 184,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0195,
+        "NSR": 0.0003,
+        "PAC": 0.9798
+      },
+      "confidence_gap": 0.9602,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.3135,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 185,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9988,
+        "NSR": 0.0001,
+        "PAC": 0.0011
+      },
+      "confidence_gap": 0.9976,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.2353,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 186,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.4198,
+        "NORMAL": 0.0004,
+        "NSR": 0.5796,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.1598,
+      "alerta_baja_confianza": true,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.9563,
+        "Macro_S35": 77.0783,
+        "Macro_S30": 106.9501,
+        "Micro_S47": 16.364,
+        "Macro_S18": 60.3846
+      }
+    },
+    {
+      "id": 187,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0073,
+        "NSR": 0.0003,
+        "PAC": 0.9918
+      },
+      "confidence_gap": 0.9845,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.8036,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 188,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9993,
+        "NORMAL": 0.0,
+        "NSR": 0.0007,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 88.6554,
+        "Macro_S35": 64.318,
+        "Macro_S30": 118.6649,
+        "Micro_S47": 16.3172,
+        "Macro_S18": 64.3777
+      }
+    },
+    {
+      "id": 189,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9978,
+        "NORMAL": 0.0001,
+        "NSR": 0.0021,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9958,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.3183,
+        "Macro_S35": 65.732,
+        "Macro_S30": 120.969,
+        "Micro_S47": 13.6112,
+        "Macro_S18": 51.5728
+      }
+    },
+    {
+      "id": 190,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0045,
+        "NSR": 0.0001,
+        "PAC": 0.9952
+      },
+      "confidence_gap": 0.9907,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.342,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 191,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9954,
+        "NORMAL": 0.0001,
+        "NSR": 0.0044,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9911,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 83.4059,
+        "Macro_S35": 64.8291,
+        "Macro_S30": 95.2565,
+        "Micro_S47": 16.3011,
+        "Macro_S18": 64.7843
+      }
+    },
+    {
+      "id": 192,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0,
+        "NSR": 0.9997,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.7335,
+        "Macro_S35": 46.432,
+        "Macro_S30": 120.5082,
+        "Micro_S47": 16.017,
+        "Macro_S18": 40.9137
+      }
+    },
+    {
+      "id": 193,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0009,
+        "NORMAL": 0.0377,
+        "NSR": 0.0005,
+        "PAC": 0.9609
+      },
+      "confidence_gap": 0.9232,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.9756,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 194,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0001,
+        "NSR": 0.9998,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.7608,
+        "Macro_S35": 58.0156,
+        "Macro_S30": 125.8972,
+        "Micro_S47": 15.5153,
+        "Macro_S18": 24.4979
+      }
+    },
+    {
+      "id": 195,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0001,
+        "NSR": 0.9996,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9993,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.5699,
+        "Macro_S35": 62.7962,
+        "Macro_S30": 123.0333,
+        "Micro_S47": 16.1532,
+        "Macro_S18": 47.7281
+      }
+    },
+    {
+      "id": 196,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0001,
+        "NSR": 0.9994,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9988,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 98.6802,
+        "Macro_S35": 63.324,
+        "Macro_S30": 113.724,
+        "Micro_S47": 17.3478,
+        "Macro_S18": 43.691
+      }
+    },
+    {
+      "id": 197,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0001,
+        "NSR": 0.0004,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 84.5287,
+        "Macro_S35": 66.5529,
+        "Macro_S30": 110.4569,
+        "Micro_S47": 16.5943,
+        "Macro_S18": 77.2545
+      }
+    },
+    {
+      "id": 198,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0011,
+        "NORMAL": 0.0785,
+        "NSR": 0.0009,
+        "PAC": 0.9196
+      },
+      "confidence_gap": 0.8411,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.2473,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 199,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.0001,
+        "NSR": 0.9992,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.5321,
+        "Macro_S35": 53.7298,
+        "Macro_S30": 124.7452,
+        "Micro_S47": 15.7437,
+        "Macro_S18": 32.8397
+      }
+    },
+    {
+      "id": 200,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.0001,
+        "NSR": 0.9989,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9979,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.9745,
+        "Macro_S35": 52.3114,
+        "Macro_S30": 118.7186,
+        "Micro_S47": 13.9928,
+        "Macro_S18": 33.9826
+      }
+    },
+    {
+      "id": 201,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.0005,
+        "NSR": 0.0,
+        "PAC": 0.9995
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 24.9008,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 202,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0018,
+        "NORMAL": 0.0354,
+        "NSR": 0.001,
+        "PAC": 0.9618
+      },
+      "confidence_gap": 0.9263,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.3684,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 203,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9961,
+        "NSR": 0.0002,
+        "PAC": 0.0034
+      },
+      "confidence_gap": 0.9927,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 11.5462,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 204,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9961,
+        "NORMAL": 0.0003,
+        "NSR": 0.0035,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9926,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.9033,
+        "Macro_S35": 66.2287,
+        "Macro_S30": 124.2038,
+        "Micro_S47": 8.438,
+        "Macro_S18": 49.6623
+      }
+    },
+    {
+      "id": 205,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0001,
+        "NSR": 0.0002,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.9992,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.3653,
+        "Macro_S35": 67.0374,
+        "Macro_S30": 71.1904,
+        "Micro_S47": 22.9393,
+        "Macro_S18": 83.8363
+      }
+    },
+    {
+      "id": 206,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.7071,
+        "NORMAL": 0.0035,
+        "NSR": 0.2886,
+        "PAC": 0.0008
+      },
+      "confidence_gap": 0.4185,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 83.7882,
+        "Macro_S35": 61.6564,
+        "Macro_S30": 117.6982,
+        "Micro_S47": 15.476,
+        "Macro_S18": 50.9952
+      }
+    },
+    {
+      "id": 207,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0001,
+        "NSR": 0.9994,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.948,
+        "Macro_S35": 55.7737,
+        "Macro_S30": 118.2383,
+        "Micro_S47": 14.1078,
+        "Macro_S18": 41.2224
+      }
+    },
+    {
+      "id": 208,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0002,
+        "NSR": 0.9994,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 98.5934,
+        "Macro_S35": 61.9689,
+        "Macro_S30": 132.9998,
+        "Micro_S47": 13.4399,
+        "Macro_S18": 26.3803
+      }
+    },
+    {
+      "id": 209,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.001,
+        "NORMAL": 0.0001,
+        "NSR": 0.9989,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9979,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.8326,
+        "Macro_S35": 59.3186,
+        "Macro_S30": 119.2444,
+        "Micro_S47": 17.0555,
+        "Macro_S18": 57.4618
+      }
+    },
+    {
+      "id": 210,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0037,
+        "NORMAL": 0.5601,
+        "NSR": 0.0038,
+        "PAC": 0.4324
+      },
+      "confidence_gap": 0.1277,
+      "alerta_baja_confianza": true,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 14.5858,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 211,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0001,
+        "NSR": 0.9993,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.3276,
+        "Macro_S35": 55.2007,
+        "Macro_S30": 116.8324,
+        "Micro_S47": 14.5491,
+        "Macro_S18": 37.6922
+      }
+    },
+    {
+      "id": 212,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9987,
+        "NSR": 0.0001,
+        "PAC": 0.0011
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 16.3799,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 213,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9991,
+        "NORMAL": 0.0002,
+        "NSR": 0.0006,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.6434,
+        "Macro_S35": 63.5003,
+        "Macro_S30": 122.6732,
+        "Micro_S47": 16.1978,
+        "Macro_S18": 64.7128
+      }
+    },
+    {
+      "id": 214,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0063,
+        "NSR": 0.0001,
+        "PAC": 0.9935
+      },
+      "confidence_gap": 0.9872,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.5381,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 215,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0001,
+        "NSR": 0.9995,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9992,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 98.2916,
+        "Macro_S35": 53.2959,
+        "Macro_S30": 129.2023,
+        "Micro_S47": 15.4577,
+        "Macro_S18": 33.8586
+      }
+    },
+    {
+      "id": 216,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.966,
+        "NSR": 0.0005,
+        "PAC": 0.033
+      },
+      "confidence_gap": 0.933,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 13.0188,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 217,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0011,
+        "NORMAL": 0.0064,
+        "NSR": 0.0006,
+        "PAC": 0.9919
+      },
+      "confidence_gap": 0.9854,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 27.5986,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 218,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0001,
+        "NSR": 0.9998,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9997,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.4926,
+        "Macro_S35": 58.9195,
+        "Macro_S30": 120.1661,
+        "Micro_S47": 16.9339,
+        "Macro_S18": 42.5346
+      }
+    },
+    {
+      "id": 219,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0062,
+        "NSR": 0.0002,
+        "PAC": 0.9935
+      },
+      "confidence_gap": 0.9873,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 25.1173,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 220,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0368,
+        "NSR": 0.0003,
+        "PAC": 0.9626
+      },
+      "confidence_gap": 0.9258,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.8605,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 221,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9769,
+        "NORMAL": 0.0004,
+        "NSR": 0.0066,
+        "PAC": 0.0161
+      },
+      "confidence_gap": 0.9608,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.5818,
+        "Macro_S35": 68.9749,
+        "Macro_S30": 110.5184,
+        "Micro_S47": 16.1185,
+        "Macro_S18": 59.55
+      }
+    },
+    {
+      "id": 222,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0049,
+        "NSR": 0.0002,
+        "PAC": 0.9945
+      },
+      "confidence_gap": 0.9896,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.4086,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 223,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.993,
+        "NORMAL": 0.0004,
+        "NSR": 0.0066,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9864,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.2346,
+        "Macro_S35": 58.661,
+        "Macro_S30": 110.6592,
+        "Micro_S47": 13.397,
+        "Macro_S18": 54.3893
+      }
+    },
+    {
+      "id": 224,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0001,
+        "NSR": 0.9998,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 101.4088,
+        "Macro_S35": 63.1401,
+        "Macro_S30": 132.6306,
+        "Micro_S47": 15.0005,
+        "Macro_S18": 36.6338
+      }
+    },
+    {
+      "id": 225,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0011,
+        "NSR": 0.0001,
+        "PAC": 0.9987
+      },
+      "confidence_gap": 0.9976,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.3739,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 226,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0024,
+        "NORMAL": 0.0001,
+        "NSR": 0.9974,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.5776,
+        "Macro_S35": 51.9251,
+        "Macro_S30": 135.0451,
+        "Micro_S47": 15.9862,
+        "Macro_S18": 42.6555
+      }
+    },
+    {
+      "id": 227,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0088,
+        "NORMAL": 0.0001,
+        "NSR": 0.991,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9822,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.6987,
+        "Macro_S35": 55.6321,
+        "Macro_S30": 128.3566,
+        "Micro_S47": 14.272,
+        "Macro_S18": 40.4135
+      }
+    },
+    {
+      "id": 228,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0198,
+        "NORMAL": 0.0004,
+        "NSR": 0.9796,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9598,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.4192,
+        "Macro_S35": 64.627,
+        "Macro_S30": 113.618,
+        "Micro_S47": 17.0231,
+        "Macro_S18": 62.4639
+      }
+    },
+    {
+      "id": 229,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0086,
+        "NORMAL": 0.0,
+        "NSR": 0.9913,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9827,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.0044,
+        "Macro_S35": 61.2046,
+        "Macro_S30": 128.3643,
+        "Micro_S47": 15.095,
+        "Macro_S18": 36.3243
+      }
+    },
+    {
+      "id": 230,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0018,
+        "NSR": 0.0009,
+        "PAC": 0.9971
+      },
+      "confidence_gap": 0.9954,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.9498,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 231,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0,
+        "NSR": 0.9994,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9988,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.3288,
+        "Macro_S35": 50.9458,
+        "Macro_S30": 131.2797,
+        "Micro_S47": 16.0232,
+        "Macro_S18": 27.3667
+      }
+    },
+    {
+      "id": 232,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9965,
+        "NSR": 0.0001,
+        "PAC": 0.0033
+      },
+      "confidence_gap": 0.9932,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.1028,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 233,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.997,
+        "NORMAL": 0.0001,
+        "NSR": 0.0029,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9941,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 79.7315,
+        "Macro_S35": 67.7792,
+        "Macro_S30": 102.3897,
+        "Micro_S47": 19.143,
+        "Macro_S18": 76.2577
+      }
+    },
+    {
+      "id": 234,
+      "clase_real": "PAC",
+      "clase_predicha": "NORMAL",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9986,
+        "NSR": 0.0001,
+        "PAC": 0.0011
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 13.4273,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 235,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.9892,
+        "NSR": 0.0002,
+        "PAC": 0.0101
+      },
+      "confidence_gap": 0.979,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 16.9537,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 236,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9982,
+        "NORMAL": 0.0001,
+        "NSR": 0.0017,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9964,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.2564,
+        "Macro_S35": 66.4394,
+        "Macro_S30": 112.6888,
+        "Micro_S47": 12.491,
+        "Macro_S18": 52.5031
+      }
+    },
+    {
+      "id": 237,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0036,
+        "NORMAL": 0.0004,
+        "NSR": 0.9958,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9922,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 99.5484,
+        "Macro_S35": 53.0925,
+        "Macro_S30": 120.2054,
+        "Micro_S47": 15.7996,
+        "Macro_S18": 32.4105
+      }
+    },
+    {
+      "id": 238,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0001,
+        "NSR": 0.9995,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9992,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.0662,
+        "Macro_S35": 50.3941,
+        "Macro_S30": 120.7925,
+        "Micro_S47": 14.3842,
+        "Macro_S18": 32.3749
+      }
+    },
+    {
+      "id": 239,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0042,
+        "NSR": 0.0004,
+        "PAC": 0.9946
+      },
+      "confidence_gap": 0.9905,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 32.7065,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 240,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0193,
+        "NSR": 0.0001,
+        "PAC": 0.9804
+      },
+      "confidence_gap": 0.961,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.673,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 241,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0017,
+        "NORMAL": 0.0018,
+        "NSR": 0.996,
+        "PAC": 0.0005
+      },
+      "confidence_gap": 0.9942,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 100.2628,
+        "Macro_S35": 52.9985,
+        "Macro_S30": 131.3242,
+        "Micro_S47": 15.2789,
+        "Macro_S18": 27.7451
+      }
+    },
+    {
+      "id": 242,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0,
+        "NSR": 0.9999,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 97.8626,
+        "Macro_S35": 50.7848,
+        "Macro_S30": 133.1121,
+        "Micro_S47": 16.5807,
+        "Macro_S18": 44.0354
+      }
+    },
+    {
+      "id": 243,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0067,
+        "NSR": 0.0005,
+        "PAC": 0.992
+      },
+      "confidence_gap": 0.9854,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 33.0744,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 244,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9825,
+        "NORMAL": 0.0002,
+        "NSR": 0.0163,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.9662,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.7513,
+        "Macro_S35": 69.3205,
+        "Macro_S30": 123.979,
+        "Micro_S47": 18.328,
+        "Macro_S18": 67.4977
+      }
+    },
+    {
+      "id": 245,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0001,
+        "NSR": 0.0005,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9989,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.0782,
+        "Macro_S35": 63.7584,
+        "Macro_S30": 117.8488,
+        "Micro_S47": 14.1543,
+        "Macro_S18": 59.9682
+      }
+    },
+    {
+      "id": 246,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.997,
+        "NORMAL": 0.0002,
+        "NSR": 0.0014,
+        "PAC": 0.0014
+      },
+      "confidence_gap": 0.9955,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.0216,
+        "Macro_S35": 80.9765,
+        "Macro_S30": 89.084,
+        "Micro_S47": 27.214,
+        "Macro_S18": 93.1925
+      }
+    },
+    {
+      "id": 247,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.002,
+        "NORMAL": 0.1043,
+        "NSR": 0.0015,
+        "PAC": 0.8923
+      },
+      "confidence_gap": 0.788,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 14.9102,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 248,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9927,
+        "NORMAL": 0.0004,
+        "NSR": 0.0067,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.3667,
+        "Macro_S35": 58.9057,
+        "Macro_S30": 112.1203,
+        "Micro_S47": 11.3298,
+        "Macro_S18": 56.0288
+      }
+    },
+    {
+      "id": 249,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0,
+        "NSR": 0.9994,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9988,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.8184,
+        "Macro_S35": 61.001,
+        "Macro_S30": 126.9721,
+        "Micro_S47": 16.0181,
+        "Macro_S18": 38.4035
+      }
+    },
+    {
+      "id": 250,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.3281,
+        "NORMAL": 0.0041,
+        "NSR": 0.6672,
+        "PAC": 0.0006
+      },
+      "confidence_gap": 0.3391,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.2226,
+        "Macro_S35": 50.4446,
+        "Macro_S30": 127.4227,
+        "Micro_S47": 13.1965,
+        "Macro_S18": 55.6682
+      }
+    },
+    {
+      "id": 251,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.4413,
+        "NSR": 0.0006,
+        "PAC": 0.5575
+      },
+      "confidence_gap": 0.1162,
+      "alerta_baja_confianza": true,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.594,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 252,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0,
+        "NSR": 0.9998,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.2097,
+        "Macro_S35": 42.9139,
+        "Macro_S30": 119.1784,
+        "Micro_S47": 15.6687,
+        "Macro_S18": 53.1856
+      }
+    },
+    {
+      "id": 253,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0023,
+        "NORMAL": 0.0002,
+        "NSR": 0.9974,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.0986,
+        "Macro_S35": 64.3892,
+        "Macro_S30": 128.1669,
+        "Micro_S47": 16.8499,
+        "Macro_S18": 39.5969
+      }
+    },
+    {
+      "id": 254,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0002,
+        "NSR": 0.0002,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9992,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 83.6545,
+        "Macro_S35": 70.9412,
+        "Macro_S30": 85.0496,
+        "Micro_S47": 17.9512,
+        "Macro_S18": 75.5472
+      }
+    },
+    {
+      "id": 255,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0038,
+        "NSR": 0.0003,
+        "PAC": 0.9956
+      },
+      "confidence_gap": 0.9918,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 28.7741,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 256,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0018,
+        "NSR": 0.0002,
+        "PAC": 0.9979
+      },
+      "confidence_gap": 0.9961,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 24.0301,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 257,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0012,
+        "NORMAL": 0.0058,
+        "NSR": 0.0059,
+        "PAC": 0.987
+      },
+      "confidence_gap": 0.9811,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.7624,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 258,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0001,
+        "NSR": 0.0005,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9989,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.2271,
+        "Macro_S35": 61.6493,
+        "Macro_S30": 114.841,
+        "Micro_S47": 10.3574,
+        "Macro_S18": 56.464
+      }
+    },
+    {
+      "id": 259,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.9998,
+        "NSR": 0.0,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.9996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.2372,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 260,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.0003,
+        "NSR": 0.0001,
+        "PAC": 0.9996
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.0658,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 261,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0,
+        "NSR": 0.9997,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.1019,
+        "Macro_S35": 54.7086,
+        "Macro_S30": 114.412,
+        "Micro_S47": 15.6171,
+        "Macro_S18": 30.0005
+      }
+    },
+    {
+      "id": 262,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9991,
+        "NORMAL": 0.0003,
+        "NSR": 0.0005,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.3819,
+        "Macro_S35": 73.1063,
+        "Macro_S30": 112.9166,
+        "Micro_S47": 20.7714,
+        "Macro_S18": 79.6776
+      }
+    },
+    {
+      "id": 263,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0356,
+        "NSR": 0.0003,
+        "PAC": 0.9635
+      },
+      "confidence_gap": 0.9279,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.2802,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 264,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9977,
+        "NORMAL": 0.0002,
+        "NSR": 0.002,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9957,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.4967,
+        "Macro_S35": 70.4419,
+        "Macro_S30": 119.7667,
+        "Micro_S47": 14.9073,
+        "Macro_S18": 52.1981
+      }
+    },
+    {
+      "id": 265,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0151,
+        "NSR": 0.0001,
+        "PAC": 0.9847
+      },
+      "confidence_gap": 0.9695,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.072,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 266,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.0001,
+        "NSR": 0.9992,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.2438,
+        "Macro_S35": 53.983,
+        "Macro_S30": 124.6295,
+        "Micro_S47": 14.4515,
+        "Macro_S18": 29.1756
+      }
+    },
+    {
+      "id": 267,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0032,
+        "NORMAL": 0.0001,
+        "NSR": 0.9967,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9935,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.1241,
+        "Macro_S35": 45.0858,
+        "Macro_S30": 126.3664,
+        "Micro_S47": 16.084,
+        "Macro_S18": 63.2965
+      }
+    },
+    {
+      "id": 268,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0004,
+        "NSR": 0.0001,
+        "PAC": 0.9994
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.3577,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 269,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9988,
+        "NSR": 0.0001,
+        "PAC": 0.001
+      },
+      "confidence_gap": 0.9978,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.0105,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 270,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.0016,
+        "NSR": 0.0,
+        "PAC": 0.9983
+      },
+      "confidence_gap": 0.9966,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.9091,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 271,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.2715,
+        "NSR": 0.0007,
+        "PAC": 0.7269
+      },
+      "confidence_gap": 0.4554,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.9492,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 272,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0517,
+        "NSR": 0.0001,
+        "PAC": 0.948
+      },
+      "confidence_gap": 0.8964,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 23.0607,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 273,
+      "clase_real": "NSR",
+      "clase_predicha": "AFIB",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.6441,
+        "NORMAL": 0.0012,
+        "NSR": 0.3545,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.2896,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 92.9104,
+        "Macro_S35": 57.2778,
+        "Macro_S30": 124.0739,
+        "Micro_S47": 13.7671,
+        "Macro_S18": 56.2783
+      }
+    },
+    {
+      "id": 274,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.0006,
+        "NSR": 0.0,
+        "PAC": 0.9993
+      },
+      "confidence_gap": 0.9986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 25.9706,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 275,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0018,
+        "NSR": 0.0001,
+        "PAC": 0.9978
+      },
+      "confidence_gap": 0.996,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.5043,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 276,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0002,
+        "NSR": 0.9997,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 101.6765,
+        "Macro_S35": 54.5087,
+        "Macro_S30": 126.5722,
+        "Micro_S47": 15.0653,
+        "Macro_S18": 28.2245
+      }
+    },
+    {
+      "id": 277,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.005,
+        "NSR": 0.0001,
+        "PAC": 0.9948
+      },
+      "confidence_gap": 0.9898,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 25.535,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 278,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0074,
+        "NSR": 0.0001,
+        "PAC": 0.9923
+      },
+      "confidence_gap": 0.9849,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.9509,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 279,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0005,
+        "NORMAL": 0.0124,
+        "NSR": 0.0006,
+        "PAC": 0.9865
+      },
+      "confidence_gap": 0.9741,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 25.3263,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 280,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9997,
+        "NORMAL": 0.0,
+        "NSR": 0.0003,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 80.0341,
+        "Macro_S35": 69.8037,
+        "Macro_S30": 101.0294,
+        "Micro_S47": 18.5013,
+        "Macro_S18": 73.5557
+      }
+    },
+    {
+      "id": 281,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.115,
+        "NSR": 0.0003,
+        "PAC": 0.8845
+      },
+      "confidence_gap": 0.7695,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.3513,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 282,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9456,
+        "NORMAL": 0.0007,
+        "NSR": 0.0535,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.8921,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 89.3003,
+        "Macro_S35": 58.7759,
+        "Macro_S30": 121.874,
+        "Micro_S47": 11.7195,
+        "Macro_S18": 52.9737
+      }
+    },
+    {
+      "id": 283,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0099,
+        "NSR": 0.0005,
+        "PAC": 0.9888
+      },
+      "confidence_gap": 0.9789,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 28.6936,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 284,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0001,
+        "NSR": 0.9995,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9991,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.7721,
+        "Macro_S35": 57.1189,
+        "Macro_S30": 123.9946,
+        "Micro_S47": 16.5524,
+        "Macro_S18": 50.6635
+      }
+    },
+    {
+      "id": 285,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0001,
+        "NSR": 0.9996,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9993,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.3791,
+        "Macro_S35": 57.1341,
+        "Macro_S30": 111.4133,
+        "Micro_S47": 15.1922,
+        "Macro_S18": 43.7781
+      }
+    },
+    {
+      "id": 286,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.1556,
+        "NSR": 0.0004,
+        "PAC": 0.8434
+      },
+      "confidence_gap": 0.6879,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.3751,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 287,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9997,
+        "NORMAL": 0.0001,
+        "NSR": 0.0002,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.0371,
+        "Macro_S35": 65.4631,
+        "Macro_S30": 113.2381,
+        "Micro_S47": 11.1219,
+        "Macro_S18": 59.7324
+      }
+    },
+    {
+      "id": 288,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9977,
+        "NSR": 0.0001,
+        "PAC": 0.0021
+      },
+      "confidence_gap": 0.9956,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.5819,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 289,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9991,
+        "NORMAL": 0.0001,
+        "NSR": 0.0007,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 88.4855,
+        "Macro_S35": 58.7859,
+        "Macro_S30": 104.3781,
+        "Micro_S47": 15.2894,
+        "Macro_S18": 62.2077
+      }
+    },
+    {
+      "id": 290,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9983,
+        "NSR": 0.0002,
+        "PAC": 0.0012
+      },
+      "confidence_gap": 0.9971,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 10.3085,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 291,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9751,
+        "NSR": 0.0001,
+        "PAC": 0.0246
+      },
+      "confidence_gap": 0.9506,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 16.8841,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 292,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9989,
+        "NSR": 0.0001,
+        "PAC": 0.0009
+      },
+      "confidence_gap": 0.998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.2346,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 293,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9963,
+        "NSR": 0.0002,
+        "PAC": 0.0034
+      },
+      "confidence_gap": 0.9929,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.8235,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 294,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9901,
+        "NSR": 0.0002,
+        "PAC": 0.0094
+      },
+      "confidence_gap": 0.9807,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 17.935,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 295,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9885,
+        "NSR": 0.0001,
+        "PAC": 0.0112
+      },
+      "confidence_gap": 0.9773,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.353,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 296,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0003,
+        "NSR": 0.9991,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9984,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 97.862,
+        "Macro_S35": 55.8586,
+        "Macro_S30": 130.6481,
+        "Micro_S47": 14.7146,
+        "Macro_S18": 26.7533
+      }
+    },
+    {
+      "id": 297,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0048,
+        "NSR": 0.0004,
+        "PAC": 0.994
+      },
+      "confidence_gap": 0.9892,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 25.9493,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 298,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0017,
+        "NSR": 0.0002,
+        "PAC": 0.998
+      },
+      "confidence_gap": 0.9963,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 28.2534,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 299,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.9979,
+        "NSR": 0.0004,
+        "PAC": 0.0011
+      },
+      "confidence_gap": 0.9968,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.6945,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 300,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9952,
+        "NORMAL": 0.0004,
+        "NSR": 0.0043,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9909,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.5263,
+        "Macro_S35": 66.8197,
+        "Macro_S30": 116.3341,
+        "Micro_S47": 8.5607,
+        "Macro_S18": 53.7827
+      }
+    },
+    {
+      "id": 301,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0099,
+        "NORMAL": 0.0006,
+        "NSR": 0.9892,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.9794,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.8313,
+        "Macro_S35": 55.8357,
+        "Macro_S30": 114.3278,
+        "Micro_S47": 16.0004,
+        "Macro_S18": 61.936
+      }
+    },
+    {
+      "id": 302,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.998,
+        "NSR": 0.0002,
+        "PAC": 0.0016
+      },
+      "confidence_gap": 0.9964,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 9.5935,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 303,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0007,
+        "NSR": 0.0001,
+        "PAC": 0.9991
+      },
+      "confidence_gap": 0.9984,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 25.4804,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 304,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0008,
+        "NORMAL": 0.0001,
+        "NSR": 0.9991,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9983,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.6755,
+        "Macro_S35": 56.8409,
+        "Macro_S30": 123.304,
+        "Micro_S47": 14.0068,
+        "Macro_S18": 31.2241
+      }
+    },
+    {
+      "id": 305,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.9975,
+        "NSR": 0.0003,
+        "PAC": 0.0016
+      },
+      "confidence_gap": 0.9959,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 9.9023,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 306,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9996,
+        "NORMAL": 0.0001,
+        "NSR": 0.0002,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9993,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.6479,
+        "Macro_S35": 69.1778,
+        "Macro_S30": 104.4593,
+        "Micro_S47": 17.2685,
+        "Macro_S18": 73.3199
+      }
+    },
+    {
+      "id": 307,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9992,
+        "NSR": 0.0001,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.8839,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 308,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.995,
+        "NORMAL": 0.0002,
+        "NSR": 0.0047,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9902,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 88.8262,
+        "Macro_S35": 63.9121,
+        "Macro_S30": 123.3979,
+        "Micro_S47": 15.7045,
+        "Macro_S18": 65.5171
+      }
+    },
+    {
+      "id": 309,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.1544,
+        "NSR": 0.0002,
+        "PAC": 0.845
+      },
+      "confidence_gap": 0.6906,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.62,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 310,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9992,
+        "NORMAL": 0.0,
+        "NSR": 0.0007,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 82.052,
+        "Macro_S35": 62.8716,
+        "Macro_S30": 113.4868,
+        "Micro_S47": 15.2602,
+        "Macro_S18": 62.6594
+      }
+    },
+    {
+      "id": 311,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9966,
+        "NORMAL": 0.0003,
+        "NSR": 0.0014,
+        "PAC": 0.0016
+      },
+      "confidence_gap": 0.995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 83.1991,
+        "Macro_S35": 76.9842,
+        "Macro_S30": 109.3322,
+        "Micro_S47": 20.9918,
+        "Macro_S18": 84.9164
+      }
+    },
+    {
+      "id": 312,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0105,
+        "NSR": 0.0005,
+        "PAC": 0.9884
+      },
+      "confidence_gap": 0.9779,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.4976,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 313,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.004,
+        "NORMAL": 0.3817,
+        "NSR": 0.0024,
+        "PAC": 0.6119
+      },
+      "confidence_gap": 0.2302,
+      "alerta_baja_confianza": true,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 18.657,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 314,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.2933,
+        "NORMAL": 0.0203,
+        "NSR": 0.675,
+        "PAC": 0.0113
+      },
+      "confidence_gap": 0.3817,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 101.2248,
+        "Macro_S35": 51.2338,
+        "Macro_S30": 139.5118,
+        "Micro_S47": 13.6457,
+        "Macro_S18": 63.7531
+      }
+    },
+    {
+      "id": 315,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.0001,
+        "NSR": 0.9991,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9984,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 98.8744,
+        "Macro_S35": 42.4179,
+        "Macro_S30": 114.6385,
+        "Micro_S47": 14.8657,
+        "Macro_S18": 56.7466
+      }
+    },
+    {
+      "id": 316,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9952,
+        "NSR": 0.0001,
+        "PAC": 0.0046
+      },
+      "confidence_gap": 0.9906,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.6158,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 317,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9993,
+        "NORMAL": 0.0001,
+        "NSR": 0.0006,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9987,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 80.7773,
+        "Macro_S35": 63.6198,
+        "Macro_S30": 114.4911,
+        "Micro_S47": 15.2002,
+        "Macro_S18": 59.904
+      }
+    },
+    {
+      "id": 318,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.9736,
+        "NSR": 0.0003,
+        "PAC": 0.0258
+      },
+      "confidence_gap": 0.9478,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.558,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 319,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0,
+        "NORMAL": 0.9996,
+        "NSR": 0.0,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.9993,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.6087,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 320,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9977,
+        "NSR": 0.0002,
+        "PAC": 0.002
+      },
+      "confidence_gap": 0.9957,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 16.6695,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 321,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9181,
+        "NORMAL": 0.0002,
+        "NSR": 0.0815,
+        "PAC": 0.0002
+      },
+      "confidence_gap": 0.8366,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 88.3165,
+        "Macro_S35": 64.2816,
+        "Macro_S30": 126.6672,
+        "Micro_S47": 13.5446,
+        "Macro_S18": 58.244
+      }
+    },
+    {
+      "id": 322,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0042,
+        "NORMAL": 0.0002,
+        "NSR": 0.9955,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9913,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.8729,
+        "Macro_S35": 55.533,
+        "Macro_S30": 110.9523,
+        "Micro_S47": 14.2528,
+        "Macro_S18": 64.5401
+      }
+    },
+    {
+      "id": 323,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.7514,
+        "NORMAL": 0.0839,
+        "NSR": 0.1551,
+        "PAC": 0.0096
+      },
+      "confidence_gap": 0.5963,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.4249,
+        "Macro_S35": 61.2246,
+        "Macro_S30": 133.6712,
+        "Micro_S47": 15.6705,
+        "Macro_S18": 57.0138
+      }
+    },
+    {
+      "id": 324,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9995,
+        "NORMAL": 0.0001,
+        "NSR": 0.0004,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9991,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 88.7048,
+        "Macro_S35": 62.5829,
+        "Macro_S30": 117.3676,
+        "Micro_S47": 10.7035,
+        "Macro_S18": 50.3759
+      }
+    },
+    {
+      "id": 325,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0001,
+        "NSR": 0.9995,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9991,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 99.9085,
+        "Macro_S35": 59.1742,
+        "Macro_S30": 121.1257,
+        "Micro_S47": 14.3484,
+        "Macro_S18": 33.3523
+      }
+    },
+    {
+      "id": 326,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0001,
+        "NSR": 0.9997,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 102.0517,
+        "Macro_S35": 58.8364,
+        "Macro_S30": 134.475,
+        "Micro_S47": 15.8921,
+        "Macro_S18": 34.8186
+      }
+    },
+    {
+      "id": 327,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0015,
+        "NSR": 0.0001,
+        "PAC": 0.9982
+      },
+      "confidence_gap": 0.9967,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 27.2851,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 328,
+      "clase_real": "NORMAL",
+      "clase_predicha": "PAC",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.009,
+        "NSR": 0.0001,
+        "PAC": 0.9906
+      },
+      "confidence_gap": 0.9816,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.4511,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 329,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.0167,
+        "NSR": 0.0004,
+        "PAC": 0.9822
+      },
+      "confidence_gap": 0.9655,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 25.8171,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 330,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9869,
+        "NORMAL": 0.0009,
+        "NSR": 0.0119,
+        "PAC": 0.0004
+      },
+      "confidence_gap": 0.975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 86.2432,
+        "Macro_S35": 68.0327,
+        "Macro_S30": 121.2184,
+        "Micro_S47": 12.098,
+        "Macro_S18": 55.3644
+      }
+    },
+    {
+      "id": 331,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9984,
+        "NSR": 0.0001,
+        "PAC": 0.0014
+      },
+      "confidence_gap": 0.997,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 16.2977,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 332,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9993,
+        "NSR": 0.0,
+        "PAC": 0.0006
+      },
+      "confidence_gap": 0.9987,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.0015,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 333,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0016,
+        "NORMAL": 0.0404,
+        "NSR": 0.0008,
+        "PAC": 0.9572
+      },
+      "confidence_gap": 0.9168,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.7926,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 334,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.0013,
+        "NSR": 0.0003,
+        "PAC": 0.9981
+      },
+      "confidence_gap": 0.9968,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 32.2059,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 335,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.999,
+        "NORMAL": 0.0001,
+        "NSR": 0.0002,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.9983,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 81.0356,
+        "Macro_S35": 76.6786,
+        "Macro_S30": 81.0974,
+        "Micro_S47": 19.9702,
+        "Macro_S18": 80.5379
+      }
+    },
+    {
+      "id": 336,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9988,
+        "NORMAL": 0.0001,
+        "NSR": 0.0011,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9977,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 90.6523,
+        "Macro_S35": 68.6667,
+        "Macro_S30": 115.2108,
+        "Micro_S47": 12.9807,
+        "Macro_S18": 50.4938
+      }
+    },
+    {
+      "id": 337,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0354,
+        "NSR": 0.0004,
+        "PAC": 0.9638
+      },
+      "confidence_gap": 0.9284,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 24.611,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 338,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0046,
+        "NORMAL": 0.0001,
+        "NSR": 0.9953,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9906,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.0272,
+        "Macro_S35": 58.5069,
+        "Macro_S30": 115.3823,
+        "Micro_S47": 16.4832,
+        "Macro_S18": 43.5819
+      }
+    },
+    {
+      "id": 339,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0007,
+        "NORMAL": 0.0228,
+        "NSR": 0.0005,
+        "PAC": 0.976
+      },
+      "confidence_gap": 0.9532,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 27.1989,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 340,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9994,
+        "NORMAL": 0.0001,
+        "NSR": 0.0005,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.999,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 95.8325,
+        "Macro_S35": 68.9424,
+        "Macro_S30": 122.2813,
+        "Micro_S47": 11.8563,
+        "Macro_S18": 57.1347
+      }
+    },
+    {
+      "id": 341,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9964,
+        "NSR": 0.0002,
+        "PAC": 0.0032
+      },
+      "confidence_gap": 0.9933,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.7041,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 342,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9986,
+        "NORMAL": 0.0002,
+        "NSR": 0.0011,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 87.6941,
+        "Macro_S35": 63.8358,
+        "Macro_S30": 111.3441,
+        "Micro_S47": 10.3201,
+        "Macro_S18": 52.0302
+      }
+    },
+    {
+      "id": 343,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9934,
+        "NORMAL": 0.0001,
+        "NSR": 0.0064,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.9869,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.9258,
+        "Macro_S35": 57.4118,
+        "Macro_S30": 109.1952,
+        "Micro_S47": 15.0785,
+        "Macro_S18": 57.4168
+      }
+    },
+    {
+      "id": 344,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0009,
+        "NORMAL": 0.9916,
+        "NSR": 0.0004,
+        "PAC": 0.0071
+      },
+      "confidence_gap": 0.9844,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 10.9274,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 345,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0693,
+        "NORMAL": 0.0029,
+        "NSR": 0.9272,
+        "PAC": 0.0007
+      },
+      "confidence_gap": 0.8579,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 93.1069,
+        "Macro_S35": 64.1099,
+        "Macro_S30": 110.9908,
+        "Micro_S47": 15.9283,
+        "Macro_S18": 47.253
+      }
+    },
+    {
+      "id": 346,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0006,
+        "NSR": 0.0001,
+        "PAC": 0.9992
+      },
+      "confidence_gap": 0.9986,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.9182,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 347,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9997,
+        "NORMAL": 0.0001,
+        "NSR": 0.0003,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9994,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 85.3146,
+        "Macro_S35": 66.3243,
+        "Macro_S30": 108.1551,
+        "Micro_S47": 11.527,
+        "Macro_S18": 54.6695
+      }
+    },
+    {
+      "id": 348,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.9283,
+        "NSR": 0.0005,
+        "PAC": 0.0706
+      },
+      "confidence_gap": 0.8578,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.606,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 349,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.9959,
+        "NORMAL": 0.0003,
+        "NSR": 0.0038,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9921,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 84.8399,
+        "Macro_S35": 68.9813,
+        "Macro_S30": 116.455,
+        "Micro_S47": 18.5732,
+        "Macro_S18": 67.7208
+      }
+    },
+    {
+      "id": 350,
+      "clase_real": "AFIB",
+      "clase_predicha": "NSR",
+      "correcto": false,
+      "probabilidades": {
+        "AFIB": 0.022,
+        "NORMAL": 0.0012,
+        "NSR": 0.9763,
+        "PAC": 0.0005
+      },
+      "confidence_gap": 0.9544,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 91.6572,
+        "Macro_S35": 61.8653,
+        "Macro_S30": 100.1281,
+        "Micro_S47": 14.9625,
+        "Macro_S18": 48.2954
+      }
+    },
+    {
+      "id": 351,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9967,
+        "NSR": 0.0002,
+        "PAC": 0.0029
+      },
+      "confidence_gap": 0.9938,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.9084,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 352,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9823,
+        "NSR": 0.0002,
+        "PAC": 0.0173
+      },
+      "confidence_gap": 0.965,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.2602,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 353,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9634,
+        "NSR": 0.0002,
+        "PAC": 0.0363
+      },
+      "confidence_gap": 0.9271,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.4451,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 354,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9986,
+        "NSR": 0.0001,
+        "PAC": 0.0012
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.4143,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 355,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.9981,
+        "NSR": 0.0001,
+        "PAC": 0.0018
+      },
+      "confidence_gap": 0.9962,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.3685,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 356,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0004,
+        "NORMAL": 0.0147,
+        "NSR": 0.0003,
+        "PAC": 0.9846
+      },
+      "confidence_gap": 0.97,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 22.9304,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 357,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9651,
+        "NSR": 0.0002,
+        "PAC": 0.0344
+      },
+      "confidence_gap": 0.9307,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 13.6999,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 358,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0009,
+        "NORMAL": 0.0001,
+        "NSR": 0.9989,
+        "PAC": 0.0001
+      },
+      "confidence_gap": 0.998,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.3498,
+        "Macro_S35": 58.7445,
+        "Macro_S30": 136.2458,
+        "Micro_S47": 16.0194,
+        "Macro_S18": 39.0943
+      }
+    },
+    {
+      "id": 359,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0003,
+        "NORMAL": 0.9917,
+        "NSR": 0.0002,
+        "PAC": 0.0077
+      },
+      "confidence_gap": 0.984,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 16.2978,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 360,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.999,
+        "NORMAL": 0.0001,
+        "NSR": 0.0006,
+        "PAC": 0.0003
+      },
+      "confidence_gap": 0.9985,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 84.0059,
+        "Macro_S35": 80.4206,
+        "Macro_S30": 83.105,
+        "Micro_S47": 23.3997,
+        "Macro_S18": 91.3267
+      }
+    },
+    {
+      "id": 361,
+      "clase_real": "AFIB",
+      "clase_predicha": "AFIB",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.8781,
+        "NORMAL": 0.0218,
+        "NSR": 0.0891,
+        "PAC": 0.011
+      },
+      "confidence_gap": 0.789,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 94.9224,
+        "Macro_S35": 66.7561,
+        "Macro_S30": 128.4314,
+        "Micro_S47": 12.4095,
+        "Macro_S18": 58.6543
+      }
+    },
+    {
+      "id": 362,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0016,
+        "NORMAL": 0.03,
+        "NSR": 0.0009,
+        "PAC": 0.9675
+      },
+      "confidence_gap": 0.9375,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 21.0228,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 363,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0001,
+        "NORMAL": 0.0008,
+        "NSR": 0.0,
+        "PAC": 0.9991
+      },
+      "confidence_gap": 0.9983,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 24.2744,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 364,
+      "clase_real": "NSR",
+      "clase_predicha": "NSR",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0001,
+        "NSR": 0.9997,
+        "PAC": 0.0
+      },
+      "confidence_gap": 0.9995,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 96.3324,
+        "Macro_S35": 57.275,
+        "Macro_S30": 131.893,
+        "Micro_S47": 14.9877,
+        "Macro_S18": 26.5047
+      }
+    },
+    {
+      "id": 365,
+      "clase_real": "NORMAL",
+      "clase_predicha": "NORMAL",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.9941,
+        "NSR": 0.0001,
+        "PAC": 0.0056
+      },
+      "confidence_gap": 0.9884,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 20.363,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 366,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0002,
+        "NORMAL": 0.0011,
+        "NSR": 0.0001,
+        "PAC": 0.9986
+      },
+      "confidence_gap": 0.9975,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 26.7767,
+        "Macro_S18": 205.0869
+      }
+    },
+    {
+      "id": 367,
+      "clase_real": "PAC",
+      "clase_predicha": "PAC",
+      "correcto": true,
+      "probabilidades": {
+        "AFIB": 0.0006,
+        "NORMAL": 0.0094,
+        "NSR": 0.0007,
+        "PAC": 0.9893
+      },
+      "confidence_gap": 0.98,
+      "alerta_baja_confianza": false,
+      "distancias_top5_msm": {
+        "Macro_S26": 205.1512,
+        "Macro_S35": 170.8532,
+        "Macro_S30": 279.0235,
+        "Micro_S47": 19.1789,
+        "Macro_S18": 205.0869
+      }
+    }
+  ]
+}

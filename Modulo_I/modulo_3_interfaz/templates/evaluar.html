@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}Evaluar Señal {{ signal_number }}{% endblock %}
+{% block head %}
+<script src="{{ url_for('static', filename='js/plotly.min.js') }}"></script>
+{% endblock %}
+{% block content %}
+
+<section class="paper">
+    <div class="eyebrow">Señal {{ signal_number }} · Paso 2 de 2</div>
+    <h2>Trazado ECG para evaluación</h2>
+    <p style="color: var(--ink-soft); margin-top: 4px;">
+        Derivación {{ signal.signal_metadata.lead }} ·
+        {{ signal.signal_metadata.sampling_rate_hz }} Hz ·
+        Duración {{ signal.signal_metadata.duration_seconds|int }} s
+    </p>
+</section>
+
+<!-- ECG con tracks BEAT/RHYTHM por segmento + hover clínico -->
+<section class="paper" style="padding: 24px 36px;">
+    <div class="eyebrow">Tira de ritmo · 25 mm/s · 10 mm/mV</div>
+    <h3 style="border: none; padding: 0; margin: 4px 0 14px 0;">
+        Trazado electrocardiográfico (6 segmentos de 10 s)
+    </h3>
+
+    <div id="segments-container"></div>
+
+    <p style="margin-top: 22px; font-size: 12px; color: var(--ink-soft);">
+        <b>Interacción con la señal:</b> pase el mouse sobre el trazado para ver tiempo (s) y voltaje (mV) en cada punto.
+        Bajo cada segmento aparecen las predicciones del clasificador con selector
+        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--verde); vertical-align: middle;"></span> /
+        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--amarillo); vertical-align: middle;"></span> /
+        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--rojo); vertical-align: middle;"></span>.
+        Marque <b>verde</b> si la clasificación es correcta, <b>amarillo</b> si es parcialmente correcta o dudosa,
+        <b>rojo</b> si es incorrecta. La marca <em>!</em> sobre una etiqueta indica que el clasificador
+        ya solicitó escalación por baja confianza.
+    </p>
+</section>
+
+<!-- LLM clinical note con subrayado por marcadores -->
+<section class="paper">
+    <div class="eyebrow">Nota clínica generada por LLM</div>
+    <h3 style="border: none; padding: 0; margin-top: 4px;">Interpretación automática</h3>
+
+    <div class="llm-note" id="llm-note-box">
+        <div class="backend-stamp" id="backend-stamp">cargando…</div>
+
+        <div class="mark-toolbar" id="mark-toolbar">
+            <span class="mark-toolbar-label">Marcar texto seleccionado como:</span>
+            <button type="button" data-mark="verde" class="mark-btn mark-btn-verde">Correcto</button>
+            <button type="button" data-mark="amarillo" class="mark-btn mark-btn-amarillo">Parcial</button>
+            <button type="button" data-mark="rojo" class="mark-btn mark-btn-rojo">Incorrecto</button>
+            <button type="button" data-mark="borrar" class="mark-btn mark-btn-borrar">Borrar</button>
+            <button type="button" id="btn-limpiar-marcas" class="mark-btn mark-btn-limpiar">Limpiar todo</button>
+        </div>
+
+        <p class="note-text" id="note-text">Generando la nota clínica…</p>
+
+        <div class="mark-distribution" id="mark-distribution">
+            <div class="mark-dist-item">
+                <span class="mark-dist-swatch mark-swatch-verde"></span>
+                <span class="mark-dist-label">Correcto:</span>
+                <span class="mark-dist-value" id="pct-verde">0%</span>
+            </div>
+            <div class="mark-dist-item">
+                <span class="mark-dist-swatch mark-swatch-amarillo"></span>
+                <span class="mark-dist-label">Parcial:</span>
+                <span class="mark-dist-value" id="pct-amarillo">0%</span>
+            </div>
+            <div class="mark-dist-item">
+                <span class="mark-dist-swatch mark-swatch-rojo"></span>
+                <span class="mark-dist-label">Incorrecto:</span>
+                <span class="mark-dist-value" id="pct-rojo">0%</span>
+            </div>
+            <div class="mark-dist-item">
+                <span class="mark-dist-swatch mark-swatch-neutral"></span>
+                <span class="mark-dist-label">Sin marcar:</span>
+                <span class="mark-dist-value" id="pct-neutral">100%</span>
+            </div>
+        </div>
+
+        <div class="semaforo-large" id="semaforo-nota">
+            <span class="lbl">¿La nota corresponde con la interpretación correcta del ECG?</span>
+            <button type="button" data-color="verde" class="verde">Correcta</button>
+            <button type="button" data-color="amarillo" class="amarillo">Parcial</button>
+            <button type="button" data-color="rojo" class="rojo">Errónea</button>
+        </div>
+    </div>
+
+    <h3>Calificación de la nota (Likert 1–5)</h3>
+    <div class="likert" id="likert-exactitud">
+        <div class="axis-label"><strong>Exactitud diagnóstica</strong> — la nota describe correctamente lo que muestra el ECG</div>
+        <div class="scale">
+            <button type="button" data-val="1">1</button>
+            <button type="button" data-val="2">2</button>
+            <button type="button" data-val="3">3</button>
+            <button type="button" data-val="4">4</button>
+            <button type="button" data-val="5">5</button>
+        </div>
+    </div>
+    <div class="likert" id="likert-coherencia">
+        <div class="axis-label"><strong>Coherencia terminológica</strong> — la terminología es consistente con la práctica clínica estándar</div>
+        <div class="scale">
+            <button type="button" data-val="1">1</button>
+            <button type="button" data-val="2">2</button>
+            <button type="button" data-val="3">3</button>
+            <button type="button" data-val="4">4</button>
+            <button type="button" data-val="5">5</button>
+        </div>
+    </div>
+    <div class="likert" id="likert-utilidad">
+        <div class="axis-label"><strong>Utilidad clínica percibida</strong> — la nota resulta útil para un cardiólogo evaluador</div>
+        <div class="scale">
+            <button type="button" data-val="1">1</button>
+            <button type="button" data-val="2">2</button>
+            <button type="button" data-val="3">3</button>
+            <button type="button" data-val="4">4</button>
+            <button type="button" data-val="5">5</button>
+        </div>
+    </div>
+</section>
+
+<!-- Free-text comments -->
+<section class="paper">
+    <div class="eyebrow">Comentarios libres</div>
+    <h3 style="border: none; padding: 0; margin-top: 4px;">Observaciones del cardiólogo</h3>
+    <div class="form-field">
+        <label for="comentarios_libres">Hallazgos adicionales, correcciones, recomendaciones para el sistema</label>
+        <textarea id="comentarios_libres" rows="5"
+                  placeholder="Ej. La nota omite mencionar el bloqueo AV de 1er grado visible en los segundos 12-15..."></textarea>
+    </div>
+</section>
+
+<!-- Submit + panel de progreso -->
+<section class="paper">
+    <!-- Panel de progreso: se actualiza en tiempo real -->
+    <div class="progress-panel">
+        <div class="progress-header">
+            <span class="progress-text" id="progress-text">0 / 79 elementos completados</span>
+            <span class="progress-detail" id="progress-detail">LATIDO: 0/60 · RITMO: 0/15 · Nota: 0/1 · Likert: 0/3</span>
+        </div>
+        <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+    </div>
+
+    <div id="submit-msg"></div>
+    <div style="display: flex; gap: 14px; align-items: center; margin-top: 16px;">
+        <button type="button" class="btn btn-primary" id="btn-guardar" disabled>Guardar evaluación</button>
+        <a href="{{ url_for('seleccion') }}" class="btn btn-secondary">Volver al listado</a>
+    </div>
+    <p style="font-size: 12px; color: var(--ink-soft); margin-top: 18px;">
+        Tiempo en página: <span id="elapsed">0</span> s. Se registra como parte de las métricas del estudio.
+        El botón "Guardar evaluación" se habilita únicamente cuando todos los elementos están completos.
+    </p>
+</section>
+
+<script id="signal-data" type="application/json">{{ signal_json_str|safe }}</script>
+<script>
+    window.BACKEND_ACTIVO = "{{ backend_activo }}";
+    window.SIGNAL_ID = "{{ signal.signal_metadata.signal_id }}";
+    window.SIGNAL_NUMBER = {{ signal_number }};
+</script>
+<script src="{{ url_for('static', filename='js/evaluar.js') }}"></script>
+
+{% endblock %}

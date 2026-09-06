@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Admin Login — CIMAT</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/medico.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body class="admin-body">
+
+<div class="admin-login-container">
+    <div class="admin-login-card">
+        <div class="admin-login-header">
+            <h1>Panel de Administración</h1>
+            <p>Acceso restringido · CIMAT</p>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-error" style="margin-bottom: 16px;">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('admin_login') }}">
+            <div class="form-field">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password"
+                       required autofocus autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">
+                Ingresar
+            </button>
+        </form>
+
+        <p class="admin-login-footer">
+            ¿Eres cardiólogo? <a href="{{ url_for('registro') }}">Ingresar como evaluador</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

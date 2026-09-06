@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "fuente": "AAMI EC57:2012 / AHA Guidelines 2023 / ACC/AHA 2023",
+  "descripcion": "Base de conocimiento clinico local para el agente de generacion de notas ECG",
+  "clases": {
+    "AFIB": {
+      "nombre_completo": "Fibrilacion Auricular",
+      "codigo_cie10": "I48",
+      "criterios_diagnosticos_ecg": [
+        "Ausencia de ondas P bien definidas y reproducibles",
+        "Actividad auricular irregular con ondas f de 350-600 lpm",
+        "Intervalos R-R irregularmente irregulares sin patron repetitivo",
+        "Frecuencia ventricular variable tipicamente 100-160 lpm si no tratada",
+        "Complejo QRS generalmente estrecho salvo aberracion de conduccion"
+      ],
+      "relevancia_clinica": "Arritmia supraventricular sostenida mas comun. Riesgo de tromboembolia cerebral 5 veces mayor que poblacion general.",
+      "recomendacion_manejo": "Evaluacion urgente para anticoagulacion y control de frecuencia o ritmo. Referir a cardiologia.",
+      "nivel_alerta": "ALTO",
+      "guideline_referencia": "ACC/AHA/HRS 2023 Guideline for Diagnosis and Management of Atrial Fibrillation"
+    },
+    "NSR": {
+      "nombre_completo": "Ritmo Sinusal Normal",
+      "codigo_cie10": "Z03.89",
+      "criterios_diagnosticos_ecg": [
+        "Ondas P regulares, positivas en DII, negativas en aVR",
+        "Frecuencia de ondas P entre 60 y 100 lpm",
+        "Intervalo PR constante entre 120 y 200 ms",
+        "Complejo QRS de morfologia normal con duracion menor a 120 ms",
+        "Relacion P:QRS de 1:1 mantenida"
+      ],
+      "relevancia_clinica": "Patron electrico normal del corazon en reposo. No requiere intervencion ritmica.",
+      "recomendacion_manejo": "Seguimiento clinico de rutina. Correlacionar con sintomas del paciente.",
+      "nivel_alerta": "BAJO",
+      "guideline_referencia": "AHA/ACC ECG Interpretation Standards 2023"
+    },
+    "NORMAL": {
+      "nombre_completo": "Latido Sinusal Normal",
+      "codigo_cie10": "Z03.89",
+      "criterios_diagnosticos_ecg": [
+        "Morfologia P-QRS-T estandar sin deformaciones patologicas",
+        "Eje cardiaco electrico dentro de limites normales (-30 a +90 grados)",
+        "Ausencia de cambios isquemicos en segmento ST",
+        "Ausencia de alteraciones de conduccion intraventricular",
+        "Amplitud y duracion de ondas dentro de limites fisiologicos"
+      ],
+      "relevancia_clinica": "Latido individual sin anomalias morfologicas detectables por el clasificador geometrico.",
+      "recomendacion_manejo": "Sin accion inmediata requerida. Evaluar contexto clinico completo.",
+      "nivel_alerta": "BAJO",
+      "guideline_referencia": "AHA/ACC ECG Interpretation Standards 2023"
+    },
+    "PAC": {
+      "nombre_completo": "Contraccion Auricular Prematura",
+      "codigo_cie10": "I49.1",
+      "criterios_diagnosticos_ecg": [
+        "Latido anticipado con onda P de morfologia distinta al ritmo basal",
+        "Intervalo de acoplamiento fijo o variable pero menor al ciclo basal",
+        "Complejo QRS generalmente estrecho (menor a 120 ms) salvo aberracion",
+        "Pausa compensatoria incompleta frecuente post-PAC",
+        "Intervalo PR puede ser ligeramente prolongado o acortado respecto al basal"
+      ],
+      "relevancia_clinica": "Puede ser benigna en corazon sano o indicar irritabilidad auricular subyacente. Frecuentes PAC (mayor a 1000/dia) asociadas a mayor riesgo de AFIB.",
+      "recomendacion_manejo": "Evaluar frecuencia y sintomas. Considerar Holter 24h si PAC frecuentes o sintomaticas.",
+      "nivel_alerta": "MODERADO",
+      "guideline_referencia": "ACC/AHA 2023 Guidelines on Supraventricular Arrhythmias"
+    }
+  },
+  "umbrales_confianza": {
+    "alta_confianza": 0.75,
+    "confianza_moderada": 0.50,
+    "baja_confianza": 0.25,
+    "descripcion": "Gap de probabilidad entre clase ganadora y segunda clase. Menor a 0.25 activa escalamiento al medico."
+  },
+  "advertencia_sistema": "Este sistema es una herramienta de apoyo informativo. La interpretacion diagnostica final es responsabilidad exclusiva del medico especialista certificado."
+}

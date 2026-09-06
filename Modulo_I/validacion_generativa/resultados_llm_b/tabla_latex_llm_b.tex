@@ -1,0 +1,48 @@
+% Tablas del Modulo LLM-B para Cap 4.6
+
+\begin{table}[H]
+\centering
+\caption{Resultados globales del experimento de validacion generativa (Modulo LLM-B) sobre PTB-XL.}
+\label{tab:llm-b-global}
+\begin{tabular}{cccccc}
+\hline
+\textbf{K} & \textbf{BLEU} & \textbf{ROUGE-1} & \textbf{ROUGE-2} & \textbf{ROUGE-L} & \textbf{SBERT} \\
+\hline
+0 & 1.025 & 0.3304 & 0.2062 & 0.3117 & 0.6489 \\
+10 & 16.244 & 0.5302 & 0.4590 & 0.5226 & 0.8433 \\
+20 & 13.909 & 0.5368 & 0.4759 & 0.5319 & 0.8478 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{BLEU por clase AAMI. NORMAL y NSR presentan los reportes SCP-ECG mas homogeneos y alcanzan valores sustancialmente mas altos que las clases con mayor variabilidad clinica (AFIB, PAC).}
+\label{tab:llm-b-bleu-clase}
+\begin{tabular}{lccc}
+\hline
+\textbf{Clase} & \textbf{K=0} & \textbf{K=10} & \textbf{K=20} \\
+\hline
+NORMAL & 12.54 & 84.54 & 85.14 \\
+PAC & 0.15 & 19.66 & 21.08 \\
+NSR & 2.65 & 8.42 & 6.19 \\
+AFIB & 0.31 & 4.96 & 2.22 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Similitud semantica SBERT por clase. Muestra que Gemini comprende el contenido clinico con alta fidelidad en todas las clases incluso desde zero-shot.}
+\label{tab:llm-b-sbert-clase}
+\begin{tabular}{lccc}
+\hline
+\textbf{Clase} & \textbf{K=0} & \textbf{K=10} & \textbf{K=20} \\
+\hline
+NORMAL & 0.5540 & 0.9896 & 0.9897 \\
+PAC & 0.6118 & 0.8460 & 0.8485 \\
+NSR & 0.7380 & 0.7787 & 0.7985 \\
+AFIB & 0.7014 & 0.7517 & 0.7489 \\
+\hline
+\end{tabular}
+\end{table}

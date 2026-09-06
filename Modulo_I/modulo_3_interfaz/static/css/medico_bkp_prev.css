@@ -1,0 +1,670 @@
+/* =============================================================
+   MODULO III - Validacion clinica
+   Tema: papel ECG clinico
+   - Fondo crema, cuadricula roja milimetrada de fondo,
+     ECG rojo intenso como elemento heroico
+   - Tipografia: una serif para presencia (titulares),
+     una sans para datos, monoespacio para evidencia tecnica
+   ============================================================= */
+
+/* ----- Fonts (locally hosted, no CDN dependency) ----- */
+@font-face { font-family: 'Crimson Pro'; font-weight: 400; font-display: swap;
+    src: url('../fonts/crimson-pro-400.woff2') format('woff2'); }
+@font-face { font-family: 'Crimson Pro'; font-weight: 600; font-display: swap;
+    src: url('../fonts/crimson-pro-600.woff2') format('woff2'); }
+@font-face { font-family: 'Crimson Pro'; font-weight: 700; font-display: swap;
+    src: url('../fonts/crimson-pro-700.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 400; font-display: swap;
+    src: url('../fonts/inter-400.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 500; font-display: swap;
+    src: url('../fonts/inter-500.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 600; font-display: swap;
+    src: url('../fonts/inter-600.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: swap;
+    src: url('../fonts/jetbrains-mono-400.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 500; font-display: swap;
+    src: url('../fonts/jetbrains-mono-500.woff2') format('woff2'); }
+
+:root {
+    /* Paleta */
+    --cream-bg:        #F4ECD8;
+    --cream-paper:     #FBF5E5;
+    --cream-deep:      #E8DCC0;
+    --ink:             #2A1810;
+    --ink-soft:        #5C453A;
+    --ink-mute:        #8A7560;
+    --ecg-red:         #B22222;
+    --ecg-red-dark:    #7A1818;
+    --grid-minor:      rgba(178, 34, 34, 0.08);
+    --grid-major:      rgba(178, 34, 34, 0.18);
+    --verde:           #3A8F3A;
+    --verde-soft:      #C8E0C5;
+    --amarillo:        #D6A317;
+    --amarillo-soft:   #F3E2A7;
+    --rojo:            #B22222;
+    --rojo-soft:       #EFC9C9;
+
+    /* Tipografia */
+    --font-display: 'Crimson Pro', Georgia, serif;
+    --font-body:    'Inter', -apple-system, sans-serif;
+    --font-mono:    'JetBrains Mono', Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--ink);
+    /* Cuadricula de papel ECG real: lineas finas cada 1mm aprox,
+       lineas mas marcadas cada 5mm. Fondo crema base. */
+    background-color: var(--cream-bg);
+    background-image:
+        linear-gradient(var(--grid-minor) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px),
+        linear-gradient(var(--grid-major) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
+    background-size: 8px 8px, 8px 8px, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* ----- Header / nav ----- */
+.app-header {
+    background: var(--ink);
+    color: var(--cream-paper);
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--ecg-red);
+    box-shadow: 0 1px 0 var(--ecg-red-dark);
+}
+
+.app-header h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.app-header h1 .accent {
+    color: var(--ecg-red);
+    font-weight: 700;
+}
+
+.app-header .small {
+    font-size: 12px;
+    color: var(--cream-deep);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 2px;
+}
+
+.nav-meta {
+    text-align: right;
+    font-size: 13px;
+    color: var(--cream-deep);
+}
+
+.nav-meta a {
+    color: var(--cream-paper);
+    text-decoration: none;
+    margin-left: 18px;
+    border-bottom: 1px dotted var(--ecg-red);
+    padding-bottom: 1px;
+}
+
+.nav-meta a:hover {
+    color: var(--ecg-red);
+}
+
+/* ----- Layout ----- */
+main {
+    max-width: 1280px;
+    margin: 32px auto;
+    padding: 0 32px;
+}
+
+.paper {
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-radius: 0;  /* paper is rectangular, no rounded corners */
+    padding: 28px 36px;
+    margin-bottom: 24px;
+    box-shadow:
+        0 1px 0 var(--cream-deep),
+        0 2px 8px rgba(42, 24, 16, 0.06);
+    position: relative;
+}
+
+.paper::before {
+    /* Discrete left-edge accent in red, like a clinical document strip */
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--ecg-red);
+}
+
+h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+}
+
+h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--ink);
+    margin: 24px 0 10px 0;
+    border-bottom: 1px solid var(--cream-deep);
+    padding-bottom: 6px;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--ecg-red);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+p, label { line-height: 1.6; }
+
+/* ----- Forms ----- */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 28px;
+    margin-top: 16px;
+}
+
+.form-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--ink-soft);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--cream-paper);
+    border: none;
+    border-bottom: 1.5px solid var(--ink-soft);
+    padding: 6px 4px;
+    transition: border-color 0.15s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--ecg-red);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: var(--font-body);
+}
+
+/* ----- Buttons ----- */
+.btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 12px 28px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--ecg-red);
+    color: var(--cream-paper);
+    box-shadow: 0 2px 0 var(--ecg-red-dark);
+}
+
+.btn-primary:hover {
+    background: var(--ecg-red-dark);
+    box-shadow: 0 1px 0 var(--ecg-red-dark);
+    transform: translateY(1px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink-soft);
+}
+
+.btn-secondary:hover {
+    border-color: var(--ecg-red);
+    color: var(--ecg-red);
+}
+
+/* ----- Signal selection cards ----- */
+.signal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.signal-card {
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    padding: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.15s;
+    display: block;
+    position: relative;
+}
+
+.signal-card:hover {
+    border-color: var(--ecg-red);
+    transform: translateY(-2px);
+}
+
+.signal-card .sig-id {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ecg-red);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.signal-card h4 {
+    font-family: var(--font-display);
+    font-size: 19px;
+    margin: 6px 0 10px 0;
+    font-weight: 600;
+}
+
+.signal-card .meta {
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--cream-deep);
+    padding-top: 10px;
+    margin-top: 14px;
+}
+
+/* ----- ECG plot container ----- */
+.ecg-container {
+    background: var(--cream-paper);
+    padding: 20px 24px;
+    margin: 0 0 16px 0;
+    border: 1px solid var(--cream-deep);
+    border-left: 4px solid var(--ecg-red);
+}
+
+/* Single-plot fallback (no longer used; kept for backwards compat) */
+#ecg-plot {
+    width: 100%;
+    height: 320px;
+}
+
+/* New: 6-strip clinical layout */
+#ecg-strips {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 4px 0 6px 0;
+}
+
+.ecg-strip {
+    width: 100%;
+    height: 145px;
+    background: var(--cream-paper);
+    border: 1px solid rgba(178, 34, 34, 0.12);
+    border-left: 3px solid rgba(178, 34, 34, 0.35);
+    border-radius: 2px;
+    transition: border-color 0.15s ease, border-left-color 0.15s ease;
+}
+
+.ecg-strip:hover {
+    border-color: rgba(178, 34, 34, 0.25);
+    border-left-color: rgba(178, 34, 34, 0.6);
+}
+
+/* ----- Label tracks below ECG ----- */
+.label-track {
+    display: grid;
+    gap: 2px;
+    margin-top: 10px;
+}
+
+.label-track .track-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--ink-soft);
+    padding-right: 12px;
+    text-align: right;
+}
+
+.label-row {
+    display: grid;
+    gap: 1px;
+    align-items: stretch;
+}
+
+.label-cell {
+    text-align: center;
+    padding: 6px 2px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--cream-deep);
+    color: var(--ink);
+    border-top: 2px solid var(--ink-mute);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.15s;
+    user-select: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.label-cell.NORMAL,
+.label-cell.NSR { background: var(--cream-paper); border-top-color: var(--ink-soft); }
+
+.label-cell.PAC,
+.label-cell.AFIB { background: var(--rojo-soft); border-top-color: var(--ecg-red); color: var(--ecg-red-dark); }
+
+.label-cell.escalation::after {
+    content: "!";
+    position: absolute;
+    top: 2px; right: 4px;
+    color: var(--amarillo);
+    font-weight: 700;
+    font-size: 11px;
+}
+
+/* ----- Traffic light pickers (semaforos) ----- */
+.semaforo {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    padding: 4px 0;
+    background: rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid var(--cream-deep);
+    min-width: 0;
+    overflow: hidden;
+}
+
+.semaforo button {
+    border: 1px solid transparent;
+    background: transparent;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.1s;
+    opacity: 0.4;
+    flex-shrink: 1;
+}
+
+.semaforo button.verde     { background: var(--verde); }
+.semaforo button.amarillo  { background: var(--amarillo); }
+.semaforo button.rojo      { background: var(--rojo); }
+
+.semaforo button.active {
+    opacity: 1;
+    box-shadow: 0 0 0 2px var(--ink), 0 0 0 3px var(--cream-paper);
+    transform: scale(1.18);
+}
+
+.semaforo button:hover { opacity: 0.85; }
+
+/* ----- LLM note box ----- */
+.llm-note {
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-left: 4px solid var(--ecg-red);
+    padding: 24px 28px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.llm-note .backend-stamp {
+    position: absolute;
+    top: 14px;
+    right: 24px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+}
+
+.llm-note .note-text {
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 8px 0 14px 0;
+    font-style: italic;
+}
+
+.llm-note .note-text.verde-bg     { background: var(--verde-soft); padding: 12px 16px; }
+.llm-note .note-text.amarillo-bg  { background: var(--amarillo-soft); padding: 12px 16px; }
+.llm-note .note-text.rojo-bg      { background: var(--rojo-soft); padding: 12px 16px; }
+
+.semaforo-large {
+    display: flex;
+    gap: 14px;
+    margin-top: 14px;
+    align-items: center;
+}
+
+.semaforo-large .lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--ink-soft);
+    margin-right: 8px;
+}
+
+.semaforo-large button {
+    border: 2px solid transparent;
+    padding: 8px 18px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.semaforo-large button.verde    { color: var(--verde); border-color: var(--verde); }
+.semaforo-large button.amarillo { color: var(--amarillo); border-color: var(--amarillo); }
+.semaforo-large button.rojo     { color: var(--rojo); border-color: var(--rojo); }
+
+.semaforo-large button.active.verde    { background: var(--verde-soft); color: var(--verde); }
+.semaforo-large button.active.amarillo { background: var(--amarillo-soft); color: var(--ink); }
+.semaforo-large button.active.rojo     { background: var(--rojo-soft); color: var(--ecg-red-dark); }
+
+/* ----- Likert scale ----- */
+.likert {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--cream-deep);
+}
+
+.likert .axis-label {
+    font-size: 13px;
+    color: var(--ink-soft);
+    flex: 1;
+}
+
+.likert .scale {
+    display: flex;
+    gap: 4px;
+}
+
+.likert .scale button {
+    width: 36px; height: 36px;
+    background: transparent;
+    border: 1.5px solid var(--ink-mute);
+    color: var(--ink-mute);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.12s;
+}
+
+.likert .scale button:hover {
+    border-color: var(--ecg-red);
+    color: var(--ecg-red);
+}
+
+.likert .scale button.active {
+    background: var(--ecg-red);
+    border-color: var(--ecg-red);
+    color: var(--cream-paper);
+}
+
+/* ----- Analytics dashboard ----- */
+.kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.kpi {
+    background: var(--cream-paper);
+    border-left: 4px solid var(--ecg-red);
+    padding: 18px 22px;
+}
+
+.kpi .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+}
+
+.kpi .value {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.kpi .unit {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-left: 4px;
+    font-family: var(--font-body);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    font-size: 14px;
+}
+
+th, td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--cream-deep);
+}
+
+th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--ink-soft);
+    background: var(--cream-deep);
+}
+
+tr:hover { background: var(--cream-bg); }
+
+.stat-bar {
+    display: inline-block;
+    width: 80px;
+    height: 6px;
+    background: var(--cream-deep);
+    position: relative;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.stat-bar .fill { position: absolute; top: 0; left: 0; bottom: 0; }
+.stat-bar .fill.verde    { background: var(--verde); }
+.stat-bar .fill.amarillo { background: var(--amarillo); }
+.stat-bar .fill.rojo     { background: var(--rojo); }
+
+/* ----- Messages ----- */
+.error {
+    background: var(--rojo-soft);
+    color: var(--ecg-red-dark);
+    padding: 12px 18px;
+    margin: 16px 0;
+    border-left: 4px solid var(--ecg-red);
+    font-size: 14px;
+}
+
+.success {
+    background: var(--verde-soft);
+    color: var(--verde);
+    padding: 12px 18px;
+    margin: 16px 0;
+    border-left: 4px solid var(--verde);
+    font-size: 14px;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+    main { padding: 0 16px; }
+    .paper { padding: 18px 22px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-grid.three-col { grid-template-columns: 1fr; }
+    .app-header { flex-direction: column; gap: 8px; padding: 14px 18px; }
+    .nav-meta { text-align: left; }
+    h2 { font-size: 22px; }
+    .likert { flex-direction: column; align-items: flex-start; gap: 8px; }
+}

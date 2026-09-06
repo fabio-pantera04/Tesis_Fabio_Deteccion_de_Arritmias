@@ -1,0 +1,2016 @@
+[
+  {
+    "ecg_id_ptbxl": 307,
+    "patient_id": 6348,
+    "edad": 63.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "LVH": 100.0,
+      "ISC_": 100.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. qs complexes in v2 and tiny r waves in v3,4. st segments are depressed in i, ii, avl, v5,6. t waves are inverted in i, avl, v5,6. consistent with ischaemic heart disease with old anteroseptal myocardial infarction. it is difficult to",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00307_lr",
+    "filename_hr": "records500/00000/00307_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12343,
+    "patient_id": 1091,
+    "edad": 78.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "DIG": 50.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. st segments are depressed in ii, iii, avf, v4,5,6. t waves are low or flat throughout. findings are likely to be due to ischaemic heart  disease and digitalis effect. suggest exclude hypokalaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12343_lr",
+    "filename_hr": "records500/12000/12343_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12303,
+    "patient_id": 7377,
+    "edad": 74.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12303_lr",
+    "filename_hr": "records500/12000/12303_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12297,
+    "patient_id": 3365,
+    "edad": 82.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "CRBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. incomplete right bundle branch block. widespread st segment depression and t wave inversion. findings are likely to be due to ischaemic heart    disease. the age of the changes is uncertain.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12297_lr",
+    "filename_hr": "records500/12000/12297_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12286,
+    "patient_id": 4207,
+    "edad": 79.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IVCD": 100.0,
+      "ISCAS": 100.0,
+      "ISCAL": 100.0,
+      "LAFB": 100.0,
+      "PVC": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation. left axis deviation. non-specific intraventricular block.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12286_lr",
+    "filename_hr": "records500/12000/12286_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12150,
+    "patient_id": 7257,
+    "edad": 80.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "LVH": 80.0,
+      "ISC_": 100.0,
+      "IVCD": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. qs complexes in v2 and tiny r waves in v3 consistent    with old anteroseptal myocardial infarction. st segments are depressed and t waves inverted in i,    avl, v4,5,6. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12150_lr",
+    "filename_hr": "records500/12000/12150_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12149,
+    "patient_id": 6450,
+    "edad": 77.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LVH": 100.0,
+      "ISC_": 100.0,
+      "IVCD": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. right axis deviation. non-specific intraventricular delay. st segments are depressed and t waves inverted in ii,    iii, avf, v5,6. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12149_lr",
+    "filename_hr": "records500/12000/12149_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12147,
+    "patient_id": 5173,
+    "edad": 61.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 50.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. low limb lead voltage. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12147_lr",
+    "filename_hr": "records500/12000/12147_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12092,
+    "patient_id": 7560,
+    "edad": 69.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "INJAL": 100.0,
+      "DIG": 100.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. low limb lead voltage. st segments are depressed in i, ii, v4,5,6. t waves are inverted in i, ii, avl, v2-6. findings are likely to be due to ischaemic heart  disease and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12092_lr",
+    "filename_hr": "records500/12000/12092_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12090,
+    "patient_id": 4165,
+    "edad": 81.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "INJAS": 100.0,
+      "INJIL": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. left axis deviation. qs complexes in v2 and tiny r waves in v3,4 consistent with old anterior myocardial infarction. st segments are depressed in i, ii, iii, avl, avf and    grossly so in v2-6. findings",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12090_lr",
+    "filename_hr": "records500/12000/12090_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12085,
+    "patient_id": 658,
+    "edad": 87.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "PACE": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "pacemaker spikes noted. a regular paced rhythm is present. atrial fibrillation.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12085_lr",
+    "filename_hr": "records500/12000/12085_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12066,
+    "patient_id": 865,
+    "edad": 83.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LAFB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. left axis deviation. r-s transition zone in v leads displaced to the left. left anterior fascicular block. non-specific t wave abnormality in inferolateral leads.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12066_lr",
+    "filename_hr": "records500/12000/12066_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12056,
+    "patient_id": 1303,
+    "edad": 70.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12056_lr",
+    "filename_hr": "records500/12000/12056_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12052,
+    "patient_id": 1637,
+    "edad": 72.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NST_": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. non-specific st-t wave changes.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12052_lr",
+    "filename_hr": "records500/12000/12052_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12047,
+    "patient_id": 4906,
+    "edad": 76.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISCLA": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. st segments are depressed in i, ii, avf, v4,5,6. t waves are low or flat in limb leads and v4,5,6. findings are likely to be due to ischaemic heart    disease.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12047_lr",
+    "filename_hr": "records500/12000/12047_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12032,
+    "patient_id": 481,
+    "edad": 68.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 50.0,
+      "NDT": 100.0,
+      "QWAVE": 0.0,
+      "LOWT": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. q waves in ii, iii, avf consistent with old inferior    myocardial infarction. t waves are low or flat in i, avl, v5,6. findings are likely to be due to ischaemic heart    disease.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12032_lr",
+    "filename_hr": "records500/12000/12032_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11985,
+    "patient_id": 481,
+    "edad": 68.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 80.0,
+      "NDT": 100.0,
+      "LOWT": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. t waves are low or flat in i, avl, v5,6. non-specific but consistent with myocardial ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11985_lr",
+    "filename_hr": "records500/11000/11985_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11970,
+    "patient_id": 2296,
+    "edad": 76.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "CRBBB": 100.0,
+      "PVC": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with rapid ventricular response. right bundle branch block.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11970_lr",
+    "filename_hr": "records500/11000/11970_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11938,
+    "patient_id": 6100,
+    "edad": 77.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 50.0,
+      "IRBBB": 100.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. incomplete right bundle branch block. minor non-specific st-t wave changes.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11938_lr",
+    "filename_hr": "records500/11000/11938_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11856,
+    "patient_id": 3666,
+    "edad": 87.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "LVH": 100.0,
+      "ISC_": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. poor progression of r waves in anterior chest leads suggesting old anteroseptal myocardial infarction. st segments are depressed in i, ii, avl, avf, v4,5,6. t waves are low in these leads. findings are likely to be due to ischaemic he",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11856_lr",
+    "filename_hr": "records500/11000/11856_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11849,
+    "patient_id": 1212,
+    "edad": 75.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "PVC": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with rapid ventricular response. voltages in chest leads are at upper limit. st segments are depressed in i, ii, v3-6. t waves are low or flat in limb leads and v4,5,6. findings are likely to be du",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11849_lr",
+    "filename_hr": "records500/11000/11849_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11844,
+    "patient_id": 3010,
+    "edad": 75.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 100.0,
+      "ASMI": 100.0,
+      "LVH": 80.0,
+      "ISC_": 100.0,
+      "DIG": 50.0,
+      "QWAVE": 0.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left ventricular hypertrophy. qs complexes in v2,3 consistent with old anteroseptal    myocardial infarction. q waves in ii, iii, avf consistent with old inferior    myocardial infarction. st segments are depressed in i, ii, avl, v4,5",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11844_lr",
+    "filename_hr": "records500/11000/11844_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11828,
+    "patient_id": 4412,
+    "edad": 88.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "CLBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. left axis deviation. low limb lead voltage. left bundle branch block, this is most commonly due to    ischaemic heart disease. in the presence of lbbb, ischaemia is not excluded.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11828_lr",
+    "filename_hr": "records500/11000/11828_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11793,
+    "patient_id": 4886,
+    "edad": 70.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "IMI": 100.0,
+      "LAFB": 100.0,
+      "PVC": 100.0,
+      "NT_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. qs complexes in v2 and tiny r waves in v3 suggesting old anteroseptal myocardial infarction. possible old inferior myocardial infarction. non-specific t wave flattening in i and inversion in    avl.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11793_lr",
+    "filename_hr": "records500/11000/11793_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11756,
+    "patient_id": 4091,
+    "edad": 80.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "CRBBB": 100.0,
+      "NST_": 0.0,
+      "QWAVE": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. right bundle branch block. q waves in v1,2 consistent with old anteroseptal  myocardial infarction. non-specific st-t wave changes.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11756_lr",
+    "filename_hr": "records500/11000/11756_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12334,
+    "patient_id": 2856,
+    "edad": 76.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "AMI": 50.0,
+      "IMI": 80.0,
+      "IRBBB": 100.0,
+      "QWAVE": 0.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. incomplete right bundle branch block. q waves in ii, iii, avf. st segments are depressed in i, ii, avl, v4,5,6. t waves are low or flat in these leads. consistent with ischaemic heart disease with old inferior myocardial infarction.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12334_lr",
+    "filename_hr": "records500/12000/12334_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12394,
+    "patient_id": 472,
+    "edad": 82.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "CRBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. right bundle branch block.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12394_lr",
+    "filename_hr": "records500/12000/12394_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 321,
+    "patient_id": 4188,
+    "edad": 72.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "EL": 50.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. low limb lead voltage. minor non-specific st-t wave changes. prolonged qt, this may be due to a drug effect or an  electrolyte disturbance. coarse fibrillation waves accord with mitral valve disease.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00321_lr",
+    "filename_hr": "records500/00000/00321_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12443,
+    "patient_id": 7069,
+    "edad": 78.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IRBBB": 100.0,
+      "LAFB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. left axis deviation. left anterior fascicular block. incomplete right bundle branch block.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12443_lr",
+    "filename_hr": "records500/12000/12443_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14290,
+    "patient_id": 514,
+    "edad": 62.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. qs complexes in v2 suggesting old anteroseptal infarct. non-specific st-t wave changes in lateral leads.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14290_lr",
+    "filename_hr": "records500/14000/14290_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14284,
+    "patient_id": 2733,
+    "edad": 70.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "AMI": 15.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14284_lr",
+    "filename_hr": "records500/14000/14284_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14271,
+    "patient_id": 4750,
+    "edad": 77.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IRBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. incomplete right bundle branch block.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14271_lr",
+    "filename_hr": "records500/14000/14271_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14265,
+    "patient_id": 798,
+    "edad": 82.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NST_": 100.0,
+      "NT_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. non-specific t wave flattening in limb leads.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14265_lr",
+    "filename_hr": "records500/14000/14265_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14130,
+    "patient_id": 2495,
+    "edad": 54.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NST_": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. premature ventricular contraction(s). non-specific st-t wave changes.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14130_lr",
+    "filename_hr": "records500/14000/14130_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14126,
+    "patient_id": 628,
+    "edad": 82.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "NST_": 100.0,
+      "LPFB": 50.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with rapid ventricular response. low limb lead voltage. probable left posterior fascicular block. qs complexes in v2 and tiny r waves in v3 suggesting old anteroseptal myocardial infarction. st seg",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14126_lr",
+    "filename_hr": "records500/14000/14126_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14088,
+    "patient_id": 563,
+    "edad": 82.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISCIL": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. st segments are depressed and t waves inverted in ii,    iii, avf, v3-6. this may be due to lv strain or ischaemia. the age of the changes is uncertain.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14088_lr",
+    "filename_hr": "records500/14000/14088_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14087,
+    "patient_id": 3655,
+    "edad": 78.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 15.0,
+      "CRBBB": 100.0,
+      "LPFB": 100.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. right bundle branch block. non-specific st-t wave changes in inferolateral leads.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14087_lr",
+    "filename_hr": "records500/14000/14087_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14004,
+    "patient_id": 3798,
+    "edad": 85.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "LAFB": 100.0,
+      "LVH": 100.0,
+      "ISC_": 100.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. left anterior fascicular block. qs complexes in v2 and tiny r waves in v3,4. st segments are depressed in i, avl, v5,6. t waves are inverted in i, avl, v6. consistent with ischaemic heart disease with old anterior",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14004_lr",
+    "filename_hr": "records500/14000/14004_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 13997,
+    "patient_id": 6378,
+    "edad": 83.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "INJAL": 100.0,
+      "PVC": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation. qs complexes in v2 and tiny r waves in v3. st segments are depressed in i, ii, avl, v5,6. t waves are low or flat in these leads. consistent with ischaemic heart disease with old anteroseptal myoc",
+    "validated_by_human": true,
+    "filename_lr": "records100/13000/13997_lr",
+    "filename_hr": "records500/13000/13997_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 13976,
+    "patient_id": 4525,
+    "edad": 57.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 50.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/13000/13976_lr",
+    "filename_hr": "records500/13000/13976_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 13769,
+    "patient_id": 5332,
+    "edad": 64.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LVH": 80.0,
+      "IVCD": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. ventricular response 83/min. probable left ventricular hypertrophy.",
+    "validated_by_human": true,
+    "filename_lr": "records100/13000/13769_lr",
+    "filename_hr": "records500/13000/13769_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 13698,
+    "patient_id": 7685,
+    "edad": 80.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "ILMI": 100.0,
+      "CRBBB": 100.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. right bundle branch block. non-specific st-t wave changes in inferolateral leads.",
+    "validated_by_human": true,
+    "filename_lr": "records100/13000/13698_lr",
+    "filename_hr": "records500/13000/13698_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 13031,
+    "patient_id": 6849,
+    "edad": 84.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "ISCIL": 100.0,
+      "DIG": 100.0,
+      "CRBBB": 100.0,
+      "LPFB": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. right bundle branch block. st segments are depressed and t waves inverted in  inferolateral leads. findings are likely to be due to ischaemic heart  disease and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/13000/13031_lr",
+    "filename_hr": "records500/13000/13031_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12988,
+    "patient_id": 743,
+    "edad": 81.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "LAFB": 100.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. left axis deviation. left anterior fascicular block. qs complexes in v2 and tiny r waves in v3 consistent  with old anteroseptal myocardial infarction. non-specific st-t wave changes.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12988_lr",
+    "filename_hr": "records500/12000/12988_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12950,
+    "patient_id": 6642,
+    "edad": 77.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "CLBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. left bundle branch block, this is most commonly due to    ischaemic heart disease.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12950_lr",
+    "filename_hr": "records500/12000/12950_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12939,
+    "patient_id": 4416,
+    "edad": 68.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LAFB": 100.0,
+      "LVH": 100.0,
+      "ISC_": 100.0,
+      "VCLVH": 0.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. voltages are high in limb leads suggesting lvh. left axis deviation. left anterior fascicular block. st segments are depressed in i, avl, v4,5,6. t waves are low or flat in these leads and inverted in",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12939_lr",
+    "filename_hr": "records500/12000/12939_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12917,
+    "patient_id": 5517,
+    "edad": 68.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LVH": 50.0,
+      "ISC_": 100.0,
+      "DIG": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. st segments are depressed in i, ii, iii, avf, v3-6. t waves are low or flat in these leads. non-specific but consistent with myocardial ischaemia and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12917_lr",
+    "filename_hr": "records500/12000/12917_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12876,
+    "patient_id": 6823,
+    "edad": 84.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "IMI": 50.0,
+      "IRBBB": 100.0,
+      "LAFB": 100.0,
+      "NT_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. left anterior fascicular block. incomplete right bundle branch block. non-specific t wave flattening in i, v5.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12876_lr",
+    "filename_hr": "records500/12000/12876_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12872,
+    "patient_id": 3619,
+    "edad": 81.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "PACE": 100.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "pacemaker spikes noted. atrial fibrillation. some paced beats are present. \"spontaneous\" beats show non-specific intraventricular  block, left ventricular hypertrophy and non-specific  st-t wave changes probably due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12872_lr",
+    "filename_hr": "records500/12000/12872_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12786,
+    "patient_id": 6062,
+    "edad": 77.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "DIG": 50.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation (coarse) with controlled  ventricular response rate of 68 per minute. digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12786_lr",
+    "filename_hr": "records500/12000/12786_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 3518,
+    "patient_id": 2965,
+    "edad": 63.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISCAS": 100.0,
+      "IRBBB": 100.0,
+      "PVC": 100.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation. incomplete right bundle branch block. t waves are inverted in v2,3. st segments are depressed in v1-4. findings are likely to be due to ischaemic heart    disease. the age of the changes is uncert",
+    "validated_by_human": true,
+    "filename_lr": "records100/03000/03518_lr",
+    "filename_hr": "records500/03000/03518_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10934,
+    "patient_id": 1686,
+    "edad": 83.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISCAS": 100.0,
+      "ISCAL": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. t waves are flat in limb leads and inverted in v4,5,6. findings are likely to be due to ischaemic heart  disease. st segments are slightly elevated in v2,3, the possibility of some recent damage cannot",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10934_lr",
+    "filename_hr": "records500/10000/10934_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 8772,
+    "patient_id": 5424,
+    "edad": 74.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "INJAS": 100.0,
+      "INJAL": 100.0,
+      "LVH": 50.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with controlled ventricular response rate 84 per minute. extensive deep anterior t wave invesion highly  suggestive of ischaemia or subendocardial infarction..",
+    "validated_by_human": true,
+    "filename_lr": "records100/08000/08772_lr",
+    "filename_hr": "records500/08000/08772_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 3835,
+    "patient_id": 3490,
+    "edad": 68.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "CLBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. left bundle branch block, this is most commonly due to    ischaemic heart disease.",
+    "validated_by_human": true,
+    "filename_lr": "records100/03000/03835_lr",
+    "filename_hr": "records500/03000/03835_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14323,
+    "patient_id": 621,
+    "edad": 85.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "CRBBB": 100.0,
+      "IMI": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with slow ventricular response. right bundle branch block. possible old inferior myocardial infarction. tracing is very similar to that of 29:6:92, but ventricular rate is slower.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14323_lr",
+    "filename_hr": "records500/14000/14323_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 337,
+    "patient_id": 3498,
+    "edad": 79.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 15.0,
+      "NDT": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. st segments are depressed in i, v5,6. t waves are low or flat in i, v5,6 and inverted in avl. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00337_lr",
+    "filename_hr": "records500/00000/00337_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16799,
+    "patient_id": 7151,
+    "edad": 56.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISC_": 50.0,
+      "DIG": 50.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. non-specific st-t wave changes. these may be due to myocardial ischaemia and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16799_lr",
+    "filename_hr": "records500/16000/16799_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14618,
+    "patient_id": 3314,
+    "edad": 88.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 100.0,
+      "LVOLT": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with rapid ventricular response. left axis deviation. low limb lead voltage. possible old inferior infarct.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14618_lr",
+    "filename_hr": "records500/14000/14618_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 3440,
+    "patient_id": 5158,
+    "edad": 77.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 80.0,
+      "QWAVE": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. low limb lead voltage. q waves in ii, iii, avf consistent with old inferior    myocardial infarction.",
+    "validated_by_human": true,
+    "filename_lr": "records100/03000/03440_lr",
+    "filename_hr": "records500/03000/03440_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14508,
+    "patient_id": 7027,
+    "edad": 75.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LVH": 50.0,
+      "ISC_": 100.0,
+      "DIG": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. st segments are depressed in ii, iii, avf, v4,5,6. t waves are low or slightly inverted in these leads. findings are likely to be due to ischaemic heart  disease and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14508_lr",
+    "filename_hr": "records500/14000/14508_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 594,
+    "patient_id": 4512,
+    "edad": 85.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "ILMI": 50.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. probable old anterior and inferior infarcts. there is much artifact present.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00594_lr",
+    "filename_hr": "records500/00000/00594_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10633,
+    "patient_id": 7172,
+    "edad": 79.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "LVH": 100.0,
+      "ISC_": 100.0,
+      "IVCD": 100.0,
+      "PVC": 100.0,
+      "VCLVH": 0.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. premature ventricular contraction(s). non-specific intraventricular delay. voltages are high in chest leads suggesting lvh. qs complexes in v2,3 consistent with anteroseptal    myocardial infarction of uncertain age. st segments are d",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10633_lr",
+    "filename_hr": "records500/10000/10633_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16047,
+    "patient_id": 5231,
+    "edad": 52.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "NT_": 0.0,
+      "LVOLT": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. low limb lead voltage. non-specific t wave flattening in limb leads.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16047_lr",
+    "filename_hr": "records500/16000/16047_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14291,
+    "patient_id": 7404,
+    "edad": 67.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "DIG": 50.0,
+      "LOWT": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. t waves are low or flat throughout and inverted in  ii, iii, avf. st segments are slightly depressed in i, avl. findings are likely to be due to ischaemic heart  disease and digitalis effect. suggest exclude hypokalaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14291_lr",
+    "filename_hr": "records500/14000/14291_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16020,
+    "patient_id": 4291,
+    "edad": 70.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LAFB": 100.0,
+      "ASMI": 100.0,
+      "LVH": 100.0,
+      "VCLVH": 0.0,
+      "PVC": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s), couplets. atrial fibrillation with rapid ventricular response. left axis deviation. left anterior fascicular block. voltages are high in limb leads suggesting lvh. possible old anteroseptal myocardial infarction. non-",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16020_lr",
+    "filename_hr": "records500/16000/16020_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 6504,
+    "patient_id": 4317,
+    "edad": 82.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06504_lr",
+    "filename_hr": "records500/06000/06504_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12774,
+    "patient_id": 633,
+    "edad": 73.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "AMI": 100.0,
+      "IMI": 100.0,
+      "DIG": 100.0,
+      "PVC": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with junctional rhythm rate 76. multifocal ventricular premature beats with salvols of 2 ventricular premature beats. left axis deviation. old anterior infarct query old inferior infarct. pattern in rhythm is suggestive of digitalis to",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12774_lr",
+    "filename_hr": "records500/12000/12774_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 608,
+    "patient_id": 543,
+    "edad": 73.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "NST_": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with rapid ventricular response. qs complexes in v2 and tiny r waves in v3 consistent  with anteroseptal myocardial infarction of uncertain age. st segments are depressed in ii, iii, avf, v5,6. t w",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00608_lr",
+    "filename_hr": "records500/00000/00608_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 3339,
+    "patient_id": 2782,
+    "edad": 76.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "CRBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with moderately rapid ventricular response. right bundle branch block. clockwise rotation. st changes in part due to rbbb. however, changes in lead avl & lateral chest leads  suggest left ventricular strain.",
+    "validated_by_human": true,
+    "filename_lr": "records100/03000/03339_lr",
+    "filename_hr": "records500/03000/03339_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 17851,
+    "patient_id": 5879,
+    "edad": 85.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "NT_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. premature ventricular contraction(s). low limb lead voltage. non-specific t wave flattening in limb leads and    v4,5,6.",
+    "validated_by_human": true,
+    "filename_lr": "records100/17000/17851_lr",
+    "filename_hr": "records500/17000/17851_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 9114,
+    "patient_id": 899,
+    "edad": 73.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "PVC": 100.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with rapid ventricular response. r-s transition zone in v leads displaced to the left. st segments are depressed in i, ii, avl, v6. t waves are inverted in i, avl and low in ii, v6. findings are li",
+    "validated_by_human": true,
+    "filename_lr": "records100/09000/09114_lr",
+    "filename_hr": "records500/09000/09114_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 1799,
+    "patient_id": 3989,
+    "edad": 75.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IVCD": 100.0,
+      "LAFB": 100.0,
+      "ISC_": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. however, rhythm is basically regular, indicating that it derives from a supraventricular focus. some beats show non-specific intraventricular block. left axis deviation. left anterior fascicular block. t waves are flat in limb leads a",
+    "validated_by_human": true,
+    "filename_lr": "records100/01000/01799_lr",
+    "filename_hr": "records500/01000/01799_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16901,
+    "patient_id": 2200,
+    "edad": 45.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 15.0,
+      "PVC": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with rapid ventricular response. non-specific t wave changes.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16901_lr",
+    "filename_hr": "records500/16000/16901_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 482,
+    "patient_id": 2709,
+    "edad": 71.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "IMI": 50.0,
+      "IRBBB": 100.0,
+      "LAFB": 100.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. left axis deviation. left anterior fascicular block. non-specific st-t wave changes in i, avl.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00482_lr",
+    "filename_hr": "records500/00000/00482_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 1017,
+    "patient_id": 6304,
+    "edad": 61.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IRBBB": 100.0,
+      "PVC": 100.0,
+      "DIG": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. incomplete right bundle branch block. st segments are depressed in v2-6. non-specific but consistent with myocardial ischaemia and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/01000/01017_lr",
+    "filename_hr": "records500/01000/01017_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 15771,
+    "patient_id": 7395,
+    "edad": 70.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 50.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. inferior infarct of indeterminate age.",
+    "validated_by_human": true,
+    "filename_lr": "records100/15000/15771_lr",
+    "filename_hr": "records500/15000/15771_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 691,
+    "patient_id": 3076,
+    "edad": 85.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "IMI": 100.0,
+      "QWAVE": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. low limb lead voltage. q waves in ii, iii, avf consistent with old inferior    myocardial infarction. qs complexes in v2-5 consistent with anterior  myocardial infarction, probably old.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00691_lr",
+    "filename_hr": "records500/00000/00691_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 2964,
+    "patient_id": 3165,
+    "edad": 87.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "IMI": 50.0,
+      "LAFB": 100.0,
+      "ISCAL": 100.0,
+      "PVC": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. non-specific intraventricular block.",
+    "validated_by_human": true,
+    "filename_lr": "records100/02000/02964_lr",
+    "filename_hr": "records500/02000/02964_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 3001,
+    "patient_id": 1846,
+    "edad": 82.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 15.0,
+      "CRBBB": 100.0,
+      "LAFB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. left anterior fascicular block. right bundle branch block. bifascicular block.",
+    "validated_by_human": true,
+    "filename_lr": "records100/03000/03001_lr",
+    "filename_hr": "records500/03000/03001_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4412,
+    "patient_id": 7665,
+    "edad": 68.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "AMI": 15.0,
+      "IMI": 15.0,
+      "NDT": 100.0,
+      "DIG": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. st segments are depressed in i, ii, avl, v4,5,6. t waves are low in these leads. findings are likely to be due to ischaemic heart  disease and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04412_lr",
+    "filename_hr": "records500/04000/04412_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 8554,
+    "patient_id": 7649,
+    "edad": 67.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LMI": 100.0,
+      "NDT": 100.0,
+      "QWAVE": 0.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. right axis deviation. r-s transition zone in v leads displaced to the left. low limb lead voltage. q waves in i, avl suggesting old lateral infarct. st segments are depressed in ii, iii, avf, v6. t waves are low or flat throughout. fi",
+    "validated_by_human": true,
+    "filename_lr": "records100/08000/08554_lr",
+    "filename_hr": "records500/08000/08554_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16565,
+    "patient_id": 622,
+    "edad": 75.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISC_": 100.0,
+      "DIG": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. st segments are depressed in iii, avf, v2-6. findings are likely to be due to ischaemic heart  disease and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16565_lr",
+    "filename_hr": "records500/16000/16565_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10500,
+    "patient_id": 2528,
+    "edad": 80.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "IMI": 50.0,
+      "LAFB": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation with rapid ventricular response. left axis deviation. low limb lead voltage. qs complexes in v2,3 consistent with old anteroseptal    myocardial infarction. st segments are depressed in i, avl. thi",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10500_lr",
+    "filename_hr": "records500/10000/10500_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4660,
+    "patient_id": 1243,
+    "edad": 72.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. st segments are depressed in i, avl. t waves are low in these leads. non-specific but consistent with myocardial ischaemia and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04660_lr",
+    "filename_hr": "records500/04000/04660_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 6152,
+    "patient_id": 4119,
+    "edad": 72.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 35.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06152_lr",
+    "filename_hr": "records500/06000/06152_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14924,
+    "patient_id": 1232,
+    "edad": 54.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "NST_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. minor non-specific st-t wave changes.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14924_lr",
+    "filename_hr": "records500/14000/14924_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 17657,
+    "patient_id": 6490,
+    "edad": 84.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISC_": 50.0,
+      "LVH": 35.0,
+      "VCLVH": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. voltages are high in chest leads suggesting lvh. st segments are depressed in i, ii, v5,6. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/17000/17657_lr",
+    "filename_hr": "records500/17000/17657_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 8625,
+    "patient_id": 5021,
+    "edad": 60.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NST_": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "probable atrial fibrillation, but no clear evidence of p waves or fibrillation waves. non-specific st-t wave changes.",
+    "validated_by_human": true,
+    "filename_lr": "records100/08000/08625_lr",
+    "filename_hr": "records500/08000/08625_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16098,
+    "patient_id": 6248,
+    "edad": 83.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16098_lr",
+    "filename_hr": "records500/16000/16098_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 1889,
+    "patient_id": 2348,
+    "edad": 81.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/01000/01889_lr",
+    "filename_hr": "records500/01000/01889_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 1178,
+    "patient_id": 6769,
+    "edad": 70.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "DIG": 80.0,
+      "PVC": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. low limb lead voltage. st segments are depressed in i, v4,5,6. t waves are low or flat in limb leads and v4,5,6. non-specific but consistent with myocardial ischaemia and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/01000/01178_lr",
+    "filename_hr": "records500/01000/01178_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 8041,
+    "patient_id": 3434,
+    "edad": 89.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "CRBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. right bundle branch block. possible left ventricular hypertrophy.",
+    "validated_by_human": true,
+    "filename_lr": "records100/08000/08041_lr",
+    "filename_hr": "records500/08000/08041_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10010,
+    "patient_id": 3320,
+    "edad": 82.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IRBBB": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. incomplete right bundle branch block. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10010_lr",
+    "filename_hr": "records500/10000/10010_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 731,
+    "patient_id": 6322,
+    "edad": 77.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 15.0,
+      "ISCAL": 100.0,
+      "DIG": 50.0,
+      "LAFB": 100.0,
+      "LOWT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. st segments are depressed in i, avl, v5,6. t waves are low or flat throughout. prolonged qt. findings are likely to be due to ischaemic heart  disease and digitalis effect. suggest exclude hypokalaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00731_lr",
+    "filename_hr": "records500/00000/00731_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16475,
+    "patient_id": 2763,
+    "edad": 85.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16475_lr",
+    "filename_hr": "records500/16000/16475_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14540,
+    "patient_id": 7274,
+    "edad": 52.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 15.0,
+      "ASMI": 15.0,
+      "IRBBB": 100.0,
+      "NST_": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation with rapid ventricular response. st segments are depressed in i, ii, v4,5,6. non-specific but consistent with myocardial ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14540_lr",
+    "filename_hr": "records500/14000/14540_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 18324,
+    "patient_id": 451,
+    "edad": 83.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. low limb lead voltage. qs complexes in v2 and small r waves in v3 suggesting  old anteroseptal myocardial infarct.",
+    "validated_by_human": true,
+    "filename_lr": "records100/18000/18324_lr",
+    "filename_hr": "records500/18000/18324_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14316,
+    "patient_id": 621,
+    "edad": 85.0,
+    "sexo": 0,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "CRBBB": 100.0,
+      "IMI": 100.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). atrial fibrillation. rightward axis. right bundle branch block. possible old inferior myocardial infarct.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14316_lr",
+    "filename_hr": "records500/14000/14316_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11031,
+    "patient_id": 1790,
+    "edad": 85.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "IMI": 15.0,
+      "ISCAL": 100.0,
+      "DIG": 100.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. low limb lead voltage. st segments are depressed in i, ii, v5,6. t waves are flat or slightly inverted throughout. non-specific but consistent with myocardial ischaemia and digitalis effect. suggest exclude hypokalaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11031_lr",
+    "filename_hr": "records500/11000/11031_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10403,
+    "patient_id": 2665,
+    "edad": 79.0,
+    "sexo": 1,
+    "clase_aami": "AFIB",
+    "codigo_scp_principal": "AFIB",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "LVH": 100.0,
+      "ISC_": 100.0,
+      "DIG": 100.0,
+      "IVCD": 100.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "AFIB": 0.0
+    },
+    "report_ptbxl": "atrial fibrillation. left axis deviation. non-specific intraventricular delay. st segments are depressed in i, ii, avl, v5,6. t waves are inverted in i, avl, v5,6. this may be due to lv strain or ischaemia and digitalis effect.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10403_lr",
+    "filename_hr": "records500/10000/10403_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  }
+]

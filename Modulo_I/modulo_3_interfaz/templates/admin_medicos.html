@@ -1,0 +1,71 @@
+{% extends "admin_base.html" %}
+{% block title %}Cardiólogos — Admin{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2>Cardiólogos registrados</h2>
+    <p class="admin-page-desc">
+        Total: <b>{{ medicos|length }}</b>. Click en una fila para ver el detalle.
+    </p>
+</div>
+
+{% if medicos|length == 0 %}
+    <div class="empty-state">
+        <p>No hay cardiólogos registrados aún.</p>
+        <p class="empty-state-hint">Los registros aparecerán aquí cuando los cardiólogos completen el formulario en <code>/registro</code>.</p>
+    </div>
+{% else %}
+<div class="admin-table-wrap">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Sexo</th>
+                <th>Especialidad</th>
+                <th>Años ECG</th>
+                <th>Institución</th>
+                <th>Autoval.</th>
+                <th>N eval.</th>
+                <th>Likert prom.</th>
+                <th>Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for m in medicos %}
+            <tr>
+                <td><b>{{ m.medico_id }}</b></td>
+                <td>
+                    <a href="{{ url_for('admin_medico_detalle', medico_id=m.medico_id) }}" class="table-link">
+                        {{ m.nombre_completo }}
+                    </a>
+                </td>
+                <td>{{ m.edad or '—' }}</td>
+                <td>{{ m.sexo or '—' }}</td>
+                <td>{{ m.especialidad or '—' }}{% if m.sub_especialidad %}<br><small>({{ m.sub_especialidad }})</small>{% endif %}</td>
+                <td>{{ m.anos_experiencia_ecg if m.anos_experiencia_ecg is not none else '—' }}</td>
+                <td>{{ m.institucion or '—' }}</td>
+                <td>{{ m.auto_eval_habilidad or '—' }}/5</td>
+                <td><span class="badge badge-count">{{ m.n_evaluaciones }}</span></td>
+                <td>
+                    {% if m.prom_exactitud %}
+                    <span class="likert-mini">E:{{ m.prom_exactitud }} · C:{{ m.prom_coherencia }} · U:{{ m.prom_utilidad }}</span>
+                    {% else %}—{% endif %}
+                </td>
+                <td><small>{{ m.fecha_registro[:19] if m.fecha_registro else '—' }}</small></td>
+                <td>
+                    <form method="POST" action="{{ url_for('admin_eliminar_medico', medico_id=m.medico_id) }}"
+                          onsubmit="return confirm('¿Eliminar al cardiólogo {{ m.nombre_completo }} y TODAS sus evaluaciones? Esta acción es irreversible.');"
+                          style="display: inline;">
+                        <button type="submit" class="btn-danger-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

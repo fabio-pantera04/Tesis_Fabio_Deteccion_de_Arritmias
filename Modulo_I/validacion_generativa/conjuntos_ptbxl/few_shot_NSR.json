@@ -1,0 +1,369 @@
+[
+  {
+    "ecg_id_ptbxl": 253,
+    "patient_id": 2096,
+    "edad": 57.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00253_lr",
+    "filename_hr": "records500/00000/00253_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11143,
+    "patient_id": 7013,
+    "edad": 56.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11143_lr",
+    "filename_hr": "records500/11000/11143_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11960,
+    "patient_id": 5412,
+    "edad": 53.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11960_lr",
+    "filename_hr": "records500/11000/11960_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11962,
+    "patient_id": 4111,
+    "edad": 52.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11962_lr",
+    "filename_hr": "records500/11000/11962_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11965,
+    "patient_id": 5210,
+    "edad": 59.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11965_lr",
+    "filename_hr": "records500/11000/11965_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11966,
+    "patient_id": 5731,
+    "edad": 58.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11966_lr",
+    "filename_hr": "records500/11000/11966_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11969,
+    "patient_id": 5051,
+    "edad": 56.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ILMI": 15.0,
+      "LOWT": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. st segments are slightly depressed in i, avl. t waves are low in v6. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11969_lr",
+    "filename_hr": "records500/11000/11969_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11971,
+    "patient_id": 7837,
+    "edad": 61.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "NT_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. non-specific t wave flattening in v5,6.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11971_lr",
+    "filename_hr": "records500/11000/11971_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11972,
+    "patient_id": 7473,
+    "edad": 62.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11972_lr",
+    "filename_hr": "records500/11000/11972_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11973,
+    "patient_id": 1980,
+    "edad": 28.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. non-specific slight t wave inversion in v2,3.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11973_lr",
+    "filename_hr": "records500/11000/11973_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 5735,
+    "patient_id": 6377,
+    "edad": 72.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg. Edit: NORM 100, KnotungIII(NORM 100)",
+    "validated_by_human": true,
+    "filename_lr": "records100/05000/05735_lr",
+    "filename_hr": "records500/05000/05735_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 13085,
+    "patient_id": 5444,
+    "edad": 46.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/13000/13085_lr",
+    "filename_hr": "records500/13000/13085_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4299,
+    "patient_id": 5554,
+    "edad": 42.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04299_lr",
+    "filename_hr": "records500/04000/04299_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4380,
+    "patient_id": 332,
+    "edad": 68.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. low limb lead voltage. anteroseptal infarct, probably old.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04380_lr",
+    "filename_hr": "records500/04000/04380_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10620,
+    "patient_id": 4767,
+    "edad": 83.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10620_lr",
+    "filename_hr": "records500/10000/10620_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14297,
+    "patient_id": 7800,
+    "edad": 36.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. non specific t abnormality in anterior leads. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14297_lr",
+    "filename_hr": "records500/14000/14297_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14693,
+    "patient_id": 6822,
+    "edad": 59.0,
+    "sexo": 1,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "LOWT": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. t waves are low in i, v6 and inverted in avl. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14693_lr",
+    "filename_hr": "records500/14000/14693_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10393,
+    "patient_id": 3854,
+    "edad": 39.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10393_lr",
+    "filename_hr": "records500/10000/10393_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4576,
+    "patient_id": 430,
+    "edad": 81.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "STD_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. qs complexes in v2,3 consistent with old anteroseptal    myocardial infarction. st segments are depressed in i, avl, v6. t waves are flat in i, v6 and inverted in avl. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04576_lr",
+    "filename_hr": "records500/04000/04576_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4453,
+    "patient_id": 3836,
+    "edad": 72.0,
+    "sexo": 0,
+    "clase_aami": "NSR",
+    "codigo_scp_principal": "SR",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "NT_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. non-specific t wave flattening in i, avl, v6.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04453_lr",
+    "filename_hr": "records500/04000/04453_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  }
+]

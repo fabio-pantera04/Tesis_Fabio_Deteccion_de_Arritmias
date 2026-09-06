@@ -1,0 +1,460 @@
+ecg_id,clase_tesis,reporte_ptbxl,nota_generada,concept_recall,concept_recall_vs_ref,conceptos_encontrados,conceptos_n_esperados_ref,bleu,meteor,rouge1_f,rougeL_f,fc_estimada_bpm,amplitud_mv,edad,sexo,error,bertscore_P,bertscore_R,bertscore_F1
+10748,NSR,sinus rhythm. borderline left axis deviation. no definite pathology.,"# ELECTROCARDIOGRAPHY CLINICAL NOTE
+
+**Patient Information:**
+- Age: 70 years
+- Sex: Female
+
+**ECG Parameters:**
+- Lead: II
+- Duration: 10.0 seconds
+- Date of Analysis: [Current date]
+
+---
+
+## RHYTHM ANALYSIS
+
+**Primary Rhythm:** Normal Sinus Rhythm (NSR)
+- Model Confidence: 100.0%
+- Heart Rate: 62 bpm (normal range: 60-100 bpm)
+
+---
+
+## SIGNAL FINDINGS
+
+1. **Heart Rate:** 62 bpm - Within normal limits for adult at rest
+2. **Lead II Amplitude:** 0.002 mV - **CRITICALLY LOW**
+   - Normal Lead II amplitude typically ranges from 0.5-2.0 mV
+   - This represents severely diminished QRS voltage
+
+**Clinical Significance:**
+The extremely low amplitude (0.002 mV) is a significant finding that may indicate:
+- Technical issues (poor electrode contact, incorrect calibration)
+- Low voltage ECG (pathological causes):
+  - Pericardial effusion
+  - Cardiac tamponade
+  - Severe obesity
+  - Chronic obstructive pulmonary disease (COPD)
+  - Myxedema
+  - Infiltrative cardiomyopathy
+
+---
+
+## CLINICAL RECOMMENDATIONS
+
+1. **IMMEDIATE:** Verify technical quality - check electrode placement, skin preparation, and cable connections
+2. **Obtain 12-lead ECG** to assess voltage in all leads and confirm low voltage pattern
+3. **Clinical correlation** with physical examination findings
+4. **Consider echocardiography** if low voltage confirmed to evaluate for pericardial effusion or structural abnormalities
+5. Routine follow-up appropriate given stable sinus rhythm
+
+**Urgency Level:** Moderate - Address signal quality concerns promptly
+
+---
+*This interpretation should be correlated with clinical findings. Critical decisions should not be based solely on automated analysis.*",0.3333,1.0,sinus_rhythm,1,0.0026,0.0159,0.0268,0.0268,62,0.002,70.0,F,,0.7713,0.8593,0.8129
+19897,AFIB,vorhofflimmern/-flattern lagetyp normal 4.46                          unbestÄtigter bericht,"# ELECTROCARDIOGRAPHY CLINICAL NOTE
+
+**Patient Information:**
+- Age: 52 years
+- Sex: Male
+
+**ECG Parameters:**
+- Lead: II
+- Duration: 10.0 seconds
+- Date of Analysis: [Current date]
+
+---
+
+## RHYTHM ANALYSIS
+
+**Primary Diagnosis:** Atrial Fibrillation (AFIB)
+- Model Confidence: 100.0%
+- Heart Rate: 69 bpm (controlled ventricular response)
+
+---
+
+## SIGNAL FINDINGS
+
+1. **Rhythm Characteristics:**
+   - Irregularly irregular rhythm consistent with atrial fibrillation
+   - Ventricular rate controlled at 69 bpm
+   - Absence of organized P waves
+
+2. **Signal Quality Metrics:**
+   - Lead II amplitude: 0.002 mV (extremely low voltage)
+   - **Clinical Alert:** Critically low QRS amplitude detected
+
+---
+
+## CLINICAL SIGNIFICANCE
+
+**Critical Finding - Low Voltage:**
+The extremely low amplitude (0.002 mV) is markedly abnormal and warrants immediate clinical correlation. Differential considerations include:
+- Technical issues (lead placement, poor skin contact, equipment malfunction)
+- Pericardial effusion
+- Severe obesity
+- Emphysema/COPD
+- Infiltrative cardiac disease
+- Hypothyroidism
+
+**Atrial Fibrillation Assessment:**
+- Rate-controlled AFIB with ventricular response of 69 bpm (target <110 bpm achieved)
+- Requires stroke risk stratification (CHA₂DS₂-VASc score)
+
+---
+
+## RECOMMENDATIONS (per AAMI/AHA Guidelines)
+
+1. **Immediate:** Verify proper lead placement and repeat ECG to rule out technical artifact
+2. **If low voltage confirmed:** Obtain 12-lead ECG for comprehensive voltage assessment
+3. **AFIB Management:**
+   - Calculate CHA₂DS₂-VASc score for anticoagulation decision
+   - Assess HAS-BLED score if anticoagulation considered
+   - Echocardiogram to evaluate cardiac structure/function and rule out effusion
+4. **Cardiology consultation** recommended",0.6667,1.0,atrial_fibrillation;irregular_rhythm,1,0.001,0.0174,0.0089,0.0089,69,0.002,52.0,M,,0.7356,0.7774,0.7559
+21747,NSR,sinusrhythmus lagetyp normal normales ekg 4.46                          unbestÄtigter bericht,"# ELECTROCARDIOGRAM CLINICAL NOTE
+
+**Patient Information:**
+- Age: 58 years
+- Sex: Male
+
+**ECG Parameters:**
+- Lead: II
+- Duration: 10.0 seconds
+- Date of Analysis: [Current date]
+
+---
+
+## RHYTHM ANALYSIS
+
+**Primary Rhythm:** Normal Sinus Rhythm (NSR)
+- Model Confidence: 100.0%
+- Heart Rate: 91 bpm (normal range: 60-100 bpm)
+
+---
+
+## SIGNAL FINDINGS
+
+**Critical Finding:**
+- **Severely reduced amplitude detected:** 0.001 mV in Lead II
+- This represents markedly diminished QRS voltage, significantly below normal ranges (normal Lead II: 0.5-2.5 mV)
+
+**Rhythm Characteristics:**
+- Regular sinus rhythm maintained
+- Heart rate within normal sinus range
+
+---
+
+## CLINICAL INTERPRETATION
+
+The extremely low voltage (0.001 mV) is a **significant abnormal finding** that requires immediate clinical correlation. 
+
+**Differential Considerations for Low Voltage:**
+1. Technical factors (improper lead placement, poor skin contact, gain setting error)
+2. Pericardial effusion
+3. Pleural effusion
+4. Obesity/increased chest wall thickness
+5. COPD/emphysema with hyperinflation
+6. Infiltrative cardiomyopathy
+7. Hypothyroidism
+
+---
+
+## RECOMMENDATIONS (per AAMI/AHA Guidelines)
+
+1. **Immediate:** Verify technical acquisition - repeat ECG with confirmed proper lead placement and calibration
+2. **Obtain full 12-lead ECG** to assess voltage in all leads
+3. **Clinical correlation** with physical examination and relevant history
+4. **Consider echocardiography** if low voltage confirmed on repeat ECG
+5. Rule out pericardial/pleural effusion if clinically indicated
+
+**Urgency Level:** Routine to urgent, depending on clinical presentation
+
+---
+
+*This interpretation should be correlated with clinical findings. If technical error excluded, cardiology consultation recommended.*",0.3333,0.5,sinus_rhythm,2,0.001,0.0323,0.0251,0.0251,91,0.001,58.0,M,,0.751,0.8006,0.775
+21761,AFIB,tachykardes vorhofflimmern linkstyp linksschenkelblock linkshypertrophie mÖglich 4.46                          unbestÄtigter bericht,"# CLINICAL NOTE - ELECTROCARDIOGRAPHY ANALYSIS
+
+**Date of Analysis:** [Current Date]  
+**Patient Information:** 75-year-old Male  
+**Lead:** II (single-lead analysis)  
+**Segment Duration:** 10.0 seconds
+
+---
+
+## RHYTHM ANALYSIS
+
+**Primary Diagnosis:** ATRIAL FIBRILLATION (AFIB)  
+**Confidence Level:** 100.0%  
+**Ventricular Rate:** 96 bpm (within normal range: 60-100 bpm)
+
+---
+
+## SIGNAL CHARACTERISTICS
+
+- **Lead II Amplitude:** 0.001 mV (critically low voltage)
+- **Rhythm Pattern:** Irregularly irregular rhythm consistent with atrial fibrillation
+- **Rate Classification:** Normal ventricular response
+
+---
+
+## CLINICAL FINDINGS
+
+1. **Atrial Fibrillation:** Confirmed with high confidence. The absence of organized P waves and irregularly irregular ventricular response is diagnostic of AFIB.
+
+2. **Critical Low Voltage:** Lead II amplitude of 0.001 mV represents markedly reduced QRS voltage, which may indicate:
+   - Technical issue (poor electrode contact, lead misplacement)
+   - Pericardial effusion
+   - Chronic obstructive pulmonary disease (COPD)
+   - Hypothyroidism
+   - Infiltrative cardiac disease
+
+---
+
+## RECOMMENDATIONS (Per AAMI/AHA Guidelines)
+
+1. **Immediate Actions:**
+   - Verify electrode placement and connections; repeat ECG if technical issue suspected
+   - Obtain 12-lead ECG for comprehensive evaluation
+   - Assess patient's hemodynamic stability
+
+2. **AFIB Management:**
+   - Evaluate for anticoagulation therapy (CHA₂DS₂-VASc score assessment)
+   - Rate control vs. rhythm control strategy per clinical presentation
+   - Consider echocardiography to assess cardiac function and exclude structural abnormalities
+
+3. **Low Voltage Investigation:**
+   - If persistent on repeat ECG, investigate underlying etiology
+   - Clinical correlation with physical examination and imaging
+
+4. **Follow-up:** Cardiology consultation recommended for comprehensive AFIB management in elderly patient",0.6667,1.0,atrial_fibrillation;irregular_rhythm,1,0.0,0.0,0.0084,0.0084,96,0.001,75.0,M,,0.7451,0.7772,0.7608
+2058,NSR,"sinus tachycardia. r-s transition zone in v leads displaced to the right. minor non-specific t wave flattening in i, avl.","# ELECTROCARDIOGRAPHY CLINICAL NOTE
+
+**Patient Information:**
+- Age: 86 years
+- Sex: Female
+
+**Examination Details:**
+- Lead: II
+- Duration: 10.0 seconds
+- Date: [Current examination]
+
+---
+
+## RHYTHM ANALYSIS
+
+**Primary Rhythm:** Normal Sinus Rhythm (NSR)
+- Model Confidence: 100.0%
+- Heart Rate: 110 bpm
+
+---
+
+## SIGNIFICANT FINDINGS
+
+1. **Tachycardia**: Heart rate of 110 bpm exceeds normal range (60-100 bpm) for sinus rhythm, consistent with sinus tachycardia.
+
+2. **Critical Signal Quality Issue**: Lead II amplitude of 0.001 mV is extremely low, indicating:
+   - Severe signal attenuation
+   - Possible lead disconnection or poor electrode contact
+   - Technical artifact or equipment malfunction
+
+---
+
+## CLINICAL INTERPRETATION
+
+While the rhythm classifier indicates NSR with high confidence, the markedly diminished amplitude (0.001 mV) raises significant concern regarding signal quality and recording reliability. In an 86-year-old female with sinus tachycardia, this warrants immediate attention.
+
+---
+
+## RECOMMENDATIONS
+
+**Immediate Actions:**
+1. Verify and reposition all ECG electrodes
+2. Check lead connections and cable integrity
+3. Repeat 12-lead ECG with proper signal acquisition
+4. Ensure adequate skin preparation
+
+**Clinical Assessment:**
+1. Investigate underlying cause of sinus tachycardia (fever, pain, dehydration, anemia, infection, cardiac causes)
+2. Review current medications
+3. Assess hemodynamic stability
+4. Consider continuous cardiac monitoring given patient age
+
+**Follow-up:** Correlation with clinical presentation and repeat ECG mandatory before definitive interpretation.
+
+---
+
+*Note: This interpretation is preliminary and requires technical verification due to signal quality concerns.*",0.3333,,sinus_rhythm,0,0.0052,0.073,0.0496,0.0413,110,0.001,86.0,F,,0.7855,0.8579,0.8201
+16218,AFIB,atrial fibrillation. otherwise normal ecg.,"# CLINICAL ECG NOTE
+
+**Patient Information:**
+- Age: 81 years
+- Sex: Male
+- Lead: II (single-lead acquisition)
+- Duration: 10 seconds
+
+---
+
+## RHYTHM ANALYSIS
+
+**Primary Diagnosis:** Atrial Fibrillation (AFIB)
+- Model Confidence: 100.0%
+- Classification: Definitive
+
+**Heart Rate:** 57 bpm
+- Bradycardic atrial fibrillation (HR <60 bpm)
+
+---
+
+## SIGNAL CHARACTERISTICS
+
+**Critical Finding - Low Voltage:**
+- Lead II Amplitude: 0.001 mV (severely reduced)
+- Normal Lead II amplitude: typically 0.5-2.0 mV
+
+**Clinical Significance:**
+The markedly reduced amplitude raises concern for:
+- Poor electrode contact or technical artifact
+- Low voltage ECG (possible pericardial effusion, emphysema, obesity, or infiltrative disease)
+- Signal acquisition error
+
+---
+
+## CLINICAL INTERPRETATION
+
+1. **Atrial Fibrillation with Slow Ventricular Response:** Confirmed irregular rhythm with bradycardic rate in elderly male patient
+
+2. **Bradycardia Consideration:** HR 57 bpm may indicate:
+   - Adequate rate control (if on AV nodal blocking agents)
+   - Intrinsic AV nodal disease
+   - Need for pacemaker evaluation if symptomatic
+
+3. **Technical Concern:** Extremely low voltage requires verification
+
+---
+
+## RECOMMENDATIONS (per AAMI/AHA Guidelines)
+
+1. **Immediate:** Verify lead placement and repeat 12-lead ECG to confirm low voltage finding
+2. **Clinical Assessment:** Evaluate for symptoms of bradycardia (dizziness, syncope, fatigue)
+3. **Medication Review:** Assess rate-control medications and adjust if over-suppressed
+4. **Consider:** Echocardiogram if low voltage confirmed (evaluate for effusion/cardiomyopathy)
+5. **Anticoagulation:** Ensure appropriate stroke prophylaxis (CHA₂DS₂-VASc assessment)
+6. **Holter Monitor:** If symptomatic bradycar",0.6667,1.0,atrial_fibrillation;irregular_rhythm,1,0.0024,0.0364,0.0359,0.0359,57,0.001,81.0,M,,0.7573,0.8759,0.8123
+8734,NSR,sinusrhythmus linkstyp sonst normales ekg 4.46                          unbestÄtigter bericht,"# ELECTROCARDIOGRAM INTERPRETATION
+
+**Patient Information:**
+- Age: 61 years
+- Sex: Male
+
+**Study Details:**
+- Lead: II
+- Duration: 10.0 seconds
+- Date of interpretation: [Current date]
+
+---
+
+## RHYTHM ANALYSIS
+
+**Primary Rhythm:** Normal Sinus Rhythm (NSR)
+- Model Confidence: 100.0%
+- Heart Rate: 72 bpm (normal range: 60-100 bpm)
+
+---
+
+## SIGNAL CHARACTERISTICS
+
+**Lead II Amplitude:** 0.001 mV
+
+⚠️ **CRITICAL FINDING:** Severely reduced QRS amplitude detected.
+
+The Lead II amplitude of 0.001 mV is markedly diminished (normal Lead II: 0.5-2.5 mV). This represents significant low voltage, which may indicate:
+- Technical issues (poor electrode contact, incorrect placement)
+- Pericardial effusion
+- Cardiac amyloidosis
+- Severe obesity
+- Chronic obstructive pulmonary disease (COPD)
+- Hypothyroidism
+- Infiltrative cardiomyopathy
+
+---
+
+## CLINICAL RECOMMENDATIONS
+
+**IMMEDIATE ACTIONS:**
+1. **Verify technical factors:** Confirm proper electrode placement, skin preparation, and cable connections
+2. **Obtain 12-lead ECG** to assess voltage in all leads and evaluate for low voltage criteria (QRS <5 mm in limb leads or <10 mm in precordial leads)
+
+**FURTHER EVALUATION:**
+3. Echocardiography to evaluate for pericardial effusion, ventricular function, and wall thickness
+4. Consider chest X-ray for cardiac silhouette assessment
+5. Clinical correlation with physical examination findings
+
+**Follow-up:** Per cardiology consultation based on 12-lead findings and clinical presentation.
+
+---
+
+*This interpretation requires clinical correlation and technical verification before definitive diagnosis.*",0.3333,0.5,sinus_rhythm,2,0.0,0.0173,0.0185,0.0185,72,0.001,61.0,M,,0.7557,0.7897,0.7724
+20682,AFIB,vorhofflimmern/-flattern lagetyp normal 4.46                          unbestÄtigter bericht,"# ELECTROCARDIOGRAM INTERPRETATION
+
+**Patient Information:**
+- Age: 46 years
+- Sex: Male
+- Lead: II
+- Duration: 10.0 seconds
+
+---
+
+## RHYTHM ANALYSIS
+
+**Primary Diagnosis: ATRIAL FIBRILLATION (AFIB)**
+- Model Confidence: 100.0%
+- Ventricular Rate: 68 bpm (controlled)
+
+---
+
+## SIGNAL CHARACTERISTICS
+
+**Critical Finding:**
+- **Lead II Amplitude: 0.001 mV** - Severely reduced voltage
+  - This represents markedly low QRS amplitude (<0.5 mV in limb leads)
+  - Suggests possible technical issue or pathological low voltage state
+
+**Rate Assessment:**
+- Heart rate of 68 bpm indicates adequate rate control
+
+---
+
+## CLINICAL SIGNIFICANCE
+
+1. **Atrial Fibrillation in Young Patient:**
+   - AFIB in a 46-year-old male warrants investigation for secondary causes
+   - Consider: thyroid dysfunction, alcohol use, structural heart disease, genetic predisposition
+
+2. **Low Voltage Differential Diagnosis:**
+   - Technical: Poor electrode contact, limb lead reversal, improper calibration
+   - Pathological: Obesity, COPD, pericardial effusion, infiltrative cardiomyopathy, hypothyroidism
+
+---
+
+## RECOMMENDATIONS (AAMI/AHA Guidelines)
+
+1. **Immediate Actions:**
+   - Verify lead placement and repeat ECG with proper technique
+   - Obtain 12-lead ECG for comprehensive evaluation
+   - Assess limb lead voltage in multiple leads
+
+2. **AFIB Management:**
+   - Evaluate CHA₂DS₂-VASc score for stroke risk stratification
+   - Consider anticoagulation therapy if indicated
+   - Assess need for rate/rhythm control strategy
+   - Echocardiogram to evaluate for structural abnormalities
+
+3. **Further Workup:**
+   - TSH, CBC, BMP, hepatic function
+   - Consider chest X-ray if low voltage confirmed
+   - Cardiology consultation recommended
+
+---
+
+**Interpretation requires clinical correlation. Repeat ECG with proper technique strongly advised.**",0.3333,1.0,atrial_fibrillation,1,0.001,0.0,0.0088,0.0088,68,0.001,46.0,M,,0.7342,0.7749,0.754

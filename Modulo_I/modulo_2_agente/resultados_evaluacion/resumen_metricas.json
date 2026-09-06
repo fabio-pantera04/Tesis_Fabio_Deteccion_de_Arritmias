@@ -1,0 +1,79 @@
+{
+  "metodologia": {
+    "dataset_referencia": "PTB-XL v1.0.3 (PhysioNet)",
+    "modo_evaluacion": "agente_aislado",
+    "idioma_evaluacion": "en",
+    "n_por_clase": 4,
+    "clases": [
+      "NSR",
+      "AFIB"
+    ],
+    "semilla": 42,
+    "modelo_llm": "claude-sonnet-4-5",
+    "bertscore_model": "xlm-roberta-large",
+    "metrica_principal": "concept_recall_vs_ref",
+    "metricas_secundarias": [
+      "bertscore_F1",
+      "meteor",
+      "rouge1_f",
+      "rougeL_f",
+      "bleu"
+    ],
+    "nota_metodologica": "Las métricas léxicas (BLEU/ROUGE/METEOR) se reportan por completitud, pero penalizan parafraseo y diferencias de estilo entre la nota estructurada del agente y los reportes telegráficos de PTB-XL. La métrica principal es concept recall vs referencia, que mide si los conceptos clínicos del reporte aparecen en la nota generada. BERTScore complementa con similitud semántica multilingüe.",
+    "nota_pac": "PAC excluido: PTB-XL no contiene etiqueta PAC pura. El módulo LATIDO se evalúa con 5 médicos (validación humana)."
+  },
+  "global": {
+    "n": 8,
+    "concept_recall_mean": 0.4583,
+    "concept_recall_std": 0.1726,
+    "concept_recall_vs_ref_mean": 0.8571,
+    "concept_recall_vs_ref_std": 0.244,
+    "bleu_mean": 0.0016,
+    "bleu_std": 0.0017,
+    "meteor_mean": 0.024,
+    "meteor_std": 0.0237,
+    "rouge1_f_mean": 0.0227,
+    "rouge1_f_std": 0.0148,
+    "rougeL_f_mean": 0.0217,
+    "rougeL_f_std": 0.0128,
+    "bertscore_F1_mean": 0.7829,
+    "bertscore_F1_std": 0.0277
+  },
+  "por_clase": {
+    "NSR": {
+      "n": 4,
+      "concept_recall_mean": 0.3333,
+      "concept_recall_std": 0.0,
+      "concept_recall_vs_ref_mean": 0.6667,
+      "concept_recall_vs_ref_std": 0.2887,
+      "bleu_mean": 0.0022,
+      "bleu_std": 0.0023,
+      "meteor_mean": 0.0346,
+      "meteor_std": 0.0266,
+      "rouge1_f_mean": 0.03,
+      "rouge1_f_std": 0.0135,
+      "rougeL_f_mean": 0.0279,
+      "rougeL_f_std": 0.0096,
+      "bertscore_F1_mean": 0.7951,
+      "bertscore_F1_std": 0.0249
+    },
+    "AFIB": {
+      "n": 4,
+      "concept_recall_mean": 0.5833,
+      "concept_recall_std": 0.1667,
+      "concept_recall_vs_ref_mean": 1.0,
+      "concept_recall_vs_ref_std": 0.0,
+      "bleu_mean": 0.0011,
+      "bleu_std": 0.001,
+      "meteor_mean": 0.0135,
+      "meteor_std": 0.0174,
+      "rouge1_f_mean": 0.0155,
+      "rouge1_f_std": 0.0136,
+      "rougeL_f_mean": 0.0155,
+      "rougeL_f_std": 0.0136,
+      "bertscore_F1_mean": 0.7708,
+      "bertscore_F1_std": 0.0278
+    }
+  },
+  "n_errores": 0
+}

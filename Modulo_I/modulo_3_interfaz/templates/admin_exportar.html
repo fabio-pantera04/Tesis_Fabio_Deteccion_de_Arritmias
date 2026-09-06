@@ -1,0 +1,59 @@
+{% extends "admin_base.html" %}
+{% block title %}Exportar — Admin{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2>Exportar datos</h2>
+    <p class="admin-page-desc">Descargas para análisis estadístico externo y respaldo.</p>
+</div>
+
+<div class="export-grid">
+    <div class="export-card">
+        <h3>Cardiólogos</h3>
+        <p>Perfil completo de todos los cardiólogos registrados con sus promedios Likert.</p>
+        <a href="{{ url_for('admin_exportar_csv', tipo='medicos') }}" class="btn btn-primary">Descargar CSV</a>
+    </div>
+
+    <div class="export-card">
+        <h3>Evaluaciones</h3>
+        <p>Una fila por evaluación: veredicto nota, Likert, porcentajes subrayado, comentarios.</p>
+        <a href="{{ url_for('admin_exportar_csv', tipo='evaluaciones') }}" class="btn btn-primary">Descargar CSV</a>
+    </div>
+
+    <div class="export-card">
+        <h3>Respuestas por ventana</h3>
+        <p>Una fila por semáforo (60 beat + 15 rhythm × evaluaciones). Formato ideal para R o Python.</p>
+        <a href="{{ url_for('admin_exportar_csv', tipo='respuestas_ventana') }}" class="btn btn-primary">Descargar CSV</a>
+    </div>
+
+    <div class="export-card">
+        <h3>Backup completo (BD)</h3>
+        <p>Archivo <code>.db</code> de SQLite con todas las tablas. Se puede abrir con <a href="https://sqlitebrowser.org/" target="_blank">DB Browser</a>.</p>
+        <a href="{{ url_for('admin_exportar_csv', tipo='backup_bd') }}" class="btn btn-primary">Descargar BD</a>
+    </div>
+</div>
+
+<!-- ZONA PELIGROSA: reset BD -->
+<div class="danger-zone" style="margin-top: 40px;">
+    <h3>⚠ Zona peligrosa — Reset completo de la base de datos</h3>
+    <p>
+        Elimina <b>TODOS</b> los cardiólogos, evaluaciones y respuestas de la BD.
+        Útil para limpiar tus pruebas antes de recibir a cardiólogos reales.
+        <b>Esta acción es irreversible.</b> Se recomienda hacer un backup antes.
+    </p>
+    <form method="POST" action="{{ url_for('admin_reset_bd') }}"
+          onsubmit="return confirm('¿ESTÁS TOTALMENTE SEGURO? Esta acción borra TODO y no se puede deshacer.');"
+          style="margin-top: 12px;">
+        <div class="form-field">
+            <label>Escribe <b>SI</b> para confirmar (paso 1):</label>
+            <input type="text" name="confirmacion_1" required placeholder="SI">
+        </div>
+        <div class="form-field">
+            <label>Escribe <b>BORRAR TODO</b> para confirmar (paso 2):</label>
+            <input type="text" name="confirmacion_2" required placeholder="BORRAR TODO">
+        </div>
+        <button type="submit" class="btn btn-danger">Reset completo de BD</button>
+    </form>
+</div>
+
+{% endblock %}

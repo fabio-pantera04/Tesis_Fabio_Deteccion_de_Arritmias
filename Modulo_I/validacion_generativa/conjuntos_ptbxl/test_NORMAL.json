@@ -1,0 +1,1804 @@
+[
+  {
+    "ecg_id_ptbxl": 254,
+    "patient_id": 7415,
+    "edad": 63.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00254_lr",
+    "filename_hr": "records500/00000/00254_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10693,
+    "patient_id": 339,
+    "edad": 45.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10693_lr",
+    "filename_hr": "records500/10000/10693_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11049,
+    "patient_id": 3685,
+    "edad": 46.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11049_lr",
+    "filename_hr": "records500/11000/11049_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11014,
+    "patient_id": 6095,
+    "edad": 51.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11014_lr",
+    "filename_hr": "records500/11000/11014_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11008,
+    "patient_id": 6341,
+    "edad": 37.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11008_lr",
+    "filename_hr": "records500/11000/11008_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10990,
+    "patient_id": 1122,
+    "edad": 44.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10990_lr",
+    "filename_hr": "records500/10000/10990_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10983,
+    "patient_id": 4722,
+    "edad": 84.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10983_lr",
+    "filename_hr": "records500/10000/10983_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10970,
+    "patient_id": 2072,
+    "edad": 46.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10970_lr",
+    "filename_hr": "records500/10000/10970_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10968,
+    "patient_id": 5580,
+    "edad": 64.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10968_lr",
+    "filename_hr": "records500/10000/10968_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10957,
+    "patient_id": 5645,
+    "edad": 43.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10957_lr",
+    "filename_hr": "records500/10000/10957_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10926,
+    "patient_id": 3786,
+    "edad": 51.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10926_lr",
+    "filename_hr": "records500/10000/10926_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10920,
+    "patient_id": 891,
+    "edad": 61.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10920_lr",
+    "filename_hr": "records500/10000/10920_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10827,
+    "patient_id": 3480,
+    "edad": 37.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10827_lr",
+    "filename_hr": "records500/10000/10827_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10824,
+    "patient_id": 4974,
+    "edad": 33.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10824_lr",
+    "filename_hr": "records500/10000/10824_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10823,
+    "patient_id": 3347,
+    "edad": 50.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10823_lr",
+    "filename_hr": "records500/10000/10823_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10821,
+    "patient_id": 5033,
+    "edad": 74.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10821_lr",
+    "filename_hr": "records500/10000/10821_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10812,
+    "patient_id": 3523,
+    "edad": 51.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10812_lr",
+    "filename_hr": "records500/10000/10812_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10799,
+    "patient_id": 560,
+    "edad": 50.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10799_lr",
+    "filename_hr": "records500/10000/10799_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10781,
+    "patient_id": 4991,
+    "edad": 43.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10781_lr",
+    "filename_hr": "records500/10000/10781_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10776,
+    "patient_id": 4484,
+    "edad": 63.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10776_lr",
+    "filename_hr": "records500/10000/10776_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10758,
+    "patient_id": 1157,
+    "edad": 48.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10758_lr",
+    "filename_hr": "records500/10000/10758_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10750,
+    "patient_id": 2521,
+    "edad": 16.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10750_lr",
+    "filename_hr": "records500/10000/10750_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10749,
+    "patient_id": 1203,
+    "edad": 62.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10749_lr",
+    "filename_hr": "records500/10000/10749_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10747,
+    "patient_id": 560,
+    "edad": 50.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10747_lr",
+    "filename_hr": "records500/10000/10747_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10740,
+    "patient_id": 5985,
+    "edad": 68.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10740_lr",
+    "filename_hr": "records500/10000/10740_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10718,
+    "patient_id": 2505,
+    "edad": 46.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10718_lr",
+    "filename_hr": "records500/10000/10718_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10717,
+    "patient_id": 5825,
+    "edad": 62.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10717_lr",
+    "filename_hr": "records500/10000/10717_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10713,
+    "patient_id": 2507,
+    "edad": 61.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10713_lr",
+    "filename_hr": "records500/10000/10713_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10712,
+    "patient_id": 339,
+    "edad": 45.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. compared with tracing of 28:7:92, it is not    significantly changed. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10712_lr",
+    "filename_hr": "records500/10000/10712_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10710,
+    "patient_id": 3084,
+    "edad": 58.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10710_lr",
+    "filename_hr": "records500/10000/10710_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10705,
+    "patient_id": 1085,
+    "edad": 53.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10705_lr",
+    "filename_hr": "records500/10000/10705_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11057,
+    "patient_id": 5055,
+    "edad": 56.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11057_lr",
+    "filename_hr": "records500/11000/11057_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11076,
+    "patient_id": 4644,
+    "edad": 47.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11076_lr",
+    "filename_hr": "records500/11000/11076_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11082,
+    "patient_id": 5116,
+    "edad": 49.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11082_lr",
+    "filename_hr": "records500/11000/11082_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11943,
+    "patient_id": 1115,
+    "edad": 42.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11943_lr",
+    "filename_hr": "records500/11000/11943_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12051,
+    "patient_id": 3893,
+    "edad": 35.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12051_lr",
+    "filename_hr": "records500/12000/12051_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12046,
+    "patient_id": 4006,
+    "edad": 81.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12046_lr",
+    "filename_hr": "records500/12000/12046_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12043,
+    "patient_id": 4358,
+    "edad": 65.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12043_lr",
+    "filename_hr": "records500/12000/12043_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12040,
+    "patient_id": 1074,
+    "edad": 75.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12040_lr",
+    "filename_hr": "records500/12000/12040_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12034,
+    "patient_id": 2506,
+    "edad": 65.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12034_lr",
+    "filename_hr": "records500/12000/12034_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12014,
+    "patient_id": 6793,
+    "edad": 44.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12014_lr",
+    "filename_hr": "records500/12000/12014_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12007,
+    "patient_id": 3508,
+    "edad": 62.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12007_lr",
+    "filename_hr": "records500/12000/12007_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12006,
+    "patient_id": 6237,
+    "edad": 66.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12006_lr",
+    "filename_hr": "records500/12000/12006_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11995,
+    "patient_id": 3133,
+    "edad": 44.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11995_lr",
+    "filename_hr": "records500/11000/11995_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11992,
+    "patient_id": 6019,
+    "edad": 20.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11992_lr",
+    "filename_hr": "records500/11000/11992_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11987,
+    "patient_id": 6189,
+    "edad": 22.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11987_lr",
+    "filename_hr": "records500/11000/11987_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11984,
+    "patient_id": 7674,
+    "edad": 29.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11984_lr",
+    "filename_hr": "records500/11000/11984_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11975,
+    "patient_id": 2732,
+    "edad": 76.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11975_lr",
+    "filename_hr": "records500/11000/11975_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11939,
+    "patient_id": 6840,
+    "edad": 27.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11939_lr",
+    "filename_hr": "records500/11000/11939_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11084,
+    "patient_id": 5663,
+    "edad": 57.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11084_lr",
+    "filename_hr": "records500/11000/11084_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 6097,
+    "patient_id": 4982,
+    "edad": 79.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06097_lr",
+    "filename_hr": "records500/06000/06097_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 1913,
+    "patient_id": 2832,
+    "edad": 64.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/01000/01913_lr",
+    "filename_hr": "records500/01000/01913_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16547,
+    "patient_id": 828,
+    "edad": 56.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16547_lr",
+    "filename_hr": "records500/16000/16547_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 870,
+    "patient_id": 4369,
+    "edad": 59.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00870_lr",
+    "filename_hr": "records500/00000/00870_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 1241,
+    "patient_id": 561,
+    "edad": 32.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/01000/01241_lr",
+    "filename_hr": "records500/01000/01241_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 5798,
+    "patient_id": 6302,
+    "edad": 58.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/05000/05798_lr",
+    "filename_hr": "records500/05000/05798_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 470,
+    "patient_id": 4578,
+    "edad": 62.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00470_lr",
+    "filename_hr": "records500/00000/00470_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16341,
+    "patient_id": 2339,
+    "edad": 20.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16341_lr",
+    "filename_hr": "records500/16000/16341_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 18185,
+    "patient_id": 2190,
+    "edad": 65.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 80.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PVC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s). sinus rhythm. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/18000/18185_lr",
+    "filename_hr": "records500/18000/18185_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 6604,
+    "patient_id": 5063,
+    "edad": 77.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06604_lr",
+    "filename_hr": "records500/06000/06604_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 900,
+    "patient_id": 4246,
+    "edad": 34.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00900_lr",
+    "filename_hr": "records500/00000/00900_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 15934,
+    "patient_id": 4637,
+    "edad": 38.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/15000/15934_lr",
+    "filename_hr": "records500/15000/15934_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 3377,
+    "patient_id": 3220,
+    "edad": 68.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/03000/03377_lr",
+    "filename_hr": "records500/03000/03377_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 9856,
+    "patient_id": 5152,
+    "edad": 45.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/09000/09856_lr",
+    "filename_hr": "records500/09000/09856_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 6949,
+    "patient_id": 7402,
+    "edad": 43.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg. Edit: NORM 100, (NORM 100)",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06949_lr",
+    "filename_hr": "records500/06000/06949_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 8756,
+    "patient_id": 4220,
+    "edad": 38.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/08000/08756_lr",
+    "filename_hr": "records500/08000/08756_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 2832,
+    "patient_id": 3601,
+    "edad": 40.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/02000/02832_lr",
+    "filename_hr": "records500/02000/02832_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10375,
+    "patient_id": 6566,
+    "edad": 69.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 50.0,
+    "todos_scp_codes": {
+      "NORM": 50.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. r-s transition zone in v leads displaced to the right. otherwise normal ecg. Edit: NORM 50, Sokolow 1,8,",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10375_lr",
+    "filename_hr": "records500/10000/10375_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 17813,
+    "patient_id": 7043,
+    "edad": 63.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/17000/17813_lr",
+    "filename_hr": "records500/17000/17813_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 7929,
+    "patient_id": 7687,
+    "edad": 73.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/07000/07929_lr",
+    "filename_hr": "records500/07000/07929_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 18175,
+    "patient_id": 1750,
+    "edad": 55.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/18000/18175_lr",
+    "filename_hr": "records500/18000/18175_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12467,
+    "patient_id": 2117,
+    "edad": 65.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12467_lr",
+    "filename_hr": "records500/12000/12467_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 17022,
+    "patient_id": 1225,
+    "edad": 54.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/17000/17022_lr",
+    "filename_hr": "records500/17000/17022_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12622,
+    "patient_id": 7899,
+    "edad": 58.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12622_lr",
+    "filename_hr": "records500/12000/12622_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14524,
+    "patient_id": 1684,
+    "edad": 36.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14524_lr",
+    "filename_hr": "records500/14000/14524_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 6729,
+    "patient_id": 724,
+    "edad": 32.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06729_lr",
+    "filename_hr": "records500/06000/06729_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 6176,
+    "patient_id": 1385,
+    "edad": 67.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06176_lr",
+    "filename_hr": "records500/06000/06176_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16817,
+    "patient_id": 3850,
+    "edad": 27.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16817_lr",
+    "filename_hr": "records500/16000/16817_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 488,
+    "patient_id": 5132,
+    "edad": 75.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00488_lr",
+    "filename_hr": "records500/00000/00488_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 837,
+    "patient_id": 4719,
+    "edad": 68.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00837_lr",
+    "filename_hr": "records500/00000/00837_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 18111,
+    "patient_id": 727,
+    "edad": 75.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/18000/18111_lr",
+    "filename_hr": "records500/18000/18111_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 6119,
+    "patient_id": 6080,
+    "edad": 51.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06119_lr",
+    "filename_hr": "records500/06000/06119_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 2687,
+    "patient_id": 6746,
+    "edad": 66.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/02000/02687_lr",
+    "filename_hr": "records500/02000/02687_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14133,
+    "patient_id": 1291,
+    "edad": 42.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14133_lr",
+    "filename_hr": "records500/14000/14133_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10029,
+    "patient_id": 322,
+    "edad": 77.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10029_lr",
+    "filename_hr": "records500/10000/10029_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 2116,
+    "patient_id": 527,
+    "edad": 64.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 80.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "LPR": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm prolonged pr interval otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/02000/02116_lr",
+    "filename_hr": "records500/02000/02116_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14681,
+    "patient_id": 5176,
+    "edad": 47.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14681_lr",
+    "filename_hr": "records500/14000/14681_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 10462,
+    "patient_id": 7522,
+    "edad": 19.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/10000/10462_lr",
+    "filename_hr": "records500/10000/10462_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16387,
+    "patient_id": 1208,
+    "edad": 81.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16387_lr",
+    "filename_hr": "records500/16000/16387_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 18129,
+    "patient_id": 6716,
+    "edad": 64.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/18000/18129_lr",
+    "filename_hr": "records500/18000/18129_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 8560,
+    "patient_id": 4812,
+    "edad": 66.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/08000/08560_lr",
+    "filename_hr": "records500/08000/08560_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16655,
+    "patient_id": 1387,
+    "edad": 58.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm normal ecg",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16655_lr",
+    "filename_hr": "records500/16000/16655_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 9058,
+    "patient_id": 832,
+    "edad": 83.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/09000/09058_lr",
+    "filename_hr": "records500/09000/09058_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14642,
+    "patient_id": 5742,
+    "edad": 51.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg. lead v1 shows artifact.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14642_lr",
+    "filename_hr": "records500/14000/14642_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 2259,
+    "patient_id": 5987,
+    "edad": 62.0,
+    "sexo": 0,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/02000/02259_lr",
+    "filename_hr": "records500/02000/02259_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 16960,
+    "patient_id": 3955,
+    "edad": 44.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/16000/16960_lr",
+    "filename_hr": "records500/16000/16960_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4555,
+    "patient_id": 1192,
+    "edad": 60.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04555_lr",
+    "filename_hr": "records500/04000/04555_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 1958,
+    "patient_id": 7843,
+    "edad": 76.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/01000/01958_lr",
+    "filename_hr": "records500/01000/01958_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12609,
+    "patient_id": 511,
+    "edad": 81.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12609_lr",
+    "filename_hr": "records500/12000/12609_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 952,
+    "patient_id": 1608,
+    "edad": 57.0,
+    "sexo": 1,
+    "clase_aami": "NORMAL",
+    "codigo_scp_principal": "NORM",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/00000/00952_lr",
+    "filename_hr": "records500/00000/00952_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  }
+]

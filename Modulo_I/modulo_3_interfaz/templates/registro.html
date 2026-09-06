@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Registro — Validación clínica{% endblock %}
+{% block content %}
+<section class="paper">
+    <div class="eyebrow">Sesión nueva</div>
+    <h2>Registro del cardiólogo evaluador</h2>
+    <p>Este formulario captura su perfil profesional una sola vez. Es información
+       requerida por el protocolo de validación clínica del Módulo III de la tesis.
+       Los datos quedan almacenados localmente en formato anonimizable.</p>
+
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+    <form method="POST" action="{{ url_for('registro') }}" id="registro-form">
+        <h3>Identificación</h3>
+        <div class="form-grid">
+            <div class="form-field">
+                <label for="nombre_completo">Nombre completo *</label>
+                <input id="nombre_completo" name="nombre_completo" type="text" required
+                       value="{{ form.get('nombre_completo', '') }}">
+            </div>
+            <div class="form-field">
+                <label for="email">Correo de contacto *</label>
+                <input id="email" name="email" type="email" required
+                       value="{{ form.get('email', '') }}">
+            </div>
+            <div class="form-field">
+                <label for="edad">Edad *</label>
+                <input id="edad" name="edad" type="number" min="20" max="90" required
+                       value="{{ form.get('edad', '') }}">
+            </div>
+            <div class="form-field">
+                <label for="sexo">Sexo *</label>
+                <select id="sexo" name="sexo" required>
+                    <option value="">—</option>
+                    <option value="F" {% if form.get('sexo') == 'F' %}selected{% endif %}>Femenino</option>
+                    <option value="M" {% if form.get('sexo') == 'M' %}selected{% endif %}>Masculino</option>
+                    <option value="X" {% if form.get('sexo') == 'X' %}selected{% endif %}>Prefiero no especificar</option>
+                </select>
+            </div>
+        </div>
+
+        <h3>Trayectoria profesional</h3>
+        <div class="form-grid">
+            <div class="form-field">
+                <label for="institucion">Institución de adscripción *</label>
+                <input id="institucion" name="institucion" type="text" required
+                       placeholder="Ej. ISSSTE General Zacatecas"
+                       value="{{ form.get('institucion', '') }}">
+            </div>
+            <div class="form-field">
+                <label for="especialidad">Especialidad *</label>
+                <select id="especialidad" name="especialidad" required>
+                    <option value="">—</option>
+                    <option value="Cardiología general" {% if form.get('especialidad') == 'Cardiología general' %}selected{% endif %}>Cardiología general</option>
+                    <option value="Cardiología clínica" {% if form.get('especialidad') == 'Cardiología clínica' %}selected{% endif %}>Cardiología clínica</option>
+                    <option value="Electrofisiología" {% if form.get('especialidad') == 'Electrofisiología' %}selected{% endif %}>Electrofisiología</option>
+                    <option value="Medicina interna" {% if form.get('especialidad') == 'Medicina interna' %}selected{% endif %}>Medicina interna</option>
+                    <option value="Otra" {% if form.get('especialidad') == 'Otra' %}selected{% endif %}>Otra (especificar)</option>
+                </select>
+            </div>
+            <div class="form-field" id="otra-especialidad-container" style="display: none;">
+                <label for="especialidad_otra">Especifique su especialidad *</label>
+                <input id="especialidad_otra" name="especialidad_otra" type="text"
+                       placeholder="Ej. cardiología pediátrica"
+                       value="{{ form.get('especialidad_otra', '') }}">
+            </div>
+            <div class="form-field">
+                <label for="sub_especialidad">Sub-especialidad (opcional)</label>
+                <input id="sub_especialidad" name="sub_especialidad" type="text"
+                       placeholder="Ej. arritmias"
+                       value="{{ form.get('sub_especialidad', '') }}">
+            </div>
+            <div class="form-field">
+                <label for="anos_experiencia">Años de experiencia clínica *</label>
+                <input id="anos_experiencia" name="anos_experiencia" type="number"
+                       min="0" max="60" required
+                       value="{{ form.get('anos_experiencia', '') }}">
+            </div>
+            <div class="form-field">
+                <label for="anos_experiencia_ecg">Años trabajando con ECG / arritmias *</label>
+                <input id="anos_experiencia_ecg" name="anos_experiencia_ecg" type="number"
+                       min="0" max="60" required
+                       value="{{ form.get('anos_experiencia_ecg', '') }}">
+            </div>
+            <div class="form-field">
+                <label for="auto_eval_habilidad">Auto-evaluación de habilidad en ECG (1–5) *</label>
+                <select id="auto_eval_habilidad" name="auto_eval_habilidad" required>
+                    <option value="">—</option>
+                    <option value="1" {% if form.get('auto_eval_habilidad') == '1' %}selected{% endif %}>1 — principiante</option>
+                    <option value="2" {% if form.get('auto_eval_habilidad') == '2' %}selected{% endif %}>2 — competencia básica</option>
+                    <option value="3" {% if form.get('auto_eval_habilidad') == '3' %}selected{% endif %}>3 — intermedio</option>
+                    <option value="4" {% if form.get('auto_eval_habilidad') == '4' %}selected{% endif %}>4 — avanzado</option>
+                    <option value="5" {% if form.get('auto_eval_habilidad') == '5' %}selected{% endif %}>5 — experto</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="margin-top: 28px; display: flex; gap: 14px; align-items: center;">
+            <button type="submit" class="btn btn-primary">Iniciar evaluación</button>
+            <span style="color: var(--ink-soft); font-size: 13px;">
+                * todos los campos marcados son obligatorios.
+                Sub-especialidad es opcional.
+            </span>
+        </div>
+    </form>
+
+    <script>
+        (function() {
+            const especialidad = document.getElementById("especialidad");
+            const container = document.getElementById("otra-especialidad-container");
+            const otraInput = document.getElementById("especialidad_otra");
+
+            function toggleOtra() {
+                if (especialidad.value === "Otra") {
+                    container.style.display = "";
+                    otraInput.required = true;
+                } else {
+                    container.style.display = "none";
+                    otraInput.required = false;
+                    otraInput.value = "";
+                }
+            }
+
+            especialidad.addEventListener("change", toggleOtra);
+            toggleOtra();
+        })();
+    </script>
+</section>
+{% endblock %}

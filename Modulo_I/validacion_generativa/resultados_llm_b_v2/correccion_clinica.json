@@ -1,0 +1,90 @@
+{
+  "0": {
+    "global": {
+      "n": 389,
+      "class_mention_pct": 87.146529562982,
+      "class_fidelity_pct": 86.88946015424165,
+      "morphological_pct": 100.0,
+      "evidence_pct": 100.0,
+      "correct_composite_pct": 86.88946015424165
+    },
+    "por_clase": {
+      "NORMAL": {
+        "n": 100,
+        "class_mention_pct": 83.0,
+        "class_fidelity_pct": 82.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 100.0,
+        "correct_composite_pct": 82.0
+      },
+      "PAC": {
+        "n": 100,
+        "class_mention_pct": 71.0,
+        "class_fidelity_pct": 71.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 100.0,
+        "correct_composite_pct": 71.0
+      },
+      "NSR": {
+        "n": 89,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 100.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 100.0,
+        "correct_composite_pct": 100.0
+      },
+      "AFIB": {
+        "n": 100,
+        "class_mention_pct": 96.0,
+        "class_fidelity_pct": 96.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 100.0,
+        "correct_composite_pct": 96.0
+      }
+    }
+  },
+  "8": {
+    "global": {
+      "n": 389,
+      "class_mention_pct": 64.26735218508998,
+      "class_fidelity_pct": 64.26735218508998,
+      "morphological_pct": 100.0,
+      "evidence_pct": 100.0,
+      "correct_composite_pct": 64.26735218508998
+    },
+    "por_clase": {
+      "NORMAL": {
+        "n": 100,
+        "class_mention_pct": 12.0,
+        "class_fidelity_pct": 12.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 100.0,
+        "correct_composite_pct": 12.0
+      },
+      "PAC": {
+        "n": 100,
+        "class_mention_pct": 72.0,
+        "class_fidelity_pct": 72.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 100.0,
+        "correct_composite_pct": 72.0
+      },
+      "NSR": {
+        "n": 89,
+        "class_mention_pct": 93.25842696629213,
+        "class_fidelity_pct": 93.25842696629213,
+        "morphological_pct": 100.0,
+        "evidence_pct": 100.0,
+        "correct_composite_pct": 93.25842696629213
+      },
+      "AFIB": {
+        "n": 100,
+        "class_mention_pct": 83.0,
+        "class_fidelity_pct": 83.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 100.0,
+        "correct_composite_pct": 83.0
+      }
+    }
+  }
+}

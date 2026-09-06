@@ -1,0 +1,252 @@
+/* ============================================================
+   BLOQUE NUEVO - AÑADIR AL FINAL DE medico.css
+   Estilos para:
+     1. Tracks BEAT/RHYTHM por segmento (debajo de cada ECG)
+     2. Sistema de subrayado de la nota LLM con colores
+   ============================================================ */
+
+/* ---- Bloque de segmento: ECG + tracks alineados ---- */
+.segment-block {
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-radius: 4px;
+    padding: 8px 0 4px 0;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 2px rgba(42, 24, 16, 0.04);
+}
+
+.segment-block .ecg-strip {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Contenedor de las 2 filas (BEAT y RHYTHM) */
+.segment-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4px 18px 6px 0;   /* right = margin derecho de Plotly (18px) */
+    background: transparent;
+}
+
+/* Cada fila: etiqueta lateral + celdas alineadas con el gráfico */
+.segment-track-row {
+    display: grid;
+    /* 70px = margen izquierdo de Plotly (etiqueta 0-10s) */
+    grid-template-columns: 70px 1fr;
+    align-items: center;
+    gap: 0;
+}
+
+.segment-track-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-align: right;
+    padding-right: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Contenedor de celdas: CSS Grid de 10 columnas, una por segundo */
+.segment-track-cells {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+    min-height: 42px;
+}
+
+/* Cada celda tiene: etiqueta arriba, semaforo 3 dots abajo */
+.segment-track-cells .label-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 2px;
+    border-top: 2px solid transparent;
+    background: var(--cream-paper);
+    border-radius: 2px;
+    min-width: 0;   /* permite shrink en grid */
+    overflow: hidden;
+}
+
+.segment-track-cells .label-cell-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.segment-track-cells .label-cell .semaforo {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.segment-track-cells .label-cell .semaforo button {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 1px solid rgba(42, 24, 16, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.segment-track-cells .label-cell .semaforo button:hover {
+    transform: scale(1.2);
+}
+
+.segment-track-cells .label-cell .semaforo button.active {
+    border: 2px solid var(--ink);
+    box-shadow: 0 0 0 1px var(--cream-paper);
+}
+
+/* ---- Barra de herramientas de subrayado ---- */
+.mark-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    background: var(--cream-deep);
+    border-radius: 4px;
+    margin: 12px 0;
+    border: 1px solid rgba(42, 24, 16, 0.08);
+}
+
+.mark-toolbar-label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-right: 4px;
+}
+
+.mark-btn {
+    padding: 6px 12px;
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--cream-paper);
+    color: var(--ink);
+    transition: all 0.15s;
+}
+
+.mark-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(42, 24, 16, 0.12);
+}
+
+.mark-btn-verde     { border-color: var(--verde); color: var(--verde); }
+.mark-btn-amarillo  { border-color: var(--amarillo); color: var(--amarillo); }
+.mark-btn-rojo      { border-color: var(--rojo); color: var(--rojo); }
+.mark-btn-borrar    { border-color: var(--ink-mute); color: var(--ink-soft); }
+.mark-btn-limpiar   { border-color: var(--ink-soft); color: var(--ink-soft); margin-left: auto; }
+
+.mark-btn-verde.active     { background: var(--verde-soft); color: var(--verde); }
+.mark-btn-amarillo.active  { background: var(--amarillo-soft); color: var(--ink); }
+.mark-btn-rojo.active      { background: var(--rojo-soft); color: var(--ecg-red-dark); }
+.mark-btn-borrar.active    { background: var(--cream-deep); color: var(--ink); }
+
+/* Cursor tipo "marcador" cuando hay modo activo */
+body.marking-mode .note-text {
+    cursor: text;
+    background: linear-gradient(to bottom, transparent 60%, rgba(255, 255, 200, 0.3) 60%);
+}
+
+/* ---- Marcaciones aplicadas al texto de la nota ---- */
+.note-text span.mark-verde {
+    background: var(--verde-soft);
+    border-bottom: 2px solid var(--verde);
+    padding: 1px 0;
+}
+.note-text span.mark-amarillo {
+    background: var(--amarillo-soft);
+    border-bottom: 2px solid var(--amarillo);
+    padding: 1px 0;
+}
+.note-text span.mark-rojo {
+    background: var(--rojo-soft);
+    border-bottom: 2px solid var(--rojo);
+    padding: 1px 0;
+}
+
+/* ---- Panel de distribución de marcaciones ---- */
+.mark-distribution {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    background: var(--cream-deep);
+    border-radius: 4px;
+    margin: 12px 0;
+    border: 1px solid rgba(42, 24, 16, 0.08);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.mark-dist-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mark-dist-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.mark-swatch-verde     { background: var(--verde); }
+.mark-swatch-amarillo  { background: var(--amarillo); }
+.mark-swatch-rojo      { background: var(--rojo); }
+.mark-swatch-neutral   { background: var(--cream-paper); border: 1px solid var(--ink-mute); }
+
+.mark-dist-label {
+    color: var(--ink-soft);
+    font-weight: 500;
+}
+
+.mark-dist-value {
+    color: var(--ink);
+    font-weight: 700;
+    min-width: 45px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 800px) {
+    .segment-track-row {
+        grid-template-columns: 60px 1fr;
+    }
+    .segment-tracks {
+        padding-right: 8px;
+    }
+    .segment-track-cells .label-cell-label {
+        font-size: 9px;
+    }
+    .segment-track-cells .label-cell .semaforo button {
+        width: 10px;
+        height: 10px;
+    }
+    .mark-toolbar {
+        gap: 6px;
+        padding: 8px;
+    }
+    .mark-btn-limpiar { margin-left: 0; }
+    .mark-distribution { gap: 12px; }
+}

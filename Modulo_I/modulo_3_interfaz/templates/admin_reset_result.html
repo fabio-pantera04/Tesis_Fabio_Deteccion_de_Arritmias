@@ -1,0 +1,21 @@
+{% extends "admin_base.html" %}
+{% block title %}BD reseteada — Admin{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2>Base de datos reseteada</h2>
+    <p class="admin-page-desc">Todos los registros han sido eliminados exitosamente.</p>
+</div>
+
+<div class="detail-card" style="max-width: 500px;">
+    <h3>Resumen de la eliminación</h3>
+    <dl class="detail-dl">
+        <dt>Cardiólogos eliminados</dt><dd><b>{{ result.medicos }}</b></dd>
+        <dt>Evaluaciones eliminadas</dt><dd><b>{{ result.evaluaciones }}</b></dd>
+        <dt>Respuestas por ventana eliminadas</dt><dd><b>{{ result.respuestas_ventana }}</b></dd>
+    </dl>
+    <p style="margin-top: 16px;">
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary">Volver al Dashboard</a>
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+# Configuración SFP-FACC para clasificación RITMO (NSR vs AFIB)
+#
+# Uso:
+#   python main.py --config config_ritmo.yaml
+#
+# Para AFIB se combinan dos fuentes:
+#   - Icentia11k (306 señales según tu tesis)
+#   - CinC2017   (694 señales resampled de 300 Hz a 250 Hz)
+# Total esperado AFIB: ~1000 señales balanceadas con NSR.
+
+task: ritmo
+
+seed: 42
+test_size: 0.30
+fit_n_per_class: 10
+max_per_class: 1000
+
+classes:
+  NSR:
+    - dir: E:\Modelo_Tesis\Icentia11k\NSR
+      prefix: ICI_NSR
+  AFIB:
+    - dir: E:\Modelo_Tesis\Icentia11k\AFIB
+      prefix: ICI_AFIB
+    - dir: E:\Modelo_Tesis\CinC2017\AFIB
+      prefix: CIC_AFIB

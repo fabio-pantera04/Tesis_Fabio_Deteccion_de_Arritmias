@@ -1,0 +1,399 @@
+[
+  {
+    "ecg_id_ptbxl": 6130,
+    "patient_id": 7289,
+    "edad": 70.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "ISCAL": 100.0,
+      "PAC": 100.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. st segments are depressed in i, ii, avl, avf, v3-6. t waves are inverted in i, avl and low or flat in    v4,5,6. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/06000/06130_lr",
+    "filename_hr": "records500/06000/06130_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4118,
+    "patient_id": 3929,
+    "edad": 80.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "PAC": 100.0,
+      "STD_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. st segments are depressed in i, ii, iii, avf, v6. non-specific but consistent with myocardial ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04118_lr",
+    "filename_hr": "records500/04000/04118_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12750,
+    "patient_id": 350,
+    "edad": 81.0,
+    "sexo": 1,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "PVC": 100.0,
+      "PAC": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature ventricular contraction(s) premature atrial contraction(s) sinus rhythm qrs(t) contour abnormality    consider inferior myocardial damage old st & t abnormality, consider left ventricular strain or ischaemia",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12750_lr",
+    "filename_hr": "records500/12000/12750_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4552,
+    "patient_id": 3618,
+    "edad": 72.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NDT": 100.0,
+      "EL": 50.0,
+      "PAC": 100.0,
+      "NT_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. non-specific t wave flattening in i, avl, v4,5,6. myocardial ischaemia is likely. prolonged qt, this may be due to a drug effect or an    electrolyte disturbance.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04552_lr",
+    "filename_hr": "records500/04000/04552_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4478,
+    "patient_id": 6735,
+    "edad": 74.0,
+    "sexo": 1,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "PAC": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04478_lr",
+    "filename_hr": "records500/04000/04478_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 18082,
+    "patient_id": 5048,
+    "edad": 83.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 100.0,
+    "todos_scp_codes": {
+      "ASMI": 50.0,
+      "IVCD": 100.0,
+      "PVC": 100.0,
+      "PAC": 100.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm with frequent atrial premature beats ventricular premature beats pr interval upper limit of normal left bundle branch block low limb lead voltage in presence of lbbb hypertrophy or ischaemia not  excluded 4.40                          unconfi",
+    "validated_by_human": true,
+    "filename_lr": "records100/18000/18082_lr",
+    "filename_hr": "records500/18000/18082_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12008,
+    "patient_id": 4987,
+    "edad": 65.0,
+    "sexo": 1,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12008_lr",
+    "filename_hr": "records500/12000/12008_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12022,
+    "patient_id": 7457,
+    "edad": 65.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "IVCD": 100.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. non-specific intraventricular delay.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12022_lr",
+    "filename_hr": "records500/12000/12022_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12076,
+    "patient_id": 5391,
+    "edad": 58.0,
+    "sexo": 1,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). premature ventricular contraction(s). sinus rhythm. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12076_lr",
+    "filename_hr": "records500/12000/12076_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 12279,
+    "patient_id": 6258,
+    "edad": 79.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISCAL": 50.0,
+      "PAC": 0.0,
+      "INVT": 0.0,
+      "STD_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "sinus rhythm. premature atrial contraction(s). st segments are depressed in i, avl, v3-6. t waves are inverted in i, avl, v4,5,6. this may be due to lv strain or ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/12000/12279_lr",
+    "filename_hr": "records500/12000/12279_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 2204,
+    "patient_id": 7838,
+    "edad": 63.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0,
+      "BIGU": 0.0
+    },
+    "report_ptbxl": "premature atrial contractions, bigeminy. sinus rhythm. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/02000/02204_lr",
+    "filename_hr": "records500/02000/02204_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 3531,
+    "patient_id": 5612,
+    "edad": 81.0,
+    "sexo": 1,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISCLA": 100.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. t waves are flat in limb leads and inverted in v5,6. findings are likely to be due to ischaemic heart    disease. the age of the changes is uncertain.",
+    "validated_by_human": true,
+    "filename_lr": "records100/03000/03531_lr",
+    "filename_hr": "records500/03000/03531_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 13720,
+    "patient_id": 2479,
+    "edad": 73.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ISC_": 80.0,
+      "PAC": 0.0,
+      "NT_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. non-specific t wave flattening in i, avl, v5,6. st segments are sightly depressed in ii, iii, avf. non-specific but consistent with myocardial ischaemia.",
+    "validated_by_human": true,
+    "filename_lr": "records100/13000/13720_lr",
+    "filename_hr": "records500/13000/13720_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 11044,
+    "patient_id": 6423,
+    "edad": 77.0,
+    "sexo": 1,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/11000/11044_lr",
+    "filename_hr": "records500/11000/11044_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4950,
+    "patient_id": 2957,
+    "edad": 77.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 100.0,
+      "PAC": 0.0,
+      "NT_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. low limb lead voltage. non-specific t wave flattening in v5,6.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04950_lr",
+    "filename_hr": "records500/04000/04950_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 14416,
+    "patient_id": 5842,
+    "edad": 73.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "VCLVH": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. voltages are high in limb leads suggesting lvh. otherwise normal ecg.",
+    "validated_by_human": true,
+    "filename_lr": "records100/14000/14416_lr",
+    "filename_hr": "records500/14000/14416_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 3157,
+    "patient_id": 5678,
+    "edad": 75.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/03000/03157_lr",
+    "filename_hr": "records500/03000/03157_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4097,
+    "patient_id": 648,
+    "edad": 40.0,
+    "sexo": 1,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. otherwise normal ecg. there is no definite ecg evidence to suggest a pre-excitation syndrome.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04097_lr",
+    "filename_hr": "records500/04000/04097_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 4677,
+    "patient_id": 4670,
+    "edad": 59.0,
+    "sexo": 0,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "NORM": 80.0,
+      "PAC": 0.0,
+      "SR": 0.0,
+      "BIGU": 0.0
+    },
+    "report_ptbxl": "premature atrial contractions, bigeminy. sinus rhythm. otherwise no definite pathology.",
+    "validated_by_human": true,
+    "filename_lr": "records100/04000/04677_lr",
+    "filename_hr": "records500/04000/04677_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  },
+  {
+    "ecg_id_ptbxl": 15093,
+    "patient_id": 3321,
+    "edad": 85.0,
+    "sexo": 1,
+    "clase_aami": "PAC",
+    "codigo_scp_principal": "PAC",
+    "likelihood_principal": 0.0,
+    "todos_scp_codes": {
+      "ASMI": 100.0,
+      "PAC": 0.0,
+      "NT_": 0.0,
+      "SR": 0.0
+    },
+    "report_ptbxl": "premature atrial contraction(s). sinus rhythm. possible left atrial enlargement. non-specific t wave flattening in v5,6. poor progression of r waves in anterior chest leads. old anteroseptal myocardial infarction cannot be excluded.",
+    "validated_by_human": true,
+    "filename_lr": "records100/15000/15093_lr",
+    "filename_hr": "records500/15000/15093_hr",
+    "fuente": "PTB-XL v1.0.3 (Wagner et al. 2020)"
+  }
+]

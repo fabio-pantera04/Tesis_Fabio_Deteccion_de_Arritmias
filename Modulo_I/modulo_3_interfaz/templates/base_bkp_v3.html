@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Validación clínica — Sistema MSM-SC{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/medico.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="app-header">
+        <div>
+            <h1>Asistencia <span class="accent">ECG</span></h1>
+            <div class="small">CIMAT · Validación clínica human-in-the-loop</div>
+        </div>
+        <nav class="nav-meta">
+            {% if session.get('medico_nombre') %}
+                <div>Dr. {{ session['medico_nombre'] }}</div>
+                <div>
+                    <a href="{{ url_for('seleccion') }}">Señales</a>
+                    <a href="{{ url_for('analytics') }}">Métricas</a>
+                    <a href="{{ url_for('logout') }}">Salir</a>
+                </div>
+            {% else %}
+                <div><a href="{{ url_for('registro') }}">Registro</a></div>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

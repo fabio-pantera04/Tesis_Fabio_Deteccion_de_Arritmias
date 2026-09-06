@@ -1,0 +1,70 @@
+{
+  "LATIDO": {
+    "classes": [
+      "NORMAL",
+      "PAC"
+    ],
+    "pos_class": "PAC",
+    "neg_class": "NORMAL",
+    "decision_threshold": 0.5,
+    "scale": "beat",
+    "n_features": 60,
+    "best_iteration": 47,
+    "top5_importance": [
+      [
+        "Micro_S59",
+        7.69
+      ],
+      [
+        "Micro_S3",
+        7.12
+      ],
+      [
+        "Micro_S52",
+        5.57
+      ],
+      [
+        "Micro_S6",
+        3.42
+      ],
+      [
+        "Micro_S13",
+        3.33
+      ]
+    ]
+  },
+  "RITMO": {
+    "classes": [
+      "AFIB",
+      "NSR"
+    ],
+    "pos_class": "NSR",
+    "neg_class": "AFIB",
+    "decision_threshold": 0.6,
+    "scale": "rhythm",
+    "n_features": 60,
+    "best_iteration": 141,
+    "top5_importance": [
+      [
+        "Macro_S22",
+        7.07
+      ],
+      [
+        "Macro_S54",
+        6.14
+      ],
+      [
+        "Macro_S56",
+        3.4
+      ],
+      [
+        "Macro_S5",
+        3.36
+      ],
+      [
+        "Macro_S51",
+        2.89
+      ]
+    ]
+  }
+}

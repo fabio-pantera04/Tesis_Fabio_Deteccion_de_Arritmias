@@ -1,0 +1,9 @@
+ecg_id,clase_tesis,report,scp_codes
+10748,NSR,sinus rhythm. borderline left axis deviation. no definite pathology.,"{'NORM': 100.0, 'SR': 0.0}"
+19897,AFIB,vorhofflimmern/-flattern lagetyp normal 4.46                          unbestÄtigter bericht,"{'LVH': 15.0, 'AFIB': 0.0}"
+21747,NSR,sinusrhythmus lagetyp normal normales ekg 4.46                          unbestÄtigter bericht,"{'NORM': 100.0, 'SR': 0.0}"
+21761,AFIB,tachykardes vorhofflimmern linkstyp linksschenkelblock linkshypertrophie mÖglich 4.46                          unbestÄtigter bericht,"{'CLBBB': 100.0, 'AFIB': 0.0}"
+2058,NSR,"sinus tachycardia. r-s transition zone in v leads displaced to the right. minor non-specific t wave flattening in i, avl.","{'NORM': 100.0, 'NT_': 0.0, 'STACH': 0.0}"
+16218,AFIB,atrial fibrillation. otherwise normal ecg.,"{'NORM': 80.0, 'AFIB': 0.0}"
+8734,NSR,sinusrhythmus linkstyp sonst normales ekg 4.46                          unbestÄtigter bericht,"{'NORM': 80.0, 'SR': 0.0}"
+20682,AFIB,vorhofflimmern/-flattern lagetyp normal 4.46                          unbestÄtigter bericht,"{'IRBBB': 100.0, 'AFIB': 0.0}"

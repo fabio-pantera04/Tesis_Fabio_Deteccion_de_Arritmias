@@ -1,0 +1,29 @@
+# Configuración SFP-FACC para clasificación LATIDO (N vs PAC)
+# 
+# Uso:
+#   python main.py --config config_latido.yaml
+#
+# Ajusta las rutas si tu estructura es diferente.
+
+task: latido
+
+# Semilla para reproducibilidad
+seed: 42
+
+# Proporción de test (paper usa ~30%)
+test_size: 0.30
+
+# Señales por clase para fitting del LSTM (paper: 10)
+fit_n_per_class: 10
+
+# Máximo de señales por clase (null = sin límite, usa todas)
+# Tu setup actual: 1000 N + 1000 PAC en Icentia11k
+max_per_class: 1000
+
+classes:
+  N:
+    - dir: E:\Modelo_Tesis\Icentia11k\NORMAL
+      prefix: ICI_NORMAL
+  PAC:
+    - dir: E:\Modelo_Tesis\Icentia11k\PAC
+      prefix: ICI_PAC

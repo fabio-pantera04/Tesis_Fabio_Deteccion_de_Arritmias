@@ -1,0 +1,134 @@
+{
+  "0": {
+    "global": {
+      "n": 389,
+      "class_mention_pct": 96.1439588688946,
+      "class_fidelity_pct": 95.62982005141389,
+      "morphological_pct": 57.0694087403599,
+      "evidence_pct": 2.313624678663239,
+      "correct_composite_pct": 95.62982005141389
+    },
+    "por_clase": {
+      "NORMAL": {
+        "n": 100,
+        "class_mention_pct": 87.0,
+        "class_fidelity_pct": 86.0,
+        "morphological_pct": 12.0,
+        "evidence_pct": 2.0,
+        "correct_composite_pct": 86.0
+      },
+      "PAC": {
+        "n": 100,
+        "class_mention_pct": 99.0,
+        "class_fidelity_pct": 99.0,
+        "morphological_pct": 98.0,
+        "evidence_pct": 2.0,
+        "correct_composite_pct": 99.0
+      },
+      "NSR": {
+        "n": 89,
+        "class_mention_pct": 98.87640449438202,
+        "class_fidelity_pct": 97.75280898876404,
+        "morphological_pct": 15.730337078651685,
+        "evidence_pct": 2.247191011235955,
+        "correct_composite_pct": 97.75280898876404
+      },
+      "AFIB": {
+        "n": 100,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 100.0,
+        "morphological_pct": 98.0,
+        "evidence_pct": 3.0,
+        "correct_composite_pct": 100.0
+      }
+    }
+  },
+  "10": {
+    "global": {
+      "n": 389,
+      "class_mention_pct": 100.0,
+      "class_fidelity_pct": 98.45758354755783,
+      "morphological_pct": 51.41388174807198,
+      "evidence_pct": 0.0,
+      "correct_composite_pct": 98.45758354755783
+    },
+    "por_clase": {
+      "NORMAL": {
+        "n": 100,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 100.0,
+        "morphological_pct": 0.0,
+        "evidence_pct": 0.0,
+        "correct_composite_pct": 100.0
+      },
+      "PAC": {
+        "n": 100,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 100.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 0.0,
+        "correct_composite_pct": 100.0
+      },
+      "NSR": {
+        "n": 89,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 100.0,
+        "morphological_pct": 0.0,
+        "evidence_pct": 0.0,
+        "correct_composite_pct": 100.0
+      },
+      "AFIB": {
+        "n": 100,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 94.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 0.0,
+        "correct_composite_pct": 94.0
+      }
+    }
+  },
+  "20": {
+    "global": {
+      "n": 389,
+      "class_mention_pct": 100.0,
+      "class_fidelity_pct": 97.94344473007712,
+      "morphological_pct": 51.41388174807198,
+      "evidence_pct": 0.0,
+      "correct_composite_pct": 97.94344473007712
+    },
+    "por_clase": {
+      "NORMAL": {
+        "n": 100,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 100.0,
+        "morphological_pct": 0.0,
+        "evidence_pct": 0.0,
+        "correct_composite_pct": 100.0
+      },
+      "PAC": {
+        "n": 100,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 100.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 0.0,
+        "correct_composite_pct": 100.0
+      },
+      "NSR": {
+        "n": 89,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 100.0,
+        "morphological_pct": 0.0,
+        "evidence_pct": 0.0,
+        "correct_composite_pct": 100.0
+      },
+      "AFIB": {
+        "n": 100,
+        "class_mention_pct": 100.0,
+        "class_fidelity_pct": 92.0,
+        "morphological_pct": 100.0,
+        "evidence_pct": 0.0,
+        "correct_composite_pct": 92.0
+      }
+    }
+  }
+}

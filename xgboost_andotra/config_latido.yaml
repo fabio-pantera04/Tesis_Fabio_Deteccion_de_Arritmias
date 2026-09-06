@@ -1,0 +1,18 @@
+# Configuración XGBoost-Andotra para LATIDO (N vs PAC)
+#
+# Uso:
+#   python main.py --config config_latido.yaml
+
+task: latido
+
+seed: 42
+test_size: 0.30
+max_per_class: 1000
+
+classes:
+  N:
+    - dir: E:/Modelo_Tesis/Icentia11k/NORMAL
+      prefix: ICI_NORMAL
+  PAC:
+    - dir: E:/Modelo_Tesis/Icentia11k/PAC
+      prefix: ICI_PAC

@@ -1,0 +1,102 @@
+{% extends "admin_base.html" %}
+{% block title %}Dashboard — Admin{% endblock %}
+{% block head %}
+<script src="{{ url_for('static', filename='js/plotly.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2>Dashboard general</h2>
+    <p class="admin-page-desc">Vista consolidada de la actividad de validación clínica.</p>
+</div>
+
+<!-- KPIs -->
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="kpi-value" id="kpi-medicos">{{ stats.n_medicos }}</div>
+        <div class="kpi-label">Cardiólogos registrados</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-value" id="kpi-evaluaciones">{{ stats.n_evaluaciones }}</div>
+        <div class="kpi-label">Evaluaciones completadas</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-value" id="kpi-signals">{{ stats.n_signals_evaluadas }}</div>
+        <div class="kpi-label">Señales evaluadas</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-value" id="kpi-tiempo">
+            {% if stats.tiempo_promedio_seg %}{{ (stats.tiempo_promedio_seg / 60)|round(1) }}<span class="kpi-unit">min</span>{% else %}—{% endif %}
+        </div>
+        <div class="kpi-label">Tiempo promedio</div>
+    </div>
+</div>
+
+<!-- Likert averages -->
+<div class="kpi-grid" style="margin-top: 12px;">
+    <div class="kpi-card kpi-likert">
+        <div class="kpi-value">{{ stats.likert_promedio_exactitud or '—' }}<span class="kpi-unit">/5</span></div>
+        <div class="kpi-label">Likert Exactitud</div>
+    </div>
+    <div class="kpi-card kpi-likert">
+        <div class="kpi-value">{{ stats.likert_promedio_coherencia or '—' }}<span class="kpi-unit">/5</span></div>
+        <div class="kpi-label">Likert Coherencia</div>
+    </div>
+    <div class="kpi-card kpi-likert">
+        <div class="kpi-value">{{ stats.likert_promedio_utilidad or '—' }}<span class="kpi-unit">/5</span></div>
+        <div class="kpi-label">Likert Utilidad</div>
+    </div>
+    <div class="kpi-card kpi-likert">
+        <div class="kpi-value">{{ stats.n_respuestas_ventana }}</div>
+        <div class="kpi-label">Respuestas por ventana</div>
+    </div>
+</div>
+
+<!-- Charts -->
+<div class="chart-grid">
+    <div class="chart-card">
+        <h3>Distribución de semáforos por escala</h3>
+        <p class="chart-desc">Porcentaje verde/amarillo/rojo emitido por los cardiólogos sobre las ventanas BEAT y RHYTHM.</p>
+        <div id="chart-semaforo-escala" class="chart-plot"></div>
+    </div>
+
+    <div class="chart-card">
+        <h3>Veredicto global de la nota LLM</h3>
+        <p class="chart-desc">Distribución de "Correcta / Parcial / Errónea" sobre la nota generada.</p>
+        <div id="chart-semaforo-nota" class="chart-plot"></div>
+    </div>
+
+    <div class="chart-card chart-full">
+        <h3>Distribución de semáforos por clase predicha — LATIDO</h3>
+        <p class="chart-desc">Muestra qué clases del clasificador de latidos son mejor o peor validadas.</p>
+        <div id="chart-clase-beat" class="chart-plot"></div>
+    </div>
+
+    <div class="chart-card chart-full">
+        <h3>Distribución de semáforos por clase predicha — RITMO</h3>
+        <p class="chart-desc">Muestra qué clases del clasificador de ritmo son mejor o peor validadas.</p>
+        <div id="chart-clase-rhythm" class="chart-plot"></div>
+    </div>
+
+    <div class="chart-card chart-full">
+        <h3>Evaluaciones por señal</h3>
+        <p class="chart-desc">Cuántas veces se ha evaluado cada señal y promedio Likert obtenido.</p>
+        <div id="chart-por-senal" class="chart-plot"></div>
+    </div>
+
+    <div class="chart-card chart-full">
+        <h3>Subrayado de la nota LLM (promedios)</h3>
+        <p class="chart-desc">Porcentaje promedio del texto marcado por los cardiólogos en cada categoría.</p>
+        <div id="chart-marcaciones" class="chart-plot"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        loadDashboardCharts();
+    });
+</script>
+{% endblock %}
