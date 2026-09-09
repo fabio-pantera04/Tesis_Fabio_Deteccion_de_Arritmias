@@ -8,16 +8,87 @@
 <div class="admin-page-header">
     <h2>Análisis inter-evaluador (κ de Cohen)</h2>
     <p class="admin-page-desc">
-        Coeficiente κ (kappa) entre pares de cardiólogos que hayan evaluado señales
+        Coeficiente κ (kappa) de Cohen entre pares de cardiólogos que hayan evaluado señales
         en común. Se calcula por escala (LATIDO, RITMO) y sobre el veredicto global
-        de la nota. Interpretación (Landis & Koch, 1977): κ &lt; 0.20 <b>pobre</b>,
-        0.21-0.40 <b>débil</b>, 0.41-0.60 <b>moderado</b>, 0.61-0.80 <b>sustancial</b>,
-        0.81-1.00 <b>casi perfecto</b>.
+        de la nota.
     </p>
 </div>
 
+<!-- ================================================================
+     FORMULACIÓN MATEMÁTICA DEL COEFICIENTE KAPPA
+     ================================================================ -->
+<section class="detail-section">
+    <h3>Formulación matemática del coeficiente κ</h3>
+    <p style="color: var(--ink-soft); font-size: 13px;">
+        El coeficiente kappa de Cohen (Cohen, 1960) cuantifica el acuerdo entre dos
+        evaluadores categoriales corrigiendo por el acuerdo esperado por azar.
+    </p>
+
+    <div class="formula-block formula-highlighted">
+        <div class="formula-label">Definición general del coeficiente κ</div>
+        <div class="formula-body">
+            $$\kappa = \frac{p_o - p_e}{1 - p_e}$$
+        </div>
+        <div class="formula-vars">
+            Donde:
+            <ul>
+                <li>$p_o$ = <b>acuerdo observado</b>: proporción de veces que ambos evaluadores emiten la misma categoría.</li>
+                <li>$p_e$ = <b>acuerdo esperado por azar</b>: probabilidad de coincidencia si los evaluadores respondieran de forma independiente.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="formula-block">
+        <div class="formula-label">Cálculo del acuerdo observado $p_o$</div>
+        <div class="formula-body">
+            $$p_o = \frac{1}{N} \sum_{i=1}^{N} \mathbb{1}[r_A^{(i)} = r_B^{(i)}]$$
+        </div>
+        <div class="formula-vars">
+            Donde: $r_A^{(i)}$ y $r_B^{(i)}$ son las categorías asignadas por los evaluadores $A$ y $B$
+            en la observación $i$; $N$ = número total de observaciones emparejadas;
+            $\mathbb{1}[\cdot]$ es la función indicadora que vale 1 si los evaluadores coinciden y 0 si no.
+        </div>
+    </div>
+
+    <div class="formula-block">
+        <div class="formula-label">Cálculo del acuerdo esperado por azar $p_e$</div>
+        <div class="formula-body">
+            $$p_e = \sum_{c \in C} P_A(c) \cdot P_B(c)$$
+        </div>
+        <div class="formula-vars">
+            Donde: $C$ = conjunto de todas las categorías posibles (verde, amarillo, rojo);
+            $P_A(c) = \frac{n_A^c}{N}$ = proporción de veces que el evaluador $A$ emitió la categoría $c$;
+            $P_B(c) = \frac{n_B^c}{N}$ = proporción de veces que el evaluador $B$ emitió la categoría $c$.
+        </div>
+    </div>
+
+    <div class="formula-block">
+        <div class="formula-label">Interpretación de κ (Landis y Koch, 1977)</div>
+        <div class="landis-koch-table">
+            <table class="admin-table" style="width: auto; min-width: 400px;">
+                <thead>
+                    <tr><th>Rango de κ</th><th>Interpretación</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>$\kappa < 0.00$</td><td><span class="chip chip-rojo">Sin acuerdo</span> (peor que azar)</td></tr>
+                    <tr><td>$0.00 \leq \kappa \leq 0.20$</td><td><span class="chip chip-rojo">Pobre</span></td></tr>
+                    <tr><td>$0.21 \leq \kappa \leq 0.40$</td><td><span class="chip chip-amarillo">Débil</span></td></tr>
+                    <tr><td>$0.41 \leq \kappa \leq 0.60$</td><td><span class="chip chip-amarillo">Moderado</span></td></tr>
+                    <tr><td>$0.61 \leq \kappa \leq 0.80$</td><td><span class="chip chip-verde">Sustancial</span></td></tr>
+                    <tr><td>$0.81 \leq \kappa \leq 1.00$</td><td><span class="chip chip-verde">Casi perfecto</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="formula-vars">
+            El umbral $\kappa \geq 0.60$ (acuerdo sustancial) suele considerarse el mínimo
+            aceptable para validar un instrumento de medición en investigación clínica.
+        </div>
+    </div>
+</section>
+
 <!-- Resumen -->
-<div id="kappa-resumen" class="kpi-grid" style="margin-bottom: 20px;">
+<h3 style="margin-top: 32px;">Resumen agregado</h3>
+<div id="kappa-resumen" class="kpi-grid">
     <div class="kpi-card"><div class="kpi-value" id="k-pares">—</div><div class="kpi-label">Pares comparados</div></div>
     <div class="kpi-card"><div class="kpi-value" id="k-beat">—</div><div class="kpi-label">κ promedio · LATIDO</div></div>
     <div class="kpi-card"><div class="kpi-value" id="k-rhythm">—</div><div class="kpi-label">κ promedio · RITMO</div></div>
@@ -25,7 +96,7 @@
 </div>
 
 <!-- Tabla de pares -->
-<h3>Detalle por par de cardiólogos</h3>
+<h3 style="margin-top: 24px;">Detalle por par de cardiólogos</h3>
 <div class="admin-table-wrap">
     <table class="admin-table" id="kappa-tabla">
         <thead>
@@ -50,8 +121,17 @@
 <!-- Gráfico -->
 <div class="chart-card" style="margin-top: 24px;">
     <h3>Distribución de κ por escala</h3>
-    <p class="chart-desc">Cada barra representa un par. Las líneas horizontales marcan los umbrales de interpretación clásica.</p>
+    <p class="chart-desc">Cada barra representa un par de cardiólogos. Las líneas horizontales marcan los umbrales de interpretación clásica de Landis y Koch (1977): pobre &lt; 0.20, débil 0.21-0.40, moderado 0.41-0.60, sustancial 0.61-0.80, casi perfecto ≥ 0.81.</p>
     <div id="chart-kappa" class="chart-plot"></div>
+</div>
+
+<!-- Referencia bibliográfica -->
+<div class="detail-section" style="margin-top: 20px; font-size: 12px; color: var(--ink-soft);">
+    <h3 style="font-size: 14px;">Referencias</h3>
+    <ul style="line-height: 1.7; padding-left: 20px;">
+        <li>Cohen, J. (1960). A coefficient of agreement for nominal scales. <em>Educational and Psychological Measurement</em>, 20(1), 37–46.</li>
+        <li>Landis, J. R., y Koch, G. G. (1977). The measurement of observer agreement for categorical data. <em>Biometrics</em>, 33(1), 159–174.</li>
+    </ul>
 </div>
 
 {% endblock %}
@@ -72,13 +152,11 @@ function kappaTexto(k) {
 fetch("/admin/api/kappa_data")
     .then(r => r.json())
     .then(data => {
-        // Resumen
         document.getElementById("k-pares").textContent = data.resumen.n_pares;
         document.getElementById("k-beat").textContent = kappaTexto(data.resumen.prom_kappa_beat);
         document.getElementById("k-rhythm").textContent = kappaTexto(data.resumen.prom_kappa_rhythm);
         document.getElementById("k-nota").textContent = kappaTexto(data.resumen.prom_kappa_nota);
 
-        // Tabla
         const tbody = document.getElementById("kappa-tbody");
         if (data.pares.length === 0) {
             tbody.innerHTML = `<tr><td colspan="9"><em>No hay pares con señales en común aún.</em></td></tr>`;
@@ -98,7 +176,6 @@ fetch("/admin/api/kappa_data")
             </tr>
         `).join("");
 
-        // Gráfico
         if (data.pares.length > 0) {
             const labels = data.pares.map(p => `${p.med_a_nombre.split(' ')[0]}↔${p.med_b_nombre.split(' ')[0]}`);
             const traces = [

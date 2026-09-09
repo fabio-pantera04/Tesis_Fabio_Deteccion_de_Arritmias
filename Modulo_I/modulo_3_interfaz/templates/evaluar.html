@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
 
+<!-- Encabezado de la señal -->
 <section class="paper">
     <div class="eyebrow">Señal {{ signal_number }} · Paso 2 de 2</div>
     <h2>Trazado ECG para evaluación</h2>
@@ -12,6 +13,50 @@
         Derivación {{ signal.signal_metadata.lead }} ·
         {{ signal.signal_metadata.sampling_rate_hz }} Hz ·
         Duración {{ signal.signal_metadata.duration_seconds|int }} s
+    </p>
+</section>
+
+<!-- ================================================================
+     INSTRUCCIONES PASO 1: LATIDOS + RITMO (sobre el trazado ECG)
+     ================================================================ -->
+<section class="paper instrucciones-paso">
+    <div class="eyebrow">Pasos 1 y 2 de 3 · Semáforos por segmento</div>
+    <h3 style="border: none; padding: 0; margin-top: 4px;">
+        Evalúe las predicciones del clasificador sobre el trazado ECG
+    </h3>
+    <p>
+        Debajo del trazado verá <b>dos filas de predicciones</b> por cada segmento
+        de 10 segundos:
+    </p>
+    <ul class="instr-lista">
+        <li>
+            <b>Fila LATIDO</b> — 10 predicciones de 1 segundo cada una, con clases
+            <b>NORMAL</b> o <b>PAC</b> (contracción prematura auricular).
+        </li>
+        <li>
+            <b>Fila RITMO</b> — 2 a 3 predicciones de 4 segundos cada una, con clases
+            <b>NSR</b> (ritmo sinusal) o <b>AFIB</b> (fibrilación auricular).
+        </li>
+    </ul>
+    <p>Para cada predicción marque el semáforo que corresponda:</p>
+    <div class="instr-semaforos">
+        <div class="instr-semaforo-item">
+            <span class="semaforo-chip verde">VERDE</span>
+            <span>La predicción es correcta.</span>
+        </div>
+        <div class="instr-semaforo-item">
+            <span class="semaforo-chip amarillo">AMARILLO</span>
+            <span>Caso limítrofe o dudoso.</span>
+        </div>
+        <div class="instr-semaforo-item">
+            <span class="semaforo-chip rojo">ROJO</span>
+            <span>La predicción es incorrecta.</span>
+        </div>
+    </div>
+    <p class="instr-tip">
+        <b>Nota:</b> pase el cursor sobre el trazado para leer tiempo (s) y voltaje (mV).
+        La marca <b>!</b> sobre una etiqueta indica que el clasificador solicitó
+        escalación por baja confianza en esa ventana.
     </p>
 </section>
 
@@ -23,29 +68,75 @@
     </h3>
 
     <div id="segments-container"></div>
-
-    <p style="margin-top: 22px; font-size: 12px; color: var(--ink-soft);">
-        <b>Interacción con la señal:</b> pase el mouse sobre el trazado para ver tiempo (s) y voltaje (mV) en cada punto.
-        Bajo cada segmento aparecen las predicciones del clasificador con selector
-        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--verde); vertical-align: middle;"></span> /
-        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--amarillo); vertical-align: middle;"></span> /
-        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--rojo); vertical-align: middle;"></span>.
-        Marque <b>verde</b> si la clasificación es correcta, <b>amarillo</b> si es parcialmente correcta o dudosa,
-        <b>rojo</b> si es incorrecta. La marca <em>!</em> sobre una etiqueta indica que el clasificador
-        ya solicitó escalación por baja confianza.
-    </p>
 </section>
 
-<!-- LLM clinical note con subrayado por marcadores -->
+<!-- ================================================================
+     INSTRUCCIONES PASO 3: NOTA CLÍNICA
+     ================================================================ -->
+<section class="paper instrucciones-paso instrucciones-nota">
+    <div class="eyebrow">Paso 3 de 3 · Evaluación de la nota clínica</div>
+    <h3 style="border: none; padding: 0; margin-top: 4px;">
+        Evalúe la nota clínica generada automáticamente
+    </h3>
+    <p>
+        A continuación aparece una nota clínica generada automáticamente por un
+        modelo de lenguaje, basándose en los mismos segmentos que usted acaba de
+        evaluar. <b>Su tarea tiene tres partes obligatorias:</b>
+    </p>
+
+    <div class="instr-nota-parte">
+        <div class="instr-nota-num">1</div>
+        <div>
+            <b>Subrayado por segmento (nota completa)</b>
+            <p>
+                Seleccione con el cursor cada parte del texto de la nota y márquela
+                con el color que corresponda: <b>verde</b> si es clínicamente correcto,
+                <b>amarillo</b> si es parcial o ambiguo, <b>rojo</b> si es incorrecto.
+            </p>
+            <p class="instr-warning">
+                <b>Importante:</b> debe subrayarse la <b>nota completa</b>. No deje segmentos sin marcar.
+                El sistema le mostrará en tiempo real el porcentaje de texto marcado.
+            </p>
+        </div>
+    </div>
+
+    <div class="instr-nota-parte">
+        <div class="instr-nota-num">2</div>
+        <div>
+            <b>Veredicto global y Likert (obligatorio)</b>
+            <p>
+                Además del subrayado, califique la nota en su conjunto con:
+            </p>
+            <ul class="instr-lista">
+                <li><b>Un semáforo global</b> sobre la nota completa (correcta / parcial / errónea).</li>
+                <li><b>Tres escalas Likert de 1 a 7</b>: exactitud diagnóstica,
+                    coherencia terminológica y utilidad clínica.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="instr-nota-parte">
+        <div class="instr-nota-num">3</div>
+        <div>
+            <b>Comentarios libres (opcional)</b>
+            <p>
+                Añada cualquier observación adicional que considere relevante:
+                omisiones, correcciones específicas o sugerencias.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Nota clínica generada por LLM -->
 <section class="paper">
-    <div class="eyebrow">Nota clínica generada por LLM</div>
+    <div class="eyebrow">Nota clínica generada automáticamente</div>
     <h3 style="border: none; padding: 0; margin-top: 4px;">Interpretación automática</h3>
 
     <div class="llm-note" id="llm-note-box">
         <div class="backend-stamp" id="backend-stamp">cargando…</div>
 
         <div class="mark-toolbar" id="mark-toolbar">
-            <span class="mark-toolbar-label">Marcar texto seleccionado como:</span>
+            <span class="mark-toolbar-label"><b>Paso 3.1</b> — Marcar texto seleccionado como:</span>
             <button type="button" data-mark="verde" class="mark-btn mark-btn-verde">Correcto</button>
             <button type="button" data-mark="amarillo" class="mark-btn mark-btn-amarillo">Parcial</button>
             <button type="button" data-mark="rojo" class="mark-btn mark-btn-rojo">Incorrecto</button>
@@ -79,15 +170,18 @@
         </div>
 
         <div class="semaforo-large" id="semaforo-nota">
-            <span class="lbl">¿La nota corresponde con la interpretación correcta del ECG?</span>
+            <span class="lbl"><b>Paso 3.2a</b> — ¿La nota corresponde con la interpretación correcta del ECG?</span>
             <button type="button" data-color="verde" class="verde">Correcta</button>
             <button type="button" data-color="amarillo" class="amarillo">Parcial</button>
             <button type="button" data-color="rojo" class="rojo">Errónea</button>
         </div>
     </div>
 
-    <h3>Calificación de la nota (Likert 1–5)</h3>
-    <div class="likert" id="likert-exactitud">
+    <h3>Paso 3.2b — Calificación Likert (1–7)</h3>
+    <p style="color: var(--ink-soft); font-size: 13px; margin-top: -8px;">
+        Puntúe cada dimensión donde 1 = muy pobre, 4 = aceptable, 7 = excelente.
+    </p>
+    <div class="likert likert-7" id="likert-exactitud">
         <div class="axis-label"><strong>Exactitud diagnóstica</strong> — la nota describe correctamente lo que muestra el ECG</div>
         <div class="scale">
             <button type="button" data-val="1">1</button>
@@ -95,9 +189,11 @@
             <button type="button" data-val="3">3</button>
             <button type="button" data-val="4">4</button>
             <button type="button" data-val="5">5</button>
+            <button type="button" data-val="6">6</button>
+            <button type="button" data-val="7">7</button>
         </div>
     </div>
-    <div class="likert" id="likert-coherencia">
+    <div class="likert likert-7" id="likert-coherencia">
         <div class="axis-label"><strong>Coherencia terminológica</strong> — la terminología es consistente con la práctica clínica estándar</div>
         <div class="scale">
             <button type="button" data-val="1">1</button>
@@ -105,9 +201,11 @@
             <button type="button" data-val="3">3</button>
             <button type="button" data-val="4">4</button>
             <button type="button" data-val="5">5</button>
+            <button type="button" data-val="6">6</button>
+            <button type="button" data-val="7">7</button>
         </div>
     </div>
-    <div class="likert" id="likert-utilidad">
+    <div class="likert likert-7" id="likert-utilidad">
         <div class="axis-label"><strong>Utilidad clínica percibida</strong> — la nota resulta útil para un cardiólogo evaluador</div>
         <div class="scale">
             <button type="button" data-val="1">1</button>
@@ -115,13 +213,15 @@
             <button type="button" data-val="3">3</button>
             <button type="button" data-val="4">4</button>
             <button type="button" data-val="5">5</button>
+            <button type="button" data-val="6">6</button>
+            <button type="button" data-val="7">7</button>
         </div>
     </div>
 </section>
 
 <!-- Free-text comments -->
 <section class="paper">
-    <div class="eyebrow">Comentarios libres</div>
+    <div class="eyebrow">Paso 3.3 · Comentarios libres (opcional)</div>
     <h3 style="border: none; padding: 0; margin-top: 4px;">Observaciones del cardiólogo</h3>
     <div class="form-field">
         <label for="comentarios_libres">Hallazgos adicionales, correcciones, recomendaciones para el sistema</label>
@@ -161,5 +261,155 @@
     window.SIGNAL_NUMBER = {{ signal_number }};
 </script>
 <script src="{{ url_for('static', filename='js/evaluar.js') }}"></script>
+
+<!-- Estilos específicos de las instrucciones -->
+<style>
+.instrucciones-paso {
+    border-left: 4px solid var(--ecg-red);
+    background: var(--cream-paper);
+}
+.instrucciones-paso h3 {
+    color: var(--ecg-red-dark);
+    font-family: var(--font-display);
+    font-size: 18px;
+}
+.instrucciones-paso p {
+    line-height: 1.6;
+    color: var(--ink);
+}
+
+.instr-lista {
+    padding-left: 22px;
+    line-height: 1.8;
+}
+.instr-lista li {
+    margin: 4px 0;
+}
+
+.instr-semaforos {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid var(--cream-deep);
+    border-radius: 4px;
+}
+.instr-semaforo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 auto;
+    min-width: 260px;
+}
+.instr-semaforo-item span:last-child {
+    font-size: 13px;
+    color: var(--ink);
+}
+
+.semaforo-chip {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    min-width: 130px;
+    text-align: center;
+}
+.semaforo-chip.verde {
+    background: rgba(58, 143, 58, 0.15);
+    color: var(--verde);
+    border: 1px solid var(--verde);
+}
+.semaforo-chip.amarillo {
+    background: rgba(214, 163, 23, 0.15);
+    color: #7a5c0a;
+    border: 1px solid var(--amarillo);
+}
+.semaforo-chip.rojo {
+    background: rgba(178, 34, 34, 0.15);
+    color: var(--ecg-red-dark);
+    border: 1px solid var(--rojo);
+}
+
+.instr-tip {
+    background: rgba(214, 163, 23, 0.08);
+    border-left: 3px solid var(--amarillo);
+    padding: 10px 14px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-top: 14px;
+}
+.instr-warning {
+    background: rgba(178, 34, 34, 0.08);
+    border-left: 3px solid var(--rojo);
+    padding: 10px 14px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--ecg-red-dark);
+    margin-top: 8px;
+}
+
+.instrucciones-nota .instr-nota-parte {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    margin: 12px 0;
+    background: white;
+    border: 1px solid var(--cream-deep);
+    border-radius: 4px;
+}
+.instr-nota-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--ecg-red);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+}
+.instr-nota-parte > div:last-child {
+    flex: 1;
+}
+.instr-nota-parte b {
+    display: block;
+    color: var(--ecg-red-dark);
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+.instr-nota-parte p {
+    margin: 6px 0;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.mark-toolbar-label {
+    font-size: 13px;
+}
+
+/* Ocultar el sello técnico del backend (información técnica de tesis
+   preservada en BD, oculta en la UI del cardiólogo) */
+.backend-stamp {
+    display: none;
+}
+
+/* Ajuste del Likert 1-7 para que quepan todos los botones sin desbordar */
+.likert-7 .scale {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+.likert-7 .scale button {
+    min-width: 0;
+}
+</style>
 
 {% endblock %}

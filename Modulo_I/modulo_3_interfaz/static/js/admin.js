@@ -1,5 +1,6 @@
 /* ============================================================
    admin.js - Gráficos Plotly del Panel de Administración
+   Actualizado para escala Likert 1-7
    ============================================================ */
 
 const COLORS = {
@@ -126,7 +127,7 @@ function drawEvaluacionesPorSenal(data) {
     Plotly.newPlot("chart-por-senal", traces, {
         ...COMMON_LAYOUT,
         yaxis:  { ...COMMON_LAYOUT.yaxis, title: "N evaluaciones", side: "left" },
-        yaxis2: { title: "Likert promedio", range: [0, 5],
+        yaxis2: { title: "Likert promedio (1-7)", range: [0, 7],
                   overlaying: "y", side: "right",
                   gridcolor: "rgba(0,0,0,0)" },
     }, { displayModeBar: false, responsive: true });

@@ -41,29 +41,67 @@
 {% if evaluaciones|length > 0 %}
 
 <!-- ================================================
-     PRECISIÓN CLASIFICADOR vs CARDIOLOGO
+     PRECISIÓN CLASIFICADOR vs CARDIOLOGO — con fórmulas
      ================================================ -->
 <section class="detail-section" style="margin-top: 32px;">
-    <h3>Precisión del clasificador según este cardiólogo</h3>
+    <h3>Concordancia clasificador ↔ cardiólogo</h3>
     <p class="chart-desc">
-        Estas métricas muestran qué tan bien las predicciones del clasificador
+        Estas métricas cuantifican qué tan bien las predicciones del clasificador
         MSM-SC + XGBoost coinciden con el juicio de <b>{{ medico.nombre_completo }}</b>.
-        <b>Verde</b> = acuerdo total (clasificación correcta),
-        <b>Amarillo</b> = acuerdo parcial (dudosa),
-        <b>Rojo</b> = desacuerdo (incorrecta).
+        Se derivan de sus semáforos por ventana:
+        <b>verde</b> = acuerdo total (clasificación correcta según el cardiólogo),
+        <b>amarillo</b> = acuerdo parcial (dudosa),
+        <b>rojo</b> = desacuerdo (incorrecta).
     </p>
 
+    <!-- Fórmulas de las métricas -->
+    <div class="formula-block formula-highlighted">
+        <div class="formula-label">Métricas de concordancia derivadas</div>
+        <div class="formula-body">
+            $$\text{Accuracy}_{estricta} = \frac{N_{verde}}{N_{total}} \times 100\%$$
+
+            $$\text{Accuracy}_{permisiva} = \frac{N_{verde} + N_{amarillo}}{N_{total}} \times 100\%$$
+
+            $$\text{Error rate} = \frac{N_{rojo}}{N_{total}} \times 100\%$$
+        </div>
+        <div class="formula-vars">
+            Donde: $N_{color}$ = número de ventanas con veredicto de ese color emitido por el cardiólogo;
+            $N_{total} = N_{verde} + N_{amarillo} + N_{rojo}$ = total de ventanas evaluadas.
+            <br><br>
+            <b>Interpretación:</b>
+            <ul>
+                <li>La <b>accuracy estricta</b> mide el acuerdo pleno con el clasificador.</li>
+                <li>La <b>accuracy permisiva</b> incluye los casos limítrofes (verde + amarillo). Es útil cuando el amarillo se interpreta como "no incorrecto".</li>
+                <li>La <b>tasa de error</b> mide desacuerdos claros del cardiólogo con la predicción del clasificador.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Fórmula por clase -->
+    <div class="formula-block">
+        <div class="formula-label">Desglose por clase predicha</div>
+        <div class="formula-body">
+            $$\text{Accuracy}_{estricta}(k) = \frac{N_{verde,k}}{N_k} \times 100\%$$
+        </div>
+        <div class="formula-vars">
+            Donde: $k$ = clase predicha por el clasificador (por ejemplo NORMAL, PAC, NSR, AFIB);
+            $N_{verde,k}$ = ventanas verdes emitidas por el cardiólogo sobre predicciones de clase $k$;
+            $N_k$ = total de ventanas donde el clasificador predijo $k$.
+            <b>Análoga para permisiva y error rate por clase.</b>
+        </div>
+    </div>
+
     <!-- Métricas globales por escala -->
-    <div class="detail-grid" style="margin-top: 12px;">
+    <div class="detail-grid" style="margin-top: 16px;">
         <div class="detail-card">
             <h3>LATIDO — Global</h3>
             <dl class="detail-dl">
                 <dt>N ventanas evaluadas</dt><dd><b>{{ precision.beat.global.n }}</b></dd>
-                <dt>Accuracy estricta (verde)</dt>
+                <dt>Accuracy estricta</dt>
                     <dd class="lik-val" style="color: var(--verde);">{{ precision.beat.global.accuracy_estricta }}%</dd>
-                <dt>Accuracy permisiva (verde+amarillo)</dt>
+                <dt>Accuracy permisiva</dt>
                     <dd class="lik-val" style="color: var(--verde);">{{ precision.beat.global.accuracy_permisiva }}%</dd>
-                <dt>Tasa de error (rojo)</dt>
+                <dt>Tasa de error</dt>
                     <dd class="lik-val" style="color: var(--rojo);">{{ precision.beat.global.error_rate }}%</dd>
             </dl>
         </div>
@@ -72,11 +110,11 @@
             <h3>RITMO — Global</h3>
             <dl class="detail-dl">
                 <dt>N ventanas evaluadas</dt><dd><b>{{ precision.rhythm.global.n }}</b></dd>
-                <dt>Accuracy estricta (verde)</dt>
+                <dt>Accuracy estricta</dt>
                     <dd class="lik-val" style="color: var(--verde);">{{ precision.rhythm.global.accuracy_estricta }}%</dd>
-                <dt>Accuracy permisiva (verde+amarillo)</dt>
+                <dt>Accuracy permisiva</dt>
                     <dd class="lik-val" style="color: var(--verde);">{{ precision.rhythm.global.accuracy_permisiva }}%</dd>
-                <dt>Tasa de error (rojo)</dt>
+                <dt>Tasa de error</dt>
                     <dd class="lik-val" style="color: var(--rojo);">{{ precision.rhythm.global.error_rate }}%</dd>
             </dl>
         </div>
@@ -94,8 +132,8 @@
                     <th>Verde</th>
                     <th>Amarillo</th>
                     <th>Rojo</th>
-                    <th>Accuracy estricta</th>
-                    <th>Accuracy permisiva</th>
+                    <th>Acc. estricta</th>
+                    <th>Acc. permisiva</th>
                     <th>Error rate</th>
                 </tr>
             </thead>
@@ -129,8 +167,8 @@
                     <th>Verde</th>
                     <th>Amarillo</th>
                     <th>Rojo</th>
-                    <th>Accuracy estricta</th>
-                    <th>Accuracy permisiva</th>
+                    <th>Acc. estricta</th>
+                    <th>Acc. permisiva</th>
                     <th>Error rate</th>
                 </tr>
             </thead>
@@ -155,19 +193,59 @@
     <!-- Gráfico -->
     <div class="chart-card" style="margin-top: 20px;">
         <h3>Distribución visual de acuerdo</h3>
-        <p class="chart-desc">Cada barra apilada al 100% muestra el desglose de veredictos.</p>
+        <p class="chart-desc">Cada barra apilada al 100% muestra el desglose de veredictos por escala.</p>
         <div id="chart-precision" class="chart-plot"></div>
     </div>
 </section>
 
 <!-- ================================================
-     METRICAS DE LAS NOTAS EVALUADAS
+     METRICAS DE LAS NOTAS EVALUADAS — con fórmulas
      ================================================ -->
 <section class="detail-section">
-    <h3>Cómo este cardiólogo valoró las notas del LLM</h3>
+    <h3>Métricas de valoración de las notas clínicas</h3>
     <p class="chart-desc">{{ metricas_notas.interpretacion }}</p>
 
-    <div class="detail-grid" style="margin-top: 12px;">
+    <!-- Fórmulas de las métricas de notas -->
+    <div class="formula-block formula-highlighted">
+        <div class="formula-label">Distribución del veredicto global</div>
+        <div class="formula-body">
+            $$P(V_g = c) = \frac{N_c^{med}}{N_{eval}^{med}} \times 100\%$$
+        </div>
+        <div class="formula-vars">
+            Donde: $V_g$ = veredicto global sobre la nota; $c \in \{correcta, parcial, errónea\}$;
+            $N_c^{med}$ = número de notas donde este cardiólogo emitió el veredicto $c$;
+            $N_{eval}^{med}$ = total de notas evaluadas por este cardiólogo.
+        </div>
+    </div>
+
+    <div class="formula-block">
+        <div class="formula-label">Promedios Likert (escala 1–7)</div>
+        <div class="formula-body">
+            $$\bar{L}_d^{med} = \frac{1}{N_{eval}^{med}} \sum_{i=1}^{N_{eval}^{med}} L_{d,i}$$
+        </div>
+        <div class="formula-vars">
+            Donde: $d \in \{exactitud, coherencia, utilidad\}$; $L_{d,i}$ = puntuación Likert
+            (1 = muy pobre, 4 = aceptable, 7 = excelente) que este cardiólogo otorgó en la
+            dimensión $d$ para su $i$-ésima evaluación.
+            <b>Un promedio alto (≥ 5) sugiere que el cardiólogo aprueba la calidad de las notas del LLM.</b>
+        </div>
+    </div>
+
+    <div class="formula-block">
+        <div class="formula-label">Porcentaje promedio de subrayado por color</div>
+        <div class="formula-body">
+            $$\overline{\%}_c^{med} = \frac{1}{N^{med}_{marc}} \sum_{i \in E^{med}_{marc}} \frac{\text{chars}_{c,i}}{\text{chars}_{total,i}} \times 100\%$$
+        </div>
+        <div class="formula-vars">
+            Donde: $c \in \{verde, amarillo, rojo, sin\_marcar\}$;
+            $E^{med}_{marc}$ = subconjunto de evaluaciones de este cardiólogo que incluyen subrayado;
+            $N^{med}_{marc} = |E^{med}_{marc}|$;
+            $\text{chars}_{c,i}$ = caracteres marcados con color $c$ en la evaluación $i$;
+            $\text{chars}_{total,i}$ = caracteres totales de la nota en la evaluación $i$.
+        </div>
+    </div>
+
+    <div class="detail-grid" style="margin-top: 16px;">
         <div class="detail-card">
             <h3>Veredicto global de la nota</h3>
             <dl class="detail-dl">
@@ -182,14 +260,14 @@
         </div>
 
         <div class="detail-card">
-            <h3>Likert promedio (1–5)</h3>
+            <h3>Likert promedio (1–7)</h3>
             <dl class="detail-dl detail-likert">
                 <dt>Exactitud diagnóstica</dt>
-                    <dd class="lik-val">{{ metricas_notas.likert.exactitud or '—' }}/5</dd>
+                    <dd class="lik-val">{{ metricas_notas.likert.exactitud or '—' }}/7</dd>
                 <dt>Coherencia terminológica</dt>
-                    <dd class="lik-val">{{ metricas_notas.likert.coherencia or '—' }}/5</dd>
+                    <dd class="lik-val">{{ metricas_notas.likert.coherencia or '—' }}/7</dd>
                 <dt>Utilidad clínica</dt>
-                    <dd class="lik-val">{{ metricas_notas.likert.utilidad or '—' }}/5</dd>
+                    <dd class="lik-val">{{ metricas_notas.likert.utilidad or '—' }}/7</dd>
             </dl>
         </div>
 
@@ -270,11 +348,12 @@
 {% block scripts %}
 {% if evaluaciones|length > 0 %}
 <script>
-    // Precisión chart: 2 barras apiladas (BEAT y RHYTHM), 100%
     (function() {
         const beat   = {{ precision.beat.global | tojson }};
         const rhythm = {{ precision.rhythm.global | tojson }};
         const escalas = ["LATIDO", "RITMO"];
+        const beatAmarillo = 100 - beat.accuracy_estricta - beat.error_rate;
+        const rhythmAmarillo = 100 - rhythm.accuracy_estricta - rhythm.error_rate;
         const traces = [
             { name: "Correcto",   type: "bar", x: escalas,
               y: [beat.accuracy_estricta, rhythm.accuracy_estricta],
@@ -282,11 +361,9 @@
               text: [beat.accuracy_estricta + "%", rhythm.accuracy_estricta + "%"],
               textposition: "auto" },
             { name: "Parcial",    type: "bar", x: escalas,
-              y: [beat.global !== undefined ? 100 - beat.accuracy_estricta - beat.error_rate : 0,
-                  rhythm.global !== undefined ? 100 - rhythm.accuracy_estricta - rhythm.error_rate : 0],
+              y: [beatAmarillo, rhythmAmarillo],
               marker: { color: "#D6A317" },
-              text: [(100 - beat.accuracy_estricta - beat.error_rate).toFixed(1) + "%",
-                     (100 - rhythm.accuracy_estricta - rhythm.error_rate).toFixed(1) + "%"],
+              text: [beatAmarillo.toFixed(1) + "%", rhythmAmarillo.toFixed(1) + "%"],
               textposition: "auto" },
             { name: "Incorrecto", type: "bar", x: escalas,
               y: [beat.error_rate, rhythm.error_rate],

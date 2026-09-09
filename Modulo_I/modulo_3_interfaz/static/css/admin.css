@@ -628,3 +628,75 @@ body.admin-body {
         grid-template-columns: 1fr;
     }
 }
+/* ============================================================
+   AÑADIR AL FINAL DE admin.css
+   Estilos para bloques de fórmulas matemáticas (MathJax)
+   ============================================================ */
+
+.formula-block {
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-left: 3px solid var(--ink-soft);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: var(--font-body);
+}
+.formula-block.formula-inline {
+    margin: 10px 0 14px 0;
+    padding: 10px 14px;
+    font-size: 13px;
+}
+.formula-block.formula-highlighted {
+    border-left-color: var(--ecg-red);
+    background: rgba(178, 34, 34, 0.03);
+}
+
+.formula-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--ecg-red-dark);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.formula-body {
+    padding: 8px 4px;
+    text-align: center;
+    color: var(--ink);
+    font-size: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.formula-body mjx-container {
+    margin: 6px 0 !important;
+}
+
+.formula-vars {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    padding-top: 8px;
+    border-top: 1px dashed var(--cream-deep);
+    margin-top: 6px;
+}
+.formula-vars ul {
+    padding-left: 20px;
+    margin: 6px 0;
+}
+.formula-vars b {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* Tabla Landis y Koch */
+.landis-koch-table {
+    margin: 8px 0;
+    overflow-x: auto;
+}
+.landis-koch-table td:first-child {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+}

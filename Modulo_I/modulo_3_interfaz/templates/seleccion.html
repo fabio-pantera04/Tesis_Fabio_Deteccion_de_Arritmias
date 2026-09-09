@@ -1,14 +1,160 @@
 {% extends "base.html" %}
 {% block title %}Seleccionar señal — Validación clínica{% endblock %}
 {% block content %}
+
+<!-- Encabezado -->
 <section class="paper">
     <div class="eyebrow">Paso 1 de 2</div>
     <h2>Seleccione una señal para evaluar</h2>
     <p>Cinco señales ECG están disponibles para evaluación. Cada una corresponde
        a 60 segundos de registro en derivación II a 250 Hz. Se recomienda evaluar
        las cinco para que el reporte estadístico tenga cobertura completa.</p>
-    <p style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft);">
-       Backend LLM activo: <strong>{{ backend_activo }}</strong>
+</section>
+
+<!-- ================================================================
+     GUÍA DE EVALUACIÓN (siempre visible antes de las señales)
+     ================================================================ -->
+<section class="paper guia-eval">
+    <div class="eyebrow">Guía de evaluación</div>
+    <h2>Cómo evaluar cada señal</h2>
+    <p class="guia-intro">
+        Cada señal se evalúa en <b>tres partes obligatorias</b>. Lea esta guía
+        antes de comenzar. Puede volver a esta página en cualquier momento
+        desde el enlace <em>Señales</em> del menú superior.
+    </p>
+
+    <!-- Paso 1: Latidos -->
+    <div class="guia-paso">
+        <div class="guia-paso-header">
+            <span class="guia-paso-num">1</span>
+            <h3>Semáforos de latidos <span class="guia-paso-detalle">(60 ventanas de 1 segundo)</span></h3>
+        </div>
+        <p>
+            Para cada segmento de 1 segundo, el clasificador automático predice si el latido es
+            <b>NORMAL</b> (latido sinusal esperado) o <b>PAC</b> (contracción prematura auricular).
+            Su tarea es validar cada predicción marcando un semáforo:
+        </p>
+        <ul class="guia-semaforo-lista">
+            <li><span class="semaforo-chip verde">VERDE</span>
+                Estoy de acuerdo con la predicción del clasificador.</li>
+            <li><span class="semaforo-chip amarillo">AMARILLO</span>
+                No estoy seguro, es un caso limítrofe o ambiguo.</li>
+            <li><span class="semaforo-chip rojo">ROJO</span>
+                No estoy de acuerdo, la predicción es incorrecta.</li>
+        </ul>
+        <p class="guia-tip">
+            <b>Nota:</b> pase el cursor sobre el trazado para ver el tiempo exacto (segundos)
+            y el voltaje (mV) de cada punto. Use el zoom del navegador (Ctrl + rueda) si necesita
+            inspeccionar detalles finos del trazado.
+        </p>
+    </div>
+
+    <!-- Paso 2: Ritmo -->
+    <div class="guia-paso">
+        <div class="guia-paso-header">
+            <span class="guia-paso-num">2</span>
+            <h3>Semáforos de ritmo <span class="guia-paso-detalle">(15 ventanas de 4 segundos)</span></h3>
+        </div>
+        <p>
+            Para cada segmento de 4 segundos, el clasificador predice si el ritmo es
+            <b>NSR</b> (ritmo sinusal normal) o <b>AFIB</b> (fibrilación auricular).
+            Aplique el mismo criterio de semáforo verde/amarillo/rojo según su acuerdo
+            con la predicción.
+        </p>
+    </div>
+
+    <!-- Paso 3: Nota clínica -->
+    <div class="guia-paso">
+        <div class="guia-paso-header">
+            <span class="guia-paso-num">3</span>
+            <h3>Evaluación de la nota clínica <span class="guia-paso-detalle">(tres sub-tareas)</span></h3>
+        </div>
+        <p>
+            Debajo de las señales aparecerá una <b>nota clínica generada automáticamente por un
+            modelo de lenguaje</b>. Debe evaluarla en <b>tres partes</b>:
+        </p>
+
+        <div class="guia-subtarea">
+            <b>3.1. Subrayado por segmento (obligatorio, nota completa)</b>
+            <p>
+                Seleccione con el cursor cada segmento de texto y márquelo con el color
+                correspondiente:
+            </p>
+            <ul class="guia-semaforo-lista">
+                <li><span class="semaforo-chip verde">Verde</span>
+                    Este texto es clínicamente correcto.</li>
+                <li><span class="semaforo-chip amarillo">Amarillo</span>
+                    Este texto es parcialmente correcto o ambiguo.</li>
+                <li><span class="semaforo-chip rojo">Rojo</span>
+                    Este texto es incorrecto o incompatible con la señal.</li>
+            </ul>
+            <p class="guia-warning">
+                <b>Importante:</b> debe subrayarse <b>la nota completa</b>. No deje segmentos
+                sin marcar. El sistema le mostrará el porcentaje de texto marcado en tiempo real.
+            </p>
+        </div>
+
+        <div class="guia-subtarea">
+            <b>3.2. Calificación Likert y veredicto global (obligatorio)</b>
+            <p>Además del subrayado, califique la nota globalmente con:</p>
+            <ul>
+                <li><b>Veredicto global:</b> semáforo verde / amarillo / rojo sobre la nota completa.</li>
+                <li><b>Tres escalas Likert (1–7):</b>
+                    <ul>
+                        <li><b>Exactitud diagnóstica</b> — ¿la nota describe correctamente lo que muestra el ECG?</li>
+                        <li><b>Coherencia terminológica</b> — ¿la terminología es consistente con la práctica clínica estándar?</li>
+                        <li><b>Utilidad clínica</b> — ¿la nota resulta útil para un cardiólogo evaluador?</li>
+                    </ul>
+                </li>
+            </ul>
+            <p style="font-size: 13px; color: var(--ink-soft); margin-top: 8px;">
+                La escala de siete puntos permite mayor discriminación: 1 = muy pobre, 4 = aceptable, 7 = excelente.
+            </p>
+        </div>
+
+        <div class="guia-subtarea">
+            <b>3.3. Comentarios libres (opcional)</b>
+            <p>
+                Añada cualquier observación adicional que considere relevante:
+                omisiones, correcciones específicas, sugerencias para mejorar el sistema, etc.
+            </p>
+        </div>
+    </div>
+
+    <!-- Notas finales -->
+    <div class="guia-final">
+        <div class="guia-final-item">
+            <div class="guia-final-label">Tiempo estimado por señal</div>
+            <div class="guia-final-value">6 a 9 minutos aproximadamente.</div>
+        </div>
+        <div class="guia-final-item">
+            <div class="guia-final-label">Guardado</div>
+            <div class="guia-final-value">El botón <em>Guardar evaluación</em> se habilita únicamente
+                cuando ha completado todos los elementos requeridos.</div>
+        </div>
+        <div class="guia-final-item">
+            <div class="guia-final-label">Privacidad</div>
+            <div class="guia-final-value">Sus evaluaciones son confidenciales. Ningún otro
+                cardiólogo puede ver sus respuestas, y usted no verá las de otros participantes,
+                para preservar la independencia estadística del estudio.</div>
+        </div>
+        <div class="guia-final-item">
+            <div class="guia-final-label">Historial personal</div>
+            <div class="guia-final-value">Puede consultar sus evaluaciones anteriores desde el
+                enlace <em>Mis evaluaciones</em> del menú superior.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     GRID DE SEÑALES
+     ================================================================ -->
+<section class="paper">
+    <div class="eyebrow">Señales disponibles</div>
+    <h2>Seleccione una señal para comenzar</h2>
+    <p style="color: var(--ink-soft); margin-top: 4px;">
+        Puede evaluarlas en cualquier orden y continuar en otra sesión.
+        Sus evaluaciones previas se conservan automáticamente.
     </p>
 
     <div class="signal-grid">
@@ -23,4 +169,175 @@
         {% endfor %}
     </div>
 </section>
+
+<!-- Estilos específicos de la guía -->
+<style>
+.guia-eval {
+    border-left: 4px solid var(--ecg-red);
+}
+.guia-intro {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--cream-deep);
+}
+
+.guia-paso {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-left: 3px solid var(--ecg-red);
+    border-radius: 4px;
+}
+.guia-paso-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.guia-paso-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--ecg-red);
+    color: white;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.guia-paso h3 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--ink);
+}
+.guia-paso-detalle {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.guia-paso p {
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.guia-semaforo-lista {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+}
+.guia-semaforo-lista li {
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.semaforo-chip {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    min-width: 130px;
+    text-align: center;
+}
+.semaforo-chip.verde {
+    background: rgba(58, 143, 58, 0.15);
+    color: var(--verde);
+    border: 1px solid var(--verde);
+}
+.semaforo-chip.amarillo {
+    background: rgba(214, 163, 23, 0.15);
+    color: #7a5c0a;
+    border: 1px solid var(--amarillo);
+}
+.semaforo-chip.rojo {
+    background: rgba(178, 34, 34, 0.15);
+    color: var(--ecg-red-dark);
+    border: 1px solid var(--rojo);
+}
+
+.guia-tip {
+    background: rgba(214, 163, 23, 0.08);
+    border-left: 3px solid var(--amarillo);
+    padding: 10px 14px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-top: 10px;
+}
+.guia-warning {
+    background: rgba(178, 34, 34, 0.08);
+    border-left: 3px solid var(--rojo);
+    padding: 10px 14px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--ecg-red-dark);
+    margin-top: 10px;
+}
+
+.guia-subtarea {
+    margin: 14px 0;
+    padding: 12px 14px 12px 18px;
+    background: white;
+    border: 1px solid var(--cream-deep);
+    border-radius: 3px;
+}
+.guia-subtarea > b {
+    display: block;
+    color: var(--ecg-red-dark);
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+.guia-subtarea ul {
+    padding-left: 20px;
+    line-height: 1.7;
+}
+.guia-subtarea ul ul {
+    margin-top: 4px;
+}
+
+.guia-final {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 2px dashed var(--cream-deep);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+.guia-final-item {
+    padding: 12px 16px;
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-left: 3px solid var(--ink-soft);
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.guia-final-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+}
+.guia-final-value {
+    color: var(--ink);
+}
+</style>
+
 {% endblock %}

@@ -7,7 +7,7 @@
 {% block content %}
 <div class="admin-page-header">
     <h2>Dashboard general</h2>
-    <p class="admin-page-desc">Vista consolidada de la actividad de validación clínica.</p>
+    <p class="admin-page-desc">Vista consolidada de la actividad de validación clínica. Cada indicador incluye su fórmula de cálculo para trazabilidad estadística.</p>
 </div>
 
 <!-- KPIs -->
@@ -35,15 +35,15 @@
 <!-- Likert averages -->
 <div class="kpi-grid" style="margin-top: 12px;">
     <div class="kpi-card kpi-likert">
-        <div class="kpi-value">{{ stats.likert_promedio_exactitud or '—' }}<span class="kpi-unit">/5</span></div>
+        <div class="kpi-value">{{ stats.likert_promedio_exactitud or '—' }}<span class="kpi-unit">/7</span></div>
         <div class="kpi-label">Likert Exactitud</div>
     </div>
     <div class="kpi-card kpi-likert">
-        <div class="kpi-value">{{ stats.likert_promedio_coherencia or '—' }}<span class="kpi-unit">/5</span></div>
+        <div class="kpi-value">{{ stats.likert_promedio_coherencia or '—' }}<span class="kpi-unit">/7</span></div>
         <div class="kpi-label">Likert Coherencia</div>
     </div>
     <div class="kpi-card kpi-likert">
-        <div class="kpi-value">{{ stats.likert_promedio_utilidad or '—' }}<span class="kpi-unit">/5</span></div>
+        <div class="kpi-value">{{ stats.likert_promedio_utilidad or '—' }}<span class="kpi-unit">/7</span></div>
         <div class="kpi-label">Likert Utilidad</div>
     </div>
     <div class="kpi-card kpi-likert">
@@ -52,41 +52,117 @@
     </div>
 </div>
 
+<!-- Fórmula de Likert promedio -->
+<div class="formula-block">
+    <div class="formula-label">Fórmula: promedio Likert por dimensión</div>
+    <div class="formula-body">
+        $$\bar{L}_d = \frac{1}{N} \sum_{i=1}^{N} L_{d,i}$$
+    </div>
+    <div class="formula-vars">
+        Donde: $\bar{L}_d$ = promedio para la dimensión $d$ (exactitud, coherencia, utilidad);
+        $L_{d,i}$ = puntuación Likert (1 a 7) otorgada en la evaluación $i$;
+        $N$ = número total de evaluaciones.
+    </div>
+</div>
+
 <!-- Charts -->
 <div class="chart-grid">
     <div class="chart-card">
         <h3>Distribución de semáforos por escala</h3>
         <p class="chart-desc">Porcentaje verde/amarillo/rojo emitido por los cardiólogos sobre las ventanas BEAT y RHYTHM.</p>
+
+        <div class="formula-block formula-inline">
+            <div class="formula-body">
+                $$P(\text{color}=c \mid \text{escala}=e) = \frac{N_{c,e}}{N_e} \times 100\%$$
+            </div>
+            <div class="formula-vars">
+                Donde: $c \in \{verde, amarillo, rojo\}$; $e \in \{beat, rhythm\}$;
+                $N_{c,e}$ = número de veces que se emitió el color $c$ en la escala $e$;
+                $N_e$ = total de ventanas evaluadas en esa escala.
+            </div>
+        </div>
+
         <div id="chart-semaforo-escala" class="chart-plot"></div>
     </div>
 
     <div class="chart-card">
         <h3>Veredicto global de la nota LLM</h3>
         <p class="chart-desc">Distribución de "Correcta / Parcial / Errónea" sobre la nota generada.</p>
+
+        <div class="formula-block formula-inline">
+            <div class="formula-body">
+                $$P(V_g = c) = \frac{N_c}{N_{eval}} \times 100\%$$
+            </div>
+            <div class="formula-vars">
+                Donde: $V_g$ = veredicto global sobre la nota; $c \in \{correcta, parcial, errónea\}$;
+                $N_c$ = número de veces que se emitió el veredicto $c$;
+                $N_{eval}$ = total de evaluaciones registradas.
+            </div>
+        </div>
+
         <div id="chart-semaforo-nota" class="chart-plot"></div>
     </div>
 
     <div class="chart-card chart-full">
         <h3>Distribución de semáforos por clase predicha — LATIDO</h3>
-        <p class="chart-desc">Muestra qué clases del clasificador de latidos son mejor o peor validadas.</p>
+        <p class="chart-desc">Concordancia clasificador↔cardiólogo por cada clase (NORMAL, PAC).</p>
+
+        <div class="formula-block formula-inline">
+            <div class="formula-body">
+                $$P(\text{color}=c \mid \text{clase}=k) = \frac{N_{c,k}}{N_k} \times 100\%$$
+            </div>
+            <div class="formula-vars">
+                Donde: $k$ = clase predicha por el clasificador (NORMAL, PAC);
+                $N_{c,k}$ = veredictos de color $c$ sobre ventanas donde el clasificador predijo $k$;
+                $N_k$ = total de ventanas con clase predicha $k$.
+                <b>Un alto porcentaje de verde indica alta concordancia clasificador↔cardiólogo para esa clase.</b>
+            </div>
+        </div>
+
         <div id="chart-clase-beat" class="chart-plot"></div>
     </div>
 
     <div class="chart-card chart-full">
         <h3>Distribución de semáforos por clase predicha — RITMO</h3>
-        <p class="chart-desc">Muestra qué clases del clasificador de ritmo son mejor o peor validadas.</p>
+        <p class="chart-desc">Concordancia clasificador↔cardiólogo por cada clase (NSR, AFIB). Misma fórmula que la gráfica anterior aplicada al clasificador de ritmo.</p>
         <div id="chart-clase-rhythm" class="chart-plot"></div>
     </div>
 
     <div class="chart-card chart-full">
         <h3>Evaluaciones por señal</h3>
-        <p class="chart-desc">Cuántas veces se ha evaluado cada señal y promedio Likert obtenido.</p>
+        <p class="chart-desc">Cuántas veces se ha evaluado cada señal (barras) y promedio Likert obtenido (líneas).</p>
+
+        <div class="formula-block formula-inline">
+            <div class="formula-body">
+                $$N_{eval}(s) = \sum_{i=1}^{|E|} \mathbb{1}[s_i = s] \quad ; \quad \bar{L}_d(s) = \frac{1}{N_{eval}(s)} \sum_{i \in E_s} L_{d,i}$$
+            </div>
+            <div class="formula-vars">
+                Donde: $s$ = identificador de señal (sig_001 a sig_005); $E$ = conjunto de evaluaciones;
+                $E_s$ = evaluaciones de la señal $s$; $\mathbb{1}[\cdot]$ = función indicadora;
+                $\bar{L}_d(s)$ = promedio Likert dimensión $d$ para la señal $s$.
+            </div>
+        </div>
+
         <div id="chart-por-senal" class="chart-plot"></div>
     </div>
 
     <div class="chart-card chart-full">
         <h3>Subrayado de la nota LLM (promedios)</h3>
         <p class="chart-desc">Porcentaje promedio del texto marcado por los cardiólogos en cada categoría.</p>
+
+        <div class="formula-block formula-inline">
+            <div class="formula-body">
+                $$\overline{\%}_c = \frac{1}{N} \sum_{i=1}^{N} \frac{\text{chars}_{c,i}}{\text{chars}_{total,i}} \times 100\%$$
+            </div>
+            <div class="formula-vars">
+                Donde: $\overline{\%}_c$ = porcentaje promedio de texto marcado con color $c$ (verde, amarillo, rojo, sin marcar);
+                $\text{chars}_{c,i}$ = número de caracteres marcados con color $c$ en la evaluación $i$;
+                $\text{chars}_{total,i}$ = número total de caracteres de la nota en la evaluación $i$;
+                $N$ = total de evaluaciones con marcaciones registradas.
+                <b>Interpretación:</b> un $\overline{\%}_{verde}$ alto indica que los cardiólogos consideran mayoritariamente correctas las notas del LLM.
+            </div>
+        </div>
+
         <div id="chart-marcaciones" class="chart-plot"></div>
     </div>
 </div>

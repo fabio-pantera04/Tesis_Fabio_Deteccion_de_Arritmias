@@ -34,11 +34,11 @@
     </div>
 
     <div class="detail-card">
-        <h3>Valoración Likert (1–5)</h3>
+        <h3>Valoración Likert (1–7)</h3>
         <dl class="detail-dl detail-likert">
-            <dt>Exactitud diagnóstica</dt><dd class="lik-val">{{ ev.likert_exactitud }}/5</dd>
-            <dt>Coherencia terminológica</dt><dd class="lik-val">{{ ev.likert_coherencia }}/5</dd>
-            <dt>Utilidad clínica</dt><dd class="lik-val">{{ ev.likert_utilidad }}/5</dd>
+            <dt>Exactitud diagnóstica</dt><dd class="lik-val">{{ ev.likert_exactitud }}/7</dd>
+            <dt>Coherencia terminológica</dt><dd class="lik-val">{{ ev.likert_coherencia }}/7</dd>
+            <dt>Utilidad clínica</dt><dd class="lik-val">{{ ev.likert_utilidad }}/7</dd>
         </dl>
         <div style="margin-top: 12px;">
             <span class="lbl-inline">Veredicto global:</span>
@@ -141,7 +141,6 @@
 {% block scripts %}
 {% if ev.marcaciones_nota_parsed %}
 <script>
-    // Aplicar las marcaciones visualmente sobre el texto
     (function() {
         const NOTA_ORIGINAL = {{ ev.nota_clinica_texto|tojson }};
         const MARCACIONES = {{ ev.marcaciones_nota_parsed.marcaciones|tojson }};
