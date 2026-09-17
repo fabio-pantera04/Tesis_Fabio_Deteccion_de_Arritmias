@@ -202,7 +202,7 @@
     "n_rhythm_windows": 15,
     "processing_time_seconds": 16210.8
   },
-  "clinical_note": "En el registro de ECG de derivación II modificada de un paciente de 50 años de sexo no especificado, con una duración de 60 segundos, se observa un patrón predominantemente de latidos NORMALES (56.67%), caracterizados por complejos QRS estrechos de morfología normal, precedidos por ondas P monofásicas positivas, intervalos PR dentro de rangos fisiológicos y ondas T concordantes con la deflexión principal del QRS. El ritmo predominante identificado es Sinusal Normal (NSR, 93.33%), con ondas P monofásicas precediendo cada complejo QRS y una relación auriculoventricular 1:1 conservada. No obstante, se identifica una notable proporción de contracciones auriculares prematuras (PAC, 43.33%), manifestadas como latidos de aparición prematura con ondas P de morfología distinta y complejos QRS estrechos, en los segundos 0.0, 2.0, 10.0, 11.0, 13.0, 14.0, 18.0, 20.0, 22.0, y 23.0, generalmente seguidas de una pausa compensatoria incompleta. Asimismo, se aprecia un breve episodio compatible con fibrilación auricular (AFIB, 6.67%) hacia el final del registro, caracterizado por la ausencia de ondas P discernibles e intervalos R-R irregularmente irregulares. La confianza media del clasificador es adecuada para uso interpretativo (0.37 en la clasificación de latido y 0.69 en la de ritmo). Dada la variabilidad en el patrón de ritmo y la recomendación global de escalación por parte del sistema, se sugiere una revisión exhaustiva del registro completo por un cardiólogo especialista.",
+  "clinical_note": "En el registro de ECG de derivación II modificada de un paciente de 50 años de sexo no especificado, con una duración de 60 segundos, se observa un patrón predominantemente de latidos NORMALES (56.67%), caracterizados por complejos QRS estrechos de morfología normal, precedidos por ondas P monofásicas positivas, intervalos PR dentro de rangos fisiológicos y ondas T concordantes con la deflexión principal del QRS. El ritmo predominante identificado es Sinusal Normal (NSR, 93.33%), con ondas P monofásicas precediendo cada complejo QRS y una relación auriculoventricular 1:1 conservada.",
   "quality_checks": {
     "idioma_espanol": true,
     "menciona_lead_II": true,
@@ -215,5 +215,6 @@
     "sin_prescripcion": true
   },
   "checks_passed": 9,
-  "checks_total": 9
+  "checks_total": 9,
+  "classifier_note": "No obstante, se identifica una notable proporción de contracciones auriculares prematuras (PAC, 43.33%), manifestadas como latidos de aparición prematura con ondas P de morfología distinta y complejos QRS estrechos, en los segundos 0.0, 2.0, 10.0, 11.0, 13.0, 14.0, 18.0, 20.0, 22.0, y 23.0, generalmente seguidas de una pausa compensatoria incompleta. Asimismo, se aprecia un breve episodio compatible con fibrilación auricular (AFIB, 6.67%) hacia el final del registro, caracterizado por la ausencia de ondas P discernibles e intervalos R-R irregularmente irregulares."
 }

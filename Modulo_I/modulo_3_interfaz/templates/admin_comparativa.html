@@ -1,0 +1,95 @@
+{% extends "admin_base.html" %}
+{% block title %}Comparativa - Admin{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <h2>Comparativa por senal</h2>
+    <p class="admin-page-desc">
+        Vista de cada senal del estudio comparando la <b>etiqueta real de la
+        base de datos</b> (ground truth), las <b>predicciones del clasificador
+        MSM-SC + XGBoost</b>, y los <b>veredictos de los cardiologos evaluadores</b>
+        con las metricas de concordancia derivadas.
+    </p>
+</div>
+
+<!-- Explicacion de la metodologia -->
+<div class="formula-block formula-highlighted">
+    <div class="formula-label">Como leer esta vista</div>
+    <div class="formula-vars">
+        <ul>
+            <li><b>Etiqueta real:</b> proviene del dataset de origen
+                (CinC2017 anotado por consenso de 3 cardiologos;
+                Icentia11k anotado por especialistas). Es la referencia
+                estandar del estudio.</li>
+            <li><b>Prediccion clasificador:</b> es la clase que emitio el
+                clasificador dual MSM-SC + XGBoost para cada ventana.</li>
+            <li><b>Veredicto medico:</b> es el semaforo (verde/amarillo/rojo)
+                que los cardiologos evaluadores emitieron para validar cada
+                prediccion.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Tabla de senales -->
+<div class="admin-table-wrap" style="margin-top: 20px;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Senal</th>
+                <th>Dataset origen</th>
+                <th>Duracion</th>
+                <th>Etiqueta real (ritmo)</th>
+                <th>Etiqueta real (latido)</th>
+                <th>Evaluaciones</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for s in signals %}
+            <tr>
+                <td><b>{{ s.signal_id }}</b></td>
+                <td>
+                    <span class="chip chip-neutral"><code>{{ s.dataset }}</code></span>
+                </td>
+                <td>{{ s.duration_seconds|int }} s</td>
+                <td>
+                    {% if s.rhythm_label == 'AFIB' %}
+                        <span class="chip chip-rojo"><b>{{ s.rhythm_label }}</b></span>
+                    {% elif s.rhythm_label == 'NSR' %}
+                        <span class="chip chip-verde"><b>{{ s.rhythm_label }}</b></span>
+                    {% else %}
+                        <span class="chip chip-neutral">{{ s.rhythm_label }}</span>
+                    {% endif %}
+                </td>
+                <td><small>{{ s.predominant_beat_label }}</small></td>
+                <td>
+                    {% if s.tiene_evaluaciones %}
+                        <span class="chip chip-verde">Con datos</span>
+                    {% else %}
+                        <span class="chip chip-neutral">Sin evaluar aun</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('admin_comparativa_signal', signal_id=s.signal_id) }}"
+                       class="btn-sm">Ver detalle</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Referencias -->
+<div class="detail-section" style="margin-top: 24px; font-size: 12px; color: var(--ink-soft);">
+    <h3 style="font-size: 14px;">Datasets de referencia</h3>
+    <ul style="line-height: 1.7; padding-left: 20px;">
+        <li><b>CinC2017</b>: Clifford, G. D., et al. (2017). AF classification
+            from a short single lead ECG recording: the PhysioNet Computing in
+            Cardiology Challenge. <em>Computing in Cardiology</em>, 44.</li>
+        <li><b>Icentia11k</b>: Tan, S., et al. (2019). Icentia11k: An
+            Unsupervised Representation Learning Dataset for Arrhythmia
+            Subtype Discovery. <em>arXiv:1910.09570</em>.</li>
+    </ul>
+</div>
+
+{% endblock %}

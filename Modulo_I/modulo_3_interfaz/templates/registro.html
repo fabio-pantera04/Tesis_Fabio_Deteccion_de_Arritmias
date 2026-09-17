@@ -1,129 +1,441 @@
 {% extends "base.html" %}
-{% block title %}Registro — Validación clínica{% endblock %}
+{% block title %}Registro - Validacion clinica ECG{% endblock %}
 {% block content %}
+
+<!-- ================================================================
+     PORTADA + CONTEXTO
+     ================================================================ -->
 <section class="paper">
-    <div class="eyebrow">Sesión nueva</div>
-    <h2>Registro del cardiólogo evaluador</h2>
-    <p>Este formulario captura su perfil profesional una sola vez. Es información
-       requerida por el protocolo de validación clínica del Módulo III de la tesis.
-       Los datos quedan almacenados localmente en formato anonimizable.</p>
+    <div class="eyebrow">Registro de participante</div>
+    <h2>Bienvenida al estudio de validacion clinica</h2>
+    <p>
+        Este estudio forma parte del proyecto de tesis de maestria
+        <em>"Sistema de Asistencia Informativa para Etiquetado de Arritmias
+        en ECG usando Clasificacion con Medidas de Distancia Elastica y LLMs
+        Adaptados al Conocimiento Medico"</em>, desarrollado en el Centro de
+        Investigacion en Matematicas (CIMAT), Unidad Zacatecas.
+    </p>
+    <p>
+        Su participacion como evaluador clinico experto contribuira a la
+        validacion humana del sistema de clasificacion automatica de arritmias
+        cardiacas y a la evaluacion de las notas clinicas generadas
+        automaticamente por un agente basado en modelos de lenguaje.
+    </p>
+</section>
 
-    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+<!-- ================================================================
+     TERMINOS Y CONDICIONES (visible en la pagina, con checkbox)
+     ================================================================ -->
+<section class="paper tc-card">
+    <div class="eyebrow">Terminos y condiciones - Consentimiento informado</div>
+    <h2>Antes de continuar</h2>
+    <p class="tc-intro">
+        Lea atentamente el consentimiento informado y el aviso de privacidad
+        que aparecen a continuacion. Para poder registrarse, es necesario que
+        marque la casilla al final que confirma su aceptacion.
+    </p>
 
-    <form method="POST" action="{{ url_for('registro') }}" id="registro-form">
-        <h3>Identificación</h3>
+    <div class="tc-content">
+
+        <h3>1. Naturaleza del estudio</h3>
+        <p>
+            El presente estudio se clasifica como una investigacion <b>sin riesgo</b>
+            en los terminos del Articulo 17, fraccion I, del Reglamento de la Ley
+            General de Salud en Materia de Investigacion para la Salud de los
+            Estados Unidos Mexicanos. Su participacion consiste unicamente en
+            emitir juicios clinicos sobre trazados electrocardiograficos y textos
+            generados automaticamente, mediante una plataforma web.
+        </p>
+        <p>
+            Las cinco senales electrocardiograficas evaluadas provienen de
+            corpus publicos anonimizados: <b>PhysioNet CinC2017</b> (una senal)
+            y <b>Icentia11k</b> (cuatro senales). No corresponden a pacientes
+            bajo su cuidado y no requieren de accion diagnostica o terapeutica.
+        </p>
+
+        <h3>2. Modulos del sistema</h3>
+        <p>El sistema evaluado consta de tres modulos funcionales:</p>
+        <ul>
+            <li><b>Modulo I</b> - Clasificador dual basado en shapelets multi-escala
+                y modelos de gradient boosting, que predice clases de latido
+                (NORMAL, PAC) y de ritmo (NSR, AFIB).</li>
+            <li><b>Modulo II</b> - Agente basado en LLM adaptado al dominio clinico
+                mediante prompt engineering, que genera notas clinicas explicables
+                en lenguaje natural.</li>
+            <li><b>Modulo III</b> - Esta interfaz web de validacion clinica humana
+                (human-in-the-loop) desplegada en un entorno controlado.</li>
+        </ul>
+
+        <h3>3. Duracion y procedimiento</h3>
+        <p>
+            La sesion completa dura aproximadamente 30 a 45 minutos, distribuida
+            en cinco senales. Puede realizarla en una o varias sesiones separadas;
+            sus evaluaciones parciales se guardan automaticamente en su navegador
+            y su progreso final queda registrado al presionar el boton
+            <em>Guardar evaluacion</em>.
+        </p>
+
+        <h3>4. Aviso de privacidad - Uso de sus datos</h3>
+        <p>
+            Los datos personales recolectados seran tratados conforme a la
+            <b>Ley Federal de Proteccion de Datos Personales en Posesion de los
+            Particulares (LFPDPPP)</b> y su Reglamento. El responsable del
+            tratamiento es el <b>Centro de Investigacion en Matematicas, A.C.
+            (CIMAT), Unidad Zacatecas</b>.
+        </p>
+        <p><b>Finalidades del tratamiento:</b></p>
+        <ul>
+            <li>Caracterizar demografica y profesionalmente a la muestra de
+                cardiologos evaluadores.</li>
+            <li>Vincular sus evaluaciones con su perfil profesional para el
+                calculo de metricas estadisticas (concordancia inter-evaluador,
+                kappa de Cohen).</li>
+            <li>Contactarle unicamente en caso necesario para aclarar aspectos
+                de sus evaluaciones o para invitarle a revisar el manuscrito
+                derivado.</li>
+            <li>Emitir su constancia oficial de participacion.</li>
+        </ul>
+        <p><b>Datos que se almacenan:</b></p>
+        <ul>
+            <li>Nombre o alias que usted proporcione, correo institucional,
+                rango de edad, sexo, institucion, especialidad medica, anos de
+                experiencia y autoevaluacion de habilidad.</li>
+            <li>Sus veredictos categoriales por ventana temporal, puntuaciones
+                Likert, marcaciones de subrayado sobre las notas, comentarios
+                libres opcionales y metadatos tecnicos de la sesion.</li>
+            <li><b>No se almacenan</b> imagenes, audio, datos biometricos ni
+                informacion medica personal del participante.</li>
+        </ul>
+        <p><b>Derechos ARCO:</b> conforme a los articulos 22 al 36 de la
+            LFPDPPP, usted tiene en todo momento derecho a Acceder, Rectificar,
+            Cancelar u Oponerse al tratamiento de sus datos. Para ejercerlos,
+            envie un correo a <b>hmitre@cimat.mx</b>.</p>
+
+        <h3>5. Difusion de resultados</h3>
+        <p>
+            Los resultados agregados y anonimizados se difundiran mediante el
+            documento de tesis (repositorio institucional del CIMAT), un
+            manuscrito destinado a una revista cientifica indexada en el
+            Journal Citation Reports (JCR) con objetivo de cuartil Q1, y
+            presentaciones en congresos academicos. Los datos podran
+            depositarse en repositorios de acceso abierto (Zenodo, PhysioNet)
+            sin posibilidad de identificacion individual.
+        </p>
+
+        <h3>6. Participacion voluntaria</h3>
+        <p>
+            Su participacion es completamente voluntaria. Puede retirarse en
+            cualquier momento sin consecuencia alguna. Si solicita eliminar
+            sus datos, seran destruidos en un plazo no mayor a 30 dias
+            naturales.
+        </p>
+
+        <p class="tc-marco">
+            <b>Marco etico:</b> este estudio se apega a la Declaracion de
+            Helsinki (version revisada), a la Ley Federal de Proteccion de Datos
+            Personales en Posesion de los Particulares, al Reglamento de la Ley
+            General de Salud en Materia de Investigacion para la Salud, y a las
+            guias TRIPOD-AI (2024) para el reporte de modelos de prediccion
+            clinica basados en inteligencia artificial.
+        </p>
+
+    </div>
+
+    <!-- Checkbox obligatorio -->
+    <div class="tc-checkbox-wrap">
+        <label class="tc-checkbox-label">
+            <input type="checkbox" id="acepto_terminos" required>
+            <span>
+                He leido y acepto los <b>terminos y condiciones</b>, el
+                <b>consentimiento informado</b> y el <b>aviso de privacidad</b>
+                del estudio. Comprendo mis <b>derechos ARCO</b> conforme a la
+                LFPDPPP y otorgo mi consentimiento libre, expreso e informado
+                para participar.
+            </span>
+        </label>
+    </div>
+</section>
+
+<!-- ================================================================
+     FORMULARIO DE REGISTRO
+     ================================================================ -->
+<section class="paper" id="registro-form-section">
+    <div class="eyebrow">Datos del participante</div>
+    <h2>Registro</h2>
+    <p style="color: var(--ink-soft); margin-top: 4px;">
+        Todos los campos con <b>*</b> son obligatorios. Puede utilizar su nombre
+        completo o un alias que le identifique en el estudio.
+    </p>
+
+    <form id="reg-form" onsubmit="return false;">
         <div class="form-grid">
             <div class="form-field">
-                <label for="nombre_completo">Nombre completo *</label>
-                <input id="nombre_completo" name="nombre_completo" type="text" required
-                       value="{{ form.get('nombre_completo', '') }}">
+                <label for="nombre_completo">Nombre o alias <b>*</b></label>
+                <input type="text" id="nombre_completo" required
+                       placeholder="Ej. Dr. Perez, Cardio_01, o su nombre completo">
             </div>
+
             <div class="form-field">
-                <label for="email">Correo de contacto *</label>
-                <input id="email" name="email" type="email" required
-                       value="{{ form.get('email', '') }}">
+                <label for="email">Correo institucional <b>*</b></label>
+                <input type="email" id="email" required
+                       placeholder="ejemplo@institucion.mx">
             </div>
+
             <div class="form-field">
-                <label for="edad">Edad *</label>
-                <input id="edad" name="edad" type="number" min="20" max="90" required
-                       value="{{ form.get('edad', '') }}">
-            </div>
-            <div class="form-field">
-                <label for="sexo">Sexo *</label>
-                <select id="sexo" name="sexo" required>
-                    <option value="">—</option>
-                    <option value="F" {% if form.get('sexo') == 'F' %}selected{% endif %}>Femenino</option>
-                    <option value="M" {% if form.get('sexo') == 'M' %}selected{% endif %}>Masculino</option>
-                    <option value="X" {% if form.get('sexo') == 'X' %}selected{% endif %}>Prefiero no especificar</option>
+                <label for="edad">Rango de edad <b>*</b></label>
+                <select id="edad" required>
+                    <option value="">Seleccione un rango...</option>
+                    <option value="&lt;30">Menos de 30 anos</option>
+                    <option value="30-39">30 a 39 anos</option>
+                    <option value="40-49">40 a 49 anos</option>
+                    <option value="50-59">50 a 59 anos</option>
+                    <option value="60+">60 anos o mas</option>
                 </select>
+            </div>
+
+            <div class="form-field">
+                <label for="sexo">Sexo</label>
+                <select id="sexo">
+                    <option value="">Prefiere no responder</option>
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                    <option value="O">Otro</option>
+                </select>
+            </div>
+
+            <div class="form-field form-field-wide">
+                <label for="institucion">Institucion de adscripcion <b>*</b></label>
+                <input type="text" id="institucion" required
+                       placeholder="Hospital, clinica, universidad, etc.">
+            </div>
+
+            <div class="form-field">
+                <label for="especialidad">Especialidad medica <b>*</b></label>
+                <input type="text" id="especialidad" required
+                       placeholder="Ej. Cardiologia">
+            </div>
+
+            <div class="form-field">
+                <label for="sub_especialidad">Sub-especialidad</label>
+                <input type="text" id="sub_especialidad"
+                       placeholder="Ej. Electrofisiologia (opcional)">
+            </div>
+
+            <div class="form-field">
+                <label for="anos_experiencia">Anos de experiencia clinica <b>*</b></label>
+                <input type="number" id="anos_experiencia" min="0" max="60" required>
+            </div>
+
+            <div class="form-field">
+                <label for="anos_experiencia_ecg">Anos con interpretacion ECG <b>*</b></label>
+                <input type="number" id="anos_experiencia_ecg" min="0" max="60" required>
+            </div>
+
+            <div class="form-field form-field-wide">
+                <label for="auto_eval_habilidad">
+                    Autoevaluacion de habilidad en interpretacion ECG (1 = principiante, 5 = experto) <b>*</b>
+                </label>
+                <div class="autoeval-radios">
+                    <label><input type="radio" name="auto_eval_habilidad" value="1" required> 1</label>
+                    <label><input type="radio" name="auto_eval_habilidad" value="2"> 2</label>
+                    <label><input type="radio" name="auto_eval_habilidad" value="3"> 3</label>
+                    <label><input type="radio" name="auto_eval_habilidad" value="4"> 4</label>
+                    <label><input type="radio" name="auto_eval_habilidad" value="5"> 5</label>
+                </div>
             </div>
         </div>
 
-        <h3>Trayectoria profesional</h3>
-        <div class="form-grid">
-            <div class="form-field">
-                <label for="institucion">Institución de adscripción *</label>
-                <input id="institucion" name="institucion" type="text" required
-                       placeholder="Ej. ISSSTE General Zacatecas"
-                       value="{{ form.get('institucion', '') }}">
-            </div>
-            <div class="form-field">
-                <label for="especialidad">Especialidad *</label>
-                <select id="especialidad" name="especialidad" required>
-                    <option value="">—</option>
-                    <option value="Cardiología general" {% if form.get('especialidad') == 'Cardiología general' %}selected{% endif %}>Cardiología general</option>
-                    <option value="Cardiología clínica" {% if form.get('especialidad') == 'Cardiología clínica' %}selected{% endif %}>Cardiología clínica</option>
-                    <option value="Electrofisiología" {% if form.get('especialidad') == 'Electrofisiología' %}selected{% endif %}>Electrofisiología</option>
-                    <option value="Medicina interna" {% if form.get('especialidad') == 'Medicina interna' %}selected{% endif %}>Medicina interna</option>
-                    <option value="Otra" {% if form.get('especialidad') == 'Otra' %}selected{% endif %}>Otra (especificar)</option>
-                </select>
-            </div>
-            <div class="form-field" id="otra-especialidad-container" style="display: none;">
-                <label for="especialidad_otra">Especifique su especialidad *</label>
-                <input id="especialidad_otra" name="especialidad_otra" type="text"
-                       placeholder="Ej. cardiología pediátrica"
-                       value="{{ form.get('especialidad_otra', '') }}">
-            </div>
-            <div class="form-field">
-                <label for="sub_especialidad">Sub-especialidad (opcional)</label>
-                <input id="sub_especialidad" name="sub_especialidad" type="text"
-                       placeholder="Ej. arritmias"
-                       value="{{ form.get('sub_especialidad', '') }}">
-            </div>
-            <div class="form-field">
-                <label for="anos_experiencia">Años de experiencia clínica *</label>
-                <input id="anos_experiencia" name="anos_experiencia" type="number"
-                       min="0" max="60" required
-                       value="{{ form.get('anos_experiencia', '') }}">
-            </div>
-            <div class="form-field">
-                <label for="anos_experiencia_ecg">Años trabajando con ECG / arritmias *</label>
-                <input id="anos_experiencia_ecg" name="anos_experiencia_ecg" type="number"
-                       min="0" max="60" required
-                       value="{{ form.get('anos_experiencia_ecg', '') }}">
-            </div>
-            <div class="form-field">
-                <label for="auto_eval_habilidad">Auto-evaluación de habilidad en ECG (1–5) *</label>
-                <select id="auto_eval_habilidad" name="auto_eval_habilidad" required>
-                    <option value="">—</option>
-                    <option value="1" {% if form.get('auto_eval_habilidad') == '1' %}selected{% endif %}>1 — principiante</option>
-                    <option value="2" {% if form.get('auto_eval_habilidad') == '2' %}selected{% endif %}>2 — competencia básica</option>
-                    <option value="3" {% if form.get('auto_eval_habilidad') == '3' %}selected{% endif %}>3 — intermedio</option>
-                    <option value="4" {% if form.get('auto_eval_habilidad') == '4' %}selected{% endif %}>4 — avanzado</option>
-                    <option value="5" {% if form.get('auto_eval_habilidad') == '5' %}selected{% endif %}>5 — experto</option>
-                </select>
-            </div>
-        </div>
+        <div id="reg-msg"></div>
 
-        <div style="margin-top: 28px; display: flex; gap: 14px; align-items: center;">
-            <button type="submit" class="btn btn-primary">Iniciar evaluación</button>
-            <span style="color: var(--ink-soft); font-size: 13px;">
-                * todos los campos marcados son obligatorios.
-                Sub-especialidad es opcional.
+        <div style="margin-top: 24px;">
+            <button type="button" class="btn btn-primary" id="btn-registrar" disabled>
+                Registrarme e ir al listado de senales
+            </button>
+            <span id="btn-hint" class="btn-hint">
+                Marque la casilla de aceptacion de terminos para habilitar el registro.
             </span>
         </div>
     </form>
-
-    <script>
-        (function() {
-            const especialidad = document.getElementById("especialidad");
-            const container = document.getElementById("otra-especialidad-container");
-            const otraInput = document.getElementById("especialidad_otra");
-
-            function toggleOtra() {
-                if (especialidad.value === "Otra") {
-                    container.style.display = "";
-                    otraInput.required = true;
-                } else {
-                    container.style.display = "none";
-                    otraInput.required = false;
-                    otraInput.value = "";
-                }
-            }
-
-            especialidad.addEventListener("change", toggleOtra);
-            toggleOtra();
-        })();
-    </script>
 </section>
+
+<script>
+(function() {
+    const chk = document.getElementById("acepto_terminos");
+    const btn = document.getElementById("btn-registrar");
+    const hint = document.getElementById("btn-hint");
+    const msg = document.getElementById("reg-msg");
+
+    // Habilitar boton solo cuando el checkbox esta marcado
+    function refreshBtn() {
+        if (chk.checked) {
+            btn.disabled = false;
+            hint.style.display = "none";
+        } else {
+            btn.disabled = true;
+            hint.style.display = "";
+        }
+    }
+    chk.addEventListener("change", refreshBtn);
+    refreshBtn();
+
+    btn.addEventListener("click", async () => {
+        // Validacion basica
+        const form = document.getElementById("reg-form");
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+        if (!chk.checked) {
+            msg.innerHTML = '<div class="error">Debe aceptar los terminos.</div>';
+            return;
+        }
+
+        const habilidad = document.querySelector('input[name="auto_eval_habilidad"]:checked');
+        if (!habilidad) {
+            msg.innerHTML = '<div class="error">Seleccione una autoevaluacion de habilidad.</div>';
+            return;
+        }
+
+        const payload = {
+            nombre_completo: document.getElementById("nombre_completo").value.trim(),
+            email:          document.getElementById("email").value.trim(),
+            edad:           document.getElementById("edad").value,
+            sexo:           document.getElementById("sexo").value,
+            institucion:    document.getElementById("institucion").value.trim(),
+            especialidad:   document.getElementById("especialidad").value.trim(),
+            sub_especialidad: document.getElementById("sub_especialidad").value.trim(),
+            anos_experiencia:     parseInt(document.getElementById("anos_experiencia").value, 10),
+            anos_experiencia_ecg: parseInt(document.getElementById("anos_experiencia_ecg").value, 10),
+            auto_eval_habilidad:  parseInt(habilidad.value, 10),
+            acepto_terminos: true,
+            fecha_aceptacion: new Date().toISOString(),
+        };
+
+        try {
+            const resp = await fetch("/api/registro", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            const data = await resp.json();
+            if (data.ok) {
+                msg.innerHTML = '<div class="success">Registro exitoso. Redirigiendo...</div>';
+                setTimeout(() => { window.location.href = "/seleccion"; }, 1200);
+            } else {
+                msg.innerHTML = `<div class="error">Error: ${data.error || "desconocido"}</div>`;
+            }
+        } catch (e) {
+            msg.innerHTML = `<div class="error">Error de red: ${e.message}</div>`;
+        }
+    });
+})();
+</script>
+
+<!-- Estilos especificos de esta pagina -->
+<style>
+.tc-card {
+    border-left: 4px solid var(--ecg-red);
+}
+.tc-intro {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.6;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--cream-deep);
+    margin-bottom: 12px;
+}
+.tc-content {
+    max-height: 480px;
+    overflow-y: auto;
+    padding: 12px 20px 12px 16px;
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-radius: 4px;
+    margin: 12px 0;
+    line-height: 1.6;
+}
+.tc-content h3 {
+    font-size: 15px;
+    color: var(--ecg-red-dark);
+    margin: 16px 0 6px 0;
+    border-bottom: 1px dashed var(--cream-deep);
+    padding-bottom: 4px;
+}
+.tc-content h3:first-child { margin-top: 0; }
+.tc-content p { margin: 6px 0; font-size: 13px; }
+.tc-content ul {
+    padding-left: 22px; margin: 6px 0;
+    font-size: 13px;
+}
+.tc-content ul li { margin: 3px 0; }
+.tc-marco {
+    background: rgba(178, 34, 34, 0.06);
+    border-left: 3px solid var(--ecg-red);
+    padding: 10px 14px;
+    border-radius: 3px;
+    margin-top: 14px;
+    font-size: 12.5px !important;
+}
+
+.tc-checkbox-wrap {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: rgba(178, 34, 34, 0.05);
+    border: 1px solid var(--rojo);
+    border-radius: 4px;
+}
+.tc-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 13.5px;
+    line-height: 1.55;
+}
+.tc-checkbox-label input[type="checkbox"] {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--ecg-red);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+}
+.form-field-wide { grid-column: 1 / -1; }
+
+.autoeval-radios {
+    display: flex;
+    gap: 20px;
+    margin-top: 6px;
+}
+.autoeval-radios label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    cursor: pointer;
+}
+.autoeval-radios input[type="radio"] {
+    accent-color: var(--ecg-red);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.btn-hint {
+    display: inline-block;
+    margin-left: 14px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-style: italic;
+}
+</style>
+
 {% endblock %}

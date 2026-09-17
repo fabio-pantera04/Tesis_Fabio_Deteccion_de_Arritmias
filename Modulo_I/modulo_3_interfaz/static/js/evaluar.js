@@ -1,437 +1,687 @@
-/* ============================================================
-   evaluar.js - Lógica de la página de evaluación clínica
-   ------------------------------------------------------------
-   Módulos:
-   1. Renderizado de 6 segmentos ECG (10s c/u) con hover
-      clínico (tiempo + voltaje) y tracks BEAT/RHYTHM alineados.
-   2. Sistema de subrayado sobre la nota LLM (4 colores).
-   3. Contador de progreso en tiempo real y botón Guardar
-      deshabilitado hasta que toda la información esté completa.
-   ============================================================ */
-
+// =================================================================
+// Pagina de evaluacion — version con tracks intercalados por tira,
+// sincronizacion de rhythms compartidos entre tiras, y orden nuevo:
+//   1) ECG + tracks integrados por tira
+//   2) Nota del clasificador
+//   3) Nota clinica
+//   4) Comentarios opcionales (uno para cada nota)
+// =================================================================
 const SIGNAL = JSON.parse(document.getElementById("signal-data").textContent);
-const N_SEGMENTS = 6;
-const SEG_DURATION = 10;
-const RHYTHM_WINDOW_S = 4;
+const FS = SIGNAL.signal_metadata.sampling_rate_hz;
+const DURATION = SIGNAL.signal_metadata.duration_seconds;
+const N_BEAT_WIN = SIGNAL.beat_windows.length;
+const N_RHYTHM_WIN = SIGNAL.rhythm_windows.length;
 
+// Cada tira son 10 segundos
+const STRIP_DURATION = 10;
+const N_STRIPS = Math.ceil(DURATION / STRIP_DURATION);
+
+// LocalStorage key (borrador por medico + senal)
+const MEDICO_ID = window.MEDICO_ID || "anon";
+const STORAGE_KEY = `eval_${MEDICO_ID}_${window.SIGNAL_ID}`;
+const AUTOSAVE_DEBOUNCE_MS = 400;
+
+const T_START = Date.now();
+setInterval(() => {
+    const el = document.getElementById("elapsed");
+    if (el) el.textContent = Math.round((Date.now() - T_START) / 1000);
+}, 1000);
+
+// ------------------------------------------------------------
+// Estado de la evaluacion
+// ------------------------------------------------------------
 const state = {
-    beat_semaforos:   new Array(SIGNAL.beat_windows.length).fill(null),
-    rhythm_semaforos: new Array(SIGNAL.rhythm_windows.length).fill(null),
-    llm_note:         null,
-    nota_semaforo:    null,
-    likert_exactitud:  null,
+    beat_semaforos:   new Array(N_BEAT_WIN).fill(null),
+    rhythm_semaforos: new Array(N_RHYTHM_WIN).fill(null),
+
+    // Nota clinica
+    nota_semaforo: null,
+    likert_exactitud: null,
     likert_coherencia: null,
-    likert_utilidad:   null,
-    nota_texto_original: "",
-    marcaciones: [],
-    modo_marcador: null,
-    t_start: Date.now(),
+    likert_utilidad: null,
+    marcaciones_nota: null,
+    comentarios_nota: "",
+
+    // Nota del clasificador
+    nota_clasificador_semaforo: null,
+    marcaciones_clasificador: null,
+    comentarios_clasificador: "",
+
+    llm_payload: null,
 };
 
-// ============================================================
-// 1. RENDERIZADO ECG POR SEGMENTOS CON HOVER DE VOLTAJE
-// ============================================================
+const LABEL_ABBR = { NORMAL: "N", PAC: "P", NSR: "NSR", AFIB: "AF" };
 
-function drawECGSegments() {
-    const container = document.getElementById("segments-container");
+// ------------------------------------------------------------
+// Utilidades de subrayado
+// ------------------------------------------------------------
+class HighlightManager {
+    constructor(containerId, storageField, onChange) {
+        this.container = document.getElementById(containerId);
+        this.storageField = storageField;
+        this.onChange = onChange;
+        this.marks = [];
+        this.originalText = "";
+    }
+
+    setText(text) {
+        this.originalText = text;
+        this.render();
+    }
+
+    render() {
+        const text = this.originalText;
+        if (!text) { this.container.innerHTML = ""; return; }
+        const sorted = [...this.marks].sort((a, b) => a.start - b.start);
+        const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        let html = "", cursor = 0;
+        for (const m of sorted) {
+            if (cursor < m.start) html += esc(text.slice(cursor, m.start));
+            html += `<span class="mark-${m.color}">${esc(text.slice(m.start, m.end))}</span>`;
+            cursor = m.end;
+        }
+        if (cursor < text.length) html += esc(text.slice(cursor));
+        this.container.innerHTML = html;
+    }
+
+    getSelectionRange() {
+        const sel = window.getSelection();
+        if (!sel || sel.rangeCount === 0) return null;
+        const range = sel.getRangeAt(0);
+        if (!this.container.contains(range.commonAncestorContainer)) return null;
+        const pre = range.cloneRange();
+        pre.selectNodeContents(this.container);
+        pre.setEnd(range.startContainer, range.startOffset);
+        const start = pre.toString().length;
+        const end = start + range.toString().length;
+        if (start === end) return null;
+        return { start, end };
+    }
+
+    applyMark(color) {
+        const sel = this.getSelectionRange();
+        if (!sel) return false;
+        this.marks = this.marks.filter(m => m.end <= sel.start || m.start >= sel.end);
+        if (color !== "borrar") {
+            this.marks.push({ start: sel.start, end: sel.end, color });
+        }
+        this.render();
+        this.updateDistribution();
+        window.getSelection().removeAllRanges();
+        if (this.onChange) this.onChange();
+    }
+
+    clearAll() {
+        this.marks = [];
+        this.render();
+        this.updateDistribution();
+        if (this.onChange) this.onChange();
+    }
+
+    computeDistribution() {
+        const total = this.originalText.length;
+        if (total === 0) return { pct_verde: 0, pct_amarillo: 0, pct_rojo: 0, pct_sin_marcar: 100 };
+        const counts = { verde: 0, amarillo: 0, rojo: 0 };
+        for (const m of this.marks) counts[m.color] += (m.end - m.start);
+        const pct_verde = (counts.verde / total) * 100;
+        const pct_amarillo = (counts.amarillo / total) * 100;
+        const pct_rojo = (counts.rojo / total) * 100;
+        const pct_sin_marcar = 100 - pct_verde - pct_amarillo - pct_rojo;
+        return {
+            pct_verde: Math.round(pct_verde * 10) / 10,
+            pct_amarillo: Math.round(pct_amarillo * 10) / 10,
+            pct_rojo: Math.round(pct_rojo * 10) / 10,
+            pct_sin_marcar: Math.round(pct_sin_marcar * 10) / 10,
+        };
+    }
+
+    updateDistribution() {
+        const dist = this.computeDistribution();
+        const scope = this.container.closest("section") || document;
+        const setPct = (id, val) => {
+            const el = scope.querySelector(`#${id}`);
+            if (el) el.textContent = val + "%";
+        };
+        if (this.storageField === "marcaciones_nota") {
+            setPct("pct-verde", dist.pct_verde);
+            setPct("pct-amarillo", dist.pct_amarillo);
+            setPct("pct-rojo", dist.pct_rojo);
+            setPct("pct-neutral", dist.pct_sin_marcar);
+        } else {
+            setPct("pct-clf-verde", dist.pct_verde);
+            setPct("pct-clf-amarillo", dist.pct_amarillo);
+            setPct("pct-clf-rojo", dist.pct_rojo);
+            setPct("pct-clf-neutral", dist.pct_sin_marcar);
+        }
+        state[this.storageField] = {
+            marcaciones: this.marks,
+            ...dist,
+        };
+    }
+}
+
+let hlNotaClinica = null;
+let hlNotaClasificador = null;
+
+// ------------------------------------------------------------
+// 1. ECG + tracks intercalados por tira
+// ------------------------------------------------------------
+function drawECGWithTracks() {
+    const container = document.getElementById("ecg-container");
     container.innerHTML = "";
 
-    const fs = SIGNAL.signal_metadata.sampling_rate_hz;
-    const samplesPerSegment = Math.round(SEG_DURATION * fs);
-    const totalSamples = SIGNAL.raw_signal.length;
+    const signal = SIGNAL.raw_signal;
+    let sigMin = Infinity, sigMax = -Infinity;
+    for (let i = 0; i < signal.length; i++) {
+        if (signal[i] < sigMin) sigMin = signal[i];
+        if (signal[i] > sigMax) sigMax = signal[i];
+    }
+    const pad = (sigMax - sigMin) * 0.08;
+    const yRange = [sigMin - pad, sigMax + pad];
+    const cream = "#FBF5E5";
+    const ecgRed = "#B22222";
+    const gridRed = "rgba(178, 34, 34, 0.18)";
+    const inkSoft = "#5C453A";
 
-    for (let segIdx = 0; segIdx < N_SEGMENTS; segIdx++) {
-        const segStart = segIdx * SEG_DURATION;
-        const segEnd = segStart + SEG_DURATION;
-        const sampleStart = segIdx * samplesPerSegment;
-        const sampleEnd = Math.min(sampleStart + samplesPerSegment, totalSamples);
+    for (let s = 0; s < N_STRIPS; s++) {
+        const stripStart = s * STRIP_DURATION;
+        const stripEnd = Math.min((s + 1) * STRIP_DURATION, DURATION);
 
+        // Bloque contenedor de la tira + tracks
         const block = document.createElement("div");
-        block.className = "segment-block";
-        block.dataset.segment = segIdx;
-
-        const plotDiv = document.createElement("div");
-        plotDiv.className = "ecg-strip";
-        plotDiv.id = `ecg-strip-${segIdx}`;
-        block.appendChild(plotDiv);
-
-        const tracksDiv = document.createElement("div");
-        tracksDiv.className = "segment-tracks";
-        tracksDiv.appendChild(buildSegmentTrackRow("beat", segIdx, segStart, segEnd));
-        tracksDiv.appendChild(buildSegmentTrackRow("rhythm", segIdx, segStart, segEnd));
-        block.appendChild(tracksDiv);
-
+        block.className = "strip-block";
         container.appendChild(block);
 
-        const yVals = SIGNAL.raw_signal.slice(sampleStart, sampleEnd);
-        const xVals = yVals.map((_, i) => segStart + i / fs);
+        // 1a. ECG plot (Plotly)
+        const ecgDiv = document.createElement("div");
+        ecgDiv.id = `ecg-strip-${s}`;
+        ecgDiv.className = "ecg-strip";
+        block.appendChild(ecgDiv);
 
-        let sigMin = Infinity, sigMax = -Infinity;
-        for (const v of yVals) {
-            if (v < sigMin) sigMin = v;
-            if (v > sigMax) sigMax = v;
-        }
-        const pad = (sigMax - sigMin) * 0.1 || 1;
-        const yRange = [sigMin - pad, sigMax + pad];
+        const startSample = s * STRIP_DURATION * FS;
+        const endSample = Math.min(startSample + STRIP_DURATION * FS, signal.length);
+        const stripSig = signal.slice(startSample, endSample);
+        const t = stripSig.map((_, k) => stripStart + k / FS);
 
-        // NUEVO: hover clínico que muestra tiempo (s) y voltaje (mV)
         const trace = {
-            x: xVals, y: yVals, mode: "lines", type: "scatter",
-            line: { color: "#B22222", width: 1.2 },
-            hovertemplate: "t = %{x:.3f} s<br>V = %{y:.3f} mV<extra></extra>",
-            name: "",
+            x: t, y: stripSig,
+            type: "scattergl", mode: "lines",
+            line: { color: ecgRed, width: 1.4 },
+            hovertemplate: "t=%{x:.2f}s<br>amp=%{y:.2f}<extra></extra>",
         };
         const layout = {
-            margin: { l: 70, r: 18, t: 8, b: 30 },
+            margin: { l: 70, r: 18, t: 2, b: 26 },
+            paper_bgcolor: cream, plot_bgcolor: cream,
             xaxis: {
-                range: [segStart, segEnd],
-                showgrid: true, gridcolor: "rgba(178, 34, 34, 0.10)",
-                dtick: 1, tickfont: { family: "JetBrains Mono", size: 10, color: "#8A7560" },
-                showspikes: true,          // línea vertical al pasar mouse
-                spikemode: "across",
-                spikecolor: "#B22222",
-                spikethickness: 1,
-                spikedash: "dot",
+                range: [stripStart, stripStart + STRIP_DURATION],
+                gridcolor: gridRed,
+                tickfont: { color: inkSoft, size: 10 },
+                dtick: 1, showgrid: true, zeroline: false, showspikes: false,
             },
             yaxis: {
-                range: yRange, showgrid: true, gridcolor: "rgba(178, 34, 34, 0.10)",
-                tickfont: { family: "JetBrains Mono", size: 10, color: "#8A7560" },
+                range: yRange, gridcolor: gridRed,
+                tickfont: { color: inkSoft, size: 9 },
                 title: {
-                    text: `${segStart}-${segEnd}s`,
-                    font: { family: "JetBrains Mono", size: 11, color: "#5C453A" },
+                    text: `<b>${Math.floor(stripStart)}-${Math.floor(stripEnd)}s</b>`,
+                    font: { size: 11, color: inkSoft, family: "JetBrains Mono, monospace" },
                     standoff: 8,
                 },
+                showgrid: true, zeroline: false,
             },
-            paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(0,0,0,0)",
             showlegend: false,
-            height: 130,
-            hovermode: "x unified",        // tooltip cerca del cursor
-            hoverlabel: {
-                bgcolor: "#FBF5E5",
-                bordercolor: "#B22222",
-                font: { family: "JetBrains Mono", size: 11, color: "#2A1810" },
-            },
         };
-        Plotly.newPlot(plotDiv.id, [trace], layout, {
-            displayModeBar: false, responsive: true,
+        Plotly.newPlot(ecgDiv.id, [trace], layout, {
+            displayModeBar: false, responsive: true, staticPlot: false,
         });
+
+        // 1b. Track de LATIDO para esta tira
+        const beatTrack = document.createElement("div");
+        beatTrack.className = "beat-track-strip";
+        beatTrack.dataset.strip = s;
+        block.appendChild(beatTrack);
+        renderBeatTrackForStrip(beatTrack, s, stripStart, stripEnd);
+
+        // 1c. Track de RITMO para esta tira
+        const rhythmTrack = document.createElement("div");
+        rhythmTrack.className = "rhythm-track-strip";
+        rhythmTrack.dataset.strip = s;
+        block.appendChild(rhythmTrack);
+        renderRhythmTrackForStrip(rhythmTrack, s, stripStart, stripEnd);
     }
 }
 
-function buildSegmentTrackRow(escala, segIdx, segStart, segEnd) {
-    const row = document.createElement("div");
-    row.className = "segment-track-row";
+// ------------------------------------------------------------
+// 2. Beat track para una tira (10 celdas, 1 por segundo)
+// ------------------------------------------------------------
+function renderBeatTrackForStrip(container, stripIdx, stripStart, stripEnd) {
+    container.innerHTML = "";
+    // Header pequeño con el nombre del track
+    const header = document.createElement("div");
+    header.className = "track-header";
+    header.innerHTML = `<span class="track-name">LATIDO</span>
+        <span class="track-hint">${Math.floor(stripStart)}-${Math.floor(stripEnd)}s</span>`;
+    container.appendChild(header);
 
-    const labelSpan = document.createElement("div");
-    labelSpan.className = "segment-track-label";
-    labelSpan.textContent = escala === "beat" ? "LATIDO" : "RITMO";
-    row.appendChild(labelSpan);
+    // Fila 1: labels
+    const row1 = document.createElement("div");
+    row1.className = "label-row";
+    row1.style.gridTemplateColumns = `repeat(${STRIP_DURATION}, minmax(0, 1fr))`;
+    // Fila 2: semaforos
+    const row2 = document.createElement("div");
+    row2.className = "label-row";
+    row2.style.gridTemplateColumns = `repeat(${STRIP_DURATION}, minmax(0, 1fr))`;
 
-    const cellsContainer = document.createElement("div");
-    cellsContainer.className = "segment-track-cells";
+    for (let i = 0; i < STRIP_DURATION; i++) {
+        const beatIdx = stripIdx * STRIP_DURATION + i;
+        if (beatIdx >= N_BEAT_WIN) break;
+        const w = SIGNAL.beat_windows[beatIdx];
 
-    if (escala === "beat") {
-        for (let s = 0; s < SEG_DURATION; s++) {
-            const globalIdx = segStart + s;
-            if (globalIdx >= SIGNAL.beat_windows.length) break;
-            const win = SIGNAL.beat_windows[globalIdx];
-            const cell = buildLabelCell("beat", globalIdx, win);
-            cell.style.gridColumn = `${s + 1} / span 1`;
-            cellsContainer.appendChild(cell);
-        }
-    } else {
-        const firstIdx = Math.floor(segStart / RHYTHM_WINDOW_S);
-        const lastIdx = Math.ceil(segEnd / RHYTHM_WINDOW_S) - 1;
-        for (let i = firstIdx; i <= lastIdx; i++) {
-            if (i < 0 || i >= SIGNAL.rhythm_windows.length) continue;
-            const win = SIGNAL.rhythm_windows[i];
-            const winStart = i * RHYTHM_WINDOW_S;
-            const winEnd = winStart + RHYTHM_WINDOW_S;
-            const localStart = Math.max(0, winStart - segStart);
-            const localEnd = Math.min(SEG_DURATION, winEnd - segStart);
-            if (localEnd <= localStart) continue;
-            const cell = buildLabelCell("rhythm", i, win);
-            cell.style.gridColumn = `${Math.round(localStart) + 1} / ${Math.round(localEnd) + 1}`;
-            cellsContainer.appendChild(cell);
-        }
-    }
-    row.appendChild(cellsContainer);
-    return row;
-}
+        // Label cell
+        const cell = document.createElement("div");
+        cell.className = `label-cell ${w.prediction}${w.escalation_flag ? " escalation" : ""}`;
+        cell.title = `Ventana ${beatIdx}: ${w.prediction}\nNivel de certeza: ${w.confidence_gap.toFixed(2)}`;
+        cell.textContent = LABEL_ABBR[w.prediction] || w.prediction;
+        row1.appendChild(cell);
 
-function buildLabelCell(escala, globalIdx, win) {
-    const cell = document.createElement("div");
-    cell.className = `label-cell ${win.prediction}` +
-        (win.escalation_flag ? " escalation" : "");
-    cell.dataset.escala = escala;
-    cell.dataset.idx = globalIdx;
-
-    const lab = document.createElement("div");
-    lab.className = "label-cell-label";
-    lab.textContent = win.prediction;
-    lab.title = `Confidence gap: ${win.confidence_gap?.toFixed(2) ?? "N/A"}`;
-    cell.appendChild(lab);
-
-    const sem = document.createElement("div");
-    sem.className = "semaforo";
-    for (const color of ["verde", "amarillo", "rojo"]) {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = color;
-        btn.dataset.color = color;
-        btn.title = color;
-        const stateArr = escala === "beat" ? state.beat_semaforos : state.rhythm_semaforos;
-        if (stateArr[globalIdx] === color) btn.classList.add("active");
-        btn.addEventListener("click", () => {
-            stateArr[globalIdx] = color;
-            document.querySelectorAll(
-                `.label-cell[data-escala="${escala}"][data-idx="${globalIdx}"]`
-            ).forEach(otherCell => {
-                otherCell.querySelectorAll(".semaforo button").forEach(b => {
-                    b.classList.toggle("active", b.dataset.color === color);
-                });
+        // Semaforo cell
+        const sem = document.createElement("div");
+        sem.className = "semaforo beat-semaforo";
+        ["verde", "amarillo", "rojo"].forEach((color) => {
+            const btn = document.createElement("button");
+            btn.className = color;
+            btn.title = color;
+            btn.dataset.beatIndex = beatIdx;
+            btn.dataset.color = color;
+            btn.addEventListener("click", () => {
+                state.beat_semaforos[beatIdx] = color;
+                sem.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
+                btn.classList.add("active");
+                autosave();
             });
-            actualizarProgreso();
+            sem.appendChild(btn);
         });
-        sem.appendChild(btn);
+        row2.appendChild(sem);
     }
-    cell.appendChild(sem);
-    return cell;
+    container.appendChild(row1);
+    container.appendChild(row2);
 }
 
-// ============================================================
-// 2. NOTA LLM + SUBRAYADO
-// ============================================================
+// ------------------------------------------------------------
+// 3. Rhythm track para una tira
+// Rhythms de 4s. Si un rhythm cruza dos tiras, aparece en ambas
+// con celdas mas cortas, pero el semaforo se sincroniza.
+// ------------------------------------------------------------
+function renderRhythmTrackForStrip(container, stripIdx, stripStart, stripEnd) {
+    container.innerHTML = "";
+    // Header
+    const header = document.createElement("div");
+    header.className = "track-header";
+    header.innerHTML = `<span class="track-name">RITMO</span>
+        <span class="track-hint">${Math.floor(stripStart)}-${Math.floor(stripEnd)}s</span>`;
+    container.appendChild(header);
 
-async function fetchLLMNote() {
-    const backendStamp = document.getElementById("backend-stamp");
-    const noteText = document.getElementById("note-text");
-    backendStamp.textContent = "consultando modelo…";
-    noteText.textContent = "Generando la nota clínica…";
+    // Grid con STRIP_DURATION*2 columnas (0.5s cada una) para posicionamiento fino
+    const N_COLS = STRIP_DURATION * 2;  // 20 columnas
+    const row1 = document.createElement("div");
+    row1.className = "label-row";
+    row1.style.gridTemplateColumns = `repeat(${N_COLS}, minmax(0, 1fr))`;
+    const row2 = document.createElement("div");
+    row2.className = "label-row";
+    row2.style.gridTemplateColumns = `repeat(${N_COLS}, minmax(0, 1fr))`;
+
+    // Recorrer todos los rhythms y encontrar los que se solapen con esta tira
+    SIGNAL.rhythm_windows.forEach((w, i) => {
+        const winStart = i * 4;
+        const winEnd = winStart + 4;
+        const overlapStart = Math.max(winStart, stripStart);
+        const overlapEnd = Math.min(winEnd, stripEnd);
+        if (overlapEnd <= overlapStart) return;
+
+        // Convertir a columnas (0.5s por columna)
+        const colStart = Math.round((overlapStart - stripStart) * 2) + 1;
+        const colEnd = Math.round((overlapEnd - stripStart) * 2) + 1;
+        if (colEnd <= colStart) return;
+
+        // Label cell
+        const cell = document.createElement("div");
+        cell.className = `label-cell ${w.prediction}${w.escalation_flag ? " escalation" : ""}`;
+        cell.style.gridColumn = `${colStart} / ${colEnd}`;
+        cell.title = `Ventana ${i}: ${w.prediction} (${winStart}-${winEnd}s)\n`
+                   + `Nivel de certeza: ${w.confidence_gap.toFixed(2)}`;
+        cell.textContent = LABEL_ABBR[w.prediction] || w.prediction;
+        row1.appendChild(cell);
+
+        // Semaforo cell (sincronizado entre tiras con mismo rhythm-index)
+        const sem = document.createElement("div");
+        sem.className = "semaforo rhythm-semaforo";
+        sem.style.gridColumn = `${colStart} / ${colEnd}`;
+        ["verde", "amarillo", "rojo"].forEach((color) => {
+            const btn = document.createElement("button");
+            btn.className = color;
+            btn.title = color;
+            btn.dataset.rhythmIndex = i;
+            btn.dataset.color = color;
+            btn.addEventListener("click", () => {
+                state.rhythm_semaforos[i] = color;
+                // Sincronizar TODOS los botones de este rhythm en cualquier tira
+                document.querySelectorAll(
+                    `.rhythm-semaforo button[data-rhythm-index="${i}"]`
+                ).forEach(b => b.classList.remove("active"));
+                document.querySelectorAll(
+                    `.rhythm-semaforo button[data-rhythm-index="${i}"][data-color="${color}"]`
+                ).forEach(b => b.classList.add("active"));
+                autosave();
+            });
+            sem.appendChild(btn);
+        });
+        row2.appendChild(sem);
+    });
+
+    container.appendChild(row1);
+    container.appendChild(row2);
+}
+
+// ------------------------------------------------------------
+// 4. LLM notes (clinica + clasificador)
+// ------------------------------------------------------------
+async function loadLLMNotes() {
+    const noteBox = document.getElementById("note-text");
+    const clfBox  = document.getElementById("classifier-note-text");
+    const stamp   = document.getElementById("backend-stamp");
     try {
-        const resp = await fetch(`/api/llm_note/${SIGNAL.signal_metadata.signal_id}?backend=${window.BACKEND_ACTIVO}`);
+        const resp = await fetch(`/api/llm_note/${window.SIGNAL_ID}?backend=${window.BACKEND_ACTIVO}`);
         const data = await resp.json();
         if (data.error) {
-            noteText.textContent = "Error al generar nota: " + data.error;
-            backendStamp.textContent = window.BACKEND_ACTIVO + " · error";
+            noteBox.textContent = `[Error del backend: ${data.error}]`;
+            stamp.textContent = `${data.backend_name} (error)`;
             return;
         }
-        state.llm_note = data;
-        state.nota_texto_original = data.text;
-        state.marcaciones = [];
-        renderNotaConMarcas();
-        actualizarDistribucion();
-        backendStamp.textContent =
-            `${data.backend_name} · ${data.model_id} · ${data.latency_seconds}s`;
+        hlNotaClinica.setText(data.clinical_note || data.text || "");
+        hlNotaClinica.updateDistribution();
+
+        const classifierText = data.classifier_note || "";
+        if (classifierText) {
+            hlNotaClasificador.setText(classifierText);
+            hlNotaClasificador.updateDistribution();
+            document.getElementById("classifier-note-section").style.display = "";
+            document.getElementById("classifier-note-instructions").style.display = "";
+            document.getElementById("comentarios-clasificador-wrap").style.display = "";
+        } else {
+            document.getElementById("classifier-note-section").style.display = "none";
+            document.getElementById("classifier-note-instructions").style.display = "none";
+            document.getElementById("comentarios-clasificador-wrap").style.display = "none";
+        }
+        stamp.textContent = `${data.backend_name} - ${data.model_id} - ${data.latency_seconds}s`;
+        state.llm_payload = data;
     } catch (e) {
-        noteText.textContent = "Error de red al obtener la nota.";
-        backendStamp.textContent = window.BACKEND_ACTIVO + " · error de red";
+        noteBox.textContent = `[Error de red: ${e.message}]`;
+        stamp.textContent = "-";
     }
 }
 
-function renderNotaConMarcas() {
-    const container = document.getElementById("note-text");
-    const texto = state.nota_texto_original;
-    const marks = [...state.marcaciones].sort((a, b) => a.start - b.start);
-    if (marks.length === 0) {
-        container.textContent = texto;
-        return;
-    }
-    let html = "";
-    let cursor = 0;
-    for (const m of marks) {
-        if (cursor < m.start) html += escapeHTML(texto.slice(cursor, m.start));
-        html += `<span class="mark-${m.color}">${escapeHTML(texto.slice(m.start, m.end))}</span>`;
-        cursor = m.end;
-    }
-    if (cursor < texto.length) html += escapeHTML(texto.slice(cursor));
-    container.innerHTML = html;
-}
-
-function escapeHTML(s) {
-    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-function aplicarMarca(newStart, newEnd, newColor) {
-    if (newStart >= newEnd) return;
-    const result = [];
-    for (const m of state.marcaciones) {
-        if (m.end <= newStart || m.start >= newEnd) { result.push(m); continue; }
-        if (m.start >= newStart && m.end <= newEnd) continue;
-        if (m.start < newStart) result.push({ start: m.start, end: newStart, color: m.color });
-        if (m.end > newEnd) result.push({ start: newEnd, end: m.end, color: m.color });
-    }
-    if (newColor !== "borrar") {
-        result.push({ start: newStart, end: newEnd, color: newColor });
-    }
-    state.marcaciones = result.sort((a, b) => a.start - b.start);
-    renderNotaConMarcas();
-    actualizarDistribucion();
-}
-
-function getSelectionOffsets(container) {
-    const sel = window.getSelection();
-    if (!sel || sel.rangeCount === 0) return null;
-    const range = sel.getRangeAt(0);
-    if (!container.contains(range.commonAncestorContainer)) return null;
-    if (range.collapsed) return null;
-    const startRange = document.createRange();
-    startRange.selectNodeContents(container);
-    startRange.setEnd(range.startContainer, range.startOffset);
-    const start = startRange.toString().length;
-    const endRange = document.createRange();
-    endRange.selectNodeContents(container);
-    endRange.setEnd(range.endContainer, range.endOffset);
-    const end = endRange.toString().length;
-    return { start, end };
-}
-
-function actualizarDistribucion() {
-    const total = state.nota_texto_original.length || 1;
-    const counts = { verde: 0, amarillo: 0, rojo: 0 };
-    for (const m of state.marcaciones) counts[m.color] += (m.end - m.start);
-    const marked = counts.verde + counts.amarillo + counts.rojo;
-    document.getElementById("pct-verde").textContent = (counts.verde / total * 100).toFixed(1) + "%";
-    document.getElementById("pct-amarillo").textContent = (counts.amarillo / total * 100).toFixed(1) + "%";
-    document.getElementById("pct-rojo").textContent = (counts.rojo / total * 100).toFixed(1) + "%";
-    document.getElementById("pct-neutral").textContent = ((total - marked) / total * 100).toFixed(1) + "%";
-}
-
-function setupSubrayado() {
-    const noteText = document.getElementById("note-text");
-    const toolbar = document.getElementById("mark-toolbar");
-    toolbar.querySelectorAll(".mark-btn[data-mark]").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const color = btn.dataset.mark;
-            if (state.modo_marcador === color) {
-                state.modo_marcador = null;
-                btn.classList.remove("active");
-                document.body.classList.remove("marking-mode");
-            } else {
-                state.modo_marcador = color;
-                toolbar.querySelectorAll(".mark-btn").forEach(b => b.classList.remove("active"));
+// ------------------------------------------------------------
+// 5. Semaforos globales (notas)
+// ------------------------------------------------------------
+function setupNoteSemaforos() {
+    const contNota = document.getElementById("semaforo-nota");
+    if (contNota) {
+        contNota.querySelectorAll("button").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                state.nota_semaforo = btn.dataset.color;
+                contNota.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
                 btn.classList.add("active");
-                document.body.classList.add("marking-mode");
+                autosave();
+            });
+        });
+    }
+    const contClf = document.getElementById("semaforo-clasificador");
+    if (contClf) {
+        contClf.querySelectorAll("button").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                state.nota_clasificador_semaforo = btn.dataset.color;
+                contClf.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
+                btn.classList.add("active");
+                autosave();
+            });
+        });
+    }
+}
+
+// ------------------------------------------------------------
+// 6. Toolbars de marcado
+// ------------------------------------------------------------
+function setupMarkToolbars() {
+    document.querySelectorAll("#mark-toolbar [data-mark]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            hlNotaClinica.applyMark(btn.dataset.mark);
+            autosave();
+        });
+    });
+    const btnLimpiarNota = document.getElementById("btn-limpiar-marcas");
+    if (btnLimpiarNota) {
+        btnLimpiarNota.addEventListener("click", () => {
+            hlNotaClinica.clearAll();
+            autosave();
+        });
+    }
+    document.querySelectorAll("#mark-toolbar-clf [data-mark]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            hlNotaClasificador.applyMark(btn.dataset.mark);
+            autosave();
+        });
+    });
+    const btnLimpiarClf = document.getElementById("btn-limpiar-marcas-clf");
+    if (btnLimpiarClf) {
+        btnLimpiarClf.addEventListener("click", () => {
+            hlNotaClasificador.clearAll();
+            autosave();
+        });
+    }
+}
+
+// ------------------------------------------------------------
+// 7. Likert
+// ------------------------------------------------------------
+function setupLikert(elementId, stateKey) {
+    const container = document.getElementById(elementId);
+    if (!container) return;
+    container.querySelectorAll(".scale button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            state[stateKey] = parseInt(btn.dataset.val, 10);
+            container.querySelectorAll(".scale button").forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            autosave();
+        });
+    });
+}
+
+// ------------------------------------------------------------
+// 8. Comentarios
+// ------------------------------------------------------------
+function setupComentarios() {
+    const inputNota = document.getElementById("comentarios_nota");
+    if (inputNota) {
+        inputNota.addEventListener("input", () => {
+            state.comentarios_nota = inputNota.value;
+            autosave();
+        });
+    }
+    const inputClf = document.getElementById("comentarios_clasificador");
+    if (inputClf) {
+        inputClf.addEventListener("input", () => {
+            state.comentarios_clasificador = inputClf.value;
+            autosave();
+        });
+    }
+}
+
+// ------------------------------------------------------------
+// 9. AUTOSAVE en localStorage
+// ------------------------------------------------------------
+let autosaveTimer = null;
+function autosave() {
+    if (autosaveTimer) clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(() => {
+        try {
+            const snapshot = {
+                ...state,
+                _timestamp: Date.now(),
+                _hl_clinica_marks: hlNotaClinica ? hlNotaClinica.marks : [],
+                _hl_clf_marks: hlNotaClasificador ? hlNotaClasificador.marks : [],
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
+            const indicator = document.getElementById("autosave-indicator");
+            if (indicator) {
+                indicator.textContent = "Guardado local: " + new Date().toLocaleTimeString();
+                indicator.classList.add("visible");
+                clearTimeout(indicator._t);
+                indicator._t = setTimeout(() => indicator.classList.remove("visible"), 1500);
+            }
+            updateProgress();
+        } catch (e) {
+            console.warn("No se pudo guardar en localStorage:", e);
+        }
+    }, AUTOSAVE_DEBOUNCE_MS);
+}
+
+function restoreFromLocalStorage() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const snap = JSON.parse(raw);
+
+        if (Array.isArray(snap.beat_semaforos))   state.beat_semaforos   = snap.beat_semaforos;
+        if (Array.isArray(snap.rhythm_semaforos)) state.rhythm_semaforos = snap.rhythm_semaforos;
+        state.nota_semaforo               = snap.nota_semaforo || null;
+        state.nota_clasificador_semaforo  = snap.nota_clasificador_semaforo || null;
+        state.likert_exactitud            = snap.likert_exactitud || null;
+        state.likert_coherencia           = snap.likert_coherencia || null;
+        state.likert_utilidad             = snap.likert_utilidad || null;
+        state.comentarios_nota            = snap.comentarios_nota || "";
+        state.comentarios_clasificador    = snap.comentarios_clasificador || "";
+
+        // Restaurar UI de beats
+        for (let i = 0; i < N_BEAT_WIN; i++) {
+            if (state.beat_semaforos[i]) {
+                const btn = document.querySelector(
+                    `.beat-semaforo button[data-beat-index="${i}"][data-color="${state.beat_semaforos[i]}"]`);
+                if (btn) btn.classList.add("active");
+            }
+        }
+        // Restaurar UI de rhythms (marcar TODOS los botones con el mismo rhythm-index)
+        for (let i = 0; i < N_RHYTHM_WIN; i++) {
+            if (state.rhythm_semaforos[i]) {
+                document.querySelectorAll(
+                    `.rhythm-semaforo button[data-rhythm-index="${i}"][data-color="${state.rhythm_semaforos[i]}"]`
+                ).forEach(b => b.classList.add("active"));
+            }
+        }
+        // Semaforos globales
+        if (state.nota_semaforo) {
+            const b = document.querySelector(`#semaforo-nota button[data-color="${state.nota_semaforo}"]`);
+            if (b) b.classList.add("active");
+        }
+        if (state.nota_clasificador_semaforo) {
+            const b = document.querySelector(`#semaforo-clasificador button[data-color="${state.nota_clasificador_semaforo}"]`);
+            if (b) b.classList.add("active");
+        }
+        // Likert
+        [["exactitud", state.likert_exactitud],
+         ["coherencia", state.likert_coherencia],
+         ["utilidad", state.likert_utilidad]].forEach(([k, v]) => {
+            if (v) {
+                const b = document.querySelector(`#likert-${k} .scale button[data-val="${v}"]`);
+                if (b) b.classList.add("active");
             }
         });
-    });
-    document.getElementById("btn-limpiar-marcas").addEventListener("click", () => {
-        if (state.marcaciones.length === 0) return;
-        if (confirm("¿Borrar todas las marcaciones de la nota?")) {
-            state.marcaciones = [];
-            renderNotaConMarcas();
-            actualizarDistribucion();
-        }
-    });
-    noteText.addEventListener("mouseup", () => {
-        if (!state.modo_marcador) return;
-        const offsets = getSelectionOffsets(noteText);
-        if (!offsets) return;
-        aplicarMarca(offsets.start, offsets.end, state.modo_marcador);
-        window.getSelection().removeAllRanges();
-    });
-}
+        // Comentarios
+        const cn = document.getElementById("comentarios_nota");
+        if (cn && state.comentarios_nota) cn.value = state.comentarios_nota;
+        const cc = document.getElementById("comentarios_clasificador");
+        if (cc && state.comentarios_clasificador) cc.value = state.comentarios_clasificador;
 
-// ============================================================
-// 3. VALORACIONES + CONTADOR DE PROGRESO EN TIEMPO REAL
-// ============================================================
+        // Marcas de subrayado (aplicar despues de cargar las notas del LLM)
+        window._pendingHlMarks = {
+            clinica: snap._hl_clinica_marks || [],
+            clasificador: snap._hl_clf_marks || [],
+        };
 
-function setupSemaforoNota() {
-    const container = document.getElementById("semaforo-nota");
-    container.querySelectorAll("button[data-color]").forEach(btn => {
-        btn.addEventListener("click", () => {
-            container.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            state.nota_semaforo = btn.dataset.color;
-            actualizarProgreso();
-        });
-    });
-}
-
-function setupLikert(containerId, stateKey) {
-    const container = document.getElementById(containerId);
-    container.querySelectorAll("button[data-val]").forEach(btn => {
-        btn.addEventListener("click", () => {
-            container.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            state[stateKey] = parseInt(btn.dataset.val);
-            actualizarProgreso();
-        });
-    });
-}
-
-/**
- * Cuenta cuántos elementos ya están completados de un total esperado,
- * actualiza el indicador visual y habilita/deshabilita el botón Guardar.
- */
-function actualizarProgreso() {
-    const totalBeat = state.beat_semaforos.length;
-    const totalRhythm = state.rhythm_semaforos.length;
-    const doneBeat = state.beat_semaforos.filter(x => x !== null).length;
-    const doneRhythm = state.rhythm_semaforos.filter(x => x !== null).length;
-    const doneNota = state.nota_semaforo ? 1 : 0;
-    const doneLikert = [state.likert_exactitud, state.likert_coherencia, state.likert_utilidad]
-                      .filter(x => x != null).length;
-
-    const totalGeneral = totalBeat + totalRhythm + 1 /* nota */ + 3 /* likert */;
-    const doneGeneral = doneBeat + doneRhythm + doneNota + doneLikert;
-    const completo = doneGeneral === totalGeneral;
-
-    // Elementos DOM del contador
-    const barra = document.getElementById("progress-bar-fill");
-    const texto = document.getElementById("progress-text");
-    const detalle = document.getElementById("progress-detail");
-    const btnGuardar = document.getElementById("btn-guardar");
-
-    if (barra) barra.style.width = `${(doneGeneral / totalGeneral * 100).toFixed(1)}%`;
-    if (texto) texto.textContent = `${doneGeneral} / ${totalGeneral} elementos completados`;
-    if (detalle) {
-        detalle.textContent =
-            `LATIDO: ${doneBeat}/${totalBeat} · ` +
-            `RITMO: ${doneRhythm}/${totalRhythm} · ` +
-            `Nota: ${doneNota}/1 · ` +
-            `Likert: ${doneLikert}/3`;
-    }
-    if (btnGuardar) {
-        btnGuardar.disabled = !completo;
-        btnGuardar.classList.toggle("btn-ready", completo);
+        console.log("Restaurado desde localStorage (borrador guardado)");
+    } catch (e) {
+        console.warn("No se pudo restaurar de localStorage:", e);
     }
 }
 
-// ============================================================
-// 4. TIMER
-// ============================================================
-
-function startElapsedTimer() {
-    setInterval(() => {
-        const elapsed = Math.floor((Date.now() - state.t_start) / 1000);
-        document.getElementById("elapsed").textContent = elapsed;
-    }, 1000);
+function applyPendingMarks() {
+    if (!window._pendingHlMarks) return;
+    if (hlNotaClinica && window._pendingHlMarks.clinica.length) {
+        hlNotaClinica.marks = window._pendingHlMarks.clinica;
+        hlNotaClinica.render();
+        hlNotaClinica.updateDistribution();
+    }
+    if (hlNotaClasificador && window._pendingHlMarks.clasificador.length) {
+        hlNotaClasificador.marks = window._pendingHlMarks.clasificador;
+        hlNotaClasificador.render();
+        hlNotaClasificador.updateDistribution();
+    }
+    window._pendingHlMarks = null;
 }
 
-// ============================================================
-// 5. GUARDAR
-// ============================================================
+// ------------------------------------------------------------
+// 10. Progreso
+// ------------------------------------------------------------
+function updateProgress() {
+    const beatOK   = state.beat_semaforos.filter(v => v !== null).length;
+    const rhythmOK = state.rhythm_semaforos.filter(v => v !== null).length;
+    const notaOK   = state.nota_semaforo ? 1 : 0;
+    const clfOK    = state.nota_clasificador_semaforo ? 1 : 0;
+    const likertOK = (state.likert_exactitud ? 1 : 0) +
+                     (state.likert_coherencia ? 1 : 0) +
+                     (state.likert_utilidad ? 1 : 0);
+    const clfSection = document.getElementById("classifier-note-section");
+    const requiereClf = clfSection && clfSection.style.display !== "none";
+    const totalRequired = N_BEAT_WIN + N_RHYTHM_WIN + 1 + 3 + (requiereClf ? 1 : 0);
+    const totalDone = beatOK + rhythmOK + notaOK + likertOK + (requiereClf ? clfOK : 0);
+    const pct = Math.round((totalDone / totalRequired) * 100);
+    const fill = document.getElementById("progress-bar-fill");
+    if (fill) fill.style.width = pct + "%";
+    const text = document.getElementById("progress-text");
+    if (text) text.textContent = `${totalDone} / ${totalRequired} elementos completados (${pct}%)`;
+    const detail = document.getElementById("progress-detail");
+    if (detail) {
+        detail.textContent = `LATIDO: ${beatOK}/${N_BEAT_WIN} - RITMO: ${rhythmOK}/${N_RHYTHM_WIN} - `
+            + `Nota: ${notaOK}/1 - Likert: ${likertOK}/3`
+            + (requiereClf ? ` - Clasificador: ${clfOK}/1` : "");
+    }
+    const btn = document.getElementById("btn-guardar");
+    if (btn) btn.disabled = (totalDone < totalRequired);
+}
 
+// ------------------------------------------------------------
+// 11. Guardar (submission definitivo)
+// ------------------------------------------------------------
 function setupSubmit() {
     document.getElementById("btn-guardar").addEventListener("click", async () => {
         const msg = document.getElementById("submit-msg");
-        // Validación defensiva (por si el disabled del botón falla)
-        const missing = [];
-        if (!state.nota_semaforo) missing.push("semáforo global de la nota");
-        if (state.likert_exactitud == null) missing.push("Likert exactitud");
-        if (state.likert_coherencia == null) missing.push("Likert coherencia");
-        if (state.likert_utilidad == null) missing.push("Likert utilidad");
-        const bm = state.beat_semaforos.filter(x => x === null).length;
-        const rm = state.rhythm_semaforos.filter(x => x === null).length;
-        if (bm > 0) missing.push(`${bm} ventanas LATIDO`);
-        if (rm > 0) missing.push(`${rm} ventanas RITMO`);
-        if (missing.length > 0) {
-            msg.innerHTML = `<div class="alert alert-error">Faltan: ${missing.join(", ")}.</div>`;
+        msg.innerHTML = "";
+        const errors = [];
+        if (state.beat_semaforos.some((v) => v === null))
+            errors.push("Falta calificar todas las ventanas de LATIDO.");
+        if (state.rhythm_semaforos.some((v) => v === null))
+            errors.push("Falta calificar todas las ventanas de RITMO.");
+        if (!state.nota_semaforo)
+            errors.push("Falta calificar la nota clinica con el semaforo global.");
+        if (!state.likert_exactitud || !state.likert_coherencia || !state.likert_utilidad)
+            errors.push("Falta calificar los tres ejes Likert.");
+        const clfSection = document.getElementById("classifier-note-section");
+        const requiereClf = clfSection && clfSection.style.display !== "none";
+        if (requiereClf && !state.nota_clasificador_semaforo)
+            errors.push("Falta calificar la nota del clasificador con el semaforo.");
+        if (errors.length) {
+            msg.innerHTML = `<div class="error">${errors.join("<br>")}</div>`;
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
             return;
         }
-
         const respuestas = [];
         SIGNAL.beat_windows.forEach((w, i) => {
             respuestas.push({
@@ -449,66 +699,59 @@ function setupSubmit() {
                 confidence_gap: w.confidence_gap,
             });
         });
-
-        const total = state.nota_texto_original.length || 1;
-        const counts = { verde: 0, amarillo: 0, rojo: 0 };
-        for (const m of state.marcaciones) counts[m.color] += (m.end - m.start);
-        const marcaciones_nota = {
-            marcaciones: state.marcaciones,
-            pct_verde:    +(counts.verde / total * 100).toFixed(2),
-            pct_amarillo: +(counts.amarillo / total * 100).toFixed(2),
-            pct_rojo:     +(counts.rojo / total * 100).toFixed(2),
-            pct_sin_marcar: +((total - counts.verde - counts.amarillo - counts.rojo) / total * 100).toFixed(2),
-            total_caracteres: total,
-        };
-
         const payload = {
-            signal_id: SIGNAL.signal_metadata.signal_id,
-            llm_backend: state.llm_note?.backend_name || window.BACKEND_ACTIVO,
-            llm_model_id: state.llm_note?.model_id || null,
-            nota_clinica_texto: state.nota_texto_original,
+            signal_id: window.SIGNAL_ID,
+            llm_backend: state.llm_payload?.backend_name || window.BACKEND_ACTIVO,
+            llm_model_id: state.llm_payload?.model_id || null,
+            nota_clinica_texto: hlNotaClinica ? hlNotaClinica.originalText : "",
             nota_semaforo_global: state.nota_semaforo,
             likert_exactitud: state.likert_exactitud,
             likert_coherencia: state.likert_coherencia,
             likert_utilidad: state.likert_utilidad,
-            marcaciones_nota: marcaciones_nota,
-            comentarios_libres: document.getElementById("comentarios_libres").value || "",
-            duracion_segundos: (Date.now() - state.t_start) / 1000,
+            marcaciones_nota: state.marcaciones_nota,
+            comentarios_nota: state.comentarios_nota,
+            nota_clasificador_texto: hlNotaClasificador ? hlNotaClasificador.originalText : "",
+            nota_clasificador_semaforo: state.nota_clasificador_semaforo,
+            nota_clasificador_marcaciones: state.marcaciones_clasificador,
+            comentarios_clasificador: state.comentarios_clasificador,
+            duracion_segundos: (Date.now() - T_START) / 1000,
             respuestas_ventana: respuestas,
         };
-
-        try {
-            const resp = await fetch("/api/guardar", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-            });
-            const data = await resp.json();
-            if (data.ok) {
-                msg.innerHTML = `<div class="alert alert-success">Evaluación guardada correctamente (id ${data.evaluacion_id}). Regresando al listado…</div>`;
-                setTimeout(() => window.location.href = "/seleccion", 1600);
-            } else {
-                msg.innerHTML = `<div class="alert alert-error">Error al guardar: ${data.error || "desconocido"}</div>`;
-            }
-        } catch (e) {
-            msg.innerHTML = `<div class="alert alert-error">Error de red al guardar: ${e.message}</div>`;
+        const resp = await fetch("/api/guardar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
+        const data = await resp.json();
+        if (data.ok) {
+            try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+            msg.innerHTML = `<div class="success">Evaluacion guardada (ID: ${data.evaluacion_id}). Gracias.</div>`;
+            setTimeout(() => { window.location.href = "/seleccion"; }, 1800);
+        } else {
+            msg.innerHTML = `<div class="error">Error al guardar: ${data.error || "desconocido"}</div>`;
         }
     });
 }
 
-// ============================================================
-// INIT
-// ============================================================
+// ------------------------------------------------------------
+// Init
+// ------------------------------------------------------------
+hlNotaClinica = new HighlightManager("note-text", "marcaciones_nota", updateProgress);
+hlNotaClasificador = new HighlightManager("classifier-note-text", "marcaciones_clasificador", updateProgress);
 
-document.addEventListener("DOMContentLoaded", () => {
-    drawECGSegments();
-    setupSubrayado();
-    setupSemaforoNota();
-    setupLikert("likert-exactitud", "likert_exactitud");
-    setupLikert("likert-coherencia", "likert_coherencia");
-    setupLikert("likert-utilidad", "likert_utilidad");
-    startElapsedTimer();
-    setupSubmit();
-    fetchLLMNote();
-    actualizarProgreso();   // primera actualización con estado vacío
+drawECGWithTracks();
+
+restoreFromLocalStorage();
+
+loadLLMNotes().then(() => {
+    applyPendingMarks();
+    updateProgress();
 });
+
+setupNoteSemaforos();
+setupMarkToolbars();
+setupLikert("likert-exactitud",  "likert_exactitud");
+setupLikert("likert-coherencia", "likert_coherencia");
+setupLikert("likert-utilidad",   "likert_utilidad");
+setupComentarios();
+setupSubmit();

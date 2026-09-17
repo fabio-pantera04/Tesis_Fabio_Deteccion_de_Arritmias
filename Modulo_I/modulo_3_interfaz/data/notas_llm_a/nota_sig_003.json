@@ -194,7 +194,7 @@
     "n_rhythm_windows": 15,
     "processing_time_seconds": 16007.3
   },
-  "clinical_note": "Se analiza un registro de derivación II modificada de 60 segundos de duración, correspondiente a un paciente de 50 años. El clasificador dual identifica un patrón de ritmo predominantemente compatible con fibrilación auricular (73.33%), donde se observa la ausencia de ondas P discernibles y la presencia de oscilaciones basales irregulares, con una respuesta ventricular irregularmente irregular, y complejos QRS de morfología estrecha y aspecto normal. La clase de latido predominante es NORMAL (78.33%), con ondas P monofásicas de polaridad positiva precediendo al QRS y un intervalo PR dentro de rangos fisiológicos, mientras que se identifican contracciones auriculares prematuras (PAC) en un 21.67% del registro. Estas PAC se localizan en los segundos 4.0, 5.0, 6.0, 7.0, 11.0, 14.0, 15.0, 16.0, 17.0 y 18.0, caracterizándose por una onda P prematura de morfología distinta a las sinusales, seguida de un complejo QRS estrecho y una pausa compensatoria incompleta. Asimismo, se aprecia la existencia de periodos de ritmo sinusal normal (26.67%), con ondas P monofásicas precediendo cada complejo QRS, relación auriculoventricular 1:1, y un patrón de intervalos R-R regulares. Aunque la confianza media del clasificador para las clases de latido (0.47) y ritmo (0.58) se considera adecuada para uso interpretativo, la detección de ventanas marcadas para escalación (16) y la activación global de escalación requieren una revisión cardiologíca detallada del registro completo.",
+  "clinical_note": "Se analiza un registro de derivación II modificada de 60 segundos de duración, correspondiente a un paciente de 50 años. El clasificador dual identifica un patrón de ritmo predominantemente compatible con fibrilación auricular (73.33%), donde se observa la ausencia de ondas P discernibles y la presencia de oscilaciones basales irregulares, con una respuesta ventricular irregularmente irregular, y complejos QRS de morfología estrecha y aspecto normal. La clase de latido predominante es NORMAL (78.33%), con ondas P monofásicas de polaridad positiva precediendo al QRS y un intervalo PR dentro de rangos fisiológicos, mientras que se identifican contracciones auriculares prematuras (PAC) en un 21.67% del registro. Estas PAC se localizan en los segundos 4.0, 5.0, 6.0, 7.0, 11.0, 14.0, 15.0, 16.0, 17.0 y 18.0, caracterizándose por una onda P prematura de morfología distinta a las sinusales, seguida de un complejo QRS estrecho y una pausa compensatoria incompleta.",
   "quality_checks": {
     "idioma_espanol": true,
     "menciona_lead_II": true,
@@ -207,5 +207,6 @@
     "sin_prescripcion": true
   },
   "checks_passed": 8,
-  "checks_total": 9
+  "checks_total": 9,
+  "classifier_note": "Asimismo, se aprecia la existencia de periodos de ritmo sinusal normal (26.67%), con ondas P monofásicas precediendo cada complejo QRS, relación auriculoventricular 1:1, y un patrón de intervalos R-R regulares. Aunque"
 }

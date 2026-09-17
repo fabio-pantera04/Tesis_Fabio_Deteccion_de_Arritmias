@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}Admin — Validación Clínica{% endblock %}</title>
+<title>{% block title %}Admin - Validacion Clinica{% endblock %}</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/medico.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
 
-<!-- MathJax para renderizar fórmulas matemáticas en el panel admin.
-     Configurado para usar $ y $$ como delimitadores. -->
+<!-- MathJax para renderizar formulas matematicas -->
 <script>
     window.MathJax = {
         tex: {
@@ -32,11 +31,11 @@
 
 <header class="admin-header">
     <div class="admin-header-left">
-        <h1>Panel de Administración</h1>
-        <span class="admin-subtitle">Sistema de Validación Clínica ECG · CIMAT</span>
+        <h1>Panel de Administracion</h1>
+        <span class="admin-subtitle">Sistema de Validacion Clinica ECG - CIMAT</span>
     </div>
     <div class="admin-header-right">
-        <a href="{{ url_for('admin_logout') }}" class="admin-logout-link">Cerrar sesión</a>
+        <a href="{{ url_for('admin_logout') }}" class="admin-logout-link">Cerrar sesion</a>
     </div>
 </header>
 
@@ -44,23 +43,27 @@
     <nav class="admin-sidebar">
         <a href="{{ url_for('admin_dashboard') }}"
            class="admin-nav-item {% if request.endpoint == 'admin_dashboard' %}active{% endif %}">
-            <span class="nav-icon">■</span> Dashboard
+            <span class="nav-icon">&#9632;</span> Dashboard
         </a>
         <a href="{{ url_for('admin_medicos') }}"
            class="admin-nav-item {% if request.endpoint in ['admin_medicos', 'admin_medico_detalle'] %}active{% endif %}">
-            <span class="nav-icon">◆</span> Cardiólogos
+            <span class="nav-icon">&#9670;</span> Cardiologos
         </a>
         <a href="{{ url_for('admin_evaluaciones') }}"
            class="admin-nav-item {% if request.endpoint in ['admin_evaluaciones', 'admin_evaluacion_detalle'] %}active{% endif %}">
-            <span class="nav-icon">▲</span> Evaluaciones
+            <span class="nav-icon">&#9650;</span> Evaluaciones
+        </a>
+        <a href="{{ url_for('admin_comparativa') }}"
+           class="admin-nav-item {% if request.endpoint in ['admin_comparativa', 'admin_comparativa_signal'] %}active{% endif %}">
+            <span class="nav-icon">&#8646;</span> Comparativa
         </a>
         <a href="{{ url_for('admin_inter_evaluador') }}"
            class="admin-nav-item {% if request.endpoint == 'admin_inter_evaluador' %}active{% endif %}">
-            <span class="nav-icon">●</span> Inter-evaluador
+            <span class="nav-icon">&#9679;</span> Inter-evaluador
         </a>
         <a href="{{ url_for('admin_exportar') }}"
            class="admin-nav-item {% if request.endpoint == 'admin_exportar' %}active{% endif %}">
-            <span class="nav-icon">↓</span> Exportar
+            <span class="nav-icon">&#8595;</span> Exportar
         </a>
     </nav>
 

@@ -1,127 +1,103 @@
 """
-Modulo III - Plataforma de validacion clinica human-in-the-loop.
-
-Rutas MEDICO:
-  /                       -> redirige a /registro (si no logueado) o /seleccion
-  /registro               -> formulario cardiologo
-  /seleccion              -> lista de 5 senales
-  /evaluar/<signal_id>    -> evaluacion completa
-  /mis_evaluaciones       -> historial PROPIO del cardiologo (no ve otros)
-  /api/llm_note/<sid>     -> nota LLM (persistida > cache > backend)
-  /api/guardar            -> POST: persiste evaluacion
-  /logout                 -> cierra sesion cardiologo
-
-Rutas ADMIN (protegidas por contrasena):
-  /admin/login, /admin/logout, /admin/dashboard, /admin/medicos,
-  /admin/medico/<mid>, /admin/evaluaciones, /admin/evaluacion/<eid>,
-  /admin/inter-evaluador, /admin/exportar, /admin/exportar/<tipo>,
-  /admin/eliminar_evaluacion/<eid>, /admin/eliminar_medico/<mid>,
-  /admin/reset_bd, /admin/api/dashboard_data, /admin/api/kappa_data,
-  /admin/api/medico_precision/<mid>  <-- nuevo endpoint
-
-Rutas legacy protegidas por admin:
-  /analytics -> ahora requiere @require_admin
+Flask app: Sistema de Validacion Clinica ECG.
+Version con:
+  - Rangos de edad en registro
+  - T&C con checkbox obligatorio
+  - Guardado automatico (localStorage) - solo frontend
+  - Nota clinica + nota del clasificador separadas
+  - Comentarios duales (nota + clasificador)
+  - Vista admin comparativa por senal con ground truth
 """
-import io
 import json
 import os
-import time
 from datetime import datetime
 from functools import wraps
 from pathlib import Path
 
-from flask import (
-    Flask, render_template, request, redirect, url_for,
-    session, jsonify, abort, send_file, Response,
-)
+from flask import (Flask, render_template, request, redirect, url_for,
+                   session, jsonify, make_response, abort)
 
-import config
-from database import db
-from llm_backends import get_backend, build_prompt
+# Imports locales
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent / "database"))
+import db
+
+# Backend LLM (opcional en modo web)
+try:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "modulo_2_agente"))
+    from agente_notas import generar_nota_para_signal, BACKENDS_DISPONIBLES
+    LLM_DISPONIBLE = True
+except Exception:
+    LLM_DISPONIBLE = False
+    BACKENDS_DISPONIBLES = {}
+
+# --------------------------------------------------------------
+# Config
+# --------------------------------------------------------------
+ROOT = Path(__file__).resolve().parent
+SIGNALS_DIR = ROOT / "data" / "signals_processed"
+NOTES_DIR = ROOT / "data" / "notas_llm_a"
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = config.SECRET_KEY
+app.secret_key = os.environ.get("FLASK_SECRET", "dev-secret-change-in-prod")
+app.config["JSON_AS_ASCII"] = False
 
-_NOTE_CACHE: dict[tuple, dict] = {}
+# Backend LLM por defecto (cargado por el usuario en el admin)
+DEFAULT_BACKEND = "llm_a"
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "Admin_Fabio_Cimat")
+
+# Bootstrap de la BD
+db.init_db()
 
 
-@app.before_request
-def ensure_db():
-    if not hasattr(ensure_db, "_done"):
-        db.init_db()
-        ensure_db._done = True
-
-
-# ---------------------------------------------------------------
-# Utilidades: senales y notas LLM
-# ---------------------------------------------------------------
-def load_signal(signal_id: str) -> dict:
-    path = config.SIGNALS_DIR / f"{signal_id}.json"
+# ==============================================================
+# HELPERS
+# ==============================================================
+def _load_signal(signal_id: str) -> dict:
+    """Carga un JSON de senal procesada."""
+    path = SIGNALS_DIR / f"{signal_id}.json"
     if not path.exists():
-        abort(404, description=f"Senal {signal_id} no encontrada.")
-    with open(path) as f:
+        abort(404, f"Senal {signal_id} no encontrada")
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
-def load_persisted_note(signal_id: str) -> dict | None:
-    path = config.NOTES_DIR / f"nota_{signal_id}.json"
+def _load_llm_note(signal_id: str) -> dict:
+    """Carga la nota del LLM persistida."""
+    path = NOTES_DIR / f"nota_{signal_id}.json"
     if not path.exists():
-        return None
-    try:
+        return {"clinical_note": "[No hay nota persistida para esta senal]",
+                "classifier_note": "",
+                "model": "N/A", "latency_seconds": 0}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _list_all_signals() -> list[dict]:
+    """Lista todas las senales disponibles con metadatos basicos."""
+    signals = []
+    for path in sorted(SIGNALS_DIR.glob("sig_*.json")):
         with open(path, encoding="utf-8") as f:
-            return json.load(f)
-    except (json.JSONDecodeError, OSError) as e:
-        app.logger.warning(f"Error leyendo nota {signal_id}: {e}")
-        return None
-
-
-def save_generated_note(signal_id: str, resp, signal_json: dict) -> None:
-    registro = {
-        "signal_id":         signal_id,
-        "generated_at":      datetime.utcnow().isoformat() + "Z",
-        "model":             resp.model_id,
-        "prompt_version":    "v3",
-        "latency_seconds":   round(resp.latency_seconds, 2),
-        "signal_metadata":   signal_json["signal_metadata"],
-        "aggregate_summary": signal_json["aggregate_summary"],
-        "clinical_note":     resp.text,
-    }
-    path = config.NOTES_DIR / f"nota_{signal_id}.json"
-    try:
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(registro, f, ensure_ascii=False, indent=2)
-    except OSError as e:
-        app.logger.warning(f"No se pudo persistir nota {signal_id}: {e}")
-
-
-def list_signals() -> list[dict]:
-    out = []
-    for path in sorted(config.SIGNALS_DIR.glob("sig_*.json")):
-        with open(path) as f:
             data = json.load(f)
-        meta = data["signal_metadata"]
-        sid = meta["signal_id"]
-        note_ready = (config.NOTES_DIR / f"nota_{sid}.json").exists()
-        out.append({
-            "signal_id":            sid,
-            "label":                meta["label"],
-            "scenario_note":        meta["scenario_note"],
-            "patient_age_estimate": meta["patient_age_estimate"],
-            "patient_sex":          meta["patient_sex"],
-            "duration_seconds":     meta["duration_seconds"],
-            "note_ready":           note_ready,
+        signals.append({
+            "signal_id": data["signal_metadata"]["signal_id"],
+            "duration_seconds": data["signal_metadata"]["duration_seconds"],
         })
-    return out
+    return signals
 
 
-# ---------------------------------------------------------------
-# Middlewares
-# ---------------------------------------------------------------
-def require_medico():
-    return session.get("medico_id")
+def require_medico(f):
+    """Decorator: verifica que hay medico en sesion."""
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if "medico_id" not in session:
+            return redirect(url_for("registro"))
+        return f(*args, **kwargs)
+    return wrapper
 
 
 def require_admin(f):
+    """Decorator: verifica login admin."""
     @wraps(f)
     def wrapper(*args, **kwargs):
         if not session.get("is_admin"):
@@ -130,207 +106,117 @@ def require_admin(f):
     return wrapper
 
 
-def _safe_int(s, default=None):
-    try:
-        if s is None or str(s).strip() == "":
-            return default
-        return int(s)
-    except (ValueError, TypeError):
-        return default
-
-
-# ===============================================================
-# RUTAS MEDICO
-# ===============================================================
+# ==============================================================
+# RUTAS PUBLICAS (VISTA MEDICO)
+# ==============================================================
 @app.route("/")
 def index():
-    if session.get("medico_id"):
-        return redirect(url_for("seleccion"))
     return redirect(url_for("registro"))
 
 
-@app.route("/registro", methods=["GET", "POST"])
+@app.route("/registro", methods=["GET"])
 def registro():
-    if request.method == "POST":
-        especialidad_raw = (request.form.get("especialidad") or "").strip()
-        especialidad_otra = (request.form.get("especialidad_otra") or "").strip()
-        especialidad_final = especialidad_otra if especialidad_raw == "Otra" else especialidad_raw
+    return render_template("registro.html")
 
-        payload = {
-            "nombre_completo": (request.form.get("nombre_completo") or "").strip(),
-            "edad": _safe_int(request.form.get("edad")),
-            "sexo": (request.form.get("sexo") or "").strip(),
-            "institucion": (request.form.get("institucion") or "").strip(),
-            "especialidad": especialidad_final,
-            "sub_especialidad": (request.form.get("sub_especialidad") or "").strip() or None,
-            "anos_experiencia": _safe_int(request.form.get("anos_experiencia")),
-            "anos_experiencia_ecg": _safe_int(request.form.get("anos_experiencia_ecg")),
-            "auto_eval_habilidad": _safe_int(request.form.get("auto_eval_habilidad")),
-            "email": (request.form.get("email") or "").strip(),
-        }
-        required = {
-            "nombre_completo": "Nombre completo",
-            "edad": "Edad", "sexo": "Sexo", "institucion": "Institución",
-            "especialidad": "Especialidad" if especialidad_raw != "Otra"
-                            else "Especificación de 'Otra' especialidad",
-            "anos_experiencia": "Años de experiencia clínica",
-            "anos_experiencia_ecg": "Años de experiencia con ECG",
-            "auto_eval_habilidad": "Auto-evaluación de habilidad",
-            "email": "Correo de contacto",
-        }
-        missing = [label for key, label in required.items()
-                   if payload[key] in (None, "", 0)]
-        if payload["anos_experiencia"] == 0:
-            missing = [m for m in missing if m != required["anos_experiencia"]]
-        if payload["anos_experiencia_ecg"] == 0:
-            missing = [m for m in missing if m != required["anos_experiencia_ecg"]]
-        if missing:
-            preserved = dict(request.form)
-            return render_template("registro.html",
-                error="Faltan campos obligatorios: " + ", ".join(missing) + ".",
-                form=preserved), 400
 
-        mid = db.crear_medico(payload)
-        session["medico_id"] = mid
-        session["medico_nombre"] = payload["nombre_completo"]
-        return redirect(url_for("seleccion"))
-    return render_template("registro.html", form={}, error=None)
+@app.route("/api/registro", methods=["POST"])
+def api_registro():
+    try:
+        payload = request.get_json()
+        if not payload.get("acepto_terminos"):
+            return jsonify({"ok": False,
+                            "error": "Debe aceptar los terminos y condiciones."}), 400
+
+        medico_id = db.crear_medico(payload)
+        session["medico_id"] = medico_id
+        return jsonify({"ok": True, "medico_id": medico_id})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
 
 
 @app.route("/seleccion")
+@require_medico
 def seleccion():
-    if not require_medico():
-        return redirect(url_for("registro"))
-    return render_template("seleccion.html",
-        senales=list_signals(),
-        medico_nombre=session.get("medico_nombre", ""),
-        backend_activo=config.LLM_BACKEND)
+    senales = _list_all_signals()
+    return render_template("seleccion.html", senales=senales)
 
 
 @app.route("/evaluar/<signal_id>")
+@require_medico
 def evaluar(signal_id):
-    if not require_medico():
-        return redirect(url_for("registro"))
-    signal = load_signal(signal_id)
-    all_ids = sorted([p.stem for p in config.SIGNALS_DIR.glob("sig_*.json")])
-    try:
-        signal_number = all_ids.index(signal_id) + 1
-    except ValueError:
-        signal_number = 1
-    return render_template("evaluar.html",
-        signal=signal,
+    signal_data = _load_signal(signal_id)
+    all_signals = _list_all_signals()
+    signal_ids = [s["signal_id"] for s in all_signals]
+    signal_number = signal_ids.index(signal_id) + 1 if signal_id in signal_ids else 1
+    signal_json_str = json.dumps(signal_data, ensure_ascii=False)
+    return render_template(
+        "evaluar.html",
+        signal=signal_data,
         signal_number=signal_number,
-        signal_json_str=json.dumps(signal),
-        backend_activo=config.LLM_BACKEND,
-        medico_nombre=session.get("medico_nombre", ""))
-
-
-@app.route("/mis_evaluaciones")
-def mis_evaluaciones():
-    """Vista privada del cardiologo: solo SUS evaluaciones, no ve las de otros."""
-    mid = require_medico()
-    if not mid:
-        return redirect(url_for("registro"))
-    mis_evals = db.listar_evaluaciones(medico_id=mid)
-    signals_evaluadas = set(e["signal_id"] for e in mis_evals)
-    signals_disponibles = sorted([p.stem for p in config.SIGNALS_DIR.glob("sig_*.json")])
-    pendientes = [s for s in signals_disponibles if s not in signals_evaluadas]
-    return render_template("mis_evaluaciones.html",
-        evaluaciones=mis_evals,
-        signals_pendientes=pendientes,
-        medico_nombre=session.get("medico_nombre", ""))
+        signal_json_str=signal_json_str,
+        backend_activo=DEFAULT_BACKEND,
+    )
 
 
 @app.route("/api/llm_note/<signal_id>")
+@require_medico
 def api_llm_note(signal_id):
-    backend_name = request.args.get("backend", config.LLM_BACKEND)
-    force_regen = request.args.get("force") == "1"
-    cache_key = (signal_id, backend_name)
-
-    if not force_regen and cache_key in _NOTE_CACHE:
-        return jsonify(_NOTE_CACHE[cache_key])
-
-    if not force_regen:
-        persisted = load_persisted_note(signal_id)
-        if persisted:
-            payload = {
-                "text":            persisted["clinical_note"],
-                "backend_name":    persisted.get("model", backend_name),
-                "model_id":        persisted.get("model", backend_name),
-                "latency_seconds": persisted.get("latency_seconds", 0),
-                "error":           None,
-                "source":          "persisted",
-                "generated_at":    persisted.get("generated_at"),
-                "prompt_version":  persisted.get("prompt_version"),
-            }
-            _NOTE_CACHE[cache_key] = payload
-            return jsonify(payload)
-
-    signal = load_signal(signal_id)
+    """Devuelve la nota clinica + nota del clasificador (ya separadas)."""
+    backend = request.args.get("backend", DEFAULT_BACKEND)
     try:
-        backend = get_backend(backend_name)
+        note_data = _load_llm_note(signal_id)
+        return jsonify({
+            "clinical_note": note_data.get("clinical_note", ""),
+            "classifier_note": note_data.get("classifier_note", ""),
+            "text": note_data.get("clinical_note", ""),  # backward compat
+            "backend_name": backend,
+            "model_id": note_data.get("model", "N/A"),
+            "latency_seconds": note_data.get("latency_seconds", 0),
+        })
     except Exception as e:
-        return jsonify({"error": str(e), "text": "",
-                        "backend_name": backend_name}), 500
-
-    resp = backend.generate(signal)
-    payload = {
-        "text": resp.text, "backend_name": resp.backend_name,
-        "model_id": resp.model_id,
-        "latency_seconds": round(resp.latency_seconds, 3),
-        "error": resp.error, "source": "generated",
-    }
-    if not resp.error:
-        _NOTE_CACHE[cache_key] = payload
-        save_generated_note(signal_id, resp, signal)
-    return jsonify(payload)
+        return jsonify({"error": str(e), "backend_name": backend}), 500
 
 
 @app.route("/api/guardar", methods=["POST"])
+@require_medico
 def api_guardar():
-    mid = require_medico()
-    if not mid:
-        return jsonify({"error": "Sesion no encontrada."}), 401
-    payload = request.get_json(force=True)
-    eval_payload = {
-        "medico_id":            mid,
-        "signal_id":            payload["signal_id"],
-        "llm_backend":          payload["llm_backend"],
-        "llm_model_id":         payload.get("llm_model_id"),
-        "nota_clinica_texto":   payload["nota_clinica_texto"],
-        "nota_semaforo_global": payload["nota_semaforo_global"],
-        "likert_exactitud":     payload["likert_exactitud"],
-        "likert_coherencia":    payload["likert_coherencia"],
-        "likert_utilidad":      payload["likert_utilidad"],
-        "marcaciones_nota":     payload.get("marcaciones_nota"),
-        "comentarios_libres":   payload.get("comentarios_libres", ""),
-        "duracion_segundos":    payload.get("duracion_segundos"),
-    }
-    respuestas = payload["respuestas_ventana"]
-    eval_id = db.crear_evaluacion(eval_payload, respuestas)
-    return jsonify({"ok": True, "evaluacion_id": eval_id})
+    try:
+        payload = request.get_json()
+        respuestas = payload.pop("respuestas_ventana", [])
+        payload["medico_id"] = session["medico_id"]
+        eval_id = db.crear_evaluacion(payload, respuestas)
+        return jsonify({"ok": True, "evaluacion_id": eval_id})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/mis_evaluaciones")
+@require_medico
+def mis_evaluaciones():
+    medico_id = session["medico_id"]
+    evaluaciones = db.listar_evaluaciones(medico_id=medico_id)
+    medico = db.get_medico(medico_id)
+    return render_template("mis_evaluaciones.html",
+                           evaluaciones=evaluaciones, medico=medico)
 
 
 @app.route("/logout")
 def logout():
     session.pop("medico_id", None)
-    session.pop("medico_nombre", None)
     return redirect(url_for("registro"))
 
 
-# ===============================================================
-# RUTAS ADMIN
-# ===============================================================
+# ==============================================================
+# ADMIN
+# ==============================================================
 @app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
     if request.method == "POST":
-        password = (request.form.get("password") or "").strip()
-        if password == config.ADMIN_PASSWORD:
+        if request.form.get("password") == ADMIN_PASSWORD:
             session["is_admin"] = True
             return redirect(url_for("admin_dashboard"))
-        return render_template("admin_login.html",
-            error="Contraseña incorrecta."), 401
-    return render_template("admin_login.html", error=None)
+        return render_template("admin_login.html", error="Contrasena incorrecta")
+    return render_template("admin_login.html")
 
 
 @app.route("/admin/logout")
@@ -339,32 +225,31 @@ def admin_logout():
     return redirect(url_for("admin_login"))
 
 
+@app.route("/admin")
 @app.route("/admin/dashboard")
 @require_admin
 def admin_dashboard():
-    return render_template("admin_dashboard.html",
-        stats=db.stats_globales())
+    stats = db.stats_globales()
+    return render_template("admin_dashboard.html", stats=stats)
 
 
 @app.route("/admin/api/dashboard_data")
 @require_admin
-def admin_api_dashboard():
+def admin_api_dashboard_data():
     return jsonify({
-        "globales":          db.stats_globales(),
-        "por_escala":        db.stats_por_escala(),
-        "por_clase_beat":    db.stats_por_clase("beat"),
-        "por_clase_rhythm":  db.stats_por_clase("rhythm"),
-        "semaforo_nota":     db.stats_semaforo_nota_global(),
-        "por_senal":         db.stats_evaluaciones_por_senal(),
-        "marcaciones":       db.stats_marcaciones_nota(),
+        "por_escala": db.stats_por_escala(),
+        "semaforo_nota": db.stats_semaforo_nota_global(),
+        "por_clase_beat": db.stats_por_clase("beat"),
+        "por_clase_rhythm": db.stats_por_clase("rhythm"),
+        "por_senal": db.stats_evaluaciones_por_senal(),
+        "marcaciones": db.stats_marcaciones_nota(),
     })
 
 
 @app.route("/admin/medicos")
 @require_admin
 def admin_medicos():
-    return render_template("admin_medicos.html",
-        medicos=db.listar_medicos())
+    return render_template("admin_medicos.html", medicos=db.listar_medicos())
 
 
 @app.route("/admin/medico/<int:medico_id>")
@@ -377,20 +262,11 @@ def admin_medico_detalle(medico_id):
     precision = db.precision_medico_vs_clasificador(medico_id)
     metricas_notas = db.metricas_notas_medico(medico_id)
     return render_template("admin_medico_detalle.html",
-        medico=medico, evaluaciones=evaluaciones,
-        precision=precision, metricas_notas=metricas_notas)
+                           medico=medico, evaluaciones=evaluaciones,
+                           precision=precision, metricas_notas=metricas_notas)
 
 
-@app.route("/admin/api/medico_precision/<int:medico_id>")
-@require_admin
-def admin_api_medico_precision(medico_id):
-    return jsonify({
-        "precision": db.precision_medico_vs_clasificador(medico_id),
-        "metricas_notas": db.metricas_notas_medico(medico_id),
-    })
-
-
-@app.route("/admin/eliminar_medico/<int:medico_id>", methods=["POST"])
+@app.route("/admin/medico/<int:medico_id>/eliminar", methods=["POST"])
 @require_admin
 def admin_eliminar_medico(medico_id):
     db.eliminar_medico(medico_id)
@@ -401,7 +277,7 @@ def admin_eliminar_medico(medico_id):
 @require_admin
 def admin_evaluaciones():
     return render_template("admin_evaluaciones.html",
-        evaluaciones=db.listar_evaluaciones())
+                           evaluaciones=db.listar_evaluaciones())
 
 
 @app.route("/admin/evaluacion/<int:eval_id>")
@@ -413,14 +289,14 @@ def admin_evaluacion_detalle(eval_id):
     return render_template("admin_evaluacion_detalle.html", ev=ev)
 
 
-@app.route("/admin/eliminar_evaluacion/<int:eval_id>", methods=["POST"])
+@app.route("/admin/evaluacion/<int:eval_id>/eliminar", methods=["POST"])
 @require_admin
 def admin_eliminar_evaluacion(eval_id):
     db.eliminar_evaluacion(eval_id)
     return redirect(url_for("admin_evaluaciones"))
 
 
-@app.route("/admin/inter-evaluador")
+@app.route("/admin/inter_evaluador")
 @require_admin
 def admin_inter_evaluador():
     return render_template("admin_inter_evaluador.html")
@@ -428,14 +304,63 @@ def admin_inter_evaluador():
 
 @app.route("/admin/api/kappa_data")
 @require_admin
-def admin_api_kappa():
+def admin_api_kappa_data():
     return jsonify(db.kappa_inter_evaluador())
 
 
+# --------------------------------------------------------------
+# NUEVA VISTA COMPARATIVA POR SENAL
+# --------------------------------------------------------------
+@app.route("/admin/comparativa")
+@require_admin
+def admin_comparativa():
+    """Lista las senales disponibles para vista comparativa."""
+    signals_all = _list_all_signals()
+    labels = db.load_signal_labels()
+    signals_con_evals = set(db.listar_signals_disponibles())
+    lista = []
+    for s in signals_all:
+        sid = s["signal_id"]
+        entry = labels.get(sid, {})
+        lista.append({
+            "signal_id": sid,
+            "dataset": entry.get("dataset", "N/A"),
+            "rhythm_label": entry.get("rhythm_label", "N/A"),
+            "predominant_beat_label": entry.get("predominant_beat_label", "N/A"),
+            "duration_seconds": s.get("duration_seconds"),
+            "tiene_evaluaciones": sid in signals_con_evals,
+        })
+    return render_template("admin_comparativa.html", signals=lista)
+
+
+@app.route("/admin/comparativa/<signal_id>")
+@require_admin
+def admin_comparativa_signal(signal_id):
+    """Vista detallada comparativa de una senal."""
+    data = db.comparativa_signal(signal_id)
+    signal_data = _load_signal(signal_id)
+    note_data = _load_llm_note(signal_id)
+    data["clinical_note"] = note_data.get("clinical_note", "")
+    data["classifier_note"] = note_data.get("classifier_note", "")
+    data["signal_meta"] = signal_data.get("signal_metadata", {})
+    return render_template("admin_comparativa_signal.html", data=data,
+                           signal_id=signal_id)
+
+
+@app.route("/admin/api/comparativa/<signal_id>")
+@require_admin
+def admin_api_comparativa(signal_id):
+    return jsonify(db.comparativa_signal(signal_id))
+
+
+# --------------------------------------------------------------
+# EXPORTACION
+# --------------------------------------------------------------
 @app.route("/admin/exportar")
 @require_admin
 def admin_exportar():
-    return render_template("admin_exportar.html")
+    stats = db.stats_globales()
+    return render_template("admin_exportar.html", stats=stats)
 
 
 @app.route("/admin/exportar/<tipo>")
@@ -443,60 +368,37 @@ def admin_exportar():
 def admin_exportar_csv(tipo):
     if tipo == "medicos":
         csv_data = db.exportar_medicos_csv()
-        fname = f"medicos_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.csv"
+        nombre = "medicos.csv"
     elif tipo == "evaluaciones":
         csv_data = db.exportar_evaluaciones_csv()
-        fname = f"evaluaciones_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.csv"
-    elif tipo == "respuestas_ventana":
+        nombre = "evaluaciones.csv"
+    elif tipo == "respuestas":
         csv_data = db.exportar_respuestas_ventana_csv()
-        fname = f"respuestas_ventana_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.csv"
-    elif tipo == "backup_bd":
-        return send_file(str(db.DB_PATH), as_attachment=True,
-                         download_name=f"evaluaciones_backup_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.db")
+        nombre = "respuestas_ventana.csv"
     else:
         abort(404)
-    return Response(
-        csv_data,
-        mimetype="text/csv; charset=utf-8",
-        headers={"Content-Disposition": f"attachment; filename={fname}"},
-    )
+    response = make_response(csv_data)
+    response.headers["Content-Type"] = "text/csv; charset=utf-8"
+    response.headers["Content-Disposition"] = f"attachment; filename={nombre}"
+    return response
 
 
 @app.route("/admin/reset_bd", methods=["POST"])
 @require_admin
 def admin_reset_bd():
-    conf1 = request.form.get("confirmacion_1") == "SI"
-    conf2 = request.form.get("confirmacion_2") == "BORRAR TODO"
-    if not (conf1 and conf2):
-        return "Confirmaciones no completadas correctamente.", 400
-    result = db.reset_completo_bd()
-    return render_template("admin_reset_result.html", result=result)
+    """Doble confirmacion via form."""
+    conf1 = request.form.get("confirmar")
+    conf2 = request.form.get("confirmar2")
+    if conf1 != "SI" or conf2 != "BORRAR TODO":
+        return redirect(url_for("admin_exportar"))
+    resumen = db.reset_completo_bd()
+    return render_template("admin_exportar.html",
+                           stats=db.stats_globales(), reset_ok=True,
+                           reset_resumen=resumen)
 
 
-# ===============================================================
-# LEGACY - ahora PROTEGIDO por admin
-# ===============================================================
-@app.route("/analytics")
-@require_admin
-def analytics():
-    """Dashboard basico legacy. Ahora requiere admin."""
-    return render_template("analytics.html")
-
-
-@app.route("/api/analytics_data")
-@require_admin
-def api_analytics_data():
-    """API legacy. Ahora requiere admin."""
-    return jsonify({
-        "globales": db.stats_globales(),
-        "por_escala": db.stats_por_escala(),
-        "por_clase_beat": db.stats_por_clase("beat"),
-        "por_clase_rhythm": db.stats_por_clase("rhythm"),
-        "medicos": db.listar_medicos(),
-        "evaluaciones": db.listar_evaluaciones(),
-    })
-
-
-# ---------------------------------------------------------------
+# ==============================================================
+# ARRANQUE
+# ==============================================================
 if __name__ == "__main__":
-    app.run(host=config.HOST, port=config.PORT, debug=config.DEBUG)
+    app.run(debug=True, port=5000)

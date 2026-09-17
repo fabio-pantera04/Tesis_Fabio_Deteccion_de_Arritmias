@@ -1,12 +1,9 @@
 """
-Capa fina de acceso a la base SQLite. Toda la logica de queries vive aqui.
-Incluye funciones especiales para el panel de administrador:
-  - Agregados para dashboard
-  - Kappa inter-evaluador
-  - Precision de un medico vs el clasificador (por escala y por clase)
-  - Metricas de las notas evaluadas por un medico
-  - Borrado individual y reset completo
-  - Exportacion a CSV
+Capa fina de acceso a la base SQLite.
+Incluye:
+  - Migracion idempotente que agrega las columnas nuevas si faltan
+  - Funciones para la comparativa admin con ground truth
+  - Todas las funciones anteriores del panel administrativo
 """
 import csv
 import io
@@ -20,6 +17,19 @@ ROOT = Path(__file__).resolve().parent
 DB_PATH = ROOT / "evaluaciones.db"
 SCHEMA_PATH = ROOT / "schema.sql"
 
+# Ruta al archivo de etiquetas ground truth (config editable)
+LABELS_PATH = ROOT.parent / "data" / "signal_labels.json"
+
+
+# ---------------------------------------------------------------
+# Bootstrap con migracion idempotente
+# ---------------------------------------------------------------
+def _add_column_if_missing(conn, table: str, column: str, definition: str):
+    """Agrega columna si no existe. Idempotente."""
+    cols = [r[1] for r in conn.execute(f"PRAGMA table_info({table})")]
+    if column not in cols:
+        conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+
 
 def init_db():
     """Crea las tablas si no existen y aplica migraciones idempotentes."""
@@ -27,11 +37,28 @@ def init_db():
         schema = f.read()
     with sqlite3.connect(DB_PATH) as conn:
         conn.executescript(schema)
-        cols = [r[1] for r in conn.execute("PRAGMA table_info(evaluaciones)")]
-        if "marcaciones_nota" not in cols:
-            conn.execute(
-                "ALTER TABLE evaluaciones ADD COLUMN marcaciones_nota TEXT"
-            )
+
+        # -- Migraciones idempotentes en tabla medicos --
+        _add_column_if_missing(conn, "medicos", "acepto_terminos", "INTEGER DEFAULT 0")
+        _add_column_if_missing(conn, "medicos", "fecha_aceptacion", "TEXT")
+
+        # -- Migraciones idempotentes en tabla evaluaciones --
+        _add_column_if_missing(conn, "evaluaciones", "marcaciones_nota", "TEXT")
+        _add_column_if_missing(conn, "evaluaciones", "nota_clasificador_texto", "TEXT")
+        _add_column_if_missing(conn, "evaluaciones", "nota_clasificador_semaforo", "TEXT")
+        _add_column_if_missing(conn, "evaluaciones", "nota_clasificador_marcaciones", "TEXT")
+        _add_column_if_missing(conn, "evaluaciones", "comentarios_clasificador", "TEXT")
+        _add_column_if_missing(conn, "evaluaciones", "comentarios_nota", "TEXT")
+
+        # Renombrar comentarios_libres a comentarios_nota si existe la vieja
+        cols_eval = [r[1] for r in conn.execute("PRAGMA table_info(evaluaciones)")]
+        if "comentarios_libres" in cols_eval and "comentarios_nota" in cols_eval:
+            # Migra datos si ambos existen: pasa contenido a comentarios_nota
+            conn.execute("""
+                UPDATE evaluaciones
+                SET comentarios_nota = COALESCE(comentarios_nota, comentarios_libres)
+                WHERE comentarios_nota IS NULL AND comentarios_libres IS NOT NULL
+            """)
         conn.commit()
 
 
@@ -47,6 +74,29 @@ def get_conn():
 
 
 # ---------------------------------------------------------------
+# Ground truth loader
+# ---------------------------------------------------------------
+def load_signal_labels() -> dict:
+    """Devuelve el dict con las etiquetas reales de las senales."""
+    if not LABELS_PATH.exists():
+        return {}
+    try:
+        with open(LABELS_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def get_signal_label(signal_id: str) -> dict:
+    """Devuelve el ground truth de una senal, o dict vacio si no existe."""
+    labels = load_signal_labels()
+    entry = labels.get(signal_id, {})
+    if isinstance(entry, dict):
+        return entry
+    return {}
+
+
+# ---------------------------------------------------------------
 # Medicos
 # ---------------------------------------------------------------
 def crear_medico(payload: dict) -> int:
@@ -56,16 +106,22 @@ def crear_medico(payload: dict) -> int:
                 nombre_completo, edad, sexo, institucion,
                 especialidad, sub_especialidad,
                 anos_experiencia, anos_experiencia_ecg,
-                auto_eval_habilidad, email
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                auto_eval_habilidad, email,
+                acepto_terminos, fecha_aceptacion
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
-            payload.get("nombre_completo"), payload.get("edad"),
-            payload.get("sexo"), payload.get("institucion"),
-            payload.get("especialidad"), payload.get("sub_especialidad"),
+            payload.get("nombre_completo"),
+            payload.get("edad"),                  # ahora es rango (string)
+            payload.get("sexo"),
+            payload.get("institucion"),
+            payload.get("especialidad"),
+            payload.get("sub_especialidad"),
             payload.get("anos_experiencia"),
             payload.get("anos_experiencia_ecg"),
             payload.get("auto_eval_habilidad"),
             payload.get("email"),
+            1 if payload.get("acepto_terminos") else 0,
+            payload.get("fecha_aceptacion"),
         ))
         conn.commit()
         return cur.lastrowid
@@ -102,21 +158,31 @@ def listar_medicos() -> list[dict]:
 def crear_evaluacion(payload: dict, respuestas_ventana: list[dict]) -> int:
     marc = payload.get("marcaciones_nota")
     marc_json = json.dumps(marc, ensure_ascii=False) if marc else None
+    marc_clf = payload.get("nota_clasificador_marcaciones")
+    marc_clf_json = json.dumps(marc_clf, ensure_ascii=False) if marc_clf else None
+
     with get_conn() as conn:
         cur = conn.execute("""
             INSERT INTO evaluaciones (
                 medico_id, signal_id, llm_backend, llm_model_id,
                 nota_clinica_texto, nota_semaforo_global,
                 likert_exactitud, likert_coherencia, likert_utilidad,
-                marcaciones_nota, comentarios_libres, duracion_segundos
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                marcaciones_nota, comentarios_nota,
+                nota_clasificador_texto, nota_clasificador_semaforo,
+                nota_clasificador_marcaciones, comentarios_clasificador,
+                duracion_segundos
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             payload["medico_id"], payload["signal_id"],
             payload["llm_backend"], payload.get("llm_model_id"),
             payload["nota_clinica_texto"], payload["nota_semaforo_global"],
             payload["likert_exactitud"], payload["likert_coherencia"],
             payload["likert_utilidad"], marc_json,
-            payload.get("comentarios_libres", ""),
+            payload.get("comentarios_nota", ""),
+            payload.get("nota_clasificador_texto"),
+            payload.get("nota_clasificador_semaforo"),
+            marc_clf_json,
+            payload.get("comentarios_clasificador", ""),
             payload.get("duracion_segundos"),
         ))
         eval_id = cur.lastrowid
@@ -175,6 +241,7 @@ def get_evaluacion_completa(eval_id: int) -> dict | None:
                ORDER BY escala, window_index""",
             (eval_id,)
         ).fetchall()]
+        # Parsear marcaciones de nota clinica
         if d.get("marcaciones_nota"):
             try:
                 d["marcaciones_nota_parsed"] = json.loads(d["marcaciones_nota"])
@@ -182,164 +249,158 @@ def get_evaluacion_completa(eval_id: int) -> dict | None:
                 d["marcaciones_nota_parsed"] = None
         else:
             d["marcaciones_nota_parsed"] = None
+        # Parsear marcaciones de nota del clasificador
+        if d.get("nota_clasificador_marcaciones"):
+            try:
+                d["marcaciones_clasificador_parsed"] = json.loads(d["nota_clasificador_marcaciones"])
+            except Exception:
+                d["marcaciones_clasificador_parsed"] = None
+        else:
+            d["marcaciones_clasificador_parsed"] = None
         return d
 
 
-def get_respuestas(eval_id: int) -> list[dict]:
-    with get_conn() as conn:
-        return [dict(r) for r in conn.execute(
-            "SELECT * FROM respuestas_ventana WHERE evaluacion_id = ?",
-            (eval_id,)
-        ).fetchall()]
-
-
 # ---------------------------------------------------------------
-# METRICAS DE PRECISION MEDICO <-> CLASIFICADOR
+# COMPARATIVA POR SEÑAL (nueva vista admin)
 # ---------------------------------------------------------------
-def precision_medico_vs_clasificador(medico_id: int) -> dict:
+def comparativa_signal(signal_id: str) -> dict:
     """
-    Evalua que tan bien el clasificador coincide con el juicio de UN
-    cardiologo especifico.
-
-    Modelo:
-      - VERDE  = el medico esta de acuerdo con la prediccion del clasificador
-                 (esta clasificacion es CORRECTA)
-      - AMARILLO = acuerdo parcial (la prediccion es DUDOSA)
-      - ROJO   = desacuerdo (la prediccion es INCORRECTA)
-
-    Metricas devueltas por escala (beat/rhythm) y por clase predicha:
-      - accuracy_estricta = pct verde
-      - accuracy_permisiva = pct (verde + amarillo)
-      - error_rate = pct rojo
-    Global y desglosado por clase predicha (NORMAL/PAC/NSR/AFIB).
+    Devuelve para una senal:
+      - Ground truth de las bases de datos
+      - Distribucion de predicciones del clasificador por ventana
+      - Evaluaciones agregadas de todos los medicos por ventana
+      - Metricas de concordancia derivadas
     """
+    ground_truth = get_signal_label(signal_id)
+
     with get_conn() as conn:
+        # Todas las evaluaciones de esta senal, con sus datos de medico
+        evaluaciones = [dict(r) for r in conn.execute("""
+            SELECT e.evaluacion_id, e.medico_id, m.nombre_completo,
+                   e.nota_semaforo_global, e.nota_clasificador_semaforo,
+                   e.likert_exactitud, e.likert_coherencia, e.likert_utilidad,
+                   e.marcaciones_nota, e.nota_clasificador_marcaciones,
+                   e.comentarios_nota, e.comentarios_clasificador,
+                   e.nota_clinica_texto, e.nota_clasificador_texto,
+                   e.fecha_evaluacion
+            FROM evaluaciones e
+            JOIN medicos m ON m.medico_id = e.medico_id
+            WHERE e.signal_id = ?
+            ORDER BY e.fecha_evaluacion ASC
+        """, (signal_id,)).fetchall()]
+
+        # Parsear marcaciones de cada evaluacion
+        for ev in evaluaciones:
+            for campo in ["marcaciones_nota", "nota_clasificador_marcaciones"]:
+                if ev.get(campo):
+                    try:
+                        ev[campo + "_parsed"] = json.loads(ev[campo])
+                    except Exception:
+                        ev[campo + "_parsed"] = None
+                else:
+                    ev[campo + "_parsed"] = None
+
+        # Todas las respuestas por ventana, agrupadas por (escala, window_index)
         rows = [dict(r) for r in conn.execute("""
-            SELECT rv.escala, rv.prediccion_modelo, rv.semaforo,
-                   COUNT(*) as n
+            SELECT rv.*, e.medico_id, m.nombre_completo
             FROM respuestas_ventana rv
             JOIN evaluaciones e ON e.evaluacion_id = rv.evaluacion_id
-            WHERE e.medico_id = ?
-            GROUP BY rv.escala, rv.prediccion_modelo, rv.semaforo
-        """, (medico_id,)).fetchall()]
+            JOIN medicos m ON m.medico_id = e.medico_id
+            WHERE e.signal_id = ?
+            ORDER BY rv.escala, rv.window_index, e.medico_id
+        """, (signal_id,)).fetchall()]
 
-    def build_metrics(subset):
-        # Agrupar por clase
-        by_class = defaultdict(lambda: {"verde": 0, "amarillo": 0, "rojo": 0})
-        for r in subset:
-            by_class[r["prediccion_modelo"]][r["semaforo"]] += r["n"]
+    # Agregar por ventana
+    ventanas = defaultdict(lambda: {
+        "prediccion_modelo": None,
+        "confidence_gap": None,
+        "veredictos_medicos": [],
+        "n_verde": 0, "n_amarillo": 0, "n_rojo": 0,
+    })
+    for r in rows:
+        key = (r["escala"], r["window_index"])
+        ventanas[key]["prediccion_modelo"] = r["prediccion_modelo"]
+        ventanas[key]["confidence_gap"] = r.get("confidence_gap")
+        ventanas[key]["veredictos_medicos"].append({
+            "medico_id": r["medico_id"],
+            "nombre": r["nombre_completo"],
+            "semaforo": r["semaforo"],
+        })
+        ventanas[key][f"n_{r['semaforo']}"] += 1
 
-        # Metricas por clase
-        by_class_metrics = {}
-        for cls, counts in by_class.items():
-            total = counts["verde"] + counts["amarillo"] + counts["rojo"]
-            if total == 0:
-                continue
-            by_class_metrics[cls] = {
-                "n": total,
-                "verde": counts["verde"],
-                "amarillo": counts["amarillo"],
-                "rojo": counts["rojo"],
-                "accuracy_estricta":   round(counts["verde"] / total * 100, 2),
-                "accuracy_permisiva":  round((counts["verde"] + counts["amarillo"]) / total * 100, 2),
-                "error_rate":          round(counts["rojo"] / total * 100, 2),
-            }
-
-        # Metricas globales
-        total_v = sum(counts["verde"] for counts in by_class.values())
-        total_a = sum(counts["amarillo"] for counts in by_class.values())
-        total_r = sum(counts["rojo"] for counts in by_class.values())
-        total_n = total_v + total_a + total_r
-        global_metrics = {
-            "n": total_n,
-            "verde": total_v, "amarillo": total_a, "rojo": total_r,
-            "accuracy_estricta":  round(total_v / total_n * 100, 2) if total_n else 0,
-            "accuracy_permisiva": round((total_v + total_a) / total_n * 100, 2) if total_n else 0,
-            "error_rate":         round(total_r / total_n * 100, 2) if total_n else 0,
+    beat_windows = []
+    rhythm_windows = []
+    for (escala, idx), data in sorted(ventanas.items()):
+        entry = {
+            "window_index": idx,
+            "prediccion_modelo": data["prediccion_modelo"],
+            "confidence_gap": data["confidence_gap"],
+            "n_verde": data["n_verde"],
+            "n_amarillo": data["n_amarillo"],
+            "n_rojo": data["n_rojo"],
+            "n_total": data["n_verde"] + data["n_amarillo"] + data["n_rojo"],
+            "veredictos_medicos": data["veredictos_medicos"],
         }
-        return {"global": global_metrics, "por_clase": by_class_metrics}
+        if entry["n_total"] > 0:
+            entry["pct_verde"] = round(data["n_verde"] / entry["n_total"] * 100, 2)
+            entry["pct_amarillo"] = round(data["n_amarillo"] / entry["n_total"] * 100, 2)
+            entry["pct_rojo"] = round(data["n_rojo"] / entry["n_total"] * 100, 2)
+        else:
+            entry["pct_verde"] = entry["pct_amarillo"] = entry["pct_rojo"] = 0
+        if escala == "beat":
+            beat_windows.append(entry)
+        else:
+            rhythm_windows.append(entry)
+
+    # Metricas agregadas: concordancia global medicos <-> clasificador
+    def agg_metrics(windows):
+        if not windows:
+            return {}
+        total_v = sum(w["n_verde"] for w in windows)
+        total_a = sum(w["n_amarillo"] for w in windows)
+        total_r = sum(w["n_rojo"] for w in windows)
+        total_n = total_v + total_a + total_r
+        if total_n == 0:
+            return {}
+        return {
+            "n_veredictos": total_n,
+            "accuracy_estricta":  round(total_v / total_n * 100, 2),
+            "accuracy_permisiva": round((total_v + total_a) / total_n * 100, 2),
+            "error_rate":         round(total_r / total_n * 100, 2),
+            "pct_verde":          round(total_v / total_n * 100, 2),
+            "pct_amarillo":       round(total_a / total_n * 100, 2),
+            "pct_rojo":           round(total_r / total_n * 100, 2),
+        }
+
+    # Distribucion de clases predichas
+    pred_beat_counts = defaultdict(int)
+    for w in beat_windows:
+        pred_beat_counts[w["prediccion_modelo"]] += 1
+    pred_rhythm_counts = defaultdict(int)
+    for w in rhythm_windows:
+        pred_rhythm_counts[w["prediccion_modelo"]] += 1
 
     return {
-        "beat":   build_metrics([r for r in rows if r["escala"] == "beat"]),
-        "rhythm": build_metrics([r for r in rows if r["escala"] == "rhythm"]),
+        "signal_id": signal_id,
+        "ground_truth": ground_truth,
+        "n_evaluaciones": len(evaluaciones),
+        "evaluaciones": evaluaciones,
+        "beat_windows": beat_windows,
+        "rhythm_windows": rhythm_windows,
+        "metricas_beat": agg_metrics(beat_windows),
+        "metricas_rhythm": agg_metrics(rhythm_windows),
+        "distribucion_predicciones_beat": dict(pred_beat_counts),
+        "distribucion_predicciones_rhythm": dict(pred_rhythm_counts),
     }
 
 
-def metricas_notas_medico(medico_id: int) -> dict:
-    """
-    Metricas sobre como este medico califico las NOTAS clinicas del LLM.
-      - Distribucion del veredicto global (verde/amarillo/rojo)
-      - Promedios Likert por dimension
-      - Promedios de subrayado (verde/amarillo/rojo/sin_marcar)
-      - N evaluaciones
-    """
+def listar_signals_disponibles() -> list[str]:
+    """Devuelve las signal_id que tienen al menos una evaluacion."""
     with get_conn() as conn:
-        rows = [dict(r) for r in conn.execute("""
-            SELECT nota_semaforo_global, likert_exactitud,
-                   likert_coherencia, likert_utilidad, marcaciones_nota
-            FROM evaluaciones
-            WHERE medico_id = ?
-        """, (medico_id,)).fetchall()]
-
-    n = len(rows)
-    if n == 0:
-        return {"n": 0, "veredicto": {}, "likert": {},
-                "subrayado": {}, "interpretacion": "Sin evaluaciones."}
-
-    # Veredicto global
-    veredicto_counts = {"verde": 0, "amarillo": 0, "rojo": 0}
-    for r in rows:
-        if r["nota_semaforo_global"]:
-            veredicto_counts[r["nota_semaforo_global"]] += 1
-    veredicto_pct = {k: round(v / n * 100, 2) for k, v in veredicto_counts.items()}
-
-    # Likert
-    def avg(key):
-        vals = [r[key] for r in rows if r[key] is not None]
-        return round(sum(vals) / len(vals), 2) if vals else None
-
-    likert = {
-        "exactitud":  avg("likert_exactitud"),
-        "coherencia": avg("likert_coherencia"),
-        "utilidad":   avg("likert_utilidad"),
-    }
-
-    # Subrayado (promedio de pct guardados en JSON)
-    sums = {"pct_verde": 0.0, "pct_amarillo": 0.0,
-            "pct_rojo": 0.0, "pct_sin_marcar": 0.0}
-    n_marc = 0
-    for r in rows:
-        if not r["marcaciones_nota"]:
-            continue
-        try:
-            m = json.loads(r["marcaciones_nota"])
-            for k in sums:
-                sums[k] += m.get(k, 0)
-            n_marc += 1
-        except Exception:
-            continue
-    subrayado = {}
-    if n_marc > 0:
-        subrayado = {k + "_prom": round(v / n_marc, 2) for k, v in sums.items()}
-        subrayado["n_evaluaciones_con_marcas"] = n_marc
-    else:
-        subrayado = {"n_evaluaciones_con_marcas": 0}
-
-    # Interpretacion cualitativa
-    if veredicto_pct["verde"] >= 60:
-        interp = "El médico considera que las notas del LLM son en general de buena calidad."
-    elif veredicto_pct["rojo"] >= 40:
-        interp = "El médico ha identificado problemas serios en varias notas."
-    else:
-        interp = "Percepción mixta de las notas del LLM (verde/amarillo/rojo relativamente equilibrados)."
-
-    return {
-        "n": n,
-        "veredicto": {"conteos": veredicto_counts, "porcentajes": veredicto_pct},
-        "likert": likert,
-        "subrayado": subrayado,
-        "interpretacion": interp,
-    }
+        rows = conn.execute(
+            "SELECT DISTINCT signal_id FROM evaluaciones ORDER BY signal_id"
+        ).fetchall()
+    return [r[0] for r in rows]
 
 
 # ---------------------------------------------------------------
@@ -347,10 +408,8 @@ def metricas_notas_medico(medico_id: int) -> dict:
 # ---------------------------------------------------------------
 def eliminar_evaluacion(eval_id: int) -> bool:
     with get_conn() as conn:
-        conn.execute("DELETE FROM respuestas_ventana WHERE evaluacion_id = ?",
-                     (eval_id,))
-        cur = conn.execute("DELETE FROM evaluaciones WHERE evaluacion_id = ?",
-                            (eval_id,))
+        conn.execute("DELETE FROM respuestas_ventana WHERE evaluacion_id = ?", (eval_id,))
+        cur = conn.execute("DELETE FROM evaluaciones WHERE evaluacion_id = ?", (eval_id,))
         conn.commit()
         return cur.rowcount > 0
 
@@ -358,16 +417,12 @@ def eliminar_evaluacion(eval_id: int) -> bool:
 def eliminar_medico(medico_id: int) -> bool:
     with get_conn() as conn:
         eval_ids = [r[0] for r in conn.execute(
-            "SELECT evaluacion_id FROM evaluaciones WHERE medico_id = ?",
-            (medico_id,)
+            "SELECT evaluacion_id FROM evaluaciones WHERE medico_id = ?", (medico_id,)
         ).fetchall()]
         for eid in eval_ids:
-            conn.execute("DELETE FROM respuestas_ventana WHERE evaluacion_id = ?",
-                         (eid,))
-        conn.execute("DELETE FROM evaluaciones WHERE medico_id = ?",
-                     (medico_id,))
-        cur = conn.execute("DELETE FROM medicos WHERE medico_id = ?",
-                            (medico_id,))
+            conn.execute("DELETE FROM respuestas_ventana WHERE evaluacion_id = ?", (eid,))
+        conn.execute("DELETE FROM evaluaciones WHERE medico_id = ?", (medico_id,))
+        cur = conn.execute("DELETE FROM medicos WHERE medico_id = ?", (medico_id,))
         conn.commit()
         return cur.rowcount > 0
 
@@ -388,7 +443,7 @@ def reset_completo_bd() -> dict:
 
 
 # ---------------------------------------------------------------
-# AGREGADOS DASHBOARD
+# AGREGADOS DASHBOARD (sin cambios significativos)
 # ---------------------------------------------------------------
 def stats_globales() -> dict:
     with get_conn() as conn:
@@ -430,8 +485,7 @@ def stats_por_escala() -> dict:
                 GROUP BY semaforo
             """, (escala,)).fetchall()
             total = sum(r["c"] for r in rows) or 1
-            out[escala] = {r["semaforo"]: round(r["c"] / total * 100, 2)
-                           for r in rows}
+            out[escala] = {r["semaforo"]: round(r["c"] / total * 100, 2) for r in rows}
             for k in ["verde", "amarillo", "rojo"]:
                 out[escala].setdefault(k, 0.0)
     return out
@@ -467,8 +521,7 @@ def stats_semaforo_nota_global() -> dict:
             GROUP BY nota_semaforo_global
         """).fetchall()
         total = sum(r["c"] for r in rows) or 1
-        out = {r["nota_semaforo_global"]: round(r["c"] / total * 100, 2)
-               for r in rows}
+        out = {r["nota_semaforo_global"]: round(r["c"] / total * 100, 2) for r in rows}
         for k in ["verde", "amarillo", "rojo"]:
             out.setdefault(k, 0.0)
         return out
@@ -521,7 +574,113 @@ def stats_marcaciones_nota() -> dict:
 
 
 # ---------------------------------------------------------------
-# KAPPA INTER-EVALUADOR
+# PRECISION MEDICO
+# ---------------------------------------------------------------
+def precision_medico_vs_clasificador(medico_id: int) -> dict:
+    with get_conn() as conn:
+        rows = [dict(r) for r in conn.execute("""
+            SELECT rv.escala, rv.prediccion_modelo, rv.semaforo, COUNT(*) as n
+            FROM respuestas_ventana rv
+            JOIN evaluaciones e ON e.evaluacion_id = rv.evaluacion_id
+            WHERE e.medico_id = ?
+            GROUP BY rv.escala, rv.prediccion_modelo, rv.semaforo
+        """, (medico_id,)).fetchall()]
+
+    def build_metrics(subset):
+        by_class = defaultdict(lambda: {"verde": 0, "amarillo": 0, "rojo": 0})
+        for r in subset:
+            by_class[r["prediccion_modelo"]][r["semaforo"]] += r["n"]
+        by_class_metrics = {}
+        for cls, counts in by_class.items():
+            total = counts["verde"] + counts["amarillo"] + counts["rojo"]
+            if total == 0:
+                continue
+            by_class_metrics[cls] = {
+                "n": total, "verde": counts["verde"],
+                "amarillo": counts["amarillo"], "rojo": counts["rojo"],
+                "accuracy_estricta":   round(counts["verde"] / total * 100, 2),
+                "accuracy_permisiva":  round((counts["verde"] + counts["amarillo"]) / total * 100, 2),
+                "error_rate":          round(counts["rojo"] / total * 100, 2),
+            }
+        total_v = sum(counts["verde"] for counts in by_class.values())
+        total_a = sum(counts["amarillo"] for counts in by_class.values())
+        total_r = sum(counts["rojo"] for counts in by_class.values())
+        total_n = total_v + total_a + total_r
+        global_metrics = {
+            "n": total_n, "verde": total_v, "amarillo": total_a, "rojo": total_r,
+            "accuracy_estricta":  round(total_v / total_n * 100, 2) if total_n else 0,
+            "accuracy_permisiva": round((total_v + total_a) / total_n * 100, 2) if total_n else 0,
+            "error_rate":         round(total_r / total_n * 100, 2) if total_n else 0,
+        }
+        return {"global": global_metrics, "por_clase": by_class_metrics}
+
+    return {
+        "beat":   build_metrics([r for r in rows if r["escala"] == "beat"]),
+        "rhythm": build_metrics([r for r in rows if r["escala"] == "rhythm"]),
+    }
+
+
+def metricas_notas_medico(medico_id: int) -> dict:
+    with get_conn() as conn:
+        rows = [dict(r) for r in conn.execute("""
+            SELECT nota_semaforo_global, likert_exactitud,
+                   likert_coherencia, likert_utilidad, marcaciones_nota
+            FROM evaluaciones
+            WHERE medico_id = ?
+        """, (medico_id,)).fetchall()]
+    n = len(rows)
+    if n == 0:
+        return {"n": 0, "veredicto": {}, "likert": {},
+                "subrayado": {}, "interpretacion": "Sin evaluaciones."}
+    veredicto_counts = {"verde": 0, "amarillo": 0, "rojo": 0}
+    for r in rows:
+        if r["nota_semaforo_global"]:
+            veredicto_counts[r["nota_semaforo_global"]] += 1
+    veredicto_pct = {k: round(v / n * 100, 2) for k, v in veredicto_counts.items()}
+
+    def avg(key):
+        vals = [r[key] for r in rows if r[key] is not None]
+        return round(sum(vals) / len(vals), 2) if vals else None
+
+    likert = {
+        "exactitud":  avg("likert_exactitud"),
+        "coherencia": avg("likert_coherencia"),
+        "utilidad":   avg("likert_utilidad"),
+    }
+    sums = {"pct_verde": 0.0, "pct_amarillo": 0.0,
+            "pct_rojo": 0.0, "pct_sin_marcar": 0.0}
+    n_marc = 0
+    for r in rows:
+        if not r["marcaciones_nota"]:
+            continue
+        try:
+            m = json.loads(r["marcaciones_nota"])
+            for k in sums:
+                sums[k] += m.get(k, 0)
+            n_marc += 1
+        except Exception:
+            continue
+    subrayado = {}
+    if n_marc > 0:
+        subrayado = {k + "_prom": round(v / n_marc, 2) for k, v in sums.items()}
+        subrayado["n_evaluaciones_con_marcas"] = n_marc
+    else:
+        subrayado = {"n_evaluaciones_con_marcas": 0}
+    if veredicto_pct["verde"] >= 60:
+        interp = "El medico considera que las notas del LLM son en general de buena calidad."
+    elif veredicto_pct["rojo"] >= 40:
+        interp = "El medico ha identificado problemas serios en varias notas."
+    else:
+        interp = "Percepcion mixta de las notas del LLM (verde/amarillo/rojo relativamente equilibrados)."
+    return {
+        "n": n,
+        "veredicto": {"conteos": veredicto_counts, "porcentajes": veredicto_pct},
+        "likert": likert, "subrayado": subrayado, "interpretacion": interp,
+    }
+
+
+# ---------------------------------------------------------------
+# KAPPA INTER-EVALUADOR (sin cambios)
 # ---------------------------------------------------------------
 def _cohens_kappa(rater_a: list, rater_b: list) -> float | None:
     if len(rater_a) != len(rater_b) or len(rater_a) < 2:
@@ -550,7 +709,6 @@ def kappa_inter_evaluador() -> dict:
             ORDER BY m.medico_id
         """).fetchall()
         medicos = [dict(m) for m in medicos]
-
         pares = []
         for i in range(len(medicos)):
             for j in range(i + 1, len(medicos)):
@@ -564,21 +722,18 @@ def kappa_inter_evaluador() -> dict:
                 comunes = sorted(signals_a & signals_b)
                 if not comunes:
                     continue
-
                 beat_a, beat_b = [], []
                 rhythm_a, rhythm_b = [], []
                 nota_a, nota_b = [], []
                 for sig_id in comunes:
                     eval_a = conn.execute("""
                         SELECT evaluacion_id, nota_semaforo_global
-                        FROM evaluaciones
-                        WHERE medico_id = ? AND signal_id = ?
+                        FROM evaluaciones WHERE medico_id = ? AND signal_id = ?
                         ORDER BY fecha_evaluacion DESC LIMIT 1
                     """, (med_a["medico_id"], sig_id)).fetchone()
                     eval_b = conn.execute("""
                         SELECT evaluacion_id, nota_semaforo_global
-                        FROM evaluaciones
-                        WHERE medico_id = ? AND signal_id = ?
+                        FROM evaluaciones WHERE medico_id = ? AND signal_id = ?
                         ORDER BY fecha_evaluacion DESC LIMIT 1
                     """, (med_b["medico_id"], sig_id)).fetchone()
                     if not eval_a or not eval_b:
@@ -594,14 +749,12 @@ def kappa_inter_evaluador() -> dict:
                               for r in conn.execute(
                                   "SELECT * FROM respuestas_ventana WHERE evaluacion_id = ?",
                                   (eval_b["evaluacion_id"],))}
-                    keys_comunes = set(resp_a) & set(resp_b)
-                    for k in keys_comunes:
+                    for k in set(resp_a) & set(resp_b):
                         escala = k[0]
                         if escala == "beat":
                             beat_a.append(resp_a[k]); beat_b.append(resp_b[k])
                         elif escala == "rhythm":
                             rhythm_a.append(resp_a[k]); rhythm_b.append(resp_b[k])
-
                 pares.append({
                     "med_a_id": med_a["medico_id"],
                     "med_a_nombre": med_a["nombre_completo"],
@@ -615,11 +768,9 @@ def kappa_inter_evaluador() -> dict:
                     "kappa_nota_global": _cohens_kappa(nota_a, nota_b),
                     "n_nota": len(nota_a),
                 })
-
         def avg(vals):
             vals = [v for v in vals if v is not None]
             return round(sum(vals) / len(vals), 3) if vals else None
-
         resumen = {
             "prom_kappa_beat":   avg([p["kappa_beat"] for p in pares]),
             "prom_kappa_rhythm": avg([p["kappa_rhythm"] for p in pares]),
@@ -645,6 +796,7 @@ def exportar_medicos_csv() -> str:
     columns = ["medico_id", "nombre_completo", "edad", "sexo", "institucion",
                "especialidad", "sub_especialidad", "anos_experiencia",
                "anos_experiencia_ecg", "auto_eval_habilidad", "email",
+               "acepto_terminos", "fecha_aceptacion",
                "fecha_registro", "n_evaluaciones",
                "prom_exactitud", "prom_coherencia", "prom_utilidad",
                "prom_duracion"]
@@ -666,9 +818,11 @@ def exportar_evaluaciones_csv() -> str:
     columns = ["evaluacion_id", "medico_id", "nombre_completo", "especialidad",
                "signal_id", "llm_backend", "llm_model_id",
                "nota_semaforo_global",
+               "nota_clasificador_semaforo",
                "likert_exactitud", "likert_coherencia", "likert_utilidad",
                "pct_verde", "pct_amarillo", "pct_rojo", "pct_sin_marcar",
-               "comentarios_libres", "duracion_segundos", "fecha_evaluacion"]
+               "comentarios_nota", "comentarios_clasificador",
+               "duracion_segundos", "fecha_evaluacion"]
     return _rows_to_csv(rows, columns)
 
 

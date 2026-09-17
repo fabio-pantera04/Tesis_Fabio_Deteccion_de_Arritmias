@@ -1,0 +1,583 @@
+{% extends "admin_base.html" %}
+{% block title %}Comparativa {{ signal_id }} - Admin{% endblock %}
+
+{% block content %}
+<div class="admin-page-header">
+    <a href="{{ url_for('admin_comparativa') }}" class="back-link">
+        &larr; Volver a comparativa
+    </a>
+    <h2>Comparativa detallada - {{ signal_id }}</h2>
+    <p class="admin-page-desc">
+        Comparacion tri-fuente: <b>etiqueta real de la base de datos</b>,
+        <b>predicciones del clasificador MSM-SC + XGBoost</b>, y
+        <b>veredictos de los cardiologos evaluadores</b>.
+    </p>
+</div>
+
+<!-- ===============================================================
+     BLOQUE 1: DATOS REALES DE LA BASE DE DATOS (GROUND TRUTH)
+     =============================================================== -->
+<section class="detail-section">
+    <h3>Etiqueta real de la base de datos (ground truth)</h3>
+
+    <div class="detail-grid">
+        <div class="detail-card">
+            <h3>Origen del registro</h3>
+            <dl class="detail-dl">
+                <dt>Dataset</dt><dd><code>{{ data.ground_truth.dataset or 'N/A' }}</code></dd>
+                <dt>ID del registro</dt><dd><code>{{ data.ground_truth.record_id or 'N/A' }}</code></dd>
+                <dt>Archivo CSV</dt>
+                <dd><small><code>{{ data.ground_truth.source_csv or 'N/A' }}</code></small></dd>
+                <dt>Duracion</dt><dd>{{ data.ground_truth.duration_seconds or '?' }} s</dd>
+            </dl>
+        </div>
+
+        <div class="detail-card">
+            <h3>Etiquetas reales</h3>
+            <dl class="detail-dl">
+                <dt>Ritmo (label)</dt>
+                <dd>
+                    {% if data.ground_truth.rhythm_label == 'AFIB' %}
+                        <span class="chip chip-rojo"><b>{{ data.ground_truth.rhythm_label }}</b></span>
+                    {% elif data.ground_truth.rhythm_label == 'NSR' %}
+                        <span class="chip chip-verde"><b>{{ data.ground_truth.rhythm_label }}</b></span>
+                    {% else %}
+                        <span class="chip chip-neutral">{{ data.ground_truth.rhythm_label or 'N/A' }}</span>
+                    {% endif %}
+                </dd>
+                <dt>Ritmo (descripcion)</dt>
+                <dd><small>{{ data.ground_truth.rhythm_label_full or '-' }}</small></dd>
+                <dt>Latido predominante</dt>
+                <dd><b>{{ data.ground_truth.predominant_beat_label or 'N/A' }}</b></dd>
+                <dt>Descripcion</dt>
+                <dd><small>{{ data.ground_truth.predominant_beat_label_full or '-' }}</small></dd>
+            </dl>
+        </div>
+
+        <div class="detail-card">
+            <h3>Contexto clinico</h3>
+            <p style="font-size: 13px; line-height: 1.6; color: var(--ink);">
+                {{ data.ground_truth.clinical_context or 'Sin contexto adicional registrado.' }}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===============================================================
+     BLOQUE 2: TABLA TRI-FUENTE (REAL vs CLASIFICADOR vs MEDICOS)
+     Por LATIDO y por RITMO — respondiendo directamente a lo pedido
+     =============================================================== -->
+<section class="detail-section">
+    <h3>Comparativa tri-fuente por escala</h3>
+    <p class="chart-desc">
+        Comparacion directa por LATIDO y por RITMO entre las tres fuentes:
+        la etiqueta real de la base de datos, la clase dominante predicha por
+        el clasificador y el veredicto agregado de los cardiologos.
+    </p>
+
+    {% if data.n_evaluaciones == 0 %}
+    <div class="empty-state" style="margin-top: 16px;">
+        <p><b>Todavia no hay evaluaciones de cardiologos para esta senal.</b></p>
+        <p>La columna de <em>veredictos de medicos</em> aparecera cuando
+           al menos un cardiologo evalue esta senal. Las otras dos columnas
+           (etiqueta real y prediccion del clasificador) ya estan visibles.</p>
+    </div>
+    {% endif %}
+
+    <div class="tri-fuente-tabla">
+        <table class="admin-table admin-table-cmp">
+            <thead>
+                <tr>
+                    <th>Escala</th>
+                    <th>Etiqueta real (BD)</th>
+                    <th>Prediccion clasificador (dominante)</th>
+                    <th>Concordancia clasificador vs real</th>
+                    <th>Veredicto agregado de medicos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Fila LATIDO -->
+                <tr>
+                    <td><b>LATIDO</b></td>
+
+                    <!-- Real (BD) -->
+                    <td>
+                        {% set real_beat = data.ground_truth.predominant_beat_label or 'N/A' %}
+                        {% if real_beat == 'N/A' %}
+                            <span class="chip chip-neutral">N/A</span>
+                            <br><small style="color: var(--ink-soft);">
+                                Sin etiqueta beat-a-beat en este dataset
+                            </small>
+                        {% else %}
+                            <span class="chip chip-neutral"><b>{{ real_beat }}</b></span>
+                        {% endif %}
+                    </td>
+
+                    <!-- Clasificador dominante -->
+                    <td>
+                        {% if data.distribucion_predicciones_beat %}
+                            {% set total_beat = data.distribucion_predicciones_beat.values() | sum %}
+                            {% set dom_beat = data.distribucion_predicciones_beat.items() | sort(attribute='1', reverse=True) | first %}
+                            <span class="chip chip-neutral"><b>{{ dom_beat[0] }}</b></span>
+                            <small style="color: var(--ink-soft);">
+                                ({{ dom_beat[1] }}/{{ total_beat }} ventanas,
+                                {{ (dom_beat[1] / total_beat * 100) | round(1) }}%)
+                            </small>
+                            <br>
+                            <small>
+                                Distribucion:
+                                {% for cls, cnt in data.distribucion_predicciones_beat.items() %}
+                                    <code>{{ cls }}</code>: {{ (cnt / total_beat * 100) | round(1) }}%
+                                    {% if not loop.last %} - {% endif %}
+                                {% endfor %}
+                            </small>
+                        {% else %}
+                            <em>Sin datos</em>
+                        {% endif %}
+                    </td>
+
+                    <!-- Concordancia clasificador vs real -->
+                    <td>
+                        {% set real = data.ground_truth.predominant_beat_label %}
+                        {% if data.distribucion_predicciones_beat and real and real != 'N/A' %}
+                            {% set dom = data.distribucion_predicciones_beat.items() | sort(attribute='1', reverse=True) | first %}
+                            {% if real == dom[0] or (real == 'NORMAL_con_PAC' and dom[0] in ['NORMAL', 'PAC']) %}
+                                <span class="chip chip-verde">Match</span>
+                            {% else %}
+                                <span class="chip chip-rojo">Mismatch</span>
+                            {% endif %}
+                        {% else %}
+                            <span class="chip chip-neutral">N/A</span>
+                        {% endif %}
+                    </td>
+
+                    <!-- Veredicto agregado medicos -->
+                    <td>
+                        {% if data.metricas_beat %}
+                            <div class="veredicto-agregado">
+                                <span class="chip chip-verde">V: {{ data.metricas_beat.pct_verde }}%</span>
+                                <span class="chip chip-amarillo">A: {{ data.metricas_beat.pct_amarillo }}%</span>
+                                <span class="chip chip-rojo">R: {{ data.metricas_beat.pct_rojo }}%</span>
+                            </div>
+                            <small style="color: var(--ink-soft);">
+                                N = {{ data.metricas_beat.n_veredictos }} veredictos
+                                de {{ data.n_evaluaciones }} cardiologos
+                            </small>
+                        {% else %}
+                            <em style="color: var(--ink-soft);">Sin evaluaciones</em>
+                        {% endif %}
+                    </td>
+                </tr>
+
+                <!-- Fila RITMO -->
+                <tr>
+                    <td><b>RITMO</b></td>
+
+                    <!-- Real (BD) -->
+                    <td>
+                        {% set real_rhy = data.ground_truth.rhythm_label or 'N/A' %}
+                        {% if real_rhy == 'AFIB' %}
+                            <span class="chip chip-rojo"><b>{{ real_rhy }}</b></span>
+                        {% elif real_rhy == 'NSR' %}
+                            <span class="chip chip-verde"><b>{{ real_rhy }}</b></span>
+                        {% else %}
+                            <span class="chip chip-neutral"><b>{{ real_rhy }}</b></span>
+                        {% endif %}
+                    </td>
+
+                    <!-- Clasificador dominante -->
+                    <td>
+                        {% if data.distribucion_predicciones_rhythm %}
+                            {% set total_r = data.distribucion_predicciones_rhythm.values() | sum %}
+                            {% set dom_r = data.distribucion_predicciones_rhythm.items() | sort(attribute='1', reverse=True) | first %}
+                            {% if dom_r[0] == 'AFIB' %}
+                                <span class="chip chip-rojo"><b>{{ dom_r[0] }}</b></span>
+                            {% elif dom_r[0] == 'NSR' %}
+                                <span class="chip chip-verde"><b>{{ dom_r[0] }}</b></span>
+                            {% else %}
+                                <span class="chip chip-neutral"><b>{{ dom_r[0] }}</b></span>
+                            {% endif %}
+                            <small style="color: var(--ink-soft);">
+                                ({{ dom_r[1] }}/{{ total_r }} ventanas,
+                                {{ (dom_r[1] / total_r * 100) | round(1) }}%)
+                            </small>
+                            <br>
+                            <small>
+                                Distribucion:
+                                {% for cls, cnt in data.distribucion_predicciones_rhythm.items() %}
+                                    <code>{{ cls }}</code>: {{ (cnt / total_r * 100) | round(1) }}%
+                                    {% if not loop.last %} - {% endif %}
+                                {% endfor %}
+                            </small>
+                        {% else %}
+                            <em>Sin datos</em>
+                        {% endif %}
+                    </td>
+
+                    <!-- Concordancia clasificador vs real -->
+                    <td>
+                        {% if data.distribucion_predicciones_rhythm and data.ground_truth.rhythm_label %}
+                            {% set dom = data.distribucion_predicciones_rhythm.items() | sort(attribute='1', reverse=True) | first %}
+                            {% if data.ground_truth.rhythm_label == dom[0] %}
+                                <span class="chip chip-verde">Match</span>
+                            {% else %}
+                                <span class="chip chip-rojo">Mismatch</span>
+                            {% endif %}
+                        {% else %}
+                            <span class="chip chip-neutral">N/A</span>
+                        {% endif %}
+                    </td>
+
+                    <!-- Veredicto agregado medicos -->
+                    <td>
+                        {% if data.metricas_rhythm %}
+                            <div class="veredicto-agregado">
+                                <span class="chip chip-verde">V: {{ data.metricas_rhythm.pct_verde }}%</span>
+                                <span class="chip chip-amarillo">A: {{ data.metricas_rhythm.pct_amarillo }}%</span>
+                                <span class="chip chip-rojo">R: {{ data.metricas_rhythm.pct_rojo }}%</span>
+                            </div>
+                            <small style="color: var(--ink-soft);">
+                                N = {{ data.metricas_rhythm.n_veredictos }} veredictos
+                                de {{ data.n_evaluaciones }} cardiologos
+                            </small>
+                        {% else %}
+                            <em style="color: var(--ink-soft);">Sin evaluaciones</em>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Formulas de las metricas de concordancia medicos -->
+    <div class="formula-block" style="margin-top: 16px;">
+        <div class="formula-label">Formulas aplicadas</div>
+        <div class="formula-body">
+            $$V\% = \frac{N_{verde}}{N_{total}} \times 100\% \qquad
+              A\% = \frac{N_{amarillo}}{N_{total}} \times 100\% \qquad
+              R\% = \frac{N_{rojo}}{N_{total}} \times 100\%$$
+            $$\text{Accuracy}_{estricta} = \frac{N_{verde}}{N_{total}} \qquad
+              \text{Accuracy}_{permisiva} = \frac{N_{verde} + N_{amarillo}}{N_{total}}$$
+        </div>
+        <div class="formula-vars">
+            $N_{color}$: total de veredictos del color emitidos por
+            <b>todos los cardiologos</b> sobre esta escala en esta senal.
+            $N_{total}$: total de veredictos de la escala.
+        </div>
+    </div>
+</section>
+
+<!-- ===============================================================
+     BLOQUE 3: NOTAS GENERADAS POR EL LLM
+     =============================================================== -->
+<section class="detail-section">
+    <h3>Notas generadas por el agente LLM</h3>
+
+    <h4 style="margin-top: 12px;">Nota clinica</h4>
+    <div class="nota-preview">{{ data.clinical_note }}</div>
+
+    {% if data.classifier_note %}
+    <h4 style="margin-top: 20px;">Nota del clasificador (nivel de certeza)</h4>
+    <div class="nota-preview nota-preview-clf">{{ data.classifier_note }}</div>
+    {% endif %}
+</section>
+
+{% if data.n_evaluaciones > 0 %}
+
+<!-- ===============================================================
+     BLOQUE 4: METRICAS DETALLADAS DE CARDIOLOGOS
+     =============================================================== -->
+<section class="detail-section">
+    <h3>Metricas detalladas de cardiologos ({{ data.n_evaluaciones }} evaluaciones)</h3>
+
+    <div class="detail-grid" style="margin-top: 16px;">
+        <div class="detail-card">
+            <h3>LATIDO - Metricas agregadas</h3>
+            {% if data.metricas_beat %}
+                <dl class="detail-dl">
+                    <dt>N veredictos totales</dt>
+                    <dd><b>{{ data.metricas_beat.n_veredictos }}</b></dd>
+                    <dt>Accuracy estricta</dt>
+                    <dd class="lik-val" style="color: var(--verde);">
+                        {{ data.metricas_beat.accuracy_estricta }}%</dd>
+                    <dt>Accuracy permisiva</dt>
+                    <dd class="lik-val" style="color: var(--verde);">
+                        {{ data.metricas_beat.accuracy_permisiva }}%</dd>
+                    <dt>Tasa de error</dt>
+                    <dd class="lik-val" style="color: var(--rojo);">
+                        {{ data.metricas_beat.error_rate }}%</dd>
+                </dl>
+            {% else %}
+                <p><em>Sin datos.</em></p>
+            {% endif %}
+        </div>
+
+        <div class="detail-card">
+            <h3>RITMO - Metricas agregadas</h3>
+            {% if data.metricas_rhythm %}
+                <dl class="detail-dl">
+                    <dt>N veredictos totales</dt>
+                    <dd><b>{{ data.metricas_rhythm.n_veredictos }}</b></dd>
+                    <dt>Accuracy estricta</dt>
+                    <dd class="lik-val" style="color: var(--verde);">
+                        {{ data.metricas_rhythm.accuracy_estricta }}%</dd>
+                    <dt>Accuracy permisiva</dt>
+                    <dd class="lik-val" style="color: var(--verde);">
+                        {{ data.metricas_rhythm.accuracy_permisiva }}%</dd>
+                    <dt>Tasa de error</dt>
+                    <dd class="lik-val" style="color: var(--rojo);">
+                        {{ data.metricas_rhythm.error_rate }}%</dd>
+                </dl>
+            {% else %}
+                <p><em>Sin datos.</em></p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- ===============================================================
+     BLOQUE 5: DETALLE POR CARDIOLOGO
+     =============================================================== -->
+<section class="detail-section">
+    <h3>Detalle por cardiologo</h3>
+    <p class="chart-desc">
+        Para cada cardiologo se muestra su nota subrayada, veredicto global,
+        Likert, y comentarios.
+    </p>
+
+    {% for ev in data.evaluaciones %}
+    <div class="cardiologo-block">
+        <div class="cardiologo-header">
+            <h4>
+                Cardiologo: <b>{{ ev.nombre_completo }}</b>
+                <span class="chip chip-neutral">Evaluacion #{{ ev.evaluacion_id }}</span>
+                <small style="color: var(--ink-soft);">{{ ev.fecha_evaluacion[:19] }}</small>
+            </h4>
+            <div class="cardiologo-scores">
+                Veredicto nota:
+                <span class="chip chip-{{ ev.nota_semaforo_global }}">
+                    {{ ev.nota_semaforo_global }}
+                </span>
+                {% if ev.nota_clasificador_semaforo %}
+                | Veredicto clasificador:
+                <span class="chip chip-{{ ev.nota_clasificador_semaforo }}">
+                    {{ ev.nota_clasificador_semaforo }}
+                </span>
+                {% endif %}
+                | Likert (E/C/U):
+                <b>{{ ev.likert_exactitud }}/{{ ev.likert_coherencia }}/{{ ev.likert_utilidad }}</b>
+            </div>
+        </div>
+
+        {% if ev.marcaciones_nota_parsed and ev.marcaciones_nota_parsed.marcaciones %}
+        <details open>
+            <summary><b>Nota clinica con subrayado</b></summary>
+            <div class="nota-preview nota-preview-inline"
+                 data-nota="{{ ev.nota_clinica_texto|e }}"
+                 data-marcas='{{ ev.marcaciones_nota_parsed.marcaciones|tojson }}'>
+                {{ ev.nota_clinica_texto }}
+            </div>
+        </details>
+        {% endif %}
+
+        {% if ev.nota_clasificador_marcaciones_parsed and ev.nota_clasificador_marcaciones_parsed.marcaciones %}
+        <details>
+            <summary><b>Nota del clasificador con subrayado</b></summary>
+            <div class="nota-preview nota-preview-inline nota-preview-clf"
+                 data-nota="{{ ev.nota_clasificador_texto|e }}"
+                 data-marcas='{{ ev.nota_clasificador_marcaciones_parsed.marcaciones|tojson }}'>
+                {{ ev.nota_clasificador_texto }}
+            </div>
+        </details>
+        {% endif %}
+
+        {% if ev.comentarios_nota or ev.comentarios_clasificador %}
+        <details>
+            <summary><b>Comentarios</b></summary>
+            {% if ev.comentarios_nota %}
+            <div class="comments-box">
+                <small><b>Sobre la nota clinica:</b></small><br>
+                {{ ev.comentarios_nota }}
+            </div>
+            {% endif %}
+            {% if ev.comentarios_clasificador %}
+            <div class="comments-box" style="margin-top: 8px;">
+                <small><b>Sobre el clasificador:</b></small><br>
+                {{ ev.comentarios_clasificador }}
+            </div>
+            {% endif %}
+        </details>
+        {% endif %}
+    </div>
+    {% endfor %}
+</section>
+
+<!-- ===============================================================
+     BLOQUE 6: GRID DE VENTANAS AGREGADO
+     =============================================================== -->
+<section class="detail-section">
+    <h3>Grid de veredictos por ventana (agregado)</h3>
+    <p class="chart-desc">
+        Cada celda es una ventana temporal del clasificador con los conteos
+        de veredictos verde/amarillo/rojo emitidos por los cardiologos.
+        El color de fondo indica el veredicto mayoritario.
+    </p>
+
+    <h4 style="margin-top: 20px;">
+        LATIDO ({{ data.beat_windows|length }} ventanas)
+    </h4>
+    <div class="window-grid window-grid-beat">
+    {% for w in data.beat_windows %}
+        <div class="window-cell {% if w.n_verde >= w.n_amarillo and w.n_verde >= w.n_rojo %}window-cell-verde{% elif w.n_rojo >= w.n_amarillo and w.n_rojo >= w.n_verde %}window-cell-rojo{% else %}window-cell-amarillo{% endif %}"
+             title="Ventana {{ w.window_index }} - Pred: {{ w.prediccion_modelo }} - V:{{ w.n_verde }}/A:{{ w.n_amarillo }}/R:{{ w.n_rojo }}">
+            <div class="win-idx">{{ w.window_index }}</div>
+            <div class="win-pred">{{ w.prediccion_modelo }}</div>
+            <div class="win-counts">
+                <small>{{ w.n_verde }}/{{ w.n_amarillo }}/{{ w.n_rojo }}</small>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <h4 style="margin-top: 20px;">
+        RITMO ({{ data.rhythm_windows|length }} ventanas)
+    </h4>
+    <div class="window-grid window-grid-rhythm">
+    {% for w in data.rhythm_windows %}
+        <div class="window-cell {% if w.n_verde >= w.n_amarillo and w.n_verde >= w.n_rojo %}window-cell-verde{% elif w.n_rojo >= w.n_amarillo and w.n_rojo >= w.n_verde %}window-cell-rojo{% else %}window-cell-amarillo{% endif %}"
+             title="Ventana {{ w.window_index }} - Pred: {{ w.prediccion_modelo }} - V:{{ w.n_verde }}/A:{{ w.n_amarillo }}/R:{{ w.n_rojo }}">
+            <div class="win-idx">{{ w.window_index }}</div>
+            <div class="win-pred">{{ w.prediccion_modelo }}</div>
+            <div class="win-counts">
+                <small>{{ w.n_verde }}/{{ w.n_amarillo }}/{{ w.n_rojo }}</small>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="window-legend" style="margin-top: 16px;">
+        <span class="legend-item">
+            <span class="window-cell-verde legend-swatch"></span>
+            Mayoritario verde
+        </span>
+        <span class="legend-item">
+            <span class="window-cell-amarillo legend-swatch"></span>
+            Mayoritario amarillo
+        </span>
+        <span class="legend-item">
+            <span class="window-cell-rojo legend-swatch"></span>
+            Mayoritario rojo
+        </span>
+        <span class="legend-item">
+            <small>Formato conteos: V/A/R (verde/amarillo/rojo)</small>
+        </span>
+    </div>
+</section>
+
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.querySelectorAll(".nota-preview-inline").forEach(el => {
+    const texto = el.dataset.nota;
+    const marcas = JSON.parse(el.dataset.marcas || "[]");
+    if (!texto || !marcas.length) return;
+    const sorted = [...marcas].sort((a, b) => a.start - b.start);
+    const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    let html = "", cursor = 0;
+    for (const m of sorted) {
+        if (cursor < m.start) html += esc(texto.slice(cursor, m.start));
+        html += `<span class="mark-${m.color}">${esc(texto.slice(m.start, m.end))}</span>`;
+        cursor = m.end;
+    }
+    if (cursor < texto.length) html += esc(texto.slice(cursor));
+    el.innerHTML = html;
+});
+</script>
+
+<style>
+.tri-fuente-tabla {
+    margin-top: 12px;
+    overflow-x: auto;
+}
+.admin-table-cmp {
+    width: 100%;
+    min-width: 900px;
+}
+.admin-table-cmp td { padding: 12px 10px; vertical-align: top; }
+.admin-table-cmp td small { display: inline-block; margin-top: 4px; }
+.veredicto-agregado {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+.veredicto-agregado .chip { font-family: var(--font-mono); font-size: 11px; }
+
+.cardiologo-block {
+    padding: 16px 20px;
+    margin: 14px 0;
+    background: var(--cream-paper);
+    border: 1px solid var(--cream-deep);
+    border-left: 3px solid var(--ecg-red);
+    border-radius: 4px;
+}
+.cardiologo-header h4 {
+    margin: 0 0 8px 0;
+    padding: 0;
+    border: none;
+    font-size: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cardiologo-scores {
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+.cardiologo-block details {
+    margin: 8px 0;
+    padding: 8px 0;
+    border-top: 1px dashed var(--cream-deep);
+}
+.cardiologo-block details summary {
+    cursor: pointer;
+    padding: 4px 0;
+    font-size: 13px;
+    color: var(--ecg-red-dark);
+}
+.nota-preview-inline {
+    margin-top: 8px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 10px 14px;
+    background: white;
+    border: 1px solid var(--cream-deep);
+    border-radius: 3px;
+}
+.nota-preview-clf {
+    background: rgba(214, 163, 23, 0.05);
+    border-color: rgba(214, 163, 23, 0.4);
+}
+.window-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 2px;
+    min-height: 46px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-align: center;
+}
+.win-counts {
+    font-size: 9px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 2px;
+}
+</style>
+{% endblock %}

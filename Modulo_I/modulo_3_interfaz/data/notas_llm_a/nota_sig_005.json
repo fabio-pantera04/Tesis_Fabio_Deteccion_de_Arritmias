@@ -221,7 +221,7 @@
     "n_rhythm_windows": 15,
     "processing_time_seconds": 17684.0
   },
-  "clinical_note": "En un registro de derivación II de 60.0 segundos, correspondiente a un paciente de 50 años, sexo X, se observa un patrón rítmico predominantemente compatible con fibrilación auricular (93.33%). Este se caracteriza por la ausencia de ondas P discernibles, presencia de oscilaciones basales irregulares que reemplazan la actividad auricular, y una respuesta ventricular irregularmente irregular con complejos QRS de morfología estrecha. La clase de latido predominante es NORMAL (76.67%), con complejos QRS estrechos y onda T concordante con la deflexión principal, aunque se identifica una contribución significativa de contracciones auriculares prematuras (23.33%). Se detectan múltiples contracciones auriculares prematuras en los segundos 2.0, 9.0, 15.0, 20.0, 31.0, 35.0, 37.0, 38.0, 42.0 y 44.0, las cuales se presentan como latidos de aparición prematura con complejos QRS asociados estrechos. Si bien la confianza media del clasificador se sitúa en 0.41 para la clasificación de latidos y 0.56 para el ritmo, se ha marcado la necesidad de escalación global para este registro. Por lo tanto, se recomienda encarecidamente una revisión detallada del mismo por parte de un cardiólogo especialista para la interpretación definitiva.",
+  "clinical_note": "En un registro de derivación II de 60.0 segundos, correspondiente a un paciente de 50 años, sexo X, se observa un patrón rítmico predominantemente compatible con fibrilación auricular (93.33%). Este se caracteriza por la ausencia de ondas P discernibles, presencia de oscilaciones basales irregulares que reemplazan la actividad auricular, y una respuesta ventricular irregularmente irregular con complejos QRS de morfología estrecha. La clase de latido predominante es NORMAL (76.67%), con complejos QRS estrechos y onda T concordante con la deflexión principal, aunque se identifica una contribución significativa de contracciones auriculares prematuras (23.33%).",
   "quality_checks": {
     "idioma_espanol": true,
     "menciona_lead_II": true,
@@ -234,5 +234,6 @@
     "sin_prescripcion": true
   },
   "checks_passed": 8,
-  "checks_total": 9
+  "checks_total": 9,
+  "classifier_note": "Se detectan múltiples contracciones auriculares prematuras en los segundos 2.0, 9.0, 15.0, 20.0, 31.0, 35.0, 37.0, 38.0, 42.0 y 44.0, las cuales se presentan como latidos de aparición prematura con complejos QRS asociados estrechos. Si bien"
 }

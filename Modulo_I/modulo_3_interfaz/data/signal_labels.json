@@ -1,0 +1,78 @@
+{
+  "_readme": "Etiquetas reales (ground truth) de las 5 senales del estudio. Extraidas directamente del nombre de los archivos CSV originales. Editable si necesitas ajustar contexto clinico.",
+
+  "sig_001": {
+    "dataset": "CinC2017",
+    "record_id": "A00004",
+    "source_csv": "A00004_AFIB_CinC2017_30s_250Hz.csv",
+    "duration_seconds": 30,
+    "rhythm_label": "AFIB",
+    "rhythm_label_full": "Fibrilacion auricular",
+    "predominant_beat_label": "N/A",
+    "predominant_beat_label_full": "Sin etiquetas beat-a-beat en CinC2017",
+    "clinical_context": "Registro corto de 30 segundos del PhysioNet Computing in Cardiology Challenge 2017. Etiqueta agregada a nivel de registro: fibrilacion auricular. No dispone de etiquetas beat-a-beat, por lo que la clase de latido es N/A."
+  },
+
+  "sig_002": {
+    "dataset": "Icentia11k",
+    "record_id": "p00008_s00",
+    "source_csv": "p00008_s00_NSR_NORMAL_335s_1min.csv",
+    "duration_seconds": 60,
+    "rhythm_label": "NSR",
+    "rhythm_label_full": "Ritmo sinusal normal",
+    "predominant_beat_label": "NORMAL",
+    "predominant_beat_label_full": "Latido sinusal normal",
+    "clinical_context": "Registro Icentia11k del paciente 00008, segmento 00, extraido a partir del segundo 335. Ritmo sinusal normal con latidos normales predominantes."
+  },
+
+  "sig_003": {
+    "dataset": "Icentia11k",
+    "record_id": "p00019_s00",
+    "source_csv": "p00019_s00_PAC_NORMAL_1628s_1min.csv",
+    "duration_seconds": 60,
+    "rhythm_label": "NSR",
+    "rhythm_label_full": "Ritmo sinusal normal (con extrasistoles)",
+    "predominant_beat_label": "NORMAL_con_PAC",
+    "predominant_beat_label_full": "Mezcla de latidos normales y contracciones auriculares prematuras",
+    "clinical_context": "Registro Icentia11k del paciente 00019, extraido a partir del segundo 1628. Latidos normales intercalados con contracciones auriculares prematuras (PACs). Ritmo subyacente sinusal. Caso desafiante: el clasificador podria confundir la irregularidad de las PACs con AFIB."
+  },
+
+  "sig_004": {
+    "dataset": "Icentia11k",
+    "record_id": "p00030_s00",
+    "source_csv": "p00030_s00_NSR_NORMAL_713s_1min.csv",
+    "duration_seconds": 60,
+    "rhythm_label": "NSR",
+    "rhythm_label_full": "Ritmo sinusal normal",
+    "predominant_beat_label": "NORMAL",
+    "predominant_beat_label_full": "Latido sinusal normal",
+    "clinical_context": "Registro Icentia11k del paciente 00030, extraido a partir del segundo 713. Ritmo sinusal normal con latidos normales. Caso de control (senal normal)."
+  },
+
+  "sig_005": {
+    "dataset": "Icentia11k",
+    "record_id": "p00065_s00",
+    "source_csv": "p00065_s00_AFIB_733s_1min.csv",
+    "duration_seconds": 60,
+    "rhythm_label": "AFIB",
+    "rhythm_label_full": "Fibrilacion auricular",
+    "predominant_beat_label": "N/A",
+    "predominant_beat_label_full": "No especificado en el nombre del archivo",
+    "clinical_context": "Registro Icentia11k del paciente 00065, extraido a partir del segundo 733. Fibrilacion auricular sostenida durante todo el minuto. Caso positivo claro de AFIB."
+  },
+
+  "_referencia_clases": {
+    "beat_classes": {
+      "NORMAL": "Latido sinusal normal",
+      "PAC": "Contraccion auricular prematura",
+      "V": "Latido ventricular ectopico",
+      "S": "Latido supraventricular ectopico",
+      "Q": "Latido no clasificable"
+    },
+    "rhythm_classes": {
+      "NSR": "Ritmo sinusal normal",
+      "AFIB": "Fibrilacion auricular",
+      "AFL": "Flutter auricular"
+    }
+  }
+}

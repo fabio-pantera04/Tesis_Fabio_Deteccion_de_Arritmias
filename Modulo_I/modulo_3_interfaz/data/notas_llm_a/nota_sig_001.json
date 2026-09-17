@@ -219,7 +219,7 @@
     "n_rhythm_windows": 7,
     "processing_time_seconds": 7865.9
   },
-  "clinical_note": "Se analiza un registro electrocardiográfico de 30.0 segundos de duración, obtenido en derivación II modificada con un muestreo de 250 Hz, en un paciente de aproximadamente 50 años de edad y sexo X. Se observa un patrón de ritmo que el clasificador dual identifica consistentemente como Fibrilación Auricular (AFIB) en el 100.0% de las ventanas, caracterizado por la ausencia de ondas P discernibles, oscilaciones basales irregulares reemplazando la actividad auricular, y complejos QRS que conservan morfología estrecha con intervalos R-R irregularmente irregulares. En el análisis de latido a latido, se identifica una clase predominante de contracciones auriculares prematuras (PAC) en el 73.33% de los latidos, coexistiendo con un 26.67% de latidos clasificados como NORMAL. Las PACs se aprecian como latidos de aparición prematura con ondas P de morfología distinta y complejos QRS estrechos, detectándose múltiples eventos de este tipo en los segundos 0.0, 1.0, 2.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 y 13.0. La confianza media del clasificador se considera adecuada para la interpretación inicial, con un confidence gap de 0.46 para los latidos y 0.92 para el ritmo. Sin embargo, dado que se ha determinado la necesidad de escalación global por el sistema, se recomienda encarecidamente la revisión completa del registro por un cardiólogo especialista para su interpretación definitiva.",
+  "clinical_note": "Se analiza un registro electrocardiográfico de 30.0 segundos de duración, obtenido en derivación II modificada con un muestreo de 250 Hz, en un paciente de aproximadamente 50 años de edad y sexo X. Se observa un patrón de ritmo que el clasificador dual identifica consistentemente como Fibrilación Auricular (AFIB) en el 100.0% de las ventanas, caracterizado por la ausencia de ondas P discernibles, oscilaciones basales irregulares reemplazando la actividad auricular, y complejos QRS que conservan morfología estrecha con intervalos R-R irregularmente irregulares.",
   "quality_checks": {
     "idioma_espanol": true,
     "menciona_lead_II": true,
@@ -232,5 +232,6 @@
     "sin_prescripcion": true
   },
   "checks_passed": 9,
-  "checks_total": 9
+  "checks_total": 9,
+  "classifier_note": "En el análisis de latido a latido, se identifica una clase predominante de contracciones auriculares prematuras (PAC) en el 73.33% de los latidos, coexistiendo con un 26.67% de latidos clasificados como NORMAL. Las PACs se aprecian como latidos de aparición prematura con ondas P de morfología distinta y complejos QRS estrechos, detectándose múltiples eventos de este tipo en los segundos 0.0, 1.0, 2.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 y 13.0."
 }
