@@ -333,9 +333,6 @@ Las señales evaluadas provienen exclusivamente de datasets públicos anonimizad
 - Dr. Hugo Mitre-Hernández — Director de tesis, CIMAT Unidad Zacatecas
 - Dr. Fernando Sánchez-Vega — Co-director de tesis, CIMAT Unidad Zacatecas
 
-**Colaboración clínica**:
-- Dra. Aranxa F. Jiménez Galván — Cardióloga, ISSSTE
-
 **Institución**:
 Centro de Investigación en Matemáticas, A.C. (CIMAT), Unidad Zacatecas.
 
@@ -345,8 +342,8 @@ Centro de Investigación en Matemáticas, A.C. (CIMAT), Unidad Zacatecas.
 
 Para consultas sobre el proyecto:
 
-- **Datos y participación en el estudio**: hmitre@cimat.mx
-- **Ejercicio de derechos ARCO** (participantes del estudio): hmitre@cimat.mx
+- **Datos y participación en el estudio**: fabio.velasco@cimat.mx
+- **Ejercicio de derechos ARCO** (participantes del estudio): fabio.velasco@cimat.mx
 
 ---
 
